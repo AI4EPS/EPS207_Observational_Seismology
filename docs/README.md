@@ -21,8 +21,8 @@ The class will be a combination of lectures and hands-on exercises. We will use 
 | Date | Topic |
 | --- | --- |
 | 08/25 | [Introduction](lectures/00_introduction.html) |
-| 09/01 | [Earthquake Source]() |
-| 09/08 | [Seismic Wave]() |
+| 09/01 | [Earthquake Source](lectures/01_earthquake_source.html) |
+| 09/08 | [Seismic Wave](lectures/02_seismic_wave.html) |
 | 09/15 | [Seismic Data Processing]() |
 | 09/22 | [Earthquake Detection]() |
 | 09/29 | [Phase Picking & Association]() |
