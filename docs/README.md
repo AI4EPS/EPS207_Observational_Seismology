@@ -20,7 +20,7 @@ The class will be a combination of lectures and hands-on exercises. We will use 
 
 | Date | Topic |
 | --- | --- |
-| 08/25 | [Introduction](lectures/00_Introduction.html) |
+| 08/25 | [Introduction](lectures/00_introduction.html) |
 | 09/01 | [Earthquake Source]() |
 | 09/08 | [Seismic Wave]() |
 | 09/15 | [Seismic Data Processing]() |
