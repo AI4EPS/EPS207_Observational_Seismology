@@ -10,7 +10,30 @@ backgroundColor: #fff
 
 ---
 
-[Latest Earthquakes](https://earthquake.usgs.gov/earthquakes/map/?extent=-88.45674,-106.875&extent=88.43769,506.25&range=month&magnitude=all&showUSFaults=true&baseLayer=ocean&settings=true)
+### Large destructive earthquakes
+
+| Year | Magnitude | MMI |  Deaths | Injuries |                Event               |
+|:----:|:---------:|:---:|:-------:|:--------:|:----------------------------------:|
+| 2023 | 7.8       | XII | 57,350+ | 130,000+ | 2023 Turkey–Syria earthquake       |
+| 2011 | 9.1       | IX  | 19,747  | 6,000    | 2011 Tōhoku earthquake and tsunami |
+| 2008 | 7.9       | XI  | 87,587  | 374,177  | 2008 Sichuan earthquake            |
+
+---
+
+### Hayward Fault
+
+[History](https://seismo.berkeley.edu/hayward/hayward_history.html)
+
+![height:500px](https://seismo.berkeley.edu/hayward/goole_earth_hayward_fault.jpg)
+
+---
+### Hayward Fault
+
+![height:500px](https://upload.wikimedia.org/wikipedia/commons/a/a3/Berkeley_stadium_fault_creep_P1320489.jpg)
+
+---
+
+[Many more small earthquakes](https://earthquake.usgs.gov/earthquakes/map/?extent=-88.45674,-106.875&extent=88.43769,506.25&range=month&magnitude=all&showUSFaults=true&baseLayer=ocean&settings=true)
 - [California](https://earthquake.usgs.gov/earthquakes/map/?extent=30.78904,-128.58398&extent=43.05283,-109.42383&range=month&magnitude=all&showUSFaults=true&baseLayer=ocean&settings=true)
 - [Alaska](https://earthquake.usgs.gov/earthquakes/map/?extent=45.3367,-190.2832&extent=74.04372,-113.64258&range=month&magnitude=all&showUSFaults=true&baseLayer=ocean&settings=true)
 - [Hawaii](https://earthquake.usgs.gov/earthquakes/map/?extent=16.35177,-161.78467&extent=23.58413,-152.20459&range=month&magnitude=all&showUSFaults=true&baseLayer=ocean&settings=true)
@@ -19,10 +42,10 @@ backgroundColor: #fff
 ---
 
 [Seismic Networks](http://ds.iris.edu/gmap/#network=*&starttime=2023-01-01&datacenter=IRISDMC&plates=on&planet=earth)
-- [California](http://ds.iris.edu/gmap/#network=*&starttime=2023-01-01&datacenter=NCEDC,SCEDC&plates=on&planet=earth)
+- [California](http://ds.iris.edu/gmap/#network=*&starttime=2023-01-01&maxlat=43.0799&maxlon=-113.3789&minlat=30.9776&minlon=-125.9234&datacenter=NCEDC,SCEDC&drawingmode=box&plates=on&planet=earth)
 - [Alaska](http://ds.iris.edu/gmap/#network=AV,AK&starttime=2023-01-01&plates=on&planet=earth)
 - [Hawaii](http://ds.iris.edu/gmap/#network=HV&maxlat=20.3285&maxlon=-154.6436&minlat=18.7711&minlon=-156.389&drawingmode=box&plates=on&planet=earth)
-- [Oklahoma & Texas](http://ds.iris.edu/gmap/#starttime=2023-01-01&maxlat=37.9407&maxlon=-95.4497&minlat=36.6472&minlon=-105.7109&network=*&drawingmode=box&plates=on&planet=earth)
+- [Oklahoma & Texas](http://ds.iris.edu/gmap/#network=*&starttime=2023-01-01&maxlat=38.2544&maxlon=-93.4717&minlat=27.2156&minlon=-105.608&drawingmode=box&plates=on&planet=earth)
 
 ---
 
@@ -49,7 +72,7 @@ backgroundColor: #fff
 
 ### How are these information extracted/determined?
 
-- Detection of the earthquake
+- Detection of earthquakes
 - Earthquake origin time and location
 - Earthquake magnitude
 - Earthquake focal mechanism/moment tensor
@@ -116,6 +139,7 @@ backgroundColor: #fff
 
 - Mobile phones as seismometers
 [Android EEW](https://www.youtube.com/watch?v=zFin2wZ56tM&ab_channel=Android)
+![height:500px](http://earthquake.ca.gov/wp-content/uploads/sites/8/2020/09/android_alerts.gif)
 
 ---
 
@@ -182,7 +206,11 @@ backgroundColor: #fff
 - Familiarize with seismic data
 - Learn the state-of-the-art machine learning methods for seismic data processing
 - Process seismic data, build seismic catalogs, and analyzing seismicity
-- Learn basic inverse theory and apply it to earthquake location, seismic tomography, etc.
+- Learn basic inverse theory for earthquake location, focal mechanism, seismic tomography, etc.
+
+---
+
+
 
 ---
 
