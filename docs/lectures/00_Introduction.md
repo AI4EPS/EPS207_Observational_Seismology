@@ -26,40 +26,40 @@ backgroundColor: #fff
 
 ---
 
-# Large-N and Large-T challenge
+### Large-N and Large-T challenge
 
 [IRIS dataset](https://ds.iris.edu/data/distribution/)
 ![height:500px](https://ds.iris.edu/files/stats/data/archive/Archive_Growth.jpg)
 
 ---
 
-# Mining the IRIS dataset
+### Mining the IRIS dataset
 
 ![height:500px](https://ds.iris.edu/files/stats/data/shipments/GigabytesByYearAndType.jpg)
 
 
 ---
 
-# What information can we get from seismic data?
+### What information can we get from seismic data?
 
 - Take a look at a recent earthquake: [M 5.1 - 7 km SE of Ojai, CA](https://earthquake.usgs.gov/earthquakes/eventpage/ci39645386/executive)
 ![height:500px](assets/M5.1.png)
 
 ---
 
-# How are these information extracted/determined?
+### How are these information extracted/determined?
 
-1. Detection of the earthquake 
-2. Earthquake origin time and location
-3. Earthquake magnitude
-4. Earthquake focal mechanism/moment tensor
-5. Shake map/ground motion prediction
-6. Earthquake early warning
-7. "Did you feel it?"
+- Detection of the earthquake
+- Earthquake origin time and location
+- Earthquake magnitude
+- Earthquake focal mechanism/moment tensor
+- Shake map/ground motion prediction
+- Earthquake early warning
+- "Did you feel it?"
 
 ---
 
-# What additional information can we glean from millions of earthquakes?
+### What additional information can we glean from millions of earthquakes?
 
 - Earthquake catalog
 - Earthquake statistics
@@ -71,25 +71,7 @@ backgroundColor: #fff
 
 ---
 
-# What techniques are used to extract these information?
-
-- Signal processing
-- Machine learning
-- Inverse theory
-- Numerical simulation
-- Statistics
-
----
-
-# Things to learn in this course
-
-1. Familiarize with basic tasks in seismology
-2. Learn the state-of-the-art machine learning methods for solving these seismic tasks
-3. Practice processing seismic data, building seismic catalogs, and analyzing seismicity
-
----
-
-# Why do we study seismology?
+### How to use these information?
 
 - Monitoring earthquakes and mitigate damage
 
@@ -101,53 +83,112 @@ backgroundColor: #fff
 
 ---
 
-# What do we know about Earthquake rick?
-
-## Think from different time scales
+### Earthquake monitoring and earthquake rick?
 
 - Before an earthquake
 - A few seconds after an earthquake
-- days after an earthquake
-- years after an earthquake
+- Hours/days after an earthquake
+- Years after an earthquake
 
 ---
 
-## Before an earthquake
+### Before an earthquake
 
-- Eathquake Hazard Map
-![width:700px](https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/styles/side_image/public/thumbnails/image/2018nshm-longterm.jpg?itok=6tMRRjk3)
+- [Eathquake Hazard Map](https://earthquake.usgs.gov/earthquakes/map/?extent=27.95559,-130.8252&extent=51.28941,-92.50488&range=month&magnitude=all&showPopulationDensity=true&showUSHazard=true&settings=true)
+![height:500px](https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/styles/side_image/public/thumbnails/image/2018nshm-longterm.jpg?itok=6tMRRjk3)
 
 ---
 
 - Simulating earthquake scenarios
 [Hayward Fault Scenarios](https://earthquake.usgs.gov/education/shakingsimulations/hayward/)
-![width:700px](https://earthquake.usgs.gov/education/shakingsimulations/hayward/images/tn-HaywardM72_SanPabloBayEp.jpg)
+![height:500px](https://earthquake.usgs.gov/education/shakingsimulations/hayward/images/tn-HaywardM72_SanPabloBayEp.jpg)
 
 ---
 
-[![]()](https://youtu.be/StTqXEQ2l-Y?t=35s "Everything Is AWESOME")
+### A few seconds after an earthquake
+
+![height:500px](./assets/ShakeAlert.webp)
 
 ---
 
-# How can we better monitor earthquakes?
+- MyShake
+[https://myshake.berkeley.edu/](https://myshake.berkeley.edu/)
 
-## Instrument
+- Mobile phones as seismometers
+[Android EEW](https://www.youtube.com/watch?v=zFin2wZ56tM&ab_channel=Android)
 
-1) Dense seismic networks
-2) New sensors, such as, broadband seismometer, nodal array, and DAS (Distributed Acoustic Sensing)
-3) Remote sensing, LiDAR, etc.
+---
 
-## Algorithm
+### Hours/days after an earthquake
+
+- Emergency response and damage assessment
+[Fault Dimensions](https://www.src.com.au/earthquake-size/)
+
+| Magnitude Mw | Fault Area km² | Typical rupture dimensions (km x km) |
+|--------------|----------------|--------------------------------------|
+| 4            | 1              | 1 x 1                                |
+| 5            | 10             | 3 x 3                                |
+| 6            | 100            | 10 x 10                              |
+| 7            | 1,000          | 30 x 30                              |
+| 8            | 10,000         | 50 x 200                             |
+
+--- 
+
+- [Aftershock prediction](https://earthquake.usgs.gov/data/oaf/overview.php)
+
+![height:500px](https://earthquake.usgs.gov/data/oaf/images/fig4.gif)
+
+---
+
+### Years after an earthquake
+
+- Understand earthquake rupture process
+- Earthquake forecasting model
+- Improve ground motion prediction models (GMPE)
+- Improve building codes
+![height:300px](https://www.jreast.co.jp/e/development/theme/safety/img/safety07.jpg)
+
+---
+
+### How can we better monitor earthquakes?
+
+**Instrument side**
+(How to collect more and better data?)
+- Dense seismic networks
+- New sensors, such as, broadband seismometer, nodal array, and DAS (Distributed Acoustic Sensing)
+- Remote sensing, LiDAR, etc.
+
+--- 
+
+### How can we better monitor earthquakes?
+
+**Algorithm side**
+(What techniques are used to process data and extract information?)
 
 - Many signal processing algorithms, such as, template matching, cross-correlation, filtering, etc.
 
 - Machine learning, in particular, deep learning
 
+- Numerical simulation
+
+- Inverse theory
+
+- Statistical analysis
+
 ---
 
-# The advantages of machine learning
+### Things to learn in this course
 
-Deep Learning (Deep Nerual Networks) is a new paradigm of software development
+- Familiarize with seismic data
+- Learn the state-of-the-art machine learning methods for seismic data processing
+- Process seismic data, build seismic catalogs, and analyzing seismicity
+- Learn basic inverse theory and apply it to earthquake location, seismic tomography, etc.
+
+---
+
+### The advantages of machine learning
+
+Deep Learning (Deep Neural Networks) is a new paradigm of software development
 
 - [Software 2.0](https://karpathy.medium.com/software-2-0-a64152b37c35)
 
@@ -155,11 +196,10 @@ Deep Learning (Deep Nerual Networks) is a new paradigm of software development
 
 ---
 
-# Applications of deep learning in seismology
+### Applications of deep learning in seismology
 
 * Neural Networks
 * Automatic Differentiation
 * Optimization
 
 ---
-
