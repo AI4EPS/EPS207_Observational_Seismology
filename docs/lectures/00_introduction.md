@@ -47,6 +47,8 @@ backgroundColor: #fff
 - [Hawaii](http://ds.iris.edu/gmap/#network=HV&maxlat=20.3285&maxlon=-154.6436&minlat=18.7711&minlon=-156.389&drawingmode=box&plates=on&planet=earth)
 - [Oklahoma & Texas](http://ds.iris.edu/gmap/#network=*&starttime=2023-01-01&maxlat=38.2544&maxlon=-93.4717&minlat=27.2156&minlon=-105.608&drawingmode=box&plates=on&planet=earth)
 
+[GPS Networks](https://www.unavco.org/instrumentation/networks/map/map.html#!/@45.65835440549003,-117.90988182323227,3.368z?network=nota,nota%20affiliated,polar,pi,igs,ggn,sgp,other&type=gps,gps%20realtime&view=map)
+
 ---
 
 ### Large-N and Large-T challenge
@@ -65,8 +67,18 @@ backgroundColor: #fff
 
 ### What information can we get from seismic data?
 
+- Take a look at seismic waveforms:
+[ncedc.org/waveformDisplay/](https://ncedc.org/waveformDisplay/)  [Station Channel Codes](https://docs.fdsn.org/projects/source-identifiers/en/v1.0/channel-codes.html)
+
+![height:500px](https://ncedc.org/gifs/annotatedQuakes.jpg)
+
+---
+
+### What information can we get from seismic data?
+
 - Take a look at a recent earthquake: [M 5.1 - 7 km SE of Ojai, CA](https://earthquake.usgs.gov/earthquakes/eventpage/ci39645386/executive)
 ![height:500px](assets/M5.1.png)
+
 
 ---
 
@@ -210,7 +222,14 @@ backgroundColor: #fff
 
 ---
 
+### Grading
 
+- Attendance and participation (50%)
+- Final project (50%)
+    - Project proposal (10%)
+    - Project presentation (20%)
+    - Project report (20%)
+- Extra credit (up to 10%)
 
 ---
 
@@ -230,4 +249,3 @@ Deep Learning (Deep Neural Networks) is a new paradigm of software development
 * Automatic Differentiation
 * Optimization
 
----
