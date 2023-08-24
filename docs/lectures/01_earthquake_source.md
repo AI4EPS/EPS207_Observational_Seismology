@@ -33,7 +33,7 @@ backgroundColor: #fff
 
 ### Earthquake rupture
 
-<video src="assets/rough_vy_converted.mp4" controls width="80%"></video>
+<video src="assets/rough_vy.mp4" controls width="80%"></video>
 [Eric Dunham](https://pangea.stanford.edu/~edunham/publications.html)
 
 ---
