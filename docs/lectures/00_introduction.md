@@ -3,6 +3,7 @@ marp: true
 paginate: true
 theme: gaia
 backgroundColor: #fff
+size: 16:12
 ---
 
 # Observational Seismology
@@ -222,17 +223,6 @@ backgroundColor: #fff
 
 ---
 
-### Grading
-
-- Attendance and participation (50%)
-- Final project (50%)
-    - Project proposal (10%)
-    - Project presentation (20%)
-    - Project report (20%)
-- Extra credit (up to 10%)
-
----
-
 ### The advantages of machine learning
 
 Deep Learning (Deep Neural Networks) is a new paradigm of software development
@@ -247,5 +237,37 @@ Deep Learning (Deep Neural Networks) is a new paradigm of software development
 
 * Neural Networks
 * Automatic Differentiation
-* Optimization
+* Optimization/Inversion
 
+
+---
+
+<span style="color:Violet;">Machine Learning</span> and <span style="color:LimeGreen;">Inversion</span>
+
+
+|||
+| --- | --- | 
+| 09/15 | <span style="color:Violet;">Seismic Data Processing</span>  |
+| 09/22 | <span style="color:Violet;">Earthquake Detection</span> |
+| 09/29 | <span style="color:Violet;">Phase Picking & Association</span> |
+| 10/06 | <span style="color:LimeGreen;">Earthquake Location & Relative Location |
+| 10/13 | <span style="color:LimeGreen;">Focal Mechanism & Moment Tensor |
+| 10/20 | <span style="color:Violet;">Earthquake Statistics</span> |
+| 10/27 | <span style="color:black;">Ambient Noise</span> |
+| 11/03 | <span style="color:LimeGreen;">Seismic Tomography</span> |
+| 11/10 | <span style="color:LimeGreen;">Full-waveform Inversion</span> |
+
+---
+
+### Grading
+
+- Attendance and participation (50%)
+- Final project (50%)
+    - Project proposal (10%)
+    - Project presentation (20%)
+    - Project report (20%)
+- Extra credit (up to 10%)
+
+---
+
+### Questions?
