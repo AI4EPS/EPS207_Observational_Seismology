@@ -7,7 +7,6 @@ repo_url: 'https://github.com/AI4EPS/EPS207_Observational_Seismology'
 nav:
     - Overview: README.md
     - Syllabus: syllabus.md
-    - Introduction: 00_Introduction.md
     - Obspy:
       - Install packages: obspy/install.md
       - Download catalog: obspy/download_catalog.ipynb
