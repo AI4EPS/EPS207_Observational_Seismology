@@ -11,4 +11,4 @@ backgroundColor: #fff
 
 ### Spring Slider System
 
-[notebook](lectures/codes/spring_slider/)
+[notebook](codes/spring_slider/)
