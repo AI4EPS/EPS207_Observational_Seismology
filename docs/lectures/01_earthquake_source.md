@@ -7,6 +7,11 @@ backgroundColor: #fff
 
 # Earthquake Source
 
+Textbook: 
+Shearer, P. M. (2019). Introduction to seismology. Cambridge University Press.
+GEOPHYS 210: Earthquake Seismology by Eric Dunham
+Segall, P. (2010). Earthquake and volcano deformation. Princeton University Press.
+
 ---
 
 ## Elastic rebound theory
@@ -31,6 +36,11 @@ backgroundColor: #fff
 
 ---
 
+![width:1100px](./assets/Screenshot%202023-08-24%20at%2016.07.47.png)
+(Hall-Wallace, M. K. 1998))
+
+---
+
 ### Earthquake rupture
 
 <video src="assets/rough_vy.mp4" controls width="80%"></video>
@@ -48,15 +58,21 @@ backgroundColor: #fff
 
 ---
 
+![width:1100px](./assets/Screenshot%202023-08-24%20at%2010.56.22.png)
+
+---
+
+![width:700px](./assets/Screenshot%202023-08-24%20at%2016.22.14.png)
+
+---
+
+![width:800px](./assets/Screenshot%202023-08-24%20at%2016.20.06.png)
+
+---
+
 ![width:1100px](./assets/Screenshot%202023-08-24%20at%2010.54.16.png)
 
 ---
 
 ![width:1100px](./assets/Screenshot%202023-08-24%20at%2010.55.13.png)
-
----
-
-![width:1100px](./assets/Screenshot%202023-08-24%20at%2010.56.22.png)
-
----
 
