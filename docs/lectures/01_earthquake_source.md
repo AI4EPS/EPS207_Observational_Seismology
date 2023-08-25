@@ -37,7 +37,7 @@ Segall, P. (2010). Earthquake and volcano deformation. Princeton University Pres
 ---
 
 ![width:1100px](./assets/Screenshot%202023-08-24%20at%2016.07.47.png)
-(Hall-Wallace, M. K. 1998))
+(Hall-Wallace, M. K. 1998)
 
 ---
 
