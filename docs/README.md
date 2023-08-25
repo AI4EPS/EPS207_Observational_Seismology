@@ -23,6 +23,7 @@ The class will be a combination of lectures and hands-on exercises. We will use 
 | 08/25 | [Introduction](lectures/00_introduction.html) |
 | 08/28 | [Earthquake Source](lectures/01_earthquake_source.html) |
 | 09/04 | Labor Day |
+| 09/11 | SCEC Meeting (No class) |
 | 09/18 | [Seismic Wave](lectures/02_seismic_wave.html) |
 | 09/25 | [Seismic Data Processing]() |
 | 10/02 | [Earthquake Detection]() |
