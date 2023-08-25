@@ -28,9 +28,14 @@ size: 16:12
 ![height:500px](https://seismo.berkeley.edu/hayward/goole_earth_hayward_fault.jpg)
 
 ---
-### Hayward Fault
+### [The California Memorial Stadium](https://pressbooks.pub/haywardfaultucberkeley/chapter/the-california-memorial-stadium/)
 
 ![height:500px](https://upload.wikimedia.org/wikipedia/commons/a/a3/Berkeley_stadium_fault_creep_P1320489.jpg)
+
+---
+
+### An estimated magnitude of 6.3 or greater. 
+![height:500px](https://seismo.berkeley.edu/hayward/hf_history.jpg)
 
 ---
 
@@ -75,6 +80,13 @@ size: 16:12
 
 ---
 
+- Can you find an earthquake?
+
+[Raspberry Shake Network](https://stationview.raspberryshake.org/#/?lat=9.22307&lon=-0.57266&zoom=2.444)
+![height:500px](https://cdn-dfdfc.nitrocdn.com/ZlrgOCOQhsvSWxEiiDoICIrRKemFKvaV/assets/images/optimized/rev-0d3aaf8/raspberryshake.org/wp-content/uploads/StationView_General-min.gif)
+
+---
+
 ### What information can we get from seismic data?
 
 - Take a look at a recent earthquake: [M 5.1 - 7 km SE of Ojai, CA](https://earthquake.usgs.gov/earthquakes/eventpage/ci39645386/executive)
@@ -83,39 +95,36 @@ size: 16:12
 
 ---
 
-### How are these information extracted/determined?
+### How are information extracted/determined?
 
-- Detection of earthquakes
-- Earthquake origin time and location
-- Earthquake magnitude
-- Earthquake focal mechanism/moment tensor
-- Shake map/ground motion prediction
-- Earthquake early warning
-- "Did you feel it?"
+* Detection of earthquakes
+* Earthquake origin time and location
+* Earthquake magnitude
+* Earthquake focal mechanism/moment tensor
+* Shake map/ground motion prediction
+* Earthquake early warning
+* "Did you feel it?"
 
 ---
 
-### What additional information can we glean from millions of earthquakes?
+### What additional information can we get from millions of earthquakes?
 
-- Earthquake catalog
-- Earthquake statistics
-- Earthquake triggering
-- Earthquake forecasting
-- Fault zone structure
-- Seismic tomography
-- Volcano, glacier, and landslide monitoring
+* Earthquake catalog
+* Earthquake statistics
+* Earthquake triggering
+* Earthquake forecasting
+* Fault zone structure
+* Seismic tomography
+* Volcano, glacier, and landslide monitoring
 
 ---
 
 ### How to use these information?
 
-- Monitoring earthquakes and mitigate damage
-
-- Understand earthquake source physics
-
-- Understanding the Earth's structure
-
-- Applying seismology to environmental science, planetary science, climate science, etc.
+* Monitoring earthquakes and earthquake early warning
+* Understand earthquake source physics
+* Understanding the Earth's structure
+* Applying seismology to environmental science, planetary science, climate science, etc.
 
 ---
 
@@ -136,7 +145,7 @@ size: 16:12
 ---
 
 - Simulating earthquake scenarios
-[Hayward Fault Scenarios](https://earthquake.usgs.gov/education/shakingsimulations/hayward/)
+[Hayward Fault Scenarios](https://youtu.be/qZaKE4GuBXs?si=wI949Vnbk1EbO6xT)
 ![height:500px](https://earthquake.usgs.gov/education/shakingsimulations/hayward/images/tn-HaywardM72_SanPabloBayEp.jpg)
 
 ---
@@ -180,9 +189,9 @@ size: 16:12
 ### Years after an earthquake
 
 - Understand earthquake rupture process
-- Earthquake forecasting model
 - Improve ground motion prediction models (GMPE)
-- Improve building codes
+- Improve hazard map and building codes
+- Earthquake forecasting models
 ![height:300px](https://www.jreast.co.jp/e/development/theme/safety/img/safety07.jpg)
 
 ---
@@ -191,8 +200,9 @@ size: 16:12
 
 **Instrument side**
 (How to collect more and better data?)
+
 - Dense seismic networks
-- New sensors, such as, broadband seismometer, nodal array, and DAS (Distributed Acoustic Sensing)
+- New sensors: broadband seismometer, nodal array, and DAS (Distributed Acoustic Sensing)
 - Remote sensing, LiDAR, etc.
 
 --- 
@@ -200,11 +210,11 @@ size: 16:12
 ### How can we better monitor earthquakes?
 
 **Algorithm side**
-(What techniques are used to process data and extract information?)
+(New techniques for processing data and extracting information?)
 
-- Many signal processing algorithms, such as, template matching, cross-correlation, filtering, etc.
+- Many signal processing algorithms, such as, STA/LTA, template matching, filtering, etc.
 
-- Machine learning, in particular, deep learning
+- Machine learning & deep learning
 
 - Numerical simulation
 
@@ -216,7 +226,7 @@ size: 16:12
 
 ### Things to learn in this course
 
-- Familiarize with seismic data
+- Faimilar with seismic data
 - Learn the state-of-the-art machine learning methods for seismic data processing
 - Process seismic data, build seismic catalogs, and analyzing seismicity
 - Learn basic inverse theory for earthquake location, focal mechanism, seismic tomography, etc.
@@ -235,9 +245,9 @@ Deep Learning (Deep Neural Networks) is a new paradigm of software development
 
 ### Applications of deep learning in seismology
 
-* Neural Networks
-* Automatic Differentiation
-* Optimization/Inversion
+- Neural Networks
+- Automatic Differentiation
+- Optimization/Inversion
 
 
 ---
