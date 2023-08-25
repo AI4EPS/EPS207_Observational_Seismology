@@ -24,15 +24,43 @@ Segall, P. (2010). Earthquake and volcano deformation. Princeton University Pres
 
 ---
 
-![height:600px](./assets/Screenshot%202023-08-24%20at%2010.48.17.png)
+<!-- ![height:600px](./assets/Screenshot%202023-08-24%20at%2010.48.17.png)
 
----
-
+--- -->
 
 ### Spring Slider System
 
 [notebook](codes/spring_slider/)
 ![spring slider](./assets/Screenshot%202023-08-23%20at%2022.53.46.png)
+
+---
+
+<style scoped>
+section {
+  column-count: 2;
+}
+</style>
+
+
+## [Strain](https://en.wikipedia.org/wiki/Deformation_%28physics%29)
+
+$$
+\gamma_{y z}=\gamma_{z y}=\frac{\partial u_y}{\partial z}+\frac{\partial u_z}{\partial y} \quad, \quad \gamma_{z x}=\gamma_{x z}=\frac{\partial u_z}{\partial x}+\frac{\partial u_x}{\partial z}
+$$
+
+$$
+\underline{\underline{\varepsilon}}=\left[\begin{array}{lll}
+\varepsilon_{x x} & \varepsilon_{x y} & \varepsilon_{x z} \\
+\varepsilon_{y x} & \varepsilon_{y y} & \varepsilon_{y z} \\
+\varepsilon_{z x} & \varepsilon_{z y} & \varepsilon_{z z}
+\end{array}\right]=\left[\begin{array}{ccc}
+\varepsilon_{x x} & \frac{1}{2} \gamma_{x y} & \frac{1}{2} \gamma_{x z} \\
+\frac{1}{2} \gamma_{y x} & \varepsilon_{y y} & \frac{1}{2} \gamma_{y z} \\
+\frac{1}{2} \gamma_{z x} & \frac{1}{2} \gamma_{z y} & \varepsilon_{z z}
+\end{array}\right]
+$$
+
+![height:500px](https://upload.wikimedia.org/wikipedia/commons/2/23/2D_geometric_strain.svg)
 
 ---
 
