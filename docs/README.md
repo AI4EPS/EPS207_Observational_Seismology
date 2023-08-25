@@ -34,5 +34,5 @@ The class will be a combination of lectures and hands-on exercises. We will use 
 | 11/06 | [Ambient Noise]() |
 | 11/13 | [Seismic Tomography]() |
 | 11/20 | [Full-waveform Inversion]() |
-| 12/27 | [Other Sensing Technologies]() |
+| 11/27 | [Other Sensing Technologies]() |
 | 12/04 | [Final Project Presentations]() |
