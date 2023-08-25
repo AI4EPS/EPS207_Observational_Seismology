@@ -1,29 +1,35 @@
 site_name: "EPS207 Observational Seismology"
-site_description: ''
-site_author: 'Weiqiang Zhu'
+site_description: ""
+site_author: "Weiqiang Zhu"
 docs_dir: docs/
-repo_name: 'AI4EPS/EPS207_Observational_Seismology'
-repo_url: 'https://github.com/AI4EPS/EPS207_Observational_Seismology'
+repo_name: "AI4EPS/EPS207_Observational_Seismology"
+repo_url: "https://github.com/AI4EPS/EPS207_Observational_Seismology"
+edit_uri: "/edit/master/docs/"
+
 nav:
-    - Overview: README.md
-    - Syllabus: syllabus.md
-    - Obspy:
+  - Overview: README.md
+  - Syllabus: syllabus.md
+  - Obspy:
       - Install packages: obspy/install.md
       - Download catalog: obspy/download_catalog.ipynb
       - Download seismic data: obspy/seismic_waveform.ipynb
       - Realtime data streaming: obspy/animation_seedlink.ipynb
       - Signal processing: obspy/signal_processing.ipynb
-    - Earthquake:
+  - Earthquake:
       - Earthquake detection: earthquake/detection.ipynb
       - Earthquake location: earthquake/location.ipynb
       - Focal mechanism: earthquake/focal_mechanism.ipynb
       - Phase travel time: earthquake/travel_time.ipynb
       - Earthquake statistics: earthquake/statistics.ipynb
       - Sorting earthquakes: earthquake/sorting.ipynb
-    - Visualization: 
+  - Visualization:
       - Projection: visualization/projection.ipynb
 theme:
-  name: 'material'
+  name: "material"
+  features:
+    - content.code.annotate
+    - content.action.edit
+
 plugins:
   - mkdocs-jupyter:
       ignore_h1_titles: True

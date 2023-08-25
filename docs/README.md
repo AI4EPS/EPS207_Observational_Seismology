@@ -9,8 +9,8 @@ The class will be a combination of lectures and hands-on exercises. We will use 
 ## [Syllabus](syllabus.md)
 
 ## Time and Location
-- Lecture: Friday 9:00 AM - 11:00 AM in McCone 265
-- Office Hour: Friday 11:00 AM - 12:00 AM in McCone 285
+- Lecture: Monday 9:00 AM - 11:00 AM in McCone 265
+- Office Hour: Monday 11:00 AM - 12:00 AM in McCone 285
 
 ## Projects
 - Mining the [IRIS dataset](http://ds.iris.edu/gmap/#starttime=2023-01-01&network=*&datacenter=IRISDMC&plates=on&planet=earth)
@@ -21,18 +21,17 @@ The class will be a combination of lectures and hands-on exercises. We will use 
 | Date | Topic |
 | --- | --- |
 | 08/25 | [Introduction](lectures/00_introduction.html) |
-| 09/01 | [Earthquake Source](lectures/01_earthquake_source.html) |
-| 09/08 | [Seismic Wave](lectures/02_seismic_wave.html) |
-| 09/15 | [Seismic Data Processing]() |
-| 09/22 | [Earthquake Detection]() |
-| 09/29 | [Phase Picking & Association]() |
-| 10/06 | [Earthquake Location & Relative Location]() |
-| 10/13 | [Focal Mechanism & Moment Tensor]() |
-| 10/20 | [Earthquake Statistics]() |
-| 10/27 | [Ambient Noise]() |
-| 11/03 | [Seismic Tomography]() |
-| 11/10 | [Full-waveform Inversion]() |
-| 11/17 | [Other Sensing Technologies]() |
-| 11/24 | Thanksgiving |
-| 12/01 | [Case Studies]() |
-| 12/08 | [Final Project Presentations]() |
+| 08/28 | [Earthquake Source](lectures/01_earthquake_source.html) |
+| 09/04 | Labor Day |
+| 09/18 | [Seismic Wave](lectures/02_seismic_wave.html) |
+| 09/25 | [Seismic Data Processing]() |
+| 10/02 | [Earthquake Detection]() |
+| 10/09 | [Phase Picking & Association]() |
+| 10/16 | [Earthquake Location & Relative Location]() |
+| 10/23 | [Focal Mechanism & Moment Tensor]() |
+| 10/30 | [Earthquake Statistics]() |
+| 11/06 | [Ambient Noise]() |
+| 11/13 | [Seismic Tomography]() |
+| 11/20 | [Full-waveform Inversion]() |
+| 12/27 | [Other Sensing Technologies]() |
+| 12/04 | [Final Project Presentations]() |
