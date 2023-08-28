@@ -21,18 +21,18 @@ The class will be a combination of lectures and hands-on exercises. We will use 
 | Date | Topic |
 | --- | --- |
 | 08/25 | [Introduction](lectures/00_introduction.html) |
-| 08/28 | [Earthquake Source](lectures/01_earthquake_source.html) |
+| 08/28 | [Earthquake Source and Seismic Wave](lectures/01_earthquake_source.html) |
 | 09/04 | Labor Day |
 | 09/11 | SCEC Meeting (No class) |
-| 09/18 | [Seismic Wave](lectures/02_seismic_wave.html) |
-| 09/25 | [Seismic Data Processing]() |
-| 10/02 | [Earthquake Detection]() |
-| 10/09 | [Phase Picking & Association]() |
-| 10/16 | [Earthquake Location & Relative Location]() |
-| 10/23 | [Focal Mechanism & Moment Tensor]() |
-| 10/30 | [Earthquake Statistics]() |
-| 11/06 | [Ambient Noise]() |
-| 11/13 | [Seismic Tomography]() |
-| 11/20 | [Full-waveform Inversion]() |
-| 11/27 | [Other Sensing Technologies]() |
+| 09/18 | [Seismic Data Processing]() |
+| 09/25 | [Earthquake Detection]() |
+| 10/02 | [Phase Picking & Association]() |
+| 10/09 | [Earthquake Location & Relative Location]() |
+| 10/16 | [Focal Mechanism & Moment Tensor]() |
+| 10/23 | [Earthquake Statistics]() |
+| 10/30 | [Ambient Noise]() |
+| 11/06 | [Seismic Tomography]() |
+| 11/13 | [Full-waveform Inversion]() |
+| 11/20 | [Other Sensing Technologies]() |
+| 11/27 | [Applications]() |
 | 12/04 | [Final Project Presentations]() |
