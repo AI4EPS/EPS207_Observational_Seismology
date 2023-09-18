@@ -7,9 +7,9 @@ backgroundColor: #fff
 
 # Seismic Signal Processing
 Notebooks: 
-[Signal Processing](codes/signal_processing.ipynb)
-[Obspy](codes/obspy_process_data.ipynb)
-[Deep Denoiser](codes/denoising.ipynb)
+[Signal Processing](codes/signal_processing/)
+[Obspy](codes/obspy_process_data/)
+[Deep Denoiser](codes/denoising/)
 
 ---
 
