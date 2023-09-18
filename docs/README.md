@@ -21,10 +21,10 @@ The class will be a combination of lectures and hands-on exercises. We will use 
 | Date | Topic |
 | --- | --- |
 | 08/25 | [Introduction](lectures/00_introduction.html) |
-| 08/28 | [Earthquake Source and Seismic Wave](lectures/01_earthquake_source.html) |
+| 08/28 | [Earthquake Source and Seismic Wave](lectures/01_source_and_wave.html) |
 | 09/04 | Labor Day |
 | 09/11 | SCEC Meeting (No class) |
-| 09/18 | [Seismic Data Processing]() |
+| 09/18 | [Seismic Signal Processing](lectures/02_signal_processing.html) |
 | 09/25 | [Earthquake Detection]() |
 | 10/02 | [Phase Picking & Association]() |
 | 10/09 | [Earthquake Location & Relative Location]() |
