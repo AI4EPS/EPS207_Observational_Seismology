@@ -175,64 +175,17 @@ $$
 
 ---
 
-### Wiener Filtering
-
-Wiener filtering is a method of noise reduction in signal processing, devised by Norbert Wiener.
-
-$$
-\begin{align}
-\hat{f}(\omega) &= \frac{S_{fg}(\omega)}{S_{gg}(\omega)} F(\omega) \\
-&= \frac{S_{fg}(\omega)}{S_{gg}(\omega)} \frac{S_{fg}(\omega)}{S_{fg}(\omega)} G(\omega) \\
-&= \frac{S_{fg}(\omega)}{S_{gg}(\omega)} \hat{g}(\omega)
-\end{align}
-$$
+### Seismic Signal Processing using Obpsy
 
 ---
 
-### Spectrogram
+### Deep Denoiser
 
-A spectrogram is a visual representation of the spectrum of frequencies of a signal as it varies with time.
+- STFT + Wiener Filter + Nerual Network
 
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Spectrogram-19thC.png/800px-Spectrogram-19thC.png)
-
----
-
-### Short-time Fourier Transform (STFT)
-
-The STFT is a Fourier-related transform used to determine the sinusoidal frequency and phase content of local sections of a signal as it changes over time.
-
-$$
-\begin{align}
-X(\tau, \omega) &= \int_{-\infty}^{\infty} x(t) w(t - \tau) e^{-i\omega t} dt \\
-&= \int_{-\infty}^{\infty} x(t) w(t - \tau) \left[ \cos(\omega t) - i\sin(\omega t) \right] dt \\
-&= \int_{-\infty}^{\infty} x(t) w(t - \tau) \cos(\omega t) dt - i \int_{-\infty}^{\infty} x(t) w(t - \tau) \sin(\omega t) dt \\
-\end{align}
-$$
 
 ---
 
-### Wavelet Transform
-
-The wavelet transform is a mathematical transform that decomposes a function into wavelets.
-
-$$
-\begin{align}
-W(a, b) &= \frac{1}{\sqrt{a}} \int_{-\infty}^{\infty} x(t) \psi^*\left(\frac{t - b}{a}\right) dt \\
-&= \frac{1}{\sqrt{a}} \int_{-\infty}^{\infty} x(t) \psi\left(\frac{t - b}{a}\right) dt \\
-\end{align}
-$$
-
----
-
-### Hilbert Transform
-
-The Hilbert transform is a linear operator that takes a function, $f(t)$, and produces another function of the same variable $g(t)$.
-
-$$
-\begin{align}
-g(t) &= \frac{1}{\pi} \int_{-\infty}^{\infty} \frac{f(\tau)}{t - \tau} d\tau \\
-&= \frac{1}{\pi} \int_{-\infty}^{\infty} \frac{f(t - \tau)}{\tau} d\tau \\
-\end{align}
-$$
+![](./assets/Screenshot%202023-09-17%20at%2018.16.57.png)
 
 ---
