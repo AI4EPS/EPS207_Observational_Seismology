@@ -8,8 +8,8 @@ backgroundColor: #fff
 # Seismic Signal Processing
 Notebooks: 
 [Signal Processing](codes/signal_processing.ipynb)
-[Obspy](codes/obspy.ipynb)
-[Deep Denoiser](https://ai4eps.github.io/DeepDenoiser/example_interactive/)
+[Obspy](codes/obspy_process_data.ipynb)
+[Deep Denoiser](codes/denoising.ipynb)
 
 ---
 
