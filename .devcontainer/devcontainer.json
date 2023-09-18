@@ -5,7 +5,7 @@
   },
   "waitFor": "onCreateCommand",
   "updateContentCommand": "python3 -m pip install -r requirements.txt",
-  "postCreateCommand": "",
+  "postCreateCommand": "git clone --recursive https://github.com/AI4EPS/QuakeFlow.git docs/lectures/codes/",
   "customizations": {
     "codespaces": {
       "openFiles": []
