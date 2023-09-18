@@ -181,11 +181,37 @@ $$
 
 ### Deep Denoiser
 
-- STFT + Wiener Filter + Nerual Network
+- Short-time Fourier Transform (STFT) + Wiener Filter + Neural Network
 
+![width:1000px](./assets/Screenshot%202023-09-17%20at%2018.16.57.png)
+
+---
+
+**Short-time Fourier Transform (STFT)**
+
+Time-frequency representation of a signal.
+![width:900px](https://upload.wikimedia.org/wikipedia/commons/c/c5/Spectrogram-19thC.png)
 
 ---
 
-![](./assets/Screenshot%202023-09-17%20at%2018.16.57.png)
+**Wiener Filter**
+
+The Wiener filter minimizes the mean square error between the estimated signal and the desired one. When the signal and noise are stationary and have known power spectral densities, the Wiener filter can be expressed in the frequency domain as:
+
+$$ H(f) = \frac{S_x(f)}{S_x(f) + S_n(f)} $$
+
+- $H(f)$ is the frequency response of the Wiener filter.
+- $S_x(f)$ is the power spectral density of the desired signal.
+- $S_n(f)$ is the power spectral density of the noise.
+
+--- 
+
+**Neural Network**
+
+![width:1200px](https://i0.wp.com/neptune.ai/wp-content/uploads/2022/10/Image-segmentation-architectures.png?ssl=1)
 
 ---
+
+### Deep Denoiser for Seismic Data
+
+[Paper](https://drive.google.com/file/d/19g0nyCgAIUPOrQ6sPsU1PPA5B9zhQbBG/view?usp=drive_link)
