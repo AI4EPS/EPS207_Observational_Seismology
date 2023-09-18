@@ -15,6 +15,8 @@ jobs:
           submodules: true
           lfs: true
 
+      - run: git clone --recursive https://github.com/AI4EPS/QuakeFlow.git docs/lectures/codes/QuakeFlow/
+
       - name: Convert Markdown into HTML and PDF
         uses: KoharaKazuya/marp-cli-action@v2
         with:
