@@ -32,6 +32,7 @@ theme:
 plugins:
   - mkdocs-jupyter:
       ignore_h1_titles: True
+      ignore: ["docs/lectures/QuakeFlow/"]
 extra:
   analytics:
     provider: google
