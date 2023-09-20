@@ -4,7 +4,6 @@ site_author: "Weiqiang Zhu"
 docs_dir: docs/
 repo_name: "AI4EPS/EPS207_Observational_Seismology"
 repo_url: "https://github.com/AI4EPS/EPS207_Observational_Seismology"
-edit_uri: "/edit/master/docs/"
 
 nav:
   - Overview: README.md
