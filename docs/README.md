@@ -10,7 +10,7 @@ The class will be a combination of lectures and hands-on exercises. We will use 
 
 ## Time and Location
 - Lecture: Monday 9:00 AM - 11:00 AM in McCone 265
-- Office Hour: Monday 11:00 AM - 12:00 AM in McCone 285
+- Office Hour: Monday 3:00 PM - 4:00 PM in McCone 285
 
 ## Projects
 - Mining the [IRIS dataset](http://ds.iris.edu/gmap/#starttime=2023-01-01&network=*&datacenter=IRISDMC&plates=on&planet=earth)

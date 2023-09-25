@@ -1,1 +1,0 @@
-QuakeFlow/CCTorch/tests/test_qtm.py
