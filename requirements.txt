@@ -1,1 +1,3 @@
 obspy
+fsspec
+gcsfs
