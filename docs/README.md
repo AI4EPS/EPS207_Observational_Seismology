@@ -20,12 +20,12 @@ The class will be a combination of lectures and hands-on exercises. We will use 
 
 | Date | Topic |
 | --- | --- |
-| 08/25 | [Introduction](lectures/00_introduction.html) |
-| 08/28 | [Earthquake Source and Seismic Wave](lectures/01_source_and_wave.html) |
+| 08/25 | [Introduction](https://ai4eps.github.io/EPS207_Observational_Seismology/lectures/00_introduction.html) |
+| 08/28 | [Earthquake Source and Seismic Wave](https://ai4eps.github.io/EPS207_Observational_Seismology/lectures/01_source_and_wave.html) |
 | 09/04 | Labor Day |
 | 09/11 | SCEC Meeting (No class) |
-| 09/18 | [Seismic Signal Processing](lectures/02_signal_processing.html) |
-| 09/25 | [Earthquake Detection]() |
+| 09/18 | [Seismic Signal Processing](https://ai4eps.github.io/EPS207_Observational_Seismology/lectures/02_signal_processing.html) |
+| 09/25 | [Earthquake Detection](https://ai4eps.github.io/EPS207_Observational_Seismology/lectures/03_earthquake_detection.html) |
 | 10/02 | [Phase Picking & Association]() |
 | 10/09 | [Earthquake Location & Relative Location]() |
 | 10/16 | [Focal Mechanism & Moment Tensor]() |

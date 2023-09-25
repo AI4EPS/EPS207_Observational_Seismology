@@ -257,15 +257,15 @@ Deep Learning (Deep Neural Networks) is a new paradigm of software development
 
 |||
 | --- | --- | 
-| 09/15 | <span style="color:Violet;">Seismic Data Processing</span>  |
-| 09/22 | <span style="color:Violet;">Earthquake Detection</span> |
-| 09/29 | <span style="color:Violet;">Phase Picking & Association</span> |
-| 10/06 | <span style="color:LimeGreen;">Earthquake Location & Relative Location |
-| 10/13 | <span style="color:LimeGreen;">Focal Mechanism & Moment Tensor |
-| 10/20 | <span style="color:Violet;">Earthquake Statistics</span> |
-| 10/27 | <span style="color:black;">Ambient Noise</span> |
-| 11/03 | <span style="color:LimeGreen;">Seismic Tomography</span> |
-| 11/10 | <span style="color:LimeGreen;">Full-waveform Inversion</span> |
+| 09/18 | <span style="color:Violet;">Seismic Data Processing</span>  |
+| 09/25 | <span style="color:Violet;">Earthquake Detection</span> |
+| 10/02 | <span style="color:Violet;">Phase Picking & Association</span> |
+| 10/09 | <span style="color:LimeGreen;">Earthquake Location & Relative Location |
+| 10/16 | <span style="color:LimeGreen;">Focal Mechanism & Moment Tensor |
+| 10/23 | <span style="color:Violet;">Earthquake Statistics</span> |
+| 10/30 | <span style="color:black;">Ambient Noise</span> |
+| 11/06 | <span style="color:LimeGreen;">Seismic Tomography</span> |
+| 11/13 | <span style="color:LimeGreen;">Full-waveform Inversion</span> |
 
 ---
 
