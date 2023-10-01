@@ -1,3 +1,9 @@
 obspy
 fsspec
 gcsfs
+kfp
+cartopy
+tensorflow
+tqdm
+pymongo
+pandas
