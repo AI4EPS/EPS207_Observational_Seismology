@@ -145,6 +145,6 @@ Try the SAM model: [link](https://segment-anything.com/demo)
 
 ---
 
-**What is the next model for detecting earthquake / picking seismic phases?**
+**How to design the next model for detecting earthquake / picking seismic phases?**
 **What other seismic tasks can be solved with deep learning?**
 **What are other potential applications in Earth and Planetary Science?**
