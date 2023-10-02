@@ -7,7 +7,7 @@ backgroundColor: #fff
 
 # Phase Picking
 
-Notebooks: [codes/phase_picking.ipynb](codes/phase_picking/)
+Notebooks: [codes/quakeflow_demo.ipynb](codes/quakeflow_demo/)
 
 ---
 <style scoped>
@@ -100,7 +100,7 @@ p {
 
 ---
 
-![width:1100px](https://github.com/bowenc0221/panoptic-deeplab/raw/master/docs/panoptic_deeplab.png)
+![width:1200px](https://github.com/bowenc0221/panoptic-deeplab/raw/master/docs/panoptic_deeplab.png)
 
 ---
 
@@ -122,7 +122,7 @@ Try the SAM model: [link](https://segment-anything.com/demo)
 
 ### PhaseNet
 
-![width:1000px](https://oup.silverchair-cdn.com/oup/backfile/Content_public/Journal/gji/216/1/10.1093_gji_ggy423/1/ggy423fig5.jpeg?Expires=1699221234&Signature=3kvXLTJk4qw7-jZeQwHgEzX-ziSjbGsM4zDM2OShQz1r84gzMyCBC~ewAjWFiyimpar05ClEAQqByFvEV0WPbBc89~EpJWDyTMzDYs0BqG9V4lF6SPLD5AFPxn5giRty9xmNmZ95c-1MTVXTcPv6ItzvNGqVxJsXqzg~urgjtbsV~K2pklWT3f8Q1VPsvmE~o0e3UH~z2A4i~lknJxuBd9Gogav1bnRZr1fd74dqqYBCZkOoKmnCLJEuKbljUvWd8JOS666L5o5brYp0yV0jjNdDsjeSxiZcqD3xrCmaEkl4o1K~QQfwKR0JKUMGHYlThmalA8AlS1BrKpTWX04f5Q__&Key-Pair-Id=APKAIE5G5CRDK6RD3PGA)
+![width:1200px](./assets/phasenet.png)
 
 
 ---
@@ -138,10 +138,27 @@ Try the SAM model: [link](https://segment-anything.com/demo)
 ![height:450px](./assets/phaseno.png)
 
 ---
+<style scoped>
+section {
+  column-count: 2;
+}
+h3 {
+  column-span: all;
+}
+p {
+  margin: 0;
+}
+</style>
 
 ### Large training dataset + Clear objective function
 
 ![width:500px](https://oup.silverchair-cdn.com/oup/backfile/Content_public/Journal/gji/216/1/10.1093_gji_ggy423/1/ggy423fig1.jpeg?Expires=1699222393&Signature=S9~mjTR4ss8rdk51URN-hudRbXqwHmpYDeUMUIq1~fhGgprl5J15gJ4KzWL-9I2phJCphL0EFBVwehp7P-wbagz3vgDm1isTCt-a0fdIfkjRCXvdIwi-vzbp27JrHNLf3W9ES8H8yi2PoGbotUYD8bU6SvlX5m6~-SqlvPE5ON63lqqg7bJZ7CoTNErmGx5y4LqNhEd7Pp-zs4F3QA5Zp70eUza15p26mEZk-BSXsfb7JxZy3NLJsaVlTOTH1oBJyo~DqHXgzyE~749Tngw6khmMaT-htsYKwufj9IqHFS8KuSVzzWZbAWELx463Oif8m0U7ooBG9micMnhnI8ygyA__&Key-Pair-Id=APKAIE5G5CRDK6RD3PGA)
+![width:700px](./assets/dataset.png)
+
+
+---
+
+![height:650px](./assets/phasenet_example.png)
 
 ---
 
