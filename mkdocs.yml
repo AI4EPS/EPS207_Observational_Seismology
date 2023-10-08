@@ -8,7 +8,7 @@ edit_uri: blob/main/docs/
 
 nav:
   - Overview: README.md
-  - Syllabus: syllabus.md
+  # - Syllabus: syllabus.md
   - Notebooks:
     - "Spring Slider": lectures/codes/spring_slider.ipynb
     - "1D seismic wave": lectures/codes/wave_propagation.ipynb
@@ -16,7 +16,7 @@ nav:
       - "Download Data": lectures/codes/obspy_download_data.ipynb
       - "Signal Processing": lectures/codes/obspy_process_data.ipynb
     - "Signal Processing": lectures/codes/signal_processing.ipynb 
-    - "De-noising": lectures/codes/denoising.ipynb
+    - "Denoising": lectures/codes/denoising.ipynb
     - "Earthquake Detection": lectures/codes/earthquake_detection.ipynb
     - "Phase Picking and Association": lectures/codes/quakeflow_demo.ipynb
     - "Earthquake Location": lectures/codes/earthquake_location.ipynb
@@ -40,6 +40,7 @@ theme:
   features:
     - content.code.annotate
     - content.action.edit
+    - navigation.expand
 
 plugins:
   - mkdocs-jupyter:
