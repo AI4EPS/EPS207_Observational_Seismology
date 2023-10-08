@@ -9,20 +9,32 @@ edit_uri: blob/main/docs/
 nav:
   - Overview: README.md
   - Syllabus: syllabus.md
+  - Notebooks:
+    - "Spring Slider": lectures/codes/spring_slider.ipynb
+    - "1D seismic wave": lectures/codes/wave_propagation.ipynb
+    - "Obspy": 
+      - "Download Data": lectures/codes/obspy_download_data.ipynb
+      - "Signal Processing": lectures/codes/obspy_process_data.ipynb
+    - "Signal Processing": lectures/codes/signal_processing.ipynb 
+    - "De-noising": lectures/codes/denoising.ipynb
+    - "Earthquake Detection": lectures/codes/earthquake_detection.ipynb
+    - "Phase Picking and Association": lectures/codes/quakeflow_demo.ipynb
+    - "Earthquake Location": lectures/codes/earthquake_location.ipynb
+
   # - Obspy:
   #     - Install packages: obspy/install.md
   #     - Download catalog: obspy/download_catalog.ipynb
   #     - Realtime data streaming: obspy/animation_seedlink.ipynb
   #     - Signal processing: obspy/signal_processing.ipynb
-  - Earthquake:
-      - Earthquake detection: earthquake/detection.ipynb
-      - Earthquake location: earthquake/location.ipynb
-      - Focal mechanism: earthquake/focal_mechanism.ipynb
-      - Phase travel time: earthquake/travel_time.ipynb
-      - Earthquake statistics: earthquake/statistics.ipynb
-      - Sorting earthquakes: earthquake/sorting.ipynb
+  # - Earthquake:
+  #     - Earthquake detection: earthquake/detection.ipynb
+  #     - Earthquake location: earthquake/location.ipynb
+  #     - Focal mechanism: earthquake/focal_mechanism.ipynb
+  #     - Phase travel time: earthquake/travel_time.ipynb
+  #     - Earthquake statistics: earthquake/statistics.ipynb
+  #     - Sorting earthquakes: earthquake/sorting.ipynb
   # - Visualization:
-      - Projection: visualization/projection.ipynb
+      # - Projection: visualization/projection.ipynb
 theme:
   name: "material"
   features:

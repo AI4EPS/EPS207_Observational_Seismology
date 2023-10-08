@@ -7,6 +7,9 @@ backgroundColor: #fff
 
 # Earthquake Location and Relocation
 
+Notebooks: [codes/earthquake_location.ipynb](codes/earthquake_location/)
+
+
 ---
 
 ### How to locate an earthquake?
