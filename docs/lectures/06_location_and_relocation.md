@@ -33,3 +33,5 @@ backgroundColor: #fff
 [Inverse problem](inverse_problem.html)
 
 ---
+
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTGPzx6m0wBOAta7qebCjW_n_lcXsay3Uqo7iKnVI5cxZNYWcmbTQNgOAwiuTx_ZwRuNRxOHCRBSFsq/embed?start=false&loop=true&delayms=60000" frameborder="0" width="100%" height="110%" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
