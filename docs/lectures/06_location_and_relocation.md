@@ -156,6 +156,12 @@ Review: [clusering](https://ai4eps.github.io/EPS207_Observational_Seismology/lec
 
 ---
 
+<style scoped>
+section {
+  font-size: 25px;
+}
+</style>
+
 ### [HypoSVI: Hypocentre inversion with Stein variational inference](https://arxiv.org/abs/2101.03271)
 
-![width:1100px](./assets/Screenshot%202023-10-08%20at%2021.43.21.png)
+![width:1200px](./assets/Screenshot%202023-10-08%20at%2021.43.21.png)
