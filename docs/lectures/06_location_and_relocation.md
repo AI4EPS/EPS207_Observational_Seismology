@@ -93,6 +93,42 @@ $$
 $$
 
 ---
+<style scoped>
+section {
+  font-size: 30px;
+}
+</style>
+
+### [HypoDD: Double-difference earthquake location](https://www.ldeo.columbia.edu/~felixw/hypoDD.html)
+
+![height:550px](./assets/Screenshot%202023-10-08%20at%2021.57.01.png)
+
+---
+<style scoped>
+section {
+  font-size: 30px;
+}
+</style>
+
+### [HypoDD: Double-difference earthquake location](https://www.ldeo.columbia.edu/~felixw/hypoDD.html)
+
+![width:1200px](./assets/Screenshot%202023-10-08%20at%2021.58.46.png)
+
+---
+
+<style scoped>
+section {
+  font-size: 30px;
+}
+</style>
+
+### [GrowClust: A Hierarchical Clustering Algorithm for Relative Earthquake Relocation](https://github.com/dttrugman/GrowClust)
+
+![height:400px](./assets/Screenshot%202023-10-08%20at%2022.01.21.png)
+
+Review: [clusering](https://ai4eps.github.io/EPS207_Observational_Seismology/lectures/05_phase_association.html#6)
+
+---
 
 ### Uncertainty
 
@@ -120,6 +156,6 @@ $$
 
 ---
 
-### HypoSVI: Hypocentre inversion with Stein variational inference
+### [HypoSVI: Hypocentre inversion with Stein variational inference](https://arxiv.org/abs/2101.03271)
 
 ![width:1100px](./assets/Screenshot%202023-10-08%20at%2021.43.21.png)
