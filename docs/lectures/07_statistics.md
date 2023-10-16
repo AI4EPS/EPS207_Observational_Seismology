@@ -258,9 +258,8 @@ p {
 
 ### Physical models on aftershocks spatial distribution
 
-![h:550](./assets/King1994b.png)
-
-![h:550](./assets/King1994c.png)
+![h:500](./assets/King1994b.png)
+![h:500](./assets/King1994c.png)
 
 <!-- footer: (King et al 1994) -->
 
