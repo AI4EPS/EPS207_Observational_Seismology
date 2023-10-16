@@ -29,7 +29,7 @@ The class will be a combination of lectures and hands-on exercises. We will use 
 | 10/02 | [Phase Picking](https://ai4eps.github.io/EPS207_Observational_Seismology/lectures/04_phase_picking.html) & [Association](https://ai4eps.github.io/EPS207_Observational_Seismology/lectures/05_phase_association.html)  |
 | 10/09 | [Earthquake Location & Relative Location](https://ai4eps.github.io/EPS207_Observational_Seismology/lectures/06_location_and_relocation.html) |
 | 10/16 | [Focal Mechanism & Moment Tensor]() |
-| 10/23 | [Earthquake Statistics](https://ai4eps.github.io/EPS207_Observational_Seismology/lectures/06_statistics.html) |
+| 10/23 | [Earthquake Statistics](https://ai4eps.github.io/EPS207_Observational_Seismology/lectures/07_statistics.html) |
 | 10/30 | [Ambient Noise]() |
 | 11/06 | [Seismic Tomography]() |
 | 11/13 | [Full-waveform Inversion]() |

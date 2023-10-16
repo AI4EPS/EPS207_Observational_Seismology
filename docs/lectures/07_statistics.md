@@ -16,11 +16,13 @@ img + br + em {
 
 # Earthquake Statistics
 
-Two class project datasets:
+Class project datasets:
 
 - [Nodal Seismic Experiment at the Berkeley Section of the Hayward Fault](https://pubs.geoscienceworld.org/ssa/srl/article/93/4/2377/613344/Nodal-Seismic-Experiment-at-the-Berkeley-Section) (Taka'aki et al. 2022)
 
 - An island on Mid-Atlantic Ridge: [Networks](http://ds.iris.edu/gmap/#maxlat=73.3732&maxlon=-1.582&minlat=68.7841&minlon=-15.1596&network=*&drawingmode=box&planet=earth), [Seismicity](https://nnsn.geo.uib.no/nnsn/#/)
+
+- [California](https://earthquake.usgs.gov/earthquakes/map/?extent=30.25907,-128.67188&extent=42.65012,-109.51172&range=month&magnitude=all&listOnlyShown=true&settings=true)
 
 ---
 
