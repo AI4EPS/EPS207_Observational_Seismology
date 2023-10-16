@@ -16,6 +16,12 @@ img + br + em {
 
 # Earthquake Statistics
 
+Two class project datasets:
+
+- [Nodal Seismic Experiment at the Berkeley Section of the Hayward Fault](https://pubs.geoscienceworld.org/ssa/srl/article/93/4/2377/613344/Nodal-Seismic-Experiment-at-the-Berkeley-Section) (Taka'aki et al. 2022)
+
+- An island on Mid-Atlantic Ridge: [Networks](http://ds.iris.edu/gmap/#maxlat=73.3732&maxlon=-1.582&minlat=68.7841&minlon=-15.1596&network=*&drawingmode=box&planet=earth), [Seismicity](https://nnsn.geo.uib.no/nnsn/#/)
+
 ---
 
 <style scoped>
@@ -390,9 +396,12 @@ p {
 
 <!-- footer: "Using Deep Learning for Flexible and Scalable Earthquake Forecasting, Kelian et al. 2013" -->
 
+---
 
 ### Deep learning for earthquake statistics
 
 ![h:450](https://agupubs.onlinelibrary.wiley.com/cms/asset/e77c2b17-11fa-4c64-a890-205e37437156/grl66186-fig-0002-m.jpg)
 
 <!-- footer: "Using Deep Learning for Flexible and Scalable Earthquake Forecasting, Kelian et al. 2013" -->
+
+
