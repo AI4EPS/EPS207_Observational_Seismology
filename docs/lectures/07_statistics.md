@@ -281,7 +281,7 @@ $\mu$ : friction coefficient
 
 ### Coulomb failure stress (CFS)
 
-![bg right:58% h:700](./assets/king1994.png)
+![bg right:58% h:700](./assets/King1994.png)
 
 <!-- footer: (King et al 1994) -->
 
