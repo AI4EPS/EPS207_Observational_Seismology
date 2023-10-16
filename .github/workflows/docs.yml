@@ -17,10 +17,13 @@ jobs:
 
       - run: git clone --recursive https://github.com/AI4EPS/QuakeFlow.git docs/lectures/codes/QuakeFlow/
 
-      - name: Convert Markdown into HTML and PDF
-        uses: KoharaKazuya/marp-cli-action@v2
-        with:
-          config-file: .marprc.yml
+      # - name: Convert Markdown into HTML and PDF
+      #   uses: KoharaKazuya/marp-cli-action@v2
+      #   with:
+      #     config-file: .marprc.yml
+      
+      - uses: actions/setup-node@v3
+      - run: npx @marp-team/marp-cli@latest docs/lectures
 
       - uses: actions/setup-python@v4
         with:
