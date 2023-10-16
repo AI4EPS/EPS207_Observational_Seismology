@@ -396,14 +396,10 @@ p {
 
 ![h:450](https://agupubs.onlinelibrary.wiley.com/cms/asset/6ddbfd85-26c9-4a08-b848-dff28a9f9fc6/grl66186-fig-0001-m.jpg)
 
-<!-- footer: "Using Deep Learning for Flexible and Scalable Earthquake Forecasting, Kelian et al. 2013" -->
+<!-- footer: "Using Deep Learning for Flexible and Scalable Earthquake Forecasting, Kelian et al. 2023" -->
 
 ---
 
 ### Deep learning for earthquake statistics
 
 ![h:450](https://agupubs.onlinelibrary.wiley.com/cms/asset/e77c2b17-11fa-4c64-a890-205e37437156/grl66186-fig-0002-m.jpg)
-
-<!-- footer: "Using Deep Learning for Flexible and Scalable Earthquake Forecasting, Kelian et al. 2013" -->
-
-
