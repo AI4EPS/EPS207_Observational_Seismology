@@ -23,7 +23,7 @@ jobs:
       #     config-file: .marprc.yml
       
       - uses: actions/setup-node@v3
-      - run: npx @marp-team/marp-cli@latest docs/lectures
+      - run: npx @marp-team/marp-cli@latest -I docs/lectures
 
       - uses: actions/setup-python@v4
         with:
