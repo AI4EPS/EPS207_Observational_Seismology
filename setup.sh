@@ -1,5 +1,5 @@
 #!/bin/bash
-export TEST=test
+set -x
 sudo apt update
 sudo apt install gfortran libxpm4 -y
 python3 -m pip install -r requirements.txt
