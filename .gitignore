@@ -1,2 +1,8 @@
 .DS_Store
 *.html
+*.zip
+*.xml
+*.mseed
+PROGRAMS.330*
+results*
+
