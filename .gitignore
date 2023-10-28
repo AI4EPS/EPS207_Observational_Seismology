@@ -5,4 +5,6 @@
 *.mseed
 PROGRAMS.330*
 results*
-
+fm_data
+hash_results
+hash.log
