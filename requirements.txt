@@ -1,10 +1,9 @@
-obspy
+tensorflow
+kfp
 fsspec
 gcsfs
-kfp
+obspy
 cartopy
-tensorflow
 tqdm
-pymongo
 pandas
 gmma
