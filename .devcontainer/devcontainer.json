@@ -1,13 +1,10 @@
 {
   "image": "mcr.microsoft.com/devcontainers/universal:2",
-  "remoteEnv": {
-    "VARNAME": "PATH"
-  },
   "hostRequirements": {
     "cpus": 4
   },
   "waitFor": "",
-  "updateContentCommand": "",
+  "updateContentCommand": "export TEST=$PATH",
   "postCreateCommand": "bash setup.sh",
   "customizations": {
     "codespaces": {
