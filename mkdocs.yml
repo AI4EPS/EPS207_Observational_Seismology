@@ -49,7 +49,9 @@ plugins:
       ignore_h1_titles: True
       include: ["*.ipynb"]
       ignore: ["docs/lectures/codes/QuakeFlow/*.ipynb","docs/lectures/codes/QuakeFlow/*/*.ipynb","docs/lectures/codes/QuakeFlow/*/*/*.ipynb","docs/lectures/codes/QuakeFlow/*/*/*.ipynb","docs/lectures/codes/QuakeFlow/*/*/*/*.ipynb"]
+
 extra:
+  generator: false
   analytics:
     provider: google
     property: G-JHM5N31W8F
