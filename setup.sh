@@ -5,6 +5,7 @@ sudo apt install gfortran libxpm4 -y
 python3 -m pip install -r requirements.txt
 
 git clone --recursive https://github.com/AI4EPS/QuakeFlow.git docs/lectures/codes/QuakeFlow/
+git clone --recursive https://github.com/AI4EPS/EQNet.git docs/lectures/codes/QuakeFlow/EQNet/ -b develop
 git clone --recursive https://github.com/AI4EPS/CCTorch.git docs/lectures/codes/QuakeFlow/CCTorch/ 
 git clone --recursive https://github.com/AI4EPS/ADHypo.git docs/lectures/codes/QuakeFlow/ADHypo/
 git clone --recursive https://github.com/AI4EPS/INVerse.git docs/lectures/codes/QuakeFlow/INVerse/

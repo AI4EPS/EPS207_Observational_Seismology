@@ -2,6 +2,7 @@ tensorflow
 kfp
 fsspec
 gcsfs
+wandb
 obspy
 cartopy
 tqdm
