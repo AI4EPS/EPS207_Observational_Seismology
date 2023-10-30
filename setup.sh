@@ -1,7 +1,7 @@
 #!/bin/bash
 set -x
 sudo apt update
-sudo apt install gfortran libxpm4 -y
+sudo apt install gfortran libxpm4 csh -y
 python3 -m pip install -r requirements.txt
 
 git clone --recursive https://github.com/AI4EPS/QuakeFlow.git docs/lectures/codes/QuakeFlow/
