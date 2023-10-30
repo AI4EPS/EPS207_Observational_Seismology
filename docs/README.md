@@ -30,7 +30,7 @@ The class will be a combination of lectures and hands-on exercises. We will use 
 | 10/09 | [Earthquake Location & Relative Location](https://ai4eps.github.io/EPS207_Observational_Seismology/lectures/06_location_and_relocation.html) |
 | 10/16 | [Earthquake Statistics](https://ai4eps.github.io/EPS207_Observational_Seismology/lectures/07_statistics.html) |
 | 10/23 | [Focal Mechanism & Moment Tensor](https://ai4eps.github.io/EPS207_Observational_Seismology/lectures/08_focal_mechanism_and_momemt_tensor/) |
-| 10/30 | [Focal Mechanism Inversion](https://ai4eps.github.io/EPS207_Observational_Seismology/lectures/09_focal_mechanism/) |
+| 10/30 | [Focal Mechanism Inversion](https://ai4eps.github.io/EPS207_Observational_Seismology/lectures/09_focal_mechanism.html) |
 | 11/06 | [Ambient Noise]() |
 | 11/13 | [Seismic Tomography]() |
 | 11/20 | [Full-waveform Inversion]() |
