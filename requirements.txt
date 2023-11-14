@@ -8,3 +8,4 @@ cartopy
 tqdm
 pandas
 gmma
+s3fs
