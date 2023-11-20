@@ -11,3 +11,5 @@ wget https://github.com/AI4EPS/INVerse/releases/download/inverse/sac-102.0-linux
 wget https://github.com/AI4EPS/INVerse/releases/download/inverse/CPS.tar.gz -P docs/lectures/codes/QuakeFlow/INVerse/
 tar -xzf docs/lectures/codes/QuakeFlow/INVerse/sac-102.0-linux_x86_64.tar.gz -C docs/lectures/codes/QuakeFlow/INVerse/
 tar -xzf docs/lectures/codes/QuakeFlow/INVerse/CPS.tar.gz -C docs/lectures/codes/QuakeFlow/INVerse/
+wget https://github.com/AI4EPS/INVerse/releases/download/inverse/MT-Exercises.tar -P docs/lectures/codes/
+tar -xf docs/lectures/codes/MT-Exercises.tar -C docs/lectures/codes/
