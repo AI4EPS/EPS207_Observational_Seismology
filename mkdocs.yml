@@ -22,6 +22,7 @@ nav:
     - "Earthquake Location": lectures/codes/earthquake_location.ipynb
     - "Focal Mechanism and Moment Tensor": lectures/08_focal_mechanism_and_momemt_tensor.ipynb
     - "Focal Mechanism": lectures/codes/focal_mechanism.ipynb
+    - "Phase Picking on DAS": lectures/codes/phasenet_das.ipynb
 
   # - Obspy:
   #     - Install packages: obspy/install.md
