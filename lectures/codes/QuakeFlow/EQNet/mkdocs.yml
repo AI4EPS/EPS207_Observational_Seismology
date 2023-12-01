@@ -1,0 +1,20 @@
+site_name: "EQNet"
+site_description: 'EQNet: an End‐to‐End EarthQuake Nerual NETwork'
+site_author: 'Weiqiang Zhu'
+docs_dir: docs/
+repo_name: 'AI4EPS/EQNet'
+repo_url: 'https://github.com/ai4eps/EQNet'
+nav:
+    - Overview: README.md
+    - PhaseNet-DAS: phasenet_das.ipynb
+
+theme:
+  name: 'material'
+plugins:
+  - mkdocstrings
+  - autorefs
+  - mkdocs-jupyter
+extra:
+  analytics:
+    provider: google
+    property: G-56V653P2TK

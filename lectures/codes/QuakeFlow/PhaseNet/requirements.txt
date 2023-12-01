@@ -1,0 +1,7 @@
+tensorflow
+matplotlib
+pandas
+tqdm
+scipy
+obspy
+
