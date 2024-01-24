@@ -74,7 +74,11 @@ size: 16:12
 ### What information can we get from seismic data?
 
 - Take a look at seismic waveforms:
-[ncedc.org/waveformDisplay/](https://ncedc.org/waveformDisplay/)  [Station Channel Codes](https://docs.fdsn.org/projects/source-identifiers/en/v1.0/channel-codes.html)
+[ncedc.org/waveformDisplay/](https://ncedc.org/waveformDisplay/)
+
+[Station Channel Codes](https://docs.fdsn.org/projects/source-identifiers/en/v1.0/channel-codes.html) 
+
+[Station Channels Codes IRIS](https://ds.iris.edu/ds/nodes/dmc/data/formats/seed-channel-naming/)
 
 ![height:500px](https://ncedc.org/gifs/annotatedQuakes.jpg)
 
