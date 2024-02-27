@@ -1,0 +1,20 @@
+site_name: "CCTorch"
+site_description: 'CCTorch: Cross-Correlation using Pytorch'
+site_author: 'Weiqiang Zhu'
+docs_dir: docs/
+repo_name: 'AI4EPS/CCTorch'
+repo_url: 'https://github.com/ai4eps/CCTorch'
+nav:
+    - Overview: README.md
+    - Reference: reference.md
+
+theme:
+  name: 'material'
+plugins:
+  - mkdocstrings
+  - autorefs
+  - mkdocs-jupyter
+extra:
+  analytics:
+    provider: google
+    property: G-56V653P2TK
