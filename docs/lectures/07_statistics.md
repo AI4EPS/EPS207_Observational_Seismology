@@ -205,7 +205,7 @@ section {
 
 $$
 % g\left(t-t_i, M ; \theta\right)=\frac{K \cdot \exp \left(\beta\left(M-M_c\right)\right)}{\left(t-t_i+c\right)^p}
-\lambda(t)=\mu+\sum_{t_i<t} K \cdot \exp \left(\beta\left(M-M_c\right)\right) \cdot\left(t-t_i+c\right)^{-p}
+\lambda(t)=\mu+\sum_{t_i<t} K \cdot \exp \left(\beta\left(M_i-M_c\right)\right) \cdot\left(t-t_i+c\right)^{-p}
 $$
 - $\mu$ is the background rate
 - $K$ is the productivity
@@ -234,7 +234,7 @@ $$
 ### Incorporate spatial triggering into ETAS
 
 $$
-\lambda(x, y, t \mid \mathcal{H})=\mu+\sum_{t_i<t} \frac{K \cdot \exp \left(\beta\left(M-M_c\right)\right)}{\left(t-t_i+c\right)^p} \cdot \frac{1}{\left(x^2+y^2+d\right)^q}
+\lambda(x, y, t \mid \mathcal{H})=\mu+\sum_{t_i<t} \frac{K \cdot \exp \left(\beta\left(M_i-M_c\right)\right)}{\left(t-t_i+c\right)^p} \cdot \frac{1}{\left(x^2+y^2+d\right)^q}
 $$
 
 - $q$: the spatial decay rate of intensity following an event
@@ -394,7 +394,7 @@ p {
 ### Deep learning for earthquake statistics
 
 
-![h:450](https://agupubs.onlinelibrary.wiley.com/cms/asset/48ea117d-e133-4392-af90-24f6ab568f0f/grl66186-fig-0001-m.jpg)
+![](./assets/grl66186-fig-0001-m.jpeg)
 
 <!-- footer: "Using Deep Learning for Flexible and Scalable Earthquake Forecasting, Kelian et al. 2023" -->
 
@@ -402,4 +402,11 @@ p {
 
 ### Deep learning for earthquake statistics
 
-![h:450](https://agupubs.onlinelibrary.wiley.com/cms/asset/c5f0feda-4d47-4257-920a-62cc3dc44cca/grl66186-fig-0002-m.jpg)
+![](./assets/grl66186-fig-0002-m.jpg)
+
+
+---
+
+### Deep learning for earthquake statistics
+
+![](./assets/41598_2023_38033_Fig1_HTML.webp)
