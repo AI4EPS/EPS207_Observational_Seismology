@@ -33,6 +33,6 @@ The class will be a combination of lectures and hands-on exercises. We will use 
 | 10/30 | [Focal Mechanism Inversion](https://ai4eps.github.io/EPS207_Observational_Seismology/lectures/09_focal_mechanism.html) |
 | 11/06 | [Ambient Noise]() |
 | 11/13 | [Seismic Tomography](https://docs.google.com/presentation/d/e/2PACX-1vTqIOXxg7e9l-baNoOgiCqdZfhnKZVtdhKrtRw8bb4XXOwhjZFL1AGIUf6evPeZjAgUp2RDlis_zTdN/pub?start=false&loop=false&delayms=60000) |
-| 11/20 | [Full-waveform Inversion]() |
+| 11/20 | [Full-waveform Inversion](https://docs.google.com/presentation/d/1Kg-tpZXySg0lP7JkMUweBUzpaLQbkhkn3eoXNrQCZTE/pub?start=false&loop=false&delayms=60000) |
 | 11/27 | [Other Sensing Technologies]() |
 | 12/04 | [Final Project Presentations]() |
