@@ -1,0 +1,1288 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Weiqiang Zhu">
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
+    
+    
+      
+        <title>Earthquake Source and Seismic Wave - EPS207 Observational Seismology</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4af4bdda.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-JHM5N31W8F"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-JHM5N31W8F",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-JHM5N31W8F",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#earthquake-source-and-seismic-wave" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="EPS207 Observational Seismology" class="md-header__button md-logo" aria-label="EPS207 Observational Seismology" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            EPS207 Observational Seismology
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Earthquake Source and Seismic Wave
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/AI4EPS/EPS207_Observational_Seismology" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    AI4EPS/EPS207_Observational_Seismology
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="EPS207 Observational Seismology" class="md-nav__button md-logo" aria-label="EPS207 Observational Seismology" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    EPS207 Observational Seismology
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/AI4EPS/EPS207_Observational_Seismology" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    AI4EPS/EPS207_Observational_Seismology
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Notebooks
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Notebooks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../codes/spring_slider/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spring Slider
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../codes/wave_propagation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1D seismic wave
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Obspy
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Obspy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../codes/obspy_download_data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Download Data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../codes/obspy_process_data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signal Processing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../codes/signal_processing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Signal Processing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../codes/denoising/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Denoising
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../codes/earthquake_detection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Earthquake Detection
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../codes/quakeflow_demo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phase Picking and Association
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../codes/earthquake_location/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Earthquake Location
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_focal_mechanism_and_momemt_tensor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Focal Mechanism and Moment Tensor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../codes/focal_mechanism/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Focal Mechanism
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../codes/phasenet_das/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Phase Picking on DAS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#earthquake-faults" class="md-nav__link">
+    <span class="md-ellipsis">
+      Earthquake faults
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#earthquake-faults_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Earthquake faults
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#earthquake-double-couple" class="md-nav__link">
+    <span class="md-ellipsis">
+      Earthquake double couple
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#moment-tensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Moment tensor
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#moment-tensor_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Moment tensor
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#global-cmt-catalog" class="md-nav__link">
+    <span class="md-ellipsis">
+      Global CMT catalog
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beach-balls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beach balls
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#moment-tensor_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Moment tensor
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eigenvectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eigenvectors
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#non-double-couple-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Non-double couple sources
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#non-double-couple-sources_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Non-double couple sources
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#non-double-couple-sources_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Non-double couple sources
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#non-double-couple-sources_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Non-double couple sources
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#non-double-couple-sources_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Non-double couple sources
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#greens-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Green's function
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#greens-function_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Green's function
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#greens-function_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Green's function
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#greens-function-moment-tensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Green's function + Moment tensor
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#radiation-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Radiation patterns
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#radiation-patterns_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Radiation patterns
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#radiation-patterns_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Radiation patterns
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#radiation-patterns_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Radiation patterns
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-far-field-radiation-pattern-for-p-waves" class="md-nav__link">
+    <span class="md-ellipsis">
+      The far-ﬁeld radiation pattern for P-waves
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-far-field-radiation-pattern-for-s-waves" class="md-nav__link">
+    <span class="md-ellipsis">
+      The far-ﬁeld radiation pattern for S-waves
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#beach-balls_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Beach balls
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plotting-beach-balls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plotting beach balls
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#earthquake-rupture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Earthquake rupture
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#earthquake-rupture-notebook" class="md-nav__link">
+    <span class="md-ellipsis">
+      Earthquake rupture (notebook)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seismic-wave-propagation-notebook" class="md-nav__link">
+    <span class="md-ellipsis">
+      Seismic wave propagation (notebook)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#earthquake-recurrence-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Earthquake recurrence model
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Earthquake recurrence model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-haskell-source-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Haskell source model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/AI4EPS/EPS207_Observational_Seismology/blob/main/docs/lectures/01_source_and_wave.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="earthquake-source-and-seismic-wave">Earthquake Source and Seismic Wave</h1>
+<p>Textbooks: 
+Shearer, P. M. (2019). Introduction to seismology. Cambridge University Press.
+GEOPHYS 210: Earthquake Seismology by Eric Dunham
+Segall, P. (2010). Earthquake and volcano deformation. Princeton University Press.</p>
+<hr />
+<h3 id="earthquake-faults">Earthquake faults</h3>
+<p>Earthquakes may be idealized as movement across a planar fault of arbitrary orientation</p>
+<ul>
+<li>strike: $\phi$, the azimuth of the fault from north where it intersects a horizontal surface
+$0^\circ \leq \phi \leq 360^\circ$</li>
+<li>dip: $\delta$, the angle from the horizontal
+$0^\circ \leq \delta \leq 90^\circ$</li>
+<li>rake: $\lambda$, the angle between the slip vector and the strike
+$0^\circ \leq \lambda \leq 360^\circ$</li>
+</ul>
+<p><img alt="bg right:40% fit" src="https://raw.githubusercontent.com/zhuwq0/images/main/20250319214522.png" /></p>
+<hr />
+<h3 id="earthquake-faults_1">Earthquake faults</h3>
+<p><strong>Thrust faulting</strong>: reverse faulting on faults with dip angles less than 45 
+<strong>Overthrust faults</strong>: Nearly horizontal thrust faults
+<strong>Strike-slip faulting</strong>: horizontal motion between the fault surfaces
+<strong>Dip-slip faulting</strong>: vertical motion
+<strong>Right-lateral strike–slip motion</strong>: standing on one side of a fault, sees the adjacent block move to the right
+$\lambda = 0^\circ$: left-lateral faulting
+$\lambda = 180^\circ$: right-lateral faulting
+The San Andreas Fault: Right-lateral fault</p>
+<p><img alt="bg right:30% fit" src="https://raw.githubusercontent.com/zhuwq0/images/main/20250319215002.png" /></p>
+<hr />
+<h3 id="earthquake-double-couple">Earthquake double couple</h3>
+<ul>
+<li>An earthquake is usually modeled as slip on a fault, a discontinuity in displacement across an internal surface in the elastic media.</li>
+<li>Internal forces resulting from an explosion or stress release on a fault must act in opposing directions so as to conserve momentum.</li>
+<li>A force couple is a pair of opposing point forces separated by a small distance </li>
+<li>A double couple is a pair of complementary couples that produce no net torque</li>
+</ul>
+<p><img alt="bg right:40% fit" src="https://raw.githubusercontent.com/zhuwq0/images/main/20250318122046.png" /></p>
+<hr />
+<h3 id="moment-tensor">Moment tensor</h3>
+<p>We define the force couple $M_{ij}$ as a pair of equal and opposite forces pointing in the $i$ direction and separated by a unit distance in the $j$ direction. </p>
+<p>The magnitude of $M_{ij}$ is the product of the force and the distance $f \times d$.</p>
+<p>$$
+M_{ij} = \begin{bmatrix}
+    M_{11} &amp; M_{12} &amp; M_{13} \
+    M_{21} &amp; M_{22} &amp; M_{23} \
+    M_{31} &amp; M_{32} &amp; M_{33}
+\end{bmatrix}
+$$</p>
+<p>The condition that angular momentum be conserved requires that is symmetric (e.g., $M_{ij} = M_{ji}$).</p>
+<p><img alt="bg right:30% fit" src="https://raw.githubusercontent.com/zhuwq0/images/main/20250318122515.png" /></p>
+<hr />
+<h3 id="moment-tensor_1">Moment tensor</h3>
+<p>For example, right-lateral movement on a vertical fault oriented in the $x_1$ direction corresponds to the moment tensor representation</p>
+<p>$$
+M = \begin{bmatrix}
+    M_{11} &amp; M_{12} &amp; M_{13} \
+    M_{21} &amp; M_{22} &amp; M_{23} \
+    M_{31} &amp; M_{32} &amp; M_{33}
+\end{bmatrix}
+= \begin{bmatrix}
+    0 &amp; M_0 &amp; 0 \
+    M_0 &amp; 0 &amp; 0 \
+    0 &amp; 0 &amp; 0
+\end{bmatrix}
+$$</p>
+<p>where $M_0$ is the scalar seismic moment: </p>
+<p>$$
+M_0 = \mu d A
+$$</p>
+<p>where $\mu$ is the shear modulus, $d$ is the average fault displacement, and $A$ is the area of the fault.</p>
+<p>The units for $M_0$ are N$\cdot$m (or dyne$\cdot$cm), the same as for force couples.</p>
+<hr />
+<h3 id="global-cmt-catalog">Global CMT catalog</h3>
+<p><a href="https://www.globalcmt.org/">Global Centroid Moment Tensor</a></p>
+<p><img alt="height:500px" src="https://raw.githubusercontent.com/zhuwq0/images/main/20250319214231.png" /></p>
+<hr />
+<p><img alt="bg fit" src="https://raw.githubusercontent.com/zhuwq0/images/main/20250319224558.png" /></p>
+<hr />
+<h3 id="beach-balls">Beach balls</h3>
+<div style="display: flex; justify-content: space-between;">
+<img src="https://raw.githubusercontent.com/zhuwq0/images/main/20250319224343.png" width="48%">
+<img src="https://raw.githubusercontent.com/zhuwq0/images/main/20250319224401.png" width="48%">
+</div>
+
+<hr />
+<h3 id="moment-tensor_2">Moment tensor</h3>
+<p>Because $M_{ij} = M_{ji}$, there are two fault planes that correspond to a double-couple model. 
+In general, there are two fault planes that are consistent with distant seismic observations in the double-couple model.
+<strong>The primary fault plane</strong>: The real fault plane
+<strong>The auxiliary fault plane</strong>: The other plane</p>
+<p><img alt="bg right:40% fit" src="https://raw.githubusercontent.com/zhuwq0/images/main/20250319220310.png" /></p>
+<hr />
+<h3 id="eigenvectors">Eigenvectors</h3>
+<p>The moment tensor $M_{ij}$ is a symmetric tensor, so it has three real eigenvalues and three orthogonal eigenvectors.</p>
+<p>Tension axis $T$
+Pressure axis $P$</p>
+<p><img alt="bg right:60% fit" src="https://raw.githubusercontent.com/zhuwq0/images/main/20250319220518.png" /></p>
+<hr />
+<h3 id="non-double-couple-sources">Non-double couple sources</h3>
+<p>Isotropic part of $M$: $M^{o} = \frac{1}{3} \text{tr}(M) I$</p>
+<p>$$
+M^{o} = \begin{bmatrix}
+    M_{11} &amp; 0 &amp; 0 \
+    0 &amp; M_{22} &amp; 0 \
+    0 &amp; 0 &amp; M_{33}
+\end{bmatrix}
+$$
+where $M_{11} = M_{22} = M_{33}$</p>
+<p>Decomposing $M$ into isotropic and deviatoric parts: $M = M^{o} + M'$
+where $\text{tr}(M') = 0$, free from isotropic sources by may contain non-double couple sources</p>
+<hr />
+<h3 id="non-double-couple-sources_1">Non-double couple sources</h3>
+<p>Diagonalize $M'$ by rotating to coordinates of principal axes:</p>
+<p>$$
+M' = \begin{bmatrix}
+    \sigma_1 &amp; 0 &amp; 0 \
+    0 &amp; \sigma_2 &amp; 0 \
+    0 &amp; 0 &amp; \sigma_3
+\end{bmatrix}
+$$
+where $\sigma_1 \geq \sigma_2 \geq \sigma_3$.</p>
+<p>Because $tr(M') = 0$, $\sigma_1 + \sigma_2 + \sigma_3 = 0$. 
+For a pure double couple source, $\sigma_2 = 0$ and $\sigma_1 = -\sigma_3$.</p>
+<hr />
+<h3 id="non-double-couple-sources_2">Non-double couple sources</h3>
+<p>We can decompose $M'$ into a best-fitting double couple $M^{DC}$ and a non-double couple part $M^{CLVD}$:</p>
+<p>$$
+\begin{aligned}
+M' &amp;= M^{DC} + M^{CLVD} \
+&amp;= \begin{bmatrix}
+    (\sigma_1 - \sigma_3)/2 &amp; 0 &amp; 0 \
+    0 &amp; 0 &amp; 0 \
+    0 &amp; 0 &amp; -(\sigma_1 - \sigma_3)/2
+\end{bmatrix} 
++ \begin{bmatrix}
+    -\sigma_2 &amp; 0 &amp; 0 \
+    0 &amp; \sigma_2 &amp; 0 \
+    0 &amp; 0 &amp; -\sigma_2/2
+\end{bmatrix}
+\end{aligned}
+$$</p>
+<p>The complete decomposition of the original $M$ is:</p>
+<p>$$
+M = M^{o} + M^{DC} + M^{CLVD}
+$$</p>
+<hr />
+<h3 id="non-double-couple-sources_3">Non-double couple sources</h3>
+<p>Example of the decomposition of a moment tensor into isotropic, best-ﬁtting double couple, and compensated linear vector dipole terms:</p>
+<p><img alt="height:300px" src="https://raw.githubusercontent.com/zhuwq0/images/main/20250319222911.png" /></p>
+<p>The decomposition of $M'$ into $M^{DC}$ and $M^{CLVD}$ is unique because we have defined $M^{DC}$ as the best-fitting double couple, i.e., minimizing the CLVD part.</p>
+<hr />
+<h3 id="non-double-couple-sources_4">Non-double couple sources</h3>
+<p>A measure of the misﬁt between $M'$ and a pure double-couple source is provided by the ratio $\sigma_2$ to the remaining eigenvalue with the largest magnitude to the largest eigenvalue of $M'$</p>
+<p>$$
+\epsilon = \frac{|\sigma_2|}{\max(|\sigma_1|, |\sigma_3|)}
+$$</p>
+<p>$\epsilon = 0$: pure double couple
+$\epsilon = \pm 0.5$: close to pure CLVD</p>
+<p>Physically, non-double-couple components can arise from simultaneous faulting on faults of different orientations or on a curved fault surface.</p>
+<hr />
+<h3 id="greens-function">Green's function</h3>
+<p>Review:</p>
+<p>The momentum equation:</p>
+<p>$$
+\rho \frac{\partial^2 u}{\partial t^2} = \partial_i \tau_{ij} + f_i
+$$</p>
+<p>The stress-strain relation:</p>
+<p>$$
+\tau_{ij} = \lambda \delta_{ij} \partial_k u_k + 2 \mu \varepsilon_{ij}
+$$</p>
+<p>The strain:</p>
+<p>$$
+\varepsilon_{ij} = \frac{1}{2} \left( \partial_i u_j + \partial_j u_i \right)
+$$</p>
+<hr />
+<h3 id="greens-function_1">Green's function</h3>
+<p>We consider a unit impulse source $f_i(x_0, t_0) = \delta(t - t_0) \delta(x-x_0)$ at point $x_0$ at time $t_0$.</p>
+<p>The unit force function is a useful concept because more realistic sources can be described as a sum of these force vectors.</p>
+<p>For every $f(x_0, t_0)$, there is a unique $u(x, t)$ that describes the Earth’s response, which could be computed if we knew the Earth’s structure to sufﬁcient accuracy.</p>
+<hr />
+<h3 id="greens-function_2">Green's function</h3>
+<p>We define the notation:</p>
+<p>$$
+u_i(x, t) =  G_{ij}(x, t; x_0, t_0) f_j(x_0, t_0)
+$$
+where $G_{ij}$ is the Green's function, $u_i$ is the displacement, and $f_j$ is the force.</p>
+<p>Assuming that $G_{ij}$ can be computed, the displacement resulting from any body force distribution can be computed as the sum or superposition of the solutions for the individual point sources.</p>
+<hr />
+<h3 id="greens-function-moment-tensor">Green's function + Moment tensor</h3>
+<p>The moment tensor provides a general representation of the internally generated forces that can act at a point in an elastic medium. Although it is an idealization, it has proven to be a good approximation for modeling the distant seismic response for sources that are small compared to the observed seismic wavelengths.</p>
+<p>So the displacement $u_i$ resulting from a force couple at $x_0$ is given by:</p>
+<p>$$
+\begin{aligned}
+u_i(x, t) &amp;= G_{ij}(x, t; x_0, t_0) f_j(x_0, t_0) - G_{ij}(x, t; x_0-\hat{d}, t_0) f_j(x_0, t_0) \
+&amp;= \frac{\partial G_{ij}(x, t; x_0, t_0)}{\partial x_{0k}} \hat{d}<em>k f_j(x_0, t_0) \
+u_i(x, t) &amp;= \frac{\partial G</em>{ij}(x, t; x_0, t_0)}{\partial x_{0k}} M_{jk}
+\end{aligned}
+$$</p>
+<hr />
+<h3 id="radiation-patterns">Radiation patterns</h3>
+<p>Solving for the Green's function is rather complicated. Here we consider the simple case of a spherical wavefront from an isotropic source.
+Review: The solution for the P-wave potential:
+$$
+\phi(r, t) = \frac{-f(t-r/\alpha)}{r}
+$$
+where $\alpha$ is the P-wave velocity, $r$ is the distance from the point source, and $4\pi\delta(r)f(t)$ is the source-time function.</p>
+<p>The displacement field = the gradient of the displacement potential:
+$$
+u(r, t) = \frac{\partial \phi(r, t)}{\partial r} = \frac{1}{r^2} f(t-r/\alpha) - \frac{1}{r} \frac{\partial f(t-r/\alpha)}{\partial r}
+$$</p>
+<hr />
+<h3 id="radiation-patterns_1">Radiation patterns</h3>
+<p>Define $\tau = t - r/\alpha$ as the delay time:
+$$
+\frac{\partial f(t-r/\alpha)}{\partial r} = \frac{\partial f(t-r/\alpha)}{\partial \tau} \frac{\partial \tau}{\partial r} = -\frac{1}{\alpha} \frac{\partial f(t - r/\alpha)}{\partial \tau} 
+$$
+So the displacement field is:
+$$
+u(r, t) = \frac{1}{r^2} f(t-r/\alpha) + \frac{1}{r\alpha} \frac{\partial f(t-r/\alpha)}{\partial \tau}
+$$ </p>
+<p>The first term decays as $1/r^2$, and is called the near-field term, which represents the permanent static displacement due to the source
+The second term decays as $1/r$, and is called the far-field term, which represents the dynamic response (the transient seismic waves radiated by the source that cause no permanent displacement)</p>
+<hr />
+<h3 id="radiation-patterns_2">Radiation patterns</h3>
+<p>$$
+u(r, t) = \frac{1}{r^2} f(t-r/\alpha) + \frac{1}{r\alpha} \frac{\partial f(t-r/\alpha)}{\partial \tau}
+$$ </p>
+<p>The first term decays as $1/r^2$, and is called the near-field term, which represents the permanent static displacement due to the source</p>
+<p>The second term decays as $1/r$, and is called the far-field term, which represents the dynamic response - the transient seismic waves radiated by the source. 
+These waves cause no permanent displacement, and their displacements are given by the first time derivative of the source-time function.</p>
+<hr />
+<h3 id="radiation-patterns_3">Radiation patterns</h3>
+<p>Most seismic observations are made at sufﬁcient distance from faults that only the far-ﬁeld terms are important.
+Consider the far-ﬁeld P-wave displacement for a double-couple source, assuming the fault is in the $x_1, x_2$ plane with motion in the $x_1$ direction:</p>
+<p>$$\mathbf{u}^P=\frac{1}{4 \pi \rho \alpha^3} \sin 2 \theta \cos \phi \frac{1}{r} \dot{M}_0\left(t-\frac{r}{\alpha}\right) \hat{\mathbf{r}}$$</p>
+<p><img alt="bg right:40% fit" src="https://raw.githubusercontent.com/zhuwq0/images/main/20250319230031.png" /></p>
+<hr />
+<h3 id="the-far-field-radiation-pattern-for-p-waves">The far-ﬁeld radiation pattern for P-waves</h3>
+<ul>
+<li>The fault plane and the auxiliary fault plane form nodal lines of zero motion. </li>
+<li>The outward pointing vectors in the compressional quadrant. </li>
+<li>The inward pointing vectors in the dilatational quadrant. </li>
+<li>The tension (T axis) is in the middle of the compressional quadrant; </li>
+<li>The pressure (P axis) is in the middle of the dilatational quadrant.</li>
+</ul>
+<p><img alt="bg right:40% fit" src="https://raw.githubusercontent.com/zhuwq0/images/main/20250319230456.png" /></p>
+<hr />
+<h3 id="the-far-field-radiation-pattern-for-s-waves">The far-ﬁeld radiation pattern for S-waves</h3>
+<p>The far-ﬁeld S displacements:
+$$\mathbf{u}^S(\mathbf{x}, t)=\frac{1}{4 \pi \rho \beta^3}(\cos 2 \theta \cos \phi \hat{\boldsymbol{\theta}}-\cos \theta \sin \phi \hat{\boldsymbol{\phi}}) \frac{1}{r} \dot{M}_0\left(t-\frac{r}{\beta}\right)$$
+where $\beta$ is the S-wave velocity.</p>
+<p>There are no nodal planes, but there are nodal points. 
+S-wave polarities generally point toward the T axis and away from the P axis.</p>
+<p><img alt="bg right:40% fit" src="https://raw.githubusercontent.com/zhuwq0/images/main/20250319230620.png" /></p>
+<hr />
+<h3 id="beach-balls_1">Beach balls</h3>
+<div style="display: flex; justify-content: space-between;">
+<img src="https://raw.githubusercontent.com/zhuwq0/images/main/20250319224343.png" width="48%">
+<img src="https://raw.githubusercontent.com/zhuwq0/images/main/20250319224401.png" width="48%">
+</div>
+
+<hr />
+<h3 id="plotting-beach-balls">Plotting beach balls</h3>
+<p>Projection of the focal sphere onto an equal-area lower-hemisphere map.
+The numbers around the outside circle show the fault strike in degrees.
+The circles show fault dip angles with 0° dip (a horizontal fault) to 90° dip (a vertical fault).
+The curved line ABC shows the intersection of the fault with the focal sphere.</p>
+<p><img alt="bg right:50% fit" src="https://raw.githubusercontent.com/zhuwq0/images/main/20250319231740.png" /></p>
+<hr />
+<h3 id="earthquake-rupture">Earthquake rupture</h3>
+<video src="assets/rough_vy.mp4" controls width="80%"></video>
+<p><a href="https://pangea.stanford.edu/~edunham/publications.html">Eric Dunham</a></p>
+<hr />
+<h3 id="earthquake-rupture-notebook">Earthquake rupture (<a href="codes/spring_slider/">notebook</a>)</h3>
+<!-- ![height:600px](./assets/ElasticRebound.jpeg) -->
+<p><img alt="spring slider" src="../assets/Screenshot%202023-08-23%20at%2022.53.46.png" /></p>
+<hr />
+<video src="./assets/GIF_1-BlockEQMachine_Graph.mp4" controls width="80%"></video>
+
+<hr />
+<h3 id="seismic-wave-propagation-notebook">Seismic wave propagation (<a href="codes/wave_propagation/">notebook</a>)</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">P-wave</th>
+<th style="text-align: center;">S-wave</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="width:500px" src="https://gpg.geosci.xyz/_images/pwave-animated-2.gif" /></td>
+<td style="text-align: center;"><img alt="width:500px" src="https://gpg.geosci.xyz/_images/s-wave-animated.gif" /></td>
+</tr>
+</tbody>
+</table>
+<!-- ---
+
+![height:500px](./assets/Screenshot%202023-08-24%20at%2010.46.37.png)
+
+---
+
+![height:600px](./assets/Screenshot%202023-08-24%20at%2010.48.17.png) -->
+
+<hr />
+<h2 id="earthquake-recurrence-model">Earthquake recurrence model</h2>
+<p><img alt="width:900px" src="../assets/Screenshot%202023-08-24%20at%2016.07.47.png" />
+( Shimazaki and Nakata, 1980)</p>
+<hr />
+<h3 id="the-haskell-source-model">The Haskell source model</h3>
+<p><img alt="height:500px" src="../assets/Screenshot%202023-08-24%20at%2010.49.47.png" /></p>
+<hr />
+<p><img alt="height:250px" src="../assets/Screenshot%202023-08-24%20at%2010.52.41.png" /></p>
+<p><img alt="height:250px" src="../assets/Screenshot%202023-08-24%20at%2010.56.22.png" /></p>
+<hr />
+<p>$$
+|A(\omega)|=g M_0\left|\operatorname{sinc}\left(\omega \tau_r / 2\right)\right|\left|\operatorname{sinc}\left(\omega \tau_d / 2\right)\right|,
+$$</p>
+<p><img alt="width:1100px" src="../assets/Screenshot%202023-08-27%20at%2023.29.24.png" /></p>
+<hr />
+<p>$$
+\log |A(\omega)|=G+\log \left(M_0\right)+\log \left|\operatorname{sinc}\left(\omega \tau_r / 2\right)\right|+\log \left|\operatorname{sinc}\left(\omega \tau_d / 2\right)\right|
+$$
+where $G=\log g$</p>
+<p>$\text { Approximate }|\operatorname{sinc} x| \text { as } 1 \text { for } x&lt;1 \text { and } 1 / x \text { for } x&gt;1:$
+$$
+\begin{aligned}
+\log |A(\omega)|-G &amp; =\log M_0, &amp; &amp; \omega&lt;2 / \tau_d \
+&amp; =\log M_0-\log \frac{\tau_d}{2}-\log \omega, &amp; &amp; 2 / \tau_d&lt;\omega&lt;2 / \tau_r \
+&amp; =\log M_0-\log \frac{\tau_d \tau_r}{4}-2 \log \omega, &amp; &amp; 2 / \tau_r&lt;\omega
+\end{aligned}
+$$</p>
+<hr />
+<p><img alt="width:700px" src="../assets/Screenshot%202023-08-24%20at%2016.22.14.png" /></p>
+<hr />
+<p><img alt="width:800px" src="../assets/Screenshot%202023-08-24%20at%2016.20.06.png" /></p>
+<!-- ---
+
+![width:1100px](./assets/Screenshot%202023-08-24%20at%2010.54.16.png)
+
+---
+
+![width:1100px](./assets/Screenshot%202023-08-24%20at%2010.55.13.png) -->
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate", "content.action.edit", "navigation.expand"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,204 @@
+{
+    "obspy": {
+        "sampling_rate": 100,
+        "channel": "HH*,BH*,EH*,HN*",
+        "level": "response",
+        "channel_priorities": [
+            "HH[321ENZ]",
+            "EH[321ENZ]",
+            "HN[321ENZ]",
+            "BH[321ENZ]"
+        ]
+    },
+    "phasenet":{
+    },
+    "adloc": {
+    },
+    "gamma": {
+    },
+    "cctorch":{
+        "sampling_rate": 100,
+        "time_before": 0.25,
+        "time_after": 1.0,
+        "min_pair_dist_km": 10,
+        "components": "ENZ123",
+        "component_mapping": {"3": 0, "2": 1, "1": 2, "E": 0, "N": 1, "Z": 2}
+    },
+    "region": {
+        "demo": {
+            "longitude0": -117.504,
+            "latitude0": 35.705,
+            "maxradius_degree": 0.5,
+            "minlatitude": 35.205,
+            "maxlatitude": 36.205,
+            "minlongitude": -118.004,
+            "maxlongitude": -117.004,
+            "mindepth": 0,
+            "maxdepth": 30,
+            "starttime": "2019-07-04T17:00:00",
+            "endtime": "2019-07-05T00:00:00",
+            "network": "CI",
+            "provider": [
+                "SCEDC"
+            ]
+        },
+        "Ridgecrest": {
+            "longitude0": -117.504,
+            "latitude0": 35.705,
+            "maxradius_degree": 1.0,
+            "minlatitude": 35.205,
+            "maxlatitude": 36.205,
+            "minlongitude": -118.004,
+            "maxlongitude": -117.004,
+            "starttime": "2019-07-04T00:00:00",
+            "endtime": "2019-07-10T00:00:00",
+            "provider": [
+                "SCEDC"
+            ],
+            "network": "CI"
+        },
+        "Lamont2024": {
+            "longitude0": -119.097,
+            "latitude0": 35.109,
+            "maxradius_degree": 1.0,
+            "minlatitude": 34.809,
+            "maxlatitude": 35.409,
+            "minlongitude": -119.397,
+            "maxlongitude": -118.897,
+            "mindepth": 0,
+            "maxdepth": 30,
+            "starttime": "2024-08-07T00:00:00",
+            "endtime": "2024-08-30T00:00:00",
+            "provider": [
+                "SCEDC"
+            ]
+        },
+        "Hawaii": {
+            "minlatitude": 18.39,
+            "maxlatitude": 20.39,
+            "minlongitude": -156.32,
+            "maxlongitude": -154.32,
+            "starttime": "2021-04-01T00:00:00",
+            "endtime": "2021-11-01T00:00:00",
+            "provider": [
+                "IRIS"
+            ]
+        },
+        "Hawaii_Loa": {
+            "longitude0": -155.602737,
+            "latitude0": 19.451827,
+            "maxradius_degree": 0.3,
+            "minlatitude": 19.151827,
+            "maxlatitude": 19.751827,
+            "minlongitude": -155.352737,
+            "maxlongitude": -155.852737,
+            "starttime": "2022-11-30T22:00:00",
+            "endtime": "2022-11-30T23:00:00",
+            "provider": [
+                "IRIS"
+            ]
+        },
+        "Hawaii_Kilauea": {
+            "minlatitude": 19.31,
+            "maxlatitude": 19.51,
+            "minlongitude": -155.38,
+            "maxlongitude": -155.18,
+            "starttime": "2018-04-29T00:00:00",
+            "endtime": "2018-08-12T00:00:00",
+            "provider": [
+                "IRIS"
+            ]
+        },
+        "SouthPole": {
+            "starttime": "2003-01-01T00:00:00",
+            "endtime": "2023-05-01T00:00:00",
+            "network": "IU",
+            "station": "QSPA",
+            "provider": [
+                "IRIS"
+            ],
+            "channel_priorities": [
+                "HH[321ENZ]",
+                "BH[321ENZ]"
+            ]
+        },
+        "Montezuma": {
+            "starttime": "2020-05-01T00:00:00",
+            "endtime": "2023-05-01T00:00:00",
+            "minlatitude": 37.9937,
+            "maxlatitude": 38.1657,
+            "minlongitude": -122.0325,
+            "maxlongitude": -121.7275
+        },
+        "BayArea": {
+            "starttime": "2009-01-01T00:00:00",
+            "endtime": "2023-01-01T00:00:00",
+            "minlatitude": 36,
+            "maxlatitude": 38.6,
+            "minlongitude": -123.5,
+            "maxlongitude": -120.5,
+            "provider": ["NCEDC"],
+            "network": "NC,BK,CE,NP",
+            "channel": "BH*,HH*,EH*,HN*",
+            "level": "response",
+            "minmagnitude": 2.0
+        },
+        "Mendocino": {
+            "starttime": "2015-05-01T00:00:00",
+            "endtime": "2015-06-01T00:00:00",
+            "minlatitude": 39.3,
+            "maxlatitude": 41.7,
+            "minlongitude": -129,
+            "maxlongitude": -123,
+            "network": "7D,Z5,5E,BK,NC,CE,NP,PB",
+            "provider": [
+                "IRIS",
+                "NCEDC", 
+                "SCEDC"
+            ]
+        },
+        "Geysers": {
+            "starttime": "2023-03-20T00:00:00",
+            "endtime": "2023-03-31T00:00:00",
+            "minlatitude": 38.68,
+            "maxlatitude": 38.92,
+            "minlongitude": -122.95,
+            "maxlongitude": -122.6,
+            "network": "BG",
+            "channel": "HH*,BH*,EH*,HN*,DP*",
+            "provider": [
+                "NCEDC"
+            ]
+        },
+        "Forge": {
+            "starttime": "2024-04-01T00:00:00",
+            "endtime": "2024-05-01T00:00:00",
+            "minlatitude": 38.28,
+            "maxlatitude": 38.68,
+            "minlongitude": -113.06,
+            "maxlongitude": -112.66,
+            "mindepth": 0,
+            "maxdepth": 10,
+            "network": "*",
+            "channel": "HH*,BH*,EH*,HN*,DP*",
+            "provider": [
+                "IRIS"
+            ]
+        },
+        "Santorini": {
+            "starttime": "2025-01-01T00:00:00",
+            "endtime": "2025-02-24T00:00:00",
+            "minlatitude": 36,
+            "maxlatitude": 37.2,
+            "minlongitude": 25,
+            "maxlongitude": 26.5,
+            "mindepth": 0,
+            "maxdepth": 60,
+            "network": "HL",
+            "channel": "*",
+            "provider": [
+                "NOA"
+            ]
+        }
+    }
+}
