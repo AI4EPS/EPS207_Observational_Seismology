@@ -203,7 +203,7 @@ M' &= M^{DC} + M^{CLVD} \\
     0 & 0 & -(\sigma_1 - \sigma_3)/2
 \end{bmatrix} 
 + \begin{bmatrix}
-    -\sigma_2 & 0 & 0 \\
+    -\sigma_2/2 & 0 & 0 \\
     0 & \sigma_2 & 0 \\
     0 & 0 & -\sigma_2/2
 \end{bmatrix}
