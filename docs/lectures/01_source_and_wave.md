@@ -418,6 +418,109 @@ The curved line ABC shows the intersection of the fault with the focal sphere.
 
 ---
 
+### Review: Basic types of faulting
+
+![height:500px](https://raw.githubusercontent.com/zhuwq0/images/main/202503302341109.png)
+
+---
+
+### Basic types of faulting
+
+![20250330233905 height:500px](https://raw.githubusercontent.com/zhuwq0/images/main/20250330233905.png)
+
+
+---
+
+### First-motion polarity
+
+![20250330234223 height:500px](https://raw.githubusercontent.com/zhuwq0/images/main/20250330234223.png)
+
+---
+
+### Radiation pattern
+
+![20250330234626 height:500px](https://raw.githubusercontent.com/zhuwq0/images/main/20250330234626.png)
+
+---
+
+### Radiation pattern
+
+![20250330234649 height:500px](https://raw.githubusercontent.com/zhuwq0/images/main/20250330234649.png)
+
+---
+
+### Earthquake Focal Mechanism
+
+<div style="display: flex; justify-content: center;">
+<img src="https://raw.githubusercontent.com/zhuwq0/images/main/20250330235030.png" width="48%">
+<img src="https://raw.githubusercontent.com/zhuwq0/images/main/20250330235229.png" width="48%">
+</div>
+
+---
+
+### Earthquake Focal Mechanism
+
+<div style="display: flex; justify-content: center;">
+<img src="https://raw.githubusercontent.com/zhuwq0/images/main/20250330235139.png" width="58%">
+<img src="https://raw.githubusercontent.com/zhuwq0/images/main/20250330235405.png" width="35%">
+</div>
+
+---
+
+### Earthquake Focal Mechanism
+
+<div style="display: flex; justify-content: center;">
+<img src="https://raw.githubusercontent.com/zhuwq0/images/main/20250330235030.png" width="38%">
+<img src="https://raw.githubusercontent.com/zhuwq0/images/main/20250330235636.png" width="58%">
+</div>
+
+
+---
+
+### Earthquake Focal Mechanism
+
+<div style="display: flex; justify-content: center;">
+<img src="https://raw.githubusercontent.com/zhuwq0/images/main/20250330235139.png" width="48%">
+<img src="https://raw.githubusercontent.com/zhuwq0/images/main/20250330235705.png" width="48%">
+</div>
+
+
+---
+
+### P/T axes v.s. Compressional/Dilatational quadrants
+
+<div style="display: flex; justify-content: center;">
+<img src="https://raw.githubusercontent.com/zhuwq0/images/main/20250330235816.png" width="48%">
+<img src="https://raw.githubusercontent.com/zhuwq0/images/main/20250330234223.png" width="48%">
+</div>
+
+The Pressure/Tension (P/T) axes are defined inside the beach ball;
+The Compressional/Dilatational quadrants are defined outside the beach ball;
+
+The tension (T axis) is in the middle of the compressional quadrant;
+The pressure (P axis) is in the middle of the dilatational quadrant.
+
+---
+
+### Moment tensor and Beach ball
+
+![20250331000705 height:400px](https://raw.githubusercontent.com/zhuwq0/images/main/20250331000705.png)
+![bg right:60% fit](https://raw.githubusercontent.com/zhuwq0/images/main/20250331000517.png)
+
+---
+
+### Moment tensor and Radiation pattern
+
+![](https://raw.githubusercontent.com/zhuwq0/images/main/202503310036213.jpg)
+
+---
+
+### Moment tensor decomposition
+
+![bg right:60% fit](https://raw.githubusercontent.com/zhuwq0/images/main/20250331003901.png)
+
+---
+
 ### Earthquake rupture
 
 <video src="assets/rough_vy.mp4" controls width="80%"></video>
