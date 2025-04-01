@@ -641,10 +641,9 @@ We have $\tau_{\text{min}} \simeq 400$s, $\tau_{\text{max}} \simeq 600$; and ass
 
 ---
 
-### Example: 2004 Sumatra Earthquake Directivity
+### The Haskell fault model
 
-![20250401002059 height:400px](https://raw.githubusercontent.com/zhuwq0/images/main/20250401002059.png)
-
+![20250401002831](https://raw.githubusercontent.com/zhuwq0/images/main/20250401002831.png)
 
 ---
 
