@@ -662,6 +662,48 @@ Anomalously fast ruptures sometimes exceed the local S-wave velocity and are ter
 
 ---
 
+### Source spectra
+
+A boxcar pulse in the time domain produces a sinc function in  the frequency domain
+
+![20250401092155 height:400px](https://raw.githubusercontent.com/zhuwq0/images/main/20250401092155.png)
+
+---
+
+### Source spectra
+
+The far-field amplitude spectrum for the Haskell fault model  may be expressed as
+
+$$
+|A(\omega)|=g M_0\left|\operatorname{sinc}\left(\omega \tau_r / 2\right)\right|\left|\operatorname{sinc}\left(\omega \tau_d / 2\right)\right|,
+$$
+
+where $g$ is a scaling term that includes geometrical spreading, etc
+
+$$
+\log |A(\omega)|=G+\log \left(M_0\right)+\log \left|\operatorname{sinc}\left(\omega \tau_r / 2\right)\right|+\log \left|\operatorname{sinc}\left(\omega \tau_d / 2\right)\right|
+$$
+
+where $G=\log g$. 
+
+---
+
+### Source spectra
+
+We can approximate $\left|\operatorname{sinc} x\right| \simeq 1$ for $x<1$ and $1/x$ for $x>1$
+
+$$
+\begin{aligned} \log |A(\omega)|-G & =\log M_0, & & \omega<2 / \tau_d \\ & =\log M_0-\log \frac{\tau_d}{2}-\log \omega, & & 2 / \tau_d<\omega<2 / \tau_r \\ & =\log M_0-\log \frac{\tau_d \tau_r}{4}-2 \log \omega, & & 2 / \tau_r<\omega\end{aligned}
+$$
+
+---
+
+### The amplitude spectrum for the Haskell fault model.
+
+![bg right:65% fit](https://raw.githubusercontent.com/zhuwq0/images/main/20250401092815.png)
+
+---
+
 ### Earthquake rupture ([notebook](codes/spring_slider/))
 
 <!-- ![height:600px](./assets/ElasticRebound.jpeg) -->
