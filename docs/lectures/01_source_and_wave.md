@@ -455,11 +455,12 @@ The curved line ABC shows the intersection of the fault with the focal sphere.
 
 ---
 
+
 ### Earthquake Focal Mechanism
 
 <div style="display: flex; justify-content: center;">
-<img src="https://raw.githubusercontent.com/zhuwq0/images/main/20250330235030.png" width="48%">
-<img src="https://raw.githubusercontent.com/zhuwq0/images/main/20250330235229.png" width="48%">
+<img src="https://raw.githubusercontent.com/zhuwq0/images/main/20250330235030.png" width="40%">
+<img src="https://raw.githubusercontent.com/zhuwq0/images/main/20250331233446.png" width="58%">
 </div>
 
 ---
@@ -467,9 +468,25 @@ The curved line ABC shows the intersection of the fault with the focal sphere.
 ### Earthquake Focal Mechanism
 
 <div style="display: flex; justify-content: center;">
+<img src="https://raw.githubusercontent.com/zhuwq0/images/main/20250330235030.png" width="40%">
+<img src="https://raw.githubusercontent.com/zhuwq0/images/main/20250330235229.png" width="48%">
+</div>
+
+---
+
+### Earthquake Focal Mechanism
+
+
+<div style="display: flex; justify-content: center;">
 <img src="https://raw.githubusercontent.com/zhuwq0/images/main/20250330235139.png" width="58%">
 <img src="https://raw.githubusercontent.com/zhuwq0/images/main/20250330235405.png" width="35%">
 </div>
+
+---
+
+### Earthquake Focal Mechanism
+
+![height:500px](https://raw.githubusercontent.com/zhuwq0/images/main/20250319231740.png)
 
 ---
 
@@ -528,9 +545,55 @@ The pressure (P axis) is in the middle of the dilatational quadrant.
 
 ---
 
+### Magnitude $M_0$
+
+<div style="display: flex; justify-content: center;">
+<img src="https://raw.githubusercontent.com/zhuwq0/images/main/20250331234322.png" width="44%">
+<img src="https://raw.githubusercontent.com/zhuwq0/images/main/20250331234224.png" width="44%">
+</div>
+
+
+The magnitude of the equivalent body forces is $M_0$
+The scalar seismic moment of the earthquake; units of dyn-cm, or N-m
+
+---
+
+### Time-dependent seismic moment $M(t)$
+
+**The Haskell source model**
+
+![20250331234705 height:350px](https://raw.githubusercontent.com/zhuwq0/images/main/20250331234705.png)
+
+The rise time: $\tau_r$ describes the slip duration at any point on a fault.
+
+---
+
+### Rupture propagation
+
+For a long, narrow fault, we assume that the rupture propagates along the fault of length $L$ from left to right at a rupture velocity $v_r$
+The total duration $\tau_d$ of the rupture is $T = L/v_r$
+
+![20250331235148 height:350px](https://raw.githubusercontent.com/zhuwq0/images/main/20250331235148.png)
+
+--- 
+
+### Far field the apparent rupture time
+
+![20250331235242 height:300px](https://raw.githubusercontent.com/zhuwq0/images/main/20250331235242.png)
+
+The apparent rupture duration time $\tau_{\alpha}$ for P-waves:
+Rupturing directly toward us: $\tau_{\alpha}(\text{toward}) = L \left( \frac{1}{v_r} - \frac{1}{\alpha} \right)$
+Rupturing directly away from us: $\tau_{\alpha}(\text{away}) = L \left( \frac{1}{v_r} + \frac{1}{\alpha} \right)$
+
+---
+
+### Doppler effect
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/imoxDcn2Sgo?si=1Nwz-ST-Vjzi6Yt_&amp;start=7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
 ---
+
 
 ### Earthquake rupture
 
