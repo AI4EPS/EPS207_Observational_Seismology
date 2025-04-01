@@ -428,6 +428,12 @@ The curved line ABC shows the intersection of the fault with the focal sphere.
 
 ![20250330233905 height:500px](https://raw.githubusercontent.com/zhuwq0/images/main/20250330233905.png)
 
+---
+
+### Body force
+
+![bg right:65% fit](https://raw.githubusercontent.com/zhuwq0/images/main/20250331193229.png)
+
 
 ---
 
@@ -518,6 +524,11 @@ The pressure (P axis) is in the middle of the dilatational quadrant.
 ### Moment tensor decomposition
 
 ![bg right:60% fit](https://raw.githubusercontent.com/zhuwq0/images/main/20250331003901.png)
+
+
+---
+
+
 
 ---
 
