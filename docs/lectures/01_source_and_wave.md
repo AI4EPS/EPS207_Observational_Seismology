@@ -590,13 +590,68 @@ Rupturing directly away from us: $\tau_{\alpha}(\text{away}) = L \left( \frac{1}
 ### Doppler effect
 
 
-<video src="https://www.youtube.com/embed/imoxDcn2Sgo?si=P_TER2KTW9rco1KS&amp;start=8" controls width="80%"></video>
+<iframe width="100%" height="500px" src="https://www.youtube.com/embed/imoxDcn2Sgo?si=P_TER2KTW9rco1KS&amp;start=7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
 
 ### General apparent rupture duration
 
-![20250401000152 height:300px](https://raw.githubusercontent.com/zhuwq0/images/main/20250401000152.png)
+The apparent rupture duration for a seismic phase with local horizontal phase velocity $c$ at the observing station as
+$$
+\tau_c(\theta) = L \left( \frac{1}{v_r} - \frac{\cos \theta}{c} \right)
+$$
+where $\theta$ is the station azimuth relative to the rupture direction. 
+
+The changes in $\tau_c$ as a function of receiver location are termed directivity effects.
+
+---
+
+### Rupture Length
+
+Since $\tau_\text{max} = L \left( \frac{1}{v_r} - \frac{1}{c} \right)$ and $\tau_\text{min} = L \left( \frac{1}{v_r} + \frac{1}{c} \right)$
+The rupture length $L$ is
+$$
+L = \frac{1}{2} (\tau_\text{max} - \tau_\text{min}){c}
+$$
+The true rupture duration is 
+$$
+\tau_d = L/v_r = \frac{1}{2} (\tau_\text{max} + \tau_\text{min})
+$$
+The average rupture velocity is
+$$
+v_r = L/\tau_d = \frac{\tau_\text{max} - \tau_\text{min}}{\tau_\text{max} + \tau_\text{min}} c
+$$
+
+---
+
+### Example: 2004 Sumatra Earthquake Directivity
+
+![20250401002059 height:400px](https://raw.githubusercontent.com/zhuwq0/images/main/20250401002059.png)
+High-frequency (2–4 Hz) envelopes from teleseismic P-wave observations of the 2004 Sumatra earthquake.
+
+---
+
+### Example: 2004 Sumatra Earthquake Directivity
+
+![20250401002059 height:300px](https://raw.githubusercontent.com/zhuwq0/images/main/20250401002059.png)
+We have $\tau_{\text{min}} \simeq 400$s, $\tau_{\text{max}} \simeq 600$; and assume $c = 12.6 \text{ km/s}$, so:
+- $L = \frac{1}{2} (\tau_\text{max} - \tau_\text{min}){c} = 1/2 \times 200 \times 12.6 = 1260$ km
+- $\tau_d = \frac{1}{2} (\tau_\text{max} + \tau_\text{min}) = 500$ s
+- $v_r = L/\tau_d = 1260/500 = 2.52$ km/s
+
+---
+
+### Example: 2004 Sumatra Earthquake Directivity
+
+![20250401002059 height:400px](https://raw.githubusercontent.com/zhuwq0/images/main/20250401002059.png)
+
+
+---
+
+### Rupture velocity
+
+The rupture velocity is generally observed to be somewhat less than the shear-wave velocity for most earthquakes. 
+Anomalously fast ruptures sometimes exceed the local S-wave velocity and are termed supershear ruptures.
 
 ---
 
