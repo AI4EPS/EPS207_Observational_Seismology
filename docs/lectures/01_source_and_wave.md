@@ -655,7 +655,7 @@ Anomalously fast ruptures sometimes exceed the local S-wave velocity and are ter
 ---
 
 
-### Earthquake rupture
+### Earthquake rupture simulation
 
 <video src="assets/rough_vy.mp4" controls width="80%"></video>
 [Eric Dunham](https://pangea.stanford.edu/~edunham/publications.html)
@@ -698,17 +698,6 @@ Anomalously fast ruptures sometimes exceed the local S-wave velocity and are ter
 
 ---
 
-### The Haskell source model
-
-![height:500px](./assets/Screenshot%202023-08-24%20at%2010.49.47.png)
-
----
-
-![height:250px](./assets/Screenshot%202023-08-24%20at%2010.52.41.png)
-
-![height:250px](./assets/Screenshot%202023-08-24%20at%2010.56.22.png)
-
----
 
 
 $$
