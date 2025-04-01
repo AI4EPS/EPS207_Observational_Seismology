@@ -589,8 +589,14 @@ Rupturing directly away from us: $\tau_{\alpha}(\text{away}) = L \left( \frac{1}
 
 ### Doppler effect
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/imoxDcn2Sgo?si=1Nwz-ST-Vjzi6Yt_&amp;start=7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+<video src="https://www.youtube.com/embed/imoxDcn2Sgo?si=P_TER2KTW9rco1KS&amp;start=8" controls width="80%"></video>
+
+---
+
+### General apparent rupture duration
+
+![20250401000152 height:300px](https://raw.githubusercontent.com/zhuwq0/images/main/20250401000152.png)
 
 ---
 
