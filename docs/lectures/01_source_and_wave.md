@@ -635,11 +635,12 @@ High-frequency (2–4 Hz) envelopes from teleseismic P-wave observations of the 
 
 ![20250401002059 height:300px](https://raw.githubusercontent.com/zhuwq0/images/main/20250401002059.png)
 We have $\tau_{\text{min}} \simeq 400$s, $\tau_{\text{max}} \simeq 600$; and assume $c = 12.6 \text{ km/s}$, so:
-- $L = \frac{1}{2} (\tau_\text{max} - \tau_\text{min}){c} = 1/2 \times 200 \times 12.6 = 1260$ km
-- $\tau_d = \frac{1}{2} (\tau_\text{max} + \tau_\text{min}) = 500$ s
-- $v_r = L/\tau_d = 1260/500 = 2.52$ km/s
+* $L = \frac{1}{2} (\tau_\text{max} - \tau_\text{min}){c} = 1/2 \times 200 \times 12.6 = 1260$ km
+* $\tau_d = \frac{1}{2} (\tau_\text{max} + \tau_\text{min}) = 500$ s
+* $v_r = L/\tau_d = 1260/500 = 2.52$ km/s
 
 ---
+
 
 ### The Haskell fault model
 
@@ -659,6 +660,18 @@ Anomalously fast ruptures sometimes exceed the local S-wave velocity and are ter
 
 <video src="assets/rough_vy.mp4" controls width="80%"></video>
 [Eric Dunham](https://pangea.stanford.edu/~edunham/publications.html)
+
+---
+
+### Earthquake Magnitude
+
+How to quantify the size of an earthquake?
+
+* For historical reasons the most well-known measure of earthquake size is the  earthquake magnitude.
+
+---
+
+
 
 ---
 
