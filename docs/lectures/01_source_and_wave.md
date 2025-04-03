@@ -639,12 +639,6 @@ We have $\tau_{\text{min}} \simeq 400$s, $\tau_{\text{max}} \simeq 600$; and ass
 * $\tau_d = \frac{1}{2} (\tau_\text{max} + \tau_\text{min}) = 500$ s
 * $v_r = L/\tau_d = 1260/500 = 2.52$ km/s
 
----
-
-
-### The Haskell fault model
-
-![20250401002831](https://raw.githubusercontent.com/zhuwq0/images/main/20250401002831.png)
 
 ---
 
@@ -668,18 +662,94 @@ Anomalously fast ruptures sometimes exceed the local S-wave velocity and are ter
 How to quantify the size of an earthquake?
 
 * For historical reasons the most well-known measure of earthquake size is the  earthquake magnitude.
+* Derived from the largest amplitude that is recorded on  seismograms.
+* There are now many different types of magnitude  scales, but all are connected in some way to the earliest definitions of  magnitude.
+
+---
+
+### Richter Magnitude (Local magnitude $M_L$)
+
+The original magnitude scale is based on the maximum amplitude recorded on a standard Wood-Anderson torsion seismograph.
+
+$$
+M_L = \log_{10} A(X) - \log_{10} A_0(X)
+$$
+$A_0$: the amplitude of the reference event
+$X$: the epicentral distance
+
+![20250402232519 bg right:50% fit](https://raw.githubusercontent.com/zhuwq0/images/main/20250402232519.png)
+
+----
+
+### Richter Magnitude (Local magnitude $M_L$)
+
+An approximate empirical formula has been derived for $\log_{10} A_0(X)$ at different ranges. 
+The local magnitude can be calculated by
+$$
+M_L = \log_{10} A(X) + 2.56 \log_{10} X - 1.67
+$$
+where $A(X)$ is the displacement amplitude in microns (10$^{-6}$ m) and X is in  kilometers.
+
+* Events below about $M_L 3$ are generally not felt
+* Significant damage to structures in California begins to  occur at about $M_L 5.5$
+* A $M_L 6.0$ earthquake implies amplitude 100 times greater than a $M_L 4.0$ event.
+
+---
+
+### Global earthquakes: body wave magnitude $m_b$
+
+
+$$
+m_b = \log_{10} (A/T) + Q(h, \Delta)
+$$
+
+where A is the ground displacement in microns, T is the dominant period of  the measured waves, $\Delta$ is the epicentral distance in degrees, and Q is an  empirical function of range and event depth h.
+
+* Why $A/T$?
+* h?
+
+---
+
+### Global earthquakes: surface wave magnitude $M_s$
+
+For Rayleigh waves on vertical instruments:
+$$
+M_s = \log_{10} (A/T) + 1.66 \log_{10} \Delta + 3.30
+$$
+
+Since the strongest Rayleigh wave arrivals are generally at a period of 20 s, this expression is  often written as
+$$
+M_s = \log_{10} A_{20} + 2.46 \log_{10} \Delta + 2.0
+$$
+
+* Note that this equation is applicable only to shallow events
+* surface wave amplitudes are greatly reduced for deep events.
+
+---
+
+### Magnitude saturation
+
+![bg right:70% fit](https://raw.githubusercontent.com/zhuwq0/images/main/20250402233819.png)
 
 ---
 
 
+### The Haskell fault model
+
+![20250331235242 height:250px](https://raw.githubusercontent.com/zhuwq0/images/main/20250331235242.png)
+
+![20250401002831 height:300px](https://raw.githubusercontent.com/zhuwq0/images/main/20250401002831.png)
+
 
 ---
-
 ### Source spectra
 
-A boxcar pulse in the time domain produces a sinc function in  the frequency domain
+A boxcar pulse in the time domain produces a sinc function in  the frequency domain: $\text{sinc}(x) = \frac{\sin(x)}{x}$
 
-![20250401092155 height:400px](https://raw.githubusercontent.com/zhuwq0/images/main/20250401092155.png)
+<div style="display: flex; justify-content: center;">
+<img src="https://raw.githubusercontent.com/zhuwq0/images/main/20250401092155.png" width="68%">
+<img src="https://raw.githubusercontent.com/zhuwq0/images/main/20250403000646.png" width="30%">
+</div>
 
 ---
 
@@ -706,6 +776,10 @@ where $G=\log g$.
 We can approximate $\left|\operatorname{sinc} x\right| \simeq 1$ for $x<1$ and $1/x$ for $x>1$
 
 $$
+\log |A(\omega)|-G = \log \left(M_0\right)+\log \left|\operatorname{sinc}\left(\omega \tau_r / 2\right)\right|+\log \left|\operatorname{sinc}\left(\omega \tau_d / 2\right)\right|
+$$
+
+$$
 \begin{aligned} \log |A(\omega)|-G & =\log M_0, & & \omega<2 / \tau_d \\ & =\log M_0-\log \frac{\tau_d}{2}-\log \omega, & & 2 / \tau_d<\omega<2 / \tau_r \\ & =\log M_0-\log \frac{\tau_d \tau_r}{4}-2 \log \omega, & & 2 / \tau_r<\omega\end{aligned}
 $$
 
@@ -713,7 +787,73 @@ $$
 
 ### The amplitude spectrum for the Haskell fault model.
 
-![bg right:65% fit](https://raw.githubusercontent.com/zhuwq0/images/main/20250401092815.png)
+$$
+\begin{aligned} \log |A(\omega)|-G & =\log M_0, & & \omega<2 / \tau_d \\ & =\log M_0-\log \frac{\tau_d}{2}-\log \omega, & & 2 / \tau_d<\omega<2 / \tau_r \\ & =\log M_0-\log \frac{\tau_d \tau_r}{4}-2 \log \omega, & & 2 / \tau_r<\omega\end{aligned}
+$$
+
+![bg right:55% fit](https://raw.githubusercontent.com/zhuwq0/images/main/20250401092815.png)
+
+---
+
+### Magnitude saturation
+
+![bg right:70% fit](https://raw.githubusercontent.com/zhuwq0/images/main/20250402233819.png)
+
+---
+
+### Moment magnitude $M_w$
+
+The saturation of the and scales for large events helped motivate  development of the moment magnitude $M_w$
+
+$$
+M_w = \frac{2}{3} (\log_{10} M_0 - 9.1)
+$$
+where is the moment measured in N-m.
+
+* The advantage of the scale is that it is clearly related to a physical property of the source and it does not saturate for even the largest  earthquakes.
+* One unit increase in $M_w$ corresponds to a $10^{3/2} \approx 32$ times increase in the moment.
+* A $M_w 7$ earthquake releases about 1000 times more energy than a $M_w 5$ event.
+
+---
+
+### Magnitude as a function of moment
+
+![20250402234333 height:450px](https://raw.githubusercontent.com/zhuwq0/images/main/20250402234333.png)
+
+[USGS Magnitude Types](https://www.usgs.gov/programs/earthquake-hazards/magnitude-types); [Latest earthquake](https://earthquake.usgs.gov/earthquakes/eventpage/us7000pn9s/origin/magnitude)
+
+---
+
+![20250402235133 bg fit](https://raw.githubusercontent.com/zhuwq0/images/main/20250402235133.png)
+
+
+---
+
+![20250402235213 bg fit](https://raw.githubusercontent.com/zhuwq0/images/main/20250402235213.png)
+
+---
+
+### The intensity scale
+
+The local strength of ground shaking as determined by damage to  structures and the perceptions of people who experienced the earthquake.
+
+* One earthquake can have different intensities at different locations.
+
+[USGS Latest Earthquakes](https://earthquake.usgs.gov/earthquakes/map/?extent=26.07652,-136.80176&extent=49.92294,-98.48145&range=month&listOnlyShown=true&settings=true&search=%7B%22name%22:%22Search%20Results%22,%22params%22:%7B%22starttime%22:%222020-12-02%2000:00:00%22,%22endtime%22:%222023-12-09%2023:59:59%22,%22maxlatitude%22:37.642,%22minlatitude%22:37.588,%22maxlongitude%22:-122.344,%22minlongitude%22:-122.412,%22orderby%22:%22time%22%7D%7D)
+
+---
+
+### The Mercalli intensity scale (MMI)
+
+![20250403001052 height:500px](https://raw.githubusercontent.com/zhuwq0/images/main/20250403001052.png)
+
+
+---
+
+### JMA intensity scale
+
+![bg right:60% fit](https://raw.githubusercontent.com/zhuwq0/images/main/202504030012755.png)
+
 
 ---
 
