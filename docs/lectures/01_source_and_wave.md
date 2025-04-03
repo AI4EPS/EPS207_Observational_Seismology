@@ -657,6 +657,55 @@ Anomalously fast ruptures sometimes exceed the local S-wave velocity and are ter
 
 ---
 
+### Earthquake faults
+
+Earthquakes may be idealized as movement across a planar fault of arbitrary orientation
+
+- strike: $\phi$, the azimuth of the fault from north where it intersects a horizontal surface
+$0^\circ \leq \phi \leq 360^\circ$
+- dip: $\delta$, the angle from the horizontal
+$0^\circ \leq \delta \leq 90^\circ$
+- rake: $\lambda$, the angle between the slip vector and the strike
+$0^\circ \leq \lambda \leq 360^\circ$
+
+![bg right:40% fit](https://raw.githubusercontent.com/zhuwq0/images/main/20250319214522.png)
+
+---
+
+### Earthquake Focal Mechanism
+
+
+<div style="display: flex; justify-content: center;">
+<img src="https://raw.githubusercontent.com/zhuwq0/images/main/20250330235139.png" width="48%">
+<img src="https://raw.githubusercontent.com/zhuwq0/images/main/20250319231740.png" width="45%">
+</div>
+
+
+---
+
+### Moment tensor decomposition
+
+![height:500px](https://raw.githubusercontent.com/zhuwq0/images/main/20250331000517.png)
+![bg right:50% fit](https://raw.githubusercontent.com/zhuwq0/images/main/20250331003901.png)
+
+---
+
+### Earthquake rupture
+
+**The Haskell source model**
+
+$\tau_r$: the rise time, describes the slip duration at any point on a fault.
+$\tau_d$: the duration of the rupture ($L/v_r$)
+
+<div style="display: flex; justify-content: center;">
+<img src="https://raw.githubusercontent.com/zhuwq0/images/main/20250331234705.png" width="58%">
+<img src="https://raw.githubusercontent.com/zhuwq0/images/main/20250331235148.png" width="38%">
+</div>
+
+
+
+---
+
 ### Earthquake Magnitude
 
 How to quantify the size of an earthquake?
@@ -664,6 +713,8 @@ How to quantify the size of an earthquake?
 * For historical reasons the most well-known measure of earthquake size is the  earthquake magnitude.
 * Derived from the largest amplitude that is recorded on  seismograms.
 * There are now many different types of magnitude  scales, but all are connected in some way to the earliest definitions of  magnitude.
+
+![bg right:40% fit](https://raw.githubusercontent.com/zhuwq0/images/main/20250403091807.png)
 
 ---
 
