@@ -854,6 +854,17 @@ The local strength of ground shaking as determined by damage to  structures and 
 
 ![bg right:60% fit](https://raw.githubusercontent.com/zhuwq0/images/main/202504030012755.png)
 
+---
+
+### Self-Similar Earthquake Scaling
+
+![20250403002414 height:500px](https://raw.githubusercontent.com/zhuwq0/images/main/20250403002414.png)
+
+---
+
+### Earthquake Energy Partitioning
+
+![20250403002307 height:500px](https://raw.githubusercontent.com/zhuwq0/images/main/20250403002307.png)
 
 ---
 
