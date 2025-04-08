@@ -3,36 +3,92 @@ marp: true
 paginate: true
 theme: gaia
 backgroundColor: #fff
----
-<style>
-img + br + em {
+style: |
+  section {
+    font-size: 28px;
+  }
+  img + br + em {
     font-style: normal;
     display: inherit;
     text-align: right;
     font-size: 70%;
-}
-</style>
-
+  }
+---
 
 # Earthquake Statistics
 
-Class project datasets:
+<!-- Class project datasets:
 
 - [Nodal Seismic Experiment at the Berkeley Section of the Hayward Fault](https://pubs.geoscienceworld.org/ssa/srl/article/93/4/2377/613344/Nodal-Seismic-Experiment-at-the-Berkeley-Section) (Taka'aki et al. 2022)
 
 - An island on Mid-Atlantic Ridge: [Networks](http://ds.iris.edu/gmap/#maxlat=73.3732&maxlon=-1.582&minlat=68.7841&minlon=-15.1596&network=*&drawingmode=box&planet=earth), [Seismicity](https://nnsn.geo.uib.no/nnsn/#/)
 
-- [California](https://earthquake.usgs.gov/earthquakes/map/?extent=30.25907,-128.67188&extent=42.65012,-109.51172&range=month&magnitude=all&listOnlyShown=true&settings=true)
+- [California](https://earthquake.usgs.gov/earthquakes/map/?extent=30.25907,-128.67188&extent=42.65012,-109.51172&range=month&magnitude=all&listOnlyShown=true&settings=true) -->
+
 
 ---
 
-<style scoped>
-section {
-  padding: 0px;
-}
-</style>
+## The Earthquake Cycle
 
-![width:1250px](./assets/deep_learning_earthquake_monitoring.png)
+- Elastic rebound
+
+![w:1000px](https://raw.githubusercontent.com/zhuwq0/images/main/20250407142312.png)
+
+---
+
+## Spring-block model
+
+When the force exerted by the spring  exceeds the static friction $\mu_s$, the block will slide until the dynamic friction $\mu_d$ balances the reduced level of stress.
+If $\mu_s$, $\mu_d$, and $v$ are all constant, then the “earthquakes” will repeat at regular recurrence intervals.
+
+![20250407155433 h:300px](https://raw.githubusercontent.com/zhuwq0/images/main/20250407155433.png)
+
+---
+
+## Earthquake recurrence model
+
+![h:500px](https://raw.githubusercontent.com/zhuwq0/images/main/20250407155751.png)
+
+---
+
+## Parkfield earthquake
+
+Significant earthquakes at Parkfield, California, have repeated at  fairly regular intervals since 1850, leading to predictions of another event  before 1993. However the earthquake did not occur until 2004.
+
+![bg right:50% fit](https://raw.githubusercontent.com/zhuwq0/images/main/20250407172642.png)
+
+---
+
+## The block-slider model
+
+A problem with the characteristic earthquake hypothesis is that it ignores the interactions with adjacent segments on the same fault, as well as interactions with other faults
+
+![w:1000px](https://raw.githubusercontent.com/zhuwq0/images/main/20250407172905.png)
+
+---
+
+## Self-similar and fractial scaling relationship
+
+* Power-law  distribution of seismicity rates (the b-value relationship)
+* Nearly constant value of stress drop over a wide range of earthquake sizes
+* Fractal dimension D approximately twice the b-value (Turcotte, 1997)
+
+---
+
+## Aftershocks
+
+Earthquakes are thought to trigger aftershocks either from the dynamic effects of their radiated seismic waves or the resulting permanent static  stress changes
+
+* The seismicity rate decays with time, following a power law  relationship, called Omori’s law after Omori (1894)
+
+* Coulomb failure function (CFF)
+$$CFF = |\tau_s| + \mu (\tau_n + P)$$
+
+where $\tau_s$ is the shear traction on the fault, $\tau_n$ is the normal traction (positive for tension), $P$ is the pore fluid pressure, and $\mu$ is the coefficient of static friction.
+
+<!-- --- -->
+
+<!-- ![bg fit](./assets/deep_learning_earthquake_monitoring.png) -->
 
 ---
 
@@ -132,7 +188,9 @@ $$
 The number of events $n(t)$ in time $t$ after the mainshock
 
 ![bg right:60% h:500](https://static.temblor.net/wp-content/uploads/2019/10/fig_OmoriPlot.jpg)
+
 <!-- footer: (Omori 1894) -->
+
 ---
 
 ### A modified Omori Law
@@ -195,11 +253,14 @@ $$
 
 ---
 
-<style scoped>
-section {
-  font-size: 33px;
-}
-</style>
+### The Epidemic Type Aftershock Sequence (ETAS) model
+
+![h:500px](https://raw.githubusercontent.com/zhuwq0/images/main/20250407180110.png)
+
+
+<!-- footer: "" -->
+
+---
 
 ### The Epidemic Type Aftershock Sequence (ETAS) model
 
@@ -258,8 +319,10 @@ p {
 
 ### Physical models on aftershocks spatial distribution
 
-![h:500](./assets/King1994b.png)
-![h:500](./assets/King1994c.png)
+<div style="display: flex; justify-content: space-between;">
+    <img src="./assets/King1994b.png" height="500">
+    <img src="./assets/King1994c.png" height="500">
+</div>
 
 <!-- footer: (King et al 1994) -->
 
@@ -394,7 +457,7 @@ p {
 ### Deep learning for earthquake statistics
 
 
-![](./assets/grl66186-fig-0001-m.jpeg)
+![w:1000px](./assets/grl66186-fig-0001-m.jpeg)
 
 <!-- footer: "Using Deep Learning for Flexible and Scalable Earthquake Forecasting, Kelian et al. 2023" -->
 
@@ -402,11 +465,15 @@ p {
 
 ### Deep learning for earthquake statistics
 
-![](./assets/grl66186-fig-0002-m.jpg)
+![w:1000px](./assets/grl66186-fig-0002-m.jpg)
 
 
 ---
 
 ### Deep learning for earthquake statistics
 
-![](./assets/41598_2023_38033_Fig1_HTML.webp)
+![w:1000px](./assets/41598_2023_38033_Fig1_HTML.webp)
+
+<!-- footer: "A neural encoder for earthquake rate forecasting, Zlydenko et al. 2023" -->
+
+

@@ -5,7 +5,7 @@ theme: gaia
 backgroundColor: #fff
 style: |
   section {
-    font-size: 30px;
+    font-size: 28px;
   }
 ---
 
@@ -945,11 +945,11 @@ The local strength of ground shaking as determined by damage to  structures and 
 
 ![height:600px](./assets/Screenshot%202023-08-24%20at%2010.48.17.png) -->
 
----
+<!-- --- -->
 
-## Earthquake recurrence model
+<!-- ## Earthquake recurrence model
 
 ![width:900px](./assets/Screenshot%202023-08-24%20at%2016.07.47.png)
-( Shimazaki and Nakata, 1980)
+( Shimazaki and Nakata, 1980) -->
 
 
