@@ -79,9 +79,9 @@ A problem with the characteristic earthquake hypothesis is that it ignores the i
 
 Earthquakes are thought to trigger aftershocks either from the dynamic effects of their radiated seismic waves or the resulting permanent static  stress changes
 
-* The seismicity rate decays with time, following a power law  relationship, called Omori’s law after Omori (1894)
+- The seismicity rate decays with time, following a power law  relationship, called Omori’s law after Omori (1894)
 
-* Coulomb failure function (CFF)
+- Coulomb failure function (CFF)
 $$CFF = |\tau_s| + \mu (\tau_n + P)$$
 
 where $\tau_s$ is the shear traction on the fault, $\tau_n$ is the normal traction (positive for tension), $P$ is the pore fluid pressure, and $\mu$ is the coefficient of static friction.
@@ -413,7 +413,7 @@ p {
 
 ![width:900px](./assets/Screenshot%202023-10-15%20at%2023.54.40.png)
 
-![](https://caltech-prod.s3.amazonaws.com/main/images/image001_oV7aIUL.max-500x500.gif)
+<!-- ![](https://caltech-prod.s3.amazonaws.com/main/images/image001_oV7aIUL.max-500x500.gif) -->
 
 <!-- footer: (Wilding et al. 2020) -->
 
