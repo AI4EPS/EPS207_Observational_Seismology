@@ -1029,7 +1029,7 @@ Are different sized events self-similar?
 
 ---
 
-## Bruce model (1970)
+## Brune model (1970)
 
 $$u(f) = \frac{M_0}{1 + (f/f_c)^2}$$
 
