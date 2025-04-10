@@ -907,29 +907,192 @@ The local strength of ground shaking as determined by damage to  structures and 
 
 ---
 
-### Self-Similar Earthquake Scaling
+## The Earthquake Cycle
 
-![20250403002414 height:500px](https://raw.githubusercontent.com/zhuwq0/images/main/20250403002414.png)
+- Elastic rebound
 
----
-
-### Earthquake Energy Partitioning
-
-![20250403002307 height:500px](https://raw.githubusercontent.com/zhuwq0/images/main/20250403002307.png)
+![w:1000px](https://raw.githubusercontent.com/zhuwq0/images/main/20250407142312.png)
 
 ---
 
-### Earthquake rupture ([notebook](codes/spring_slider/))
+### Spring-block model ([notebook](codes/spring_slider/))
 
 <!-- ![height:600px](./assets/ElasticRebound.jpeg) -->
-![spring slider](./assets/Screenshot%202023-08-23%20at%2022.53.46.png)
+![20250407155433 h:200px](https://raw.githubusercontent.com/zhuwq0/images/main/20250407155433.png)
+
+![spring slider h:300px](./assets/Screenshot%202023-08-23%20at%2022.53.46.png)
 
 ---
+
+### Spring-block model
 
 <video src="./assets/GIF_1-BlockEQMachine_Graph.mp4" controls width="80%"></video>
 
 ---
 
+## Earthquake recurrence model
+
+![h:500px](https://raw.githubusercontent.com/zhuwq0/images/main/20250407155751.png)
+
+---
+
+## Stress drop
+
+Moment $M_0 = \mu A D$
+
+Stress drop $\Delta \sigma = \sigma_\text{final} - \sigma_\text{initial}$
+
+![20250409232116 width:1100px](https://raw.githubusercontent.com/zhuwq0/images/main/20250409232116.png)
+
+---
+
+## Circular crack model
+
+![20250409232316 width:500px](https://raw.githubusercontent.com/zhuwq0/images/main/20250409232316.png)
+
+Moment 
+
+$$M_0 = \mu A D = \mu \pi r^2 D$$
+
+Stress drop 
+
+$$\Delta \sigma = \frac{7 \pi \mu D}{16 r} = \frac{7 M_0}{16 r^3}$$
+
+---
+
+## Far-field seismic pulse
+
+Area under displacement pulse $f(h\tau)$ is related to seismic moment $M_0$
+
+Radiation patterns, e.g.:
+$$\mathbf{u}^P(t)=\frac{1}{4 \pi \rho \alpha^3} \sin 2 \theta \cos \phi \frac{1}{r} \dot{M}_0\left(t-\frac{r}{\alpha}\right) \hat{\mathbf{r}}$$
+
+![bg right:30% fit](https://raw.githubusercontent.com/zhuwq0/images/main/20250409232744.png)
+
+---
+
+## Far-field seismic pulse shape
+
+![20250409232944 height:500px](https://raw.githubusercontent.com/zhuwq0/images/main/20250409233012.png)
+
+---
+
+
+## Self-Similar Earthquake Scaling
+
+<div style="display: flex; justify-content: space-between;">
+<img src="https://raw.githubusercontent.com/zhuwq0/images/main/20250409234621.png" width="48%">
+<img src="https://raw.githubusercontent.com/zhuwq0/images/main/20250409234815.png" width="48%">
+</div>
+
+Assuming dimensions are scaled proportionally, displacement D will increase by b
+
+---
+
+## Self-Similar Earthquake Scaling
+
+![20250409234921 height:500px](https://raw.githubusercontent.com/zhuwq0/images/main/20250409234921.png)
+
+
+---
+
+## Self-Similar Earthquake Scaling
+
+![20250403002414 height:500px](https://raw.githubusercontent.com/zhuwq0/images/main/20250403002414.png)
+
+---
+
+## Self-similar Earthquake Scaling
+
+Are different sized events self-similar?
+
+* Self-similarity predicts smaller events are “shifted” versions of larger events.
+
+* Following $\omega^{-3}$ for self-similarity
+
+
+![bg right:50% fit](https://raw.githubusercontent.com/zhuwq0/images/main/20250409235704.png)
+
+
+---
+
+## Self-similar Earthquake Scaling
+
+- Stacking spectra following $\omega^{-3}$, spectral shapes are similar within uncertainties.
+
+* Self-similarity implies that apparent stress is size independent
+
+![bg right:50% fit](https://raw.githubusercontent.com/zhuwq0/images/main/20250409235858.png)
+
+
+---
+
+## Bruce model (1970)
+
+$$u(f) = \frac{M_0}{1 + (f/f_c)^2}$$
+
+From model fit obtained:
+
+- Corner frequency ($f_c$)
+- Radiated energy ($E_s$)
+
+![bg right:50% fit](https://raw.githubusercontent.com/zhuwq0/images/main/20250410000033.png)
+
+---
+
+## Corner frequency
+
+![20250410000325 height:550px](https://raw.githubusercontent.com/zhuwq0/images/main/20250410000325.png)
+
+---
+
+## Far-field seismic pulse shape
+
+
+![20250409232623 width:1000px](https://raw.githubusercontent.com/zhuwq0/images/main/20250409232623.png)
+
+
+
+---
+
+### Earthquake Energy Partitioning
+
+![20250409234107 height:550px](https://raw.githubusercontent.com/zhuwq0/images/main/20250409234107.png)
+
+---
+
+### Earthquake Energy Partitioning
+
+
+![20250403002307 height:500px](https://raw.githubusercontent.com/zhuwq0/images/main/20250403002307.png)
+
+---
+
+### Earthquake Scaling: static and dynamic
+
+![20250410000604 height:550px](https://raw.githubusercontent.com/zhuwq0/images/main/20250410000604.png)
+
+---
+
+### Stess and Radiated Energy
+
+Is the stress drop close to the absolute stress level (weak faults) or just a small portion (strong faults)?
+
+![bg right:60% fit](https://raw.githubusercontent.com/zhuwq0/images/main/20250410000726.png)
+
+---
+
+### Apparent Stress (Abercrombie, 1995)
+
+![20250410001145 height:550px](https://raw.githubusercontent.com/zhuwq0/images/main/20250410001145.png)
+
+---
+
+### Apparent Stress (Ide and Beroza, 2001)
+
+![20250410000915](https://raw.githubusercontent.com/zhuwq0/images/main/20250410000915.png)
+
+---
 
 ### Seismic wave propagation ([notebook](codes/wave_propagation/))
 
