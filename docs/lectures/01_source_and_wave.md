@@ -942,6 +942,8 @@ Moment $M_0 = \mu A D$
 
 Stress drop $\Delta \sigma = \sigma_\text{final} - \sigma_\text{initial}$
 
+large D $\times$ small A v.s. small D $\times$ large A? 
+
 ![20250409232116 width:1100px](https://raw.githubusercontent.com/zhuwq0/images/main/20250409232116.png)
 
 ---
