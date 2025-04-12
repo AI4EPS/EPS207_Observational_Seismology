@@ -1068,6 +1068,7 @@ From model fit obtained:
 
 ![20250403002307 height:500px](https://raw.githubusercontent.com/zhuwq0/images/main/20250403002307.png)
 
+
 ---
 
 ### Earthquake Scaling: static and dynamic
@@ -1081,6 +1082,35 @@ From model fit obtained:
 Is the stress drop close to the absolute stress level (weak faults) or just a small portion (strong faults)?
 
 ![bg right:60% fit](https://raw.githubusercontent.com/zhuwq0/images/main/20250410000726.png)
+
+---
+
+### Radiation efficiency
+
+$$
+\eta_R = \frac{E_R}{E_R + E_G}
+$$
+
+For simple slip-weakening friction
+
+$$
+\eta_R = \frac{E_R}{\frac{1}{2} \Delta \sigma D A} = \frac{2 \mu}{\Delta \sigma} 
+\frac{E_R}{M_0} = 2\mu \frac{\tilde{e}}{\Delta \sigma}
+$$
+
+where $\tilde{e} = \frac{E_R}{M_0}$ is called the scaled energy and is dimensionless.
+
+---
+
+### Seismic efficiency
+
+The radiation efficiency should not be confused with the seismic  efficiency
+
+$$
+\eta_s = \frac{E_R}{R} = \frac{E_R}{\bar{\sigma} \bar{D} A} = \frac{\mu E_R}{\bar{\sigma} M_0} = \frac{\mu \tilde{e}}{\bar{\sigma}}
+$$
+
+The seismic efficiency is more difficult to estimate than the radiation  efficiency because it depends upon the poorly constrained absolute stress  level on the fault.
 
 ---
 
