@@ -155,8 +155,8 @@ style: |
 
 $$
 \begin{aligned}
-\text{Transmission coefficient: } & \grave{S} \dot{S} =\frac{\rho_1 \beta_1 \cos \theta_1-\rho_2 \beta_2 \cos \theta_2}{\rho_1 \beta_1 \cos \theta_1+\rho_2 \beta_2 \cos \theta_2}, \\
-\text{Reflection coefficient: } & \grave{S} \grave{S} =\frac{2 \rho_1 \beta_1 \cos \theta_1}{\rho_1 \beta_1 \cos \theta_1+\rho_2 \beta_2 \cos \theta_2} .
+\text{Reflection coefficient: } & \grave{S} \acute{S} =\frac{\rho_1 \beta_1 \cos \theta_1-\rho_2 \beta_2 \cos \theta_2}{\rho_1 \beta_1 \cos \theta_1+\rho_2 \beta_2 \cos \theta_2}, \\
+\text{Transmission coefficient: } & \grave{S} \grave{S} =\frac{2 \rho_1 \beta_1 \cos \theta_1}{\rho_1 \beta_1 \cos \theta_1+\rho_2 \beta_2 \cos \theta_2} .
 \end{aligned}
 $$
 
@@ -409,7 +409,7 @@ $$
 
 - **Surface wave magnitude $M_S$**: $M_s = \log_{10} (A/T) + 1.66 \log_{10} \Delta + 3.30$
 
-- **Moment magnitude $M_W$**: $M_W = \frac{2}{3}\log_{10}M_0 - 10.7$
+- **Moment magnitude $M_W$**: $M_W = \frac{2}{3}(\log_{10}M_0 - 9.1)$
   - Most physically meaningful
   - Does not saturate for large earthquakes
 
