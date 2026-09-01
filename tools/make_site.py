@@ -21,6 +21,20 @@ FIRST = dt.date(2026, 9, 1)                      # Tue 1 Sep 2026
 DATES = [FIRST + dt.timedelta(weeks=k) for k in range(14)]
 PRESENT = FIRST + dt.timedelta(weeks=14)         # Dec 8, RRR week
 
+# Students open notebooks on Berkeley DataHub via nbgitpuller: the link clones/updates the repo
+# into their account and opens the file. Change HUB if the course moves to a departmental hub.
+HUB = "https://datahub.berkeley.edu"
+REPO = "https://github.com/AI4EPS/EPS207_Observational_Seismology"
+BRANCH = "main"
+
+
+def datahub(path):
+    from urllib.parse import quote
+    urlpath = f"lab/tree/{REPO.rsplit('/', 1)[-1]}/{path}"
+    return (f"{HUB}/hub/user-redirect/git-pull?repo={quote(REPO, safe='')}"
+            f"&urlpath={quote(urlpath, safe='')}&branch={BRANCH}")
+
+
 nb_dir = ROOT / "docs" / "notebooks"
 built = {}
 for f in sorted(nb_dir.glob("*.ipynb")):
@@ -28,14 +42,15 @@ for f in sorted(nb_dir.glob("*.ipynb")):
         continue                                  # solutions are never published
     m = re.match(r"(\d+)_", f.name)
     if m:
-        built[int(m.group(1))] = f"notebooks/{f.name}"
+        built[int(m.group(1))] = f"docs/notebooks/{f.name}"
 
 rows = []
 for k, d in enumerate(DATES, start=1):
     t = topics.get(k)
     title = t["title"] if t else "TBA"
-    link = f"[{title}]({built[k]})" if k in built else title
-    rows.append(f"| {k} | {d:%b %-d} | {link} |")
+    link = f"[{title}]({datahub(built[k])})" if k in built else title
+    task = t.get("task", "") if t else ""
+    rows.append(f"| {d:%b %-d} | {task} | {link} |")
 
 readme = f"""# EPS 207 · Laboratory in Observational Seismology
 
@@ -51,12 +66,14 @@ reproduce part of the result, then try to break it.
 
 ## Schedule
 
-| # | Date | Topic |
+| Date | Seismology task | Machine learning |
 |---|---|---|
 {chr(10).join(rows)}
-| — | {PRESENT:%b %-d} | Final project presentations |
+| {PRESENT:%b %-d} | Final project presentations | |
 
-Notebooks are linked as they are released, normally the week before the session.
+**Notebook links open on [Berkeley DataHub](https://datahub.berkeley.edu)** — they pull the repo
+into your account and open the file, so there is nothing to install. Read-only renderings are in
+the sidebar. Notebooks appear the week before their session.
 
 ## Assessment
 
@@ -71,14 +88,6 @@ best, and the proposal is due in week 5.
 ## What you need
 
 **Python**: `numpy`, `pandas`, `scikit-learn`, `pytorch`, plus `matplotlib`, `obspy` and `scipy`.
-Everything runs on **Google Colab** or **Berkeley DataHub** — no local install and no GPU is
-required for any session.
-
-**Data** is public throughout: USGS, IRIS, NCEDC and SCEDC web services, HuggingFace, and datasets
-released with this repository. You will never need credentials.
-
-**Background**: graduate standing. No prior seismology is assumed, but you should be comfortable
-writing Python and reading a paper.
 
 ## Previous offerings
 
@@ -93,7 +102,7 @@ nav = ["nav:", "  - Overview: README.md"]
 if built:
     nav.append("  - Notebooks:")
     for k in sorted(built):
-        nav.append(f'    - "{k}. {topics[k]["title"]}": {built[k]}')
+        nav.append(f'    - "{k}. {topics[k]["title"]}": {built[k].replace("docs/", "", 1)}')
 mk = re.sub(r"^nav:.*?(?=^theme:)", "\n".join(nav) + "\n\n", mk, flags=re.S | re.M)
 (ROOT / "mkdocs.yml").write_text(mk)
 

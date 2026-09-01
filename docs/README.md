@@ -12,25 +12,27 @@ reproduce part of the result, then try to break it.
 
 ## Schedule
 
-| # | Date | Topic |
+| Date | Seismology task | Machine learning |
 |---|---|---|
-| 1 | Sep 1 | [Regression & uncertainty](notebooks/01_regression_uncertainty.ipynb) |
-| 2 | Sep 8 | Classification — logistic, SVM, XGBoost |
-| 3 | Sep 15 | Bias & variance, boosting, cross-validation |
-| 4 | Sep 22 | Clustering, mixture models, EM |
-| 5 | Sep 29 | Neural networks: classification |
-| 6 | Oct 6 | Neural networks: segmentation |
-| 7 | Oct 13 | Neural networks: object detection (DAS) |
-| 8 | Oct 20 | Transformers, attention & masked modelling |
-| 9 | Oct 27 | Embeddings & similarity search |
-| 10 | Nov 3 | Generative models: train a VAE |
-| 11 | Nov 10 | Denoising |
-| 12 | Nov 17 | Inversion I — the linear case: moment tensor & focal mechanism |
-| 13 | Nov 24 | Inversion II — the non-linear case: location, relocation and the posterior |
-| 14 | Dec 1 | Inversion III — estimating a field: regularisation, and physics instead of it |
-| — | Dec 8 | Final project presentations |
+| Sep 1 | Magnitude calibration | [Regression & uncertainty](https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2FAI4EPS%2FEPS207_Observational_Seismology&urlpath=lab%2Ftree%2FEPS207_Observational_Seismology%2Fdocs%2Fnotebooks%2F01_regression_uncertainty.ipynb&branch=main) |
+| Sep 8 | Aftershock location forecasting | Classification — logistic, SVM, XGBoost |
+| Sep 15 | Relocation uncertainty | Bias & variance, boosting, cross-validation |
+| Sep 22 | Fault structure from seismicity | Clustering, mixture models, EM |
+| Sep 29 | Earthquake / quarry-blast discrimination | Neural networks: classification |
+| Oct 6 | Phase picking | Neural networks: segmentation |
+| Oct 13 | Event detection on DAS | Neural networks: object detection |
+| Oct 20 | Ground-motion prediction | Transformers, attention & masked modelling |
+| Oct 27 | Template matching | Embeddings & similarity search |
+| Nov 3 | Waveform generation | Generative models: the VAE |
+| Nov 10 | Denoising | Denoising autoencoders; self-supervised learning |
+| Nov 17 | Focal mechanism & moment tensor | Linear inversion: d = Gm, the SVD and the null space |
+| Nov 24 | Location & relocation | Non-linear inversion: from a point estimate to a posterior |
+| Dec 1 | Tomography | Estimating a field: regularisation, and physics as the prior |
+| Dec 8 | Final project presentations | |
 
-Notebooks are linked as they are released, normally the week before the session.
+**Notebook links open on [Berkeley DataHub](https://datahub.berkeley.edu)** — they pull the repo
+into your account and open the file, so there is nothing to install. Read-only renderings are in
+the sidebar. Notebooks appear the week before their session.
 
 ## Assessment
 
@@ -45,14 +47,6 @@ best, and the proposal is due in week 5.
 ## What you need
 
 **Python**: `numpy`, `pandas`, `scikit-learn`, `pytorch`, plus `matplotlib`, `obspy` and `scipy`.
-Everything runs on **Google Colab** or **Berkeley DataHub** — no local install and no GPU is
-required for any session.
-
-**Data** is public throughout: USGS, IRIS, NCEDC and SCEDC web services, HuggingFace, and datasets
-released with this repository. You will never need credentials.
-
-**Background**: graduate standing. No prior seismology is assumed, but you should be comfortable
-writing Python and reading a paper.
 
 ## Previous offerings
 

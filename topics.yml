@@ -15,6 +15,7 @@ topics:
   - n: 1
     slug: regression_uncertainty
     title: "Regression & uncertainty"
+    task: "Magnitude calibration"
     question: "How do you turn an amplitude into a magnitude - and how well do you know the answer?"
     papers:
       origin: "Richter 1935, BSSA, 10.1785/bssa0250010001 (invented magnitude; it is a regression)"
@@ -36,6 +37,7 @@ topics:
   - n: 2
     slug: classification
     title: "Classification — logistic, SVM, XGBoost"
+    task: "Aftershock location forecasting"
     question: "Where do aftershocks occur — and what was the deep model actually buying?"
     papers:
       origin: "DeVries, Viégas, Wattenberg & Meade 2018, Nature, 10.1038/s41586-018-0438-y"
@@ -53,6 +55,7 @@ topics:
   - n: 3
     slug: bias_variance
     title: "Bias & variance, boosting, cross-validation"
+    task: "Relocation uncertainty"
     question: "How far does a hypocentre move when relocated — predicted from network geometry alone?"
     papers:
       origin: "Waldhauser & Ellsworth 2000, BSSA, 10.1785/0120000006 (HypoDD) — ALSO topic 13's origin"
@@ -70,6 +73,7 @@ topics:
   - n: 4
     slug: clustering
     title: "Clustering, mixture models, EM"
+    task: "Fault structure from seismicity"
     question: "Can you see the faults in the catalogue — and do they survive a change of k?"
     papers:
       origin: "Ouillon & Sornette 2011, JGR, 10.1029/2010JB007752 (3-D Gaussian mixture of fault planes by EM)"
@@ -86,6 +90,7 @@ topics:
   - n: 5
     slug: nn_classification
     title: "Neural networks: classification"
+    task: "Earthquake / quarry-blast discrimination"
     question: "Earthquake or quarry blast — did the model read the waveform or the depth column?"
     papers:
       origin: "Musil & Plesinger 1996, BSSA, 10.1785/bssa0860041077 (MLP + Kohonen on spectral features)"
@@ -108,6 +113,7 @@ topics:
   - n: 6
     slug: nn_segmentation
     title: "Neural networks: segmentation"
+    task: "Phase picking"
     question: "How many earthquakes are we missing — and does the 0.5 threshold mean anything?"
     papers:
       origin: "Allen 1978, BSSA, 10.1785/bssa0680051521 (single-trace detection AND timing;
@@ -130,7 +136,8 @@ topics:
             straddles zero. Teach leakage from Iquique METADATA: 407/407 events span splits, 2.7 MB."
   - n: 7
     slug: nn_detection
-    title: "Neural networks: object detection (DAS)"
+    title: "Neural networks: object detection"
+    task: "Event detection on DAS"
     question: "Ten labelled events on a fiber — how do you get a picker?"
     papers: {origin: TBD, sota: "Zhu, Biondi, Li, Yin, Ross & Zhan 2023, Nat Commun, 10.1038/s41467-023-43355-3"}
     concepts: [transfer learning and fine-tuning, domain shift, pseudo-labelling and self-training]
@@ -140,6 +147,7 @@ topics:
   - n: 8
     slug: transformers
     title: "Transformers, attention & masked modelling"
+    task: "Ground-motion prediction"
     question: "One masked model, three ground-motion tasks — what does the masking choice decide?"
     papers: {origin: TBD, sota: "QuakeFormer, AI4EPS/QuakeFormer, arXiv:2412.00815"}
     concepts: [attention as learned input-dependent weighting, permutation invariance (stations are a set), masked modelling as task definition]
@@ -149,6 +157,7 @@ topics:
   - n: 9
     slug: similarity
     title: "Embeddings & similarity search"
+    task: "Template matching"
     question: "What is still missing after the picker — and at whose correlation threshold?"
     papers: {origin: TBD, sota: "Ross, Trugman, Hauksson & Shearer 2019, Science, 10.1126/science.aaw6888 (QTM)"}
     concepts: [similarity is an inner product in a representation, learned embeddings generalise it, the detection/false-alarm trade]
@@ -157,7 +166,8 @@ topics:
 
   - n: 10
     slug: vae
-    title: "Generative models: train a VAE"
+    title: "Generative models: the VAE"
+    task: "Waveform generation"
     question: "What has the latent space learned — source, path, or site?"
     papers: {origin: TBD, sota: TBD}
     concepts: [latent-variable generative model, the reparameterisation trick, the KL term as a prior on the latent]
@@ -166,7 +176,8 @@ topics:
 
   - n: 11
     slug: denoising
-    title: "Denoising"
+    title: "Denoising autoencoders; self-supervised learning"
+    task: "Denoising"
     question: "Does denoising actually help downstream, or only look better?"
     papers: {origin: TBD, sota: "Zhu, Mousavi & Beroza 2019, IEEE TGRS, 10.1109/TGRS.2019.2926772 (DeepDenoiser)"}
     concepts: [learning a mapping vs learning a prior, self-supervised denoising with no clean target, evaluate downstream not on reconstruction error]
@@ -175,7 +186,8 @@ topics:
 
   - n: 12
     slug: inversion_linear
-    title: "Inversion I — the linear case: moment tensor & focal mechanism"
+    title: "Linear inversion: d = Gm, the SVD and the null space"
+    task: "Focal mechanism & moment tensor"
     question: "First motions constrain the double couple, waveforms the full tensor — they disagree. Which do you believe?"
     papers: {origin: TBD, sota: "Li, Zhu, Biondi & Zhan 2023, Nat Commun, 10.1038/s41467-023-39639-3"}
     concepts: [d = Gm as a matrix, the null space from the SVD, damping as a prior (the week-1 penalty again)]
@@ -185,7 +197,8 @@ topics:
 
   - n: 13
     slug: inversion_nonlinear
-    title: "Inversion II — the non-linear case: location, relocation and the posterior"
+    title: "Non-linear inversion: from a point estimate to a posterior"
+    task: "Location & relocation"
     question: "Where was it — and does the formal error ellipse mean what it says?"
     papers: {origin: "Waldhauser & Ellsworth 2000, BSSA, 10.1785/0120000006 (HypoDD)",
              sota:   "Smith, Ross, Azizzadenesheli & Muir 2021, GJI, 10.1093/gji/ggab309 (HypoSVI)"}
@@ -195,7 +208,8 @@ topics:
 
   - n: 14
     slug: inversion_fields
-    title: "Inversion III — estimating a field: regularisation, and physics instead of it"
+    title: "Estimating a field: regularisation, and physics as the prior"
+    task: "Tomography"
     question: "What is resolved — and can the physics do the regularising for you?"
     papers:
       origin: "Aki & Lee 1976, JGR, 10.1029/JB081i023p04381 (damped least-squares block inversion)"
