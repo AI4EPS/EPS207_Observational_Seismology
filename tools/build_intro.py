@@ -46,6 +46,7 @@ style: |
      the heights it assigns (520px = 72vh) or it silently shrinks every figure. */
   section img {
     max-height: 78vh;
+    max-width: 100%;
     object-fit: contain;
     /* a portrait figure left-aligned strands two thirds of the slide */
     display: block;
@@ -128,6 +129,29 @@ def drop_stale_columns(slide):
     return slide
 
 
+def add_heading(slide, last_head):
+    """A 2023 continuation slide often carries no heading of its own. Left alone it
+    renders as a stray figure with a floating bullet, so it inherits the heading of
+    the slide it continues, marked as a continuation.
+
+    Works per RENDERED slide: one chunk can hold several, split by a thematic rule,
+    and only the first of them usually carries the heading.
+    """
+    parts = re.split(r"(^-{3,}\s*$)", slide, flags=re.M)
+    out = []
+    for part in parts:
+        if re.match(r"^-{3,}\s*$", part.strip()):
+            out.append(part)
+            continue
+        m = re.search(r"^#{1,3} (.+)$", part, flags=re.M)
+        if m:
+            last_head[0] = re.sub(r"\s*\(cont\.\)$", "", m.group(1).strip())
+        elif part.strip() and last_head[0]:
+            part = f"\n### {last_head[0]} (cont.)\n{part}"
+        out.append(part)
+    return "".join(out)
+
+
 def two_pane(slide):
     """One figure under a few bullets fills the left half and wastes the right.
 
@@ -151,10 +175,12 @@ def two_pane(slide):
         # 720px canvas, ~40px padding top and bottom, ~95px heading, ~40px per text line
         avail = 720 - 80 - 95 - 40 * len(text) - 20
         avail = max(220, min(avail, 470))
-        if re.search(r"height:\d+px", slide):
-            return re.sub(r"height:\d+px", f"height:{avail}px", slide)
+        # strip whatever the 2023 author sized it to and fill the space we have;
+        # max-width in the stylesheet keeps a wide figure inside the frame
+        slide = re.sub(r"!\[([^\]]*?)\s*\b(?:w|width|h|height):\d+(?:px)?\s*([^\]]*)\]",
+                       r"![\1\2]", slide)
         return re.sub(r"!\[([^\]]*)\]\(",
-                      lambda m: f"![{(m.group(1) + ' ').lstrip()}height:{avail}px](",
+                      lambda m: f"![{(m.group(1) + ' ').strip() + ' ' if m.group(1).strip() else ''}height:{avail}px](",
                       slide, count=1)
     return re.sub(r"!\[([^\]]*)\]\(", "![bg right:47% contain](", slide, count=1)
 
@@ -462,6 +488,7 @@ def load(name):
 def main():
     cache, slides = {}, []
     dropped, thinned = [], []
+    last_head = [None]
     for entry in PARTS:
         if entry[0] == "MERGE":
             _, src, idxs, heading = entry
@@ -527,7 +554,8 @@ def main():
             if removed:
                 s = s.rstrip() + "\n\n" + FIXME
                 thinned.append(f"{src}[{i}]")
-            slides.append(fit_slide(two_pane(drop_stale_columns(s.strip()))))
+            s = add_heading(drop_stale_columns(s.strip()), last_head)
+            slides.append(fit_slide(two_pane(s)))
 
 
     body = FRONT + "\n\n" + "\n\n---\n\n".join(slides) + "\n"

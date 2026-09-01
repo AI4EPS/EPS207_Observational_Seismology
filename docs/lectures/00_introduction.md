@@ -14,6 +14,7 @@ style: |
      the heights it assigns (520px = 72vh) or it silently shrinks every figure. */
   section img {
     max-height: 78vh;
+    max-width: 100%;
     object-fit: contain;
     /* a portrait figure left-aligned strands two thirds of the slide */
     display: block;
@@ -81,6 +82,8 @@ Weiqiang Zhu · Tuesdays 9:00-10:59 · McCone 325
 
 ---
 
+
+### Before an earthquake (cont.)
 - Simulating earthquake scenarios
 [Hayward Fault Scenarios](https://youtu.be/qZaKE4GuBXs?si=wI949Vnbk1EbO6xT)
 ![bg right:47% contain](https://earthquake.usgs.gov/education/shakingsimulations/hayward/images/tn-HaywardM72_SanPabloBayEp.jpg)
@@ -113,6 +116,8 @@ Weiqiang Zhu · Tuesdays 9:00-10:59 · McCone 325
 | 8            | 10,000         | 50 x 200                             |
 
 --- 
+
+### Hours/days after an earthquake (cont.)
 
 - [Aftershock prediction](https://earthquake.usgs.gov/data/oaf/overview.php)
 
@@ -370,7 +375,7 @@ where $A(X)$ is the displacement amplitude in microns (10$^{-6}$ m) and X is in 
 
 ### Deep learning for earthquake statistics
 
-![h:450 height:470px](https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41586-018-0438-y/MediaObjects/41586_2018_438_Fig1_HTML.png?as=webp)
+![height:470px](https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41586-018-0438-y/MediaObjects/41586_2018_438_Fig1_HTML.png?as=webp)
 
 <!-- _footer: "Deep learning of aftershock patterns following large earthquakes, Devries et al. 2018" -->
 
@@ -704,6 +709,8 @@ $$f(t) = \frac{1}{2\pi} \int_{-\infty}^{\infty} F(\omega) e^{i\omega t} d\omega$
 
 ---
 
+
+### Fourier Transform (cont.)
 $$
 \begin{align}
 F(\omega) &= \int_{-\infty}^{\infty} f(t) e^{-i\omega t} dt \\
@@ -1316,14 +1323,14 @@ Where:
 ---
 
 ### The Gutenberg-Richter Law
-![h:500 height:470px](./assets/Ross2019.png)
+![height:470px](./assets/Ross2019.png)
 <!-- _footer: (Ross et al. 2019) -->
 
 ---
 
 ### What controls the slope $b$?
 
-![h:500 height:470px](./assets/Scholz1968.png)
+![height:470px](./assets/Scholz1968.png)
 <!-- _footer: (Scholz 1968) -->
 
 ---
@@ -1411,7 +1418,7 @@ $$
 
 ### The Epidemic Type Aftershock Sequence (ETAS) model
 
-![h:500px height:470px](https://raw.githubusercontent.com/zhuwq0/images/main/20250407180110.png)
+![height:470px](https://raw.githubusercontent.com/zhuwq0/images/main/20250407180110.png)
 
 
 <!-- _footer: "" -->
