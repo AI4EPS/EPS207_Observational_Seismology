@@ -1,8 +1,9 @@
 # EPS 207 · Laboratory in Observational Seismology
 
-Machine learning now builds earthquake catalogues, locates events, and inverts for structure.
-Each week takes one **method** and one **published result**: you work the notebook live in class,
-reproduce part of the result, then try to break it.
+Observational seismology turns recorded ground motion into statements about earthquakes and the
+Earth's interior. This laboratory course covers how that is done today — from magnitudes and
+catalogues through phase picking, location, source mechanisms and ground motion to tomography — and
+the machine-learning methods the field now uses for each.
 
 ## Time and place
 
