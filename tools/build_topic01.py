@@ -85,7 +85,7 @@ plt.tight_layout(); plt.show()
 print(f"amplitude falls by a factor of {one.amp_mm.max()/one.amp_mm.min():,.0f} across "
       f"{one.hyp_km.min():.0f}–{one.hyp_km.max():.0f} km")""")
 
-md("""## 2 · Measuring a Wood–Anderson amplitude
+md("""## 2 · Do the amplitudes mean what you think?
 
 You are about to regress hundreds of thousands of numbers somebody else measured. Before trusting a column,
 **measure one of them yourself.** This is the only cell in the notebook that touches a raw
@@ -119,7 +119,7 @@ def fetch(net, sta, cha, t, pre=20, post=80, tries=3):
                 raise RuntimeError(
                     f"SCEDC failed {tries}x for {net}.{sta}.{cha} ({type(e).__name__}). "
                     f"SCEDC may be throttling the room. Section 2 is self-contained - nothing after it "
-                    f"depends on these waveforms - so re-run in a minute, or skip to section 3."
+                    f"depends on these waveforms - so re-run in a minute, or skip ahead."
                 ) from e
             time.sleep(2 * (k + 1))
 
@@ -171,7 +171,7 @@ for _, r in ev.nsmallest(4, "hyp_km").iterrows():   # 4, not 8: eight students s
 cmp = pd.DataFrame(rows, columns=["station", "channel", "catalogue",
                                   "zero_pk", "half_p2p", "half_swing"])
 assert len(cmp) >= 3, (f"only {len(cmp)} channel(s) returned - too few to separate the "
-                       f"conventions. Re-run, or skip to section 3; nothing later needs this.")
+                       f"conventions. Re-run, or skip ahead; nothing later needs this.")
 print(f"measured {len(cmp)} broadband channels")
 for c in ["zero_pk", "half_p2p", "half_swing"]:
     ratio = cmp[c] / cmp.catalogue
@@ -191,41 +191,24 @@ ax.set(xlim=(t[i0]-7, t[i0]+22), xlabel="seconds from origin time",
        title=f"{ROW.station}.{ROW.channel}  M{ROW.magnitude} at {ROW.hyp_km:.0f} km")
 plt.tight_layout(); plt.show()""")
 
-md("""**Three definitions, three different numbers, and only one reproduces the column.**
+md("""**Three definitions, three numbers, and only one reproduces the column.** Hutton & Boore state
+theirs exactly — *"one-half the peak-to-peak distance on the largest single swing of the S wave"* —
+and it is not what this catalogue contains; the zero-to-peak row is. Neither is wrong, but the
+difference is not a constant you can correct away: it depends on how complicated the waveform is.
 
-Hutton & Boore — whose attenuation curve you are about to fit — state their measurement exactly:
-*"The amplitudes are read as one-half the peak-to-peak distance on the largest single swing of the
-S wave."* That is the last row, and it is **not** what this catalogue contains. Southern California
-recomputed its local magnitudes from 2008 onward following Uhrhammer et al. (2011), and the `AML`
-values you downloaded follow the newer practice, which the first row matches.
+Note what the single-record check could **not** do. It agreed to about a percent, and would have
+agreed that well under any of the three. **An agreement that every candidate explanation predicts is
+not evidence for one of them** — the convention was pinned down only by computing all three and
+letting them disagree.
 
-Neither definition is wrong. The difference is systematic rather than random — one convention
-sits below the other on every record — but it is **not a constant** you can correct with a
-single number: it depends on how complicated the waveform is, so it moves with distance, magnitude
-and station. That is worse than a fixed bias, not better. It stays invisible inside one catalogue,
-and it is waiting for you the moment you compare two, or fit one catalogue with another's
-published curve.
-
-Notice what the single-station check could *not* do. It agreed to about a percent, and it would
-have agreed about that well under any of the three definitions. **An agreement that every candidate
-explanation predicts is not evidence for one of them.** The convention was only pinned down by
-computing all three and letting them disagree.
-
-Two further warnings about this cell. Removing the response to displacement instead of velocity, or
-using the older gain of 2800, or two zeros instead of one, each changes the answer by a factor of
-several — **"amplitude" is a convention all the way down**, and a catalogue that does not state its
-convention cannot be reproduced. And this recipe reproduces *broadband* channels only: on the
-strong-motion (`HN`) channels it fails badly, for reasons this notebook does not resolve.
+This recipe reproduces broadband channels only; on strong-motion channels it fails badly, for reasons
+this notebook does not resolve.
 
 **That fall with distance is the whole problem.** The same earthquake looks a thousand times
 smaller at 300 km than at 5 km. Before an amplitude can mean anything you must remove the distance —
 and nobody hands you the correction. You measure it.""")
 
-md("""## 3 · Which readings are you willing to use?
-
-Real catalogues contain values that cannot be true, and the cut you make changes the answer.
-Section 8 measures how much the answer moves when the *sample* changes; the cut you are about to
-make is one such choice, and nothing in the regression output will tell you it mattered.""")
+md("""The catalogue also contains values that cannot be true. Look before you fit.""")
 
 run("""print(f"amplitude spans {d.amp_mm.min():.2e} to {d.amp_mm.max():.2e} mm")
 tiny = d[d.amp_mm < 1e-3]          # below a micron
@@ -254,7 +237,7 @@ kept.
 
 Write down the cut you chose — **you will test at the end how much the answer depends on it.**""")
 
-md(r"""## 4 · Why M$_w$ had to be invented — and why M$_L$ stops working
+md(r"""## 3 · Why moment magnitude had to be invented
 
 An earthquake is not a point. It is a rupture of finite size, and that size controls the *shape* of
 the radiated spectrum, not just its amplitude. The standard description is Brune's (1970): the
@@ -306,7 +289,7 @@ def brune(Mw):
 fig, ax = plt.subplots(figsize=(5.6, 3.8))
 for Mw, col in zip([3, 5, 7], ["#90cdf4", "#4299e1", "#1a365d"]):
     sp, fc, _ = brune(Mw)
-    ax.loglog(f, sp, color=col, lw=1.8, label=f"M$_w$ {Mw}   $f_c$={fc:.2f} Hz")
+    ax.loglog(f, sp, color=col, lw=1.8, label=f"$M_w$ {Mw}   $f_c$={fc:.2f} Hz")
     ax.plot(fc, np.interp(fc, f, sp), "o", color=col, ms=5)
 ax.axvline(F_WA, color="#c53030", lw=1.4, ls="--")
 ax.annotate("Wood-Anderson band", (F_WA*1.15, 3e14), color="#c53030", fontsize=8)
@@ -373,7 +356,7 @@ catalogue 7.10 — **M<sub>L</sub> under-reads by 0.38.** That is saturation.
 
 **The ground truth changes in the middle of your dataset.** Remember it when you read the fit.
 
-## 5 · Building the model, one term at a time
+## 4 · Building the model, one term at a time
 
 Do not write the final model down. Build it, and let the residuals tell you what is missing — that
 is what fitting actually looks like.
@@ -483,7 +466,7 @@ print(f"model refitted: c2 = {b3[2]:.4f}")""")
 md("""**Note that condition number.** $(X^\\top X)$ is nearly singular, which is a warning that some
 combination of the columns is barely constrained. Hold that thought.
 
-## 6 · How well do we know the coefficients?
+## 5 · How well do we know the coefficients?
 
 $\\mathrm{Cov}(\\hat{\\boldsymbol\\beta}) = \\sigma^2 (X^\\top X)^{-1}$. The diagonal gave the
 standard errors. The **off-diagonal** explains the condition number.""")
@@ -589,7 +572,7 @@ $$p(\beta \mid y) = \frac{p(y \mid \beta)\, p(\beta)}{p(y)} \;\propto\; p(y \mid
 The denominator $p(y)$ does not involve $\beta$, so it is an irrelevant constant for finding the
 maximum.
 
-### 4 · Take the negative logarithm
+### 3 · Take the negative logarithm
 
 Maximising the posterior is the same as minimising its negative log, and the log turns the product
 into a sum:
@@ -598,7 +581,7 @@ $$-\log p(\beta \mid y) = \frac{\|y - X\beta\|^2}{2\sigma^2} + \frac{\|\beta\|^2
 
 Both exponents were quadratic, so the whole thing is quadratic in $\beta$.
 
-### 5 · Rescale to recover the damped objective
+### 4 · Rescale to recover the damped objective
 
 Multiply through by $2\sigma^2$ — a positive constant, so it moves the value of the function but not
 the location of its minimum:
@@ -615,7 +598,7 @@ the ratio: $\lambda$ is large when the data are noisy or when you are confident 
 small, and $\lambda \to 0$ returns ordinary least squares — the statement that you had no prior
 opinion at all.
 
-### 6 · Minimise, to get the estimator
+### 5 · Minimise, to get the estimator
 
 $$J(\beta) = y^\top y - 2\beta^\top X^\top y + \beta^\top X^\top X\beta + \lambda\beta^\top\beta$$
 
@@ -632,7 +615,7 @@ $X^\top X$ is singular** — so the minimum exists and is unique. And because th
 Gaussian, this MAP point is also the posterior *mean*, with covariance
 $\sigma^2(X^\top X + \lambda I)^{-1}$.
 
-### 7 · Why $\lambda I$ actually cures the ill-conditioning
+### 6 · Why $\lambda I$ actually cures the ill-conditioning
 
 Use the SVD $X = UDV^\top$ with singular values $d_i$. Then $X^\top X = VD^2V^\top$, and
 
@@ -698,7 +681,7 @@ plt.tight_layout(); plt.show()""")
 md("""$c_2$ travels a long way for almost no cost in rms — the data barely distinguishes it from
 $c_3$, exactly as the bootstrap cloud showed.
 
-## 7 · Two different questions, two different intervals
+## 6 · Two different questions, two different intervals
 
 - **Confidence interval** — where is the *mean* $\\log_{10}A$ here? Width $\\propto
   \\sqrt{\\mathbf{x}^\\top\\mathrm{Cov}(\\hat\\beta)\\mathbf{x}}$, shrinking as $1/\\sqrt n$.
@@ -733,7 +716,7 @@ components.
 
 **And the split is a property of your model, not of the Earth.** Whatever your model does not
 explain is called irreducible — so what counts as aleatoric depends on what you are willing to
-model, not on the ground. Section 8 puts a station term into the fit and watches part of this
+model, not on the ground. Section 7 puts a station term into the fit and watches part of this
 "irreducible" scatter turn into explained structure.""")
 
 run("""mu = Xg @ b3
@@ -832,7 +815,7 @@ it was against a number made a different way.
 But $c_2$ is still nine of their standard errors from $-1.110$, and $c_3$ moved *further* from their
 value, not closer. **Station terms fixed the scatter and did not fix the curve.**""")
 
-md("""## 8 · What this calibration cannot tell you
+md("""## 7 · What this calibration cannot tell you
 
 Where did the `magnitude` column come from? Below about M3.4 it is the network's median of the
 station magnitudes in this table, after outlier rejection, and each of those was computed as $M_{L,i} = \\log_{10}A_i +
