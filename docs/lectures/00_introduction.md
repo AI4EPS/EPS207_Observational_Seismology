@@ -83,29 +83,23 @@ Weiqiang Zhu · Tuesdays 9:00-10:59 · McCone 325
 ### Before an earthquake
 
 - [Eathquake Hazard Map](https://earthquake.usgs.gov/earthquakes/map/?extent=27.95559,-130.8252&extent=51.28941,-92.50488&range=month&magnitude=all&showPopulationDensity=true&showUSHazard=true&settings=true)
-![height:500px](https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/styles/side_image/public/thumbnails/image/2018nshm-longterm.jpg?itok=6tMRRjk3)
-
----
+![height:300px](https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/styles/side_image/public/thumbnails/image/2018nshm-longterm.jpg?itok=6tMRRjk3)
 
 - Simulating earthquake scenarios
 [Hayward Fault Scenarios](https://youtu.be/qZaKE4GuBXs?si=wI949Vnbk1EbO6xT)
-![height:500px](https://earthquake.usgs.gov/education/shakingsimulations/hayward/images/tn-HaywardM72_SanPabloBayEp.jpg)
+![height:300px](https://earthquake.usgs.gov/education/shakingsimulations/hayward/images/tn-HaywardM72_SanPabloBayEp.jpg)
 
 ---
 
-### A few seconds after an earthquake
+### A few seconds after
 
 ![height:500px](./assets/ShakeAlert.webp)
-
----
 
 - MyShake
 [https://myshake.berkeley.edu/](https://myshake.berkeley.edu/)
 
 - Mobile phones as seismometers
 [Android EEW](https://www.youtube.com/watch?v=zFin2wZ56tM&ab_channel=Android)
-
-<!-- FIXME: figure lost to an expired CDN link; paste a screenshot here -->
 
 ---
 
@@ -147,16 +141,12 @@ Weiqiang Zhu · Tuesdays 9:00-10:59 · McCone 325
 
 ---
 
-### Large-N and Large-T challenge
+### More sensors, recording for longer
 
 [IRIS dataset](https://ds.iris.edu/data/distribution/)
-![height:500px](https://ds.iris.edu/files/stats/data/archive/Archive_Growth.jpg)
+![height:300px](https://ds.iris.edu/files/stats/data/archive/Archive_Growth.jpg)
 
----
-
-### Mining the IRIS dataset
-
-![height:500px](https://ds.iris.edu/files/stats/data/shipments/GigabytesByYearAndType.jpg)
+![height:300px](https://ds.iris.edu/files/stats/data/shipments/GigabytesByYearAndType.jpg)
 
 ---
 
@@ -185,16 +175,12 @@ Weiqiang Zhu · Tuesdays 9:00-10:59 · McCone 325
 
 ---
 
-### How to detect earthquakes?
+### Detect: is there an earthquake?
 
 - Amplitude threshold
 - STA/LTA
 - Template matching / Matched filter
 - Deep learning
-
----
-
-### STA/LTA
 
 - Pros:
     - Simple and fast
@@ -242,21 +228,17 @@ p {
 
 ---
 
-### How to locate an earthquake?
+### Locate: an inverse problem
 
-![height:500px](https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/styles/full_width/public/thumbnails/image/locating%20earthquakes%201.gif?itok=z60HGZwY)
-
----
-
-### Optimization (Inverse) problem
+![height:300px](https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/styles/full_width/public/thumbnails/image/locating%20earthquakes%201.gif?itok=z60HGZwY)
 
 - Minimize the difference between observed and predicted values
 
-![height:400px](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Linear_regression.svg/1920px-Linear_regression.svg.png)
+![height:300px](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Linear_regression.svg/1920px-Linear_regression.svg.png)
 
 ---
 
-### Earthquake Magnitude
+### Size it: magnitude
 
 How to quantify the size of an earthquake?
 
@@ -265,10 +247,6 @@ How to quantify the size of an earthquake?
 - There are now many different types of magnitude  scales, but all are connected in some way to the earliest definitions of  magnitude.
 
 ![bg right:40% fit](https://raw.githubusercontent.com/zhuwq0/images/main/20250403091807.png)
-
----
-
-### Richter Magnitude (Local magnitude $M_L$)
 
 The original magnitude scale is based on the maximum amplitude recorded on a standard Wood-Anderson torsion seismograph.
 
@@ -282,7 +260,6 @@ $X$: the epicentral distance
 
 ----
 
-### Richter Magnitude (Local magnitude $M_L$)
 
 An approximate empirical formula has been derived for $\log_{10} A_0(X)$ at different ranges. 
 The local magnitude can be calculated by
@@ -358,33 +335,24 @@ where $A(X)$ is the displacement amplitude in microns (10$^{-6}$ m) and X is in 
 
 ---
 
-### Deep learning
+### Detection, learned
 
 - Generalized similarity search
 
 ![width:1100px](./assets/Screenshot%202023-09-24%20at%2023.39.39.png)
 
----
-
-### Convolutional Neural Network for Earthquake detection and location
-
 ![height:500px](https://www.science.org/cms/10.1126/sciadv.1700578/asset/06ce7224-a642-4b78-9ba5-d854cc8baf88/assets/graphic/1700578-f2.jpeg)
 
 
 --- 
-### Residual Network of Convolutional and Recurrent Units for Earthquake Signal Detection
 
 ![height:480px](./assets/cread.jpeg)
 
 ---
 
-### Background: Semantic Segmentation vs. Classification
+### Picking is segmentation
 
 ![width:950px](./assets/cv_tasks.png)
-
----
-
-### Generalized seismic phase detection with deep learning
 
 ![width:900px](https://d3i71xaburhd42.cloudfront.net/e178d94a0601f0f395cf6d81b884a238331fa869/3-Figure1-1.png)
 
@@ -447,17 +415,13 @@ p {
 
 ---
 
-### The advantages of machine learning
+### Why machine learning
 
 Deep Learning (Deep Neural Networks) is a new paradigm of software development
 
 - [Software 2.0](https://karpathy.medium.com/software-2-0-a64152b37c35)
 
 - [Universal Approximation Theorem](https://en.wikipedia.org/wiki/Universal_approximation_theorem)
-
----
-
-### Applications of deep learning in seismology
 
 - Neural Networks
 - Automatic Differentiation
@@ -1022,6 +986,8 @@ Notebook: [cross-correlation](https://ai4eps.github.io/EPS207_Observational_Seis
 
 ---
 
+<style scoped>section { font-size: 24px; }</style>
+
 <style scoped>
 section {
   column-count: 2;
@@ -1037,13 +1003,13 @@ p {
 ### Seismic waves
 
 ![height:300px](https://gpg.geosci.xyz/_images/pwave-animated-2.gif)
-![height:350px](https://gpg.geosci.xyz/_images/s-wave-animated.gif)
+![height:300px](https://gpg.geosci.xyz/_images/s-wave-animated.gif)
 
 ---
 
 ### Seismic phases
 
-![height:950px](http://ds.iris.edu/media/product/globalstacks/images/TraceProcessing2.png)
+![height:420px](http://ds.iris.edu/media/product/globalstacks/images/TraceProcessing2.png)
 
 ---
 

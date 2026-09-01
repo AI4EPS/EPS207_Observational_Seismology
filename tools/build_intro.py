@@ -139,6 +139,65 @@ So: every week, a **baseline** and an **honest interval**.
 """
 
 
+# 16:12 at 28px leaves roughly 960px of usable height once the heading is drawn.
+# Merging two 2023 slides routinely blows past that, so every slide is measured and
+# shrunk to fit: image heights first (they cost the most and lose the least), then a
+# scoped font size. Background images are free vertically and are not counted.
+BUDGET = 820
+
+
+def _cost(slide):
+    # A 2023 chunk can hold several rendered slides (marp breaks on any thematic
+    # rule), so cost the worst one rather than the sum.
+    parts = re.split(r"^-{3,}\s*$", slide, flags=re.M)
+    if len(parts) > 1:
+        return max((_cost(x) for x in parts), key=lambda t: t[0])
+    imgs = re.findall(r"!\[([^\]]*)\]\(", slide)
+    inline = [a for a in imgs if "bg" not in a.split()]
+    heights = [int(m) for m in re.findall(r"height:(\d+)px", slide)]
+    text = [l for l in slide.split("\n")
+            if l.strip() and not l.strip().startswith(("!", "#", "<", "|"))]
+    tbl = [l for l in slide.split("\n") if l.strip().startswith("|")]
+    px = sum(heights) + 34 * len(text) + 30 * len(tbl)
+    if inline and not heights:
+        px += 300 * len(inline)          # an unsized inline image renders large
+    return px, len(inline)
+
+
+def fit_slide(slide):
+    px, n_inline = _cost(slide)
+    if px <= BUDGET:
+        return slide
+    if n_inline >= 1:
+        cap = 300 if n_inline >= 2 else 420
+        slide = re.sub(r"height:(\d+)px",
+                       lambda m: f"height:{min(int(m.group(1)), cap)}px", slide)
+        # an inline image with no height at all gets one, or it fills the slide
+        # only size an image that carries NO sizing directive of its own
+        def _size(m):
+            alt = m.group(1)
+            if re.search(r"\b(bg|w:|h:|width:|height:)|\d+%", alt):
+                return m.group(0)
+            return f"![{(alt + ' ').lstrip()}height:{cap}px]("
+        slide = re.sub(r"!\[([^\]]*)\]\(", _size, slide)
+        px, _ = _cost(slide)
+    if px > BUDGET:
+        size = 24 if px < BUDGET * 1.35 else 21
+        slide = f"<style scoped>section {{ font-size: {size}px; }}</style>\n\n" + slide
+    return slide
+
+
+def merge(src, idxs, heading):
+    """Combine several 2023 chunks into ONE slide under a single heading.
+
+    The 2023 decks spread one idea over two or three slides -- a question, then its
+    figure, then a variant -- which is fine at 340 slides and wrong in a 100-minute
+    introduction. Each source heading is dropped and the bodies are concatenated in
+    order, so the images and links survive but the idea arrives once.
+    """
+    return ("MERGE", src, idxs, heading)
+
+
 MAIN = [
     (None, None, TITLE),
 
@@ -149,23 +208,27 @@ MAIN = [
     # 2. The response, on its natural axis - time relative to the event. 00[16] is the
     #    frame slide that names the four stages, so it must lead them.
     (None, None, divider("2 · Before, during, after")),
-    ("00_introduction", [16, 17, 18, 19, 20, 21, 22], None),
+    ("00_introduction", [16], None),
+    merge("00_introduction", [17, 18], "Before an earthquake"),
+    merge("00_introduction", [19, 20], "A few seconds after"),
+    ("00_introduction", [21, 22], None),
 
     # 3. What we actually record. 00[10] and 00[12] carry the same heading; [12] keeps
     #    the worked M5.1 example, so [10] is dropped rather than shown twice.
     (None, None, divider("3 · The data")),
-    ("00_introduction", [8, 9, 12], None),
+    merge("00_introduction", [8, 9], "More sensors, recording for longer"),
+    ("00_introduction", [12], None),
 
     # 4. The pipeline. 00[13] lists what gets extracted, so it opens the section and the
     #    six stages then answer it one at a time.
     (None, None, divider("4 · From waveforms to a catalogue")),
     ("00_introduction", [13], None),
-    ("03_earthquake_detection", [2, 9], None),
-    ("04_phase_picking", [7, 8], None),
+    merge("03_earthquake_detection", [2, 9], "Detect: is there an earthquake?"),
+    ("04_phase_picking", [7, 8], None),   # 04[7] is a full slide; merging overflows
     ("05_phase_association", [2], None),
-    ("06_location_and_relocation", [2, 4], None),
-    ("01_source_and_wave", [59, 60], None),
-    ("09_focal_mechanism", [2, 3], None),
+    merge("06_location_and_relocation", [2, 4], "Locate: an inverse problem"),
+    merge("01_source_and_wave", [59, 60], "Size it: magnitude"),
+    ("09_focal_mechanism", [2, 3], None),  # 09[3] alone carries five images
 
     # 5. Why the catalogue is the product. These two were previously stacked in front of
     #    the pipeline, where they were a wall of bullets about work not yet described.
@@ -174,12 +237,13 @@ MAIN = [
 
     # 6. The same pipeline, rebuilt.
     (None, None, divider("6 · What learning changed")),
-    ("03_earthquake_detection", [13, 14], None),
-    ("04_phase_picking", [9, 16, 17, 20], None),
+    merge("03_earthquake_detection", [13, 14], "Detection, learned"),
+    merge("04_phase_picking", [9, 16], "Picking is segmentation"),
+    ("04_phase_picking", [17, 20], None),
     ("05_phase_association", [5], None),
     ("02_signal_processing", [17], None),
     ("07_statistics", [39], None),
-    ("00_introduction", [25, 26], None),
+    merge("00_introduction", [25, 26], "Why machine learning"),
 
     # 7. The course's own argument.
     (None, None, divider("7 · The catch")),
@@ -375,7 +439,23 @@ def load(name):
 def main():
     cache, slides = {}, []
     dropped, thinned = [], []
-    for src, idxs, literal in PARTS:
+    for entry in PARTS:
+        if entry[0] == "MERGE":
+            _, src, idxs, heading = entry
+            if src not in cache:
+                cache[src] = load(src)
+            body_parts = []
+            for i in idxs:
+                c = fix_typos(defragment(cache[src][i].strip()))
+                c, _ = strip_dead(c)
+                # drop the chunk's own heading; the merged slide supplies one
+                c = "\n".join(l for l in c.split("\n")
+                               if not l.strip().startswith(("#", "<!-- footer")))
+                if c.strip():
+                    body_parts.append(c.strip())
+            slides.append(fit_slide(f"### {heading}\n\n" + "\n\n".join(body_parts)))
+            continue
+        src, idxs, literal = entry
         if literal is not None:
             if literal == "@@CLOSING@@":
                 literal = CLOSING.replace("@@SCHEDULE@@", schedule_table())
@@ -400,15 +480,18 @@ def main():
             if removed:
                 s = s.rstrip() + "\n\n" + FIXME
                 thinned.append(f"{src}[{i}]")
-            slides.append(s.strip())
+            slides.append(fit_slide(s.strip()))
 
 
     body = FRONT + "\n\n" + "\n\n---\n\n".join(slides) + "\n"
     OUT.write_text(body)
 
-    # restore every local asset the selected slides reference
-    refs = sorted(set(re.findall(r"\(((?:assets|codes)/[^)\s]+)\)", body)) |
-                  set(re.findall(r"!\[[^\]]*\]\((assets/[^)\s]+)\)", body)))
+    # Restore every local asset the selected slides reference. Paths appear as
+    # `assets/x.png` and `./assets/x.png`, and names with spaces arrive URL-encoded
+    # (%20), so decode before looking the file up in git and before writing it.
+    from urllib.parse import unquote
+    refs = sorted({unquote(m) for m in
+                   re.findall(r"\((?:\./)?((?:assets|codes)/[^)\s]+)\)", body)})
     missing = []
     for r in refs:
         dest = OUT.parent / r
