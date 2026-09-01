@@ -69,9 +69,7 @@ d.columns.tolist()""")
 md("""Each row is **one station's reading of one earthquake**. `amp_mm` is the amplitude a
 Wood–Anderson seismograph would have recorded, `hyp_km` the hypocentral distance, `magnitude` the
 catalogue magnitude of the event, and `station_magnitude` the magnitude the network derived from
-*this single reading*.
-
-one earthquake, seen by every station that recorded it.""")
+*this single reading*.""")
 run("""one = d[d.event_id == d.event_id.value_counts().idxmax()].sort_values("hyp_km")
 print(f"event {one.event_id.iloc[0]}  M{one.magnitude.iloc[0]}  seen by {len(one)} channels "
       f"on {one.station.nunique()} stations")
@@ -91,9 +89,7 @@ md("""## 2 · Do the amplitudes mean what you think?
 
 A Wood–Anderson seismograph has not been built in decades. "Wood–Anderson amplitude" means: take
 the real instrument's record, remove its response, and *simulate* what a Wood–Anderson would have
-drawn — a damped pendulum with T₀ = 0.8 s, damping 0.8, static gain 2080.
-
-one earthquake, one station, straight from the SCEDC archive.""")
+drawn — a damped pendulum with T₀ = 0.8 s, damping 0.8, static gain 2080.""")
 
 run("""from obspy.clients.fdsn import Client
 from obspy import UTCDateTime
@@ -125,14 +121,17 @@ t0 = UTCDateTime(str(ROW.time))
 tr = fetch(ROW.network, ROW.station, ROW.channel, t0)
 print(f"downloaded {tr.stats.npts:,} samples at {tr.stats.sampling_rate:.0f} Hz")""")
 
-run("""WOOD_ANDERSON = {"poles": [-6.2832 - 4.7124j, -6.2832 + 4.7124j],
+run("""# One zero, paired with output="VEL" below. The static magnification 2080 is the measured
+# value (Uhrhammer & Collins 1990); Richter's original 2800 is still quoted in places.
+WOOD_ANDERSON = {"poles": [-6.2832 - 4.7124j, -6.2832 + 4.7124j],
                  "zeros": [0j], "gain": 1.0, "sensitivity": 2080.0}
 
 def to_wood_anderson(trace):
     w = trace.copy()
     w.detrend("linear"); w.taper(0.05)
     w.remove_response(output="VEL", pre_filt=(0.05, 0.1, 20, 25), water_level=10)
-    w.simulate(paz_simulate=WOOD_ANDERSON, water_level=10)
+    # water_level is for deconvolution; simulate() here only convolves, so it is omitted
+    w.simulate(paz_simulate=WOOD_ANDERSON)
     return w.data * 1000.0                       # mm on the simulated pendulum
 
 def largest_swing(a, with_index=False):
@@ -261,9 +260,7 @@ This is why every amplitude-at-a-fixed-period scale saturates, each at its own s
 figure bends earlier than that, because it treats the instrument as a single frequency rather than
 a band. And it is why $M_w$ does not — it is defined from
 $M_0$ itself, $M_w = \tfrac{2}{3}\log_{10}M_0 - 6.07$ (Hanks & Kanamori 1979), so it measures the
-flat level rather than a band.
-
-the mechanism, drawn.""")
+flat level rather than a band.""")
 
 run(r"""BETA, DSIGMA = 3500.0, 3e6            # shear velocity m/s, stress drop 3 MPa
 f = np.logspace(-2, 1.5, 400)

@@ -227,6 +227,18 @@ def check(n):
             errs.append("seismology takeaways cite nobody — every one must come from a textbook or "
                         "a paper opened while building, not from synthesis")
 
+    # 8d ── orphan fragments. Three markdown cells ended in a lowercase sentence with no verb
+    # ("one earthquake, one station, straight from the SCEDC archive.") - leftovers from an
+    # earlier draft that read as build-script debris.
+    for i, cell in enumerate(mds):
+        paras = [q.strip() for q in src(cell).strip().split("\n\n") if q.strip()]
+        if not paras:
+            continue
+        last = paras[-1]
+        if last and last[0].islower() and len(last.split()) < 14 and not last.startswith(("-", "*", "$", "|", "`")):
+            warns.append(f"markdown cell {i} ends in a lowercase fragment - leftover draft text? "
+                         f"'{last[:60]}'")
+
     # 9 ── every paper named in the header must do work later, not decorate the intro
     header = "".join(s_cells[0]["source"]) if s_cells else ""
     dois = set(re.findall(r"10\.\d{4,9}/[^\s`\)]+", header))
