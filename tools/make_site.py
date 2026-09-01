@@ -72,16 +72,12 @@ the machine-learning methods the field now uses for each.
 {chr(10).join(rows)}
 | {PRESENT:%b %-d} | Final project presentations | |
 
-**Notebook links open on [Berkeley DataHub](https://datahub.berkeley.edu)** — they pull the repo
-into your account and open the file, so there is nothing to install. Read-only renderings are in
-the sidebar. Notebooks appear the week before their session.
-
 ## Assessment
 
 | | |
 |---|---|
 | Participation | 50% — the notebooks are worked in the room, not watched |
-| Project | 50% — proposal 10%, presentation 20%, report 20% |
+| Project | 50% — presentation 20%, report 20% |
 
 There are no problem sets. The project is yours to choose; a region or dataset of your own works
 best, and the proposal is due in week 5.
