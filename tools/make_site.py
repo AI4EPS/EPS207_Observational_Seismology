@@ -49,7 +49,7 @@ for f in sorted(nb_dir.glob("*.ipynb")):
     if m:
         built[int(m.group(1))] = f"docs/notebooks/{f.name}"
 
-rows = [f"| {FIRST:%b %-d} | Introduction | [Slides]({INTRO_SLIDES}) |"]
+rows = [f"| {FIRST:%b %-d} | [Introduction]({INTRO_SLIDES}) | |"]
 for (k, t), d in zip(sorted(topics.items()), DATES):
     title = t["title"]
     link = f"[{title}]({datahub(built[k])})" if k in built else title
