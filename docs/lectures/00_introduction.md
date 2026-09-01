@@ -6,11 +6,14 @@ backgroundColor: #fff
 style: |
   section {
     font-size: 28px;
+    /* gaia stacks content from the top, which leaves the bottom third of almost every
+       slide empty. Centre it vertically and let the heading stay put. */
+    justify-content: center;
   }
-  /* The 2023 decks mix slides authored for 16:9 and 16:12 and several set an explicit
-     image height that overflows the frame. Cap images so a slide cannot run off. */
+  /* Last-resort cap only. fit_slide() sizes figures per slide, so this must sit ABOVE
+     the heights it assigns (520px = 72vh) or it silently shrinks every figure. */
   section img {
-    max-height: 62vh;
+    max-height: 78vh;
     object-fit: contain;
   }
   img + br + em {
@@ -29,12 +32,6 @@ Weiqiang Zhu · Tuesdays 9:00-10:59 · McCone 325
 
 ---
 
-<!-- _class: lead -->
-
-# 1 · Earthquakes
-
----
-
 ### Large destructive earthquakes
 
 | Year | Magnitude | MMI |  Deaths | Injuries |                Event               |
@@ -49,24 +46,18 @@ Weiqiang Zhu · Tuesdays 9:00-10:59 · McCone 325
 
 [History](https://seismo.berkeley.edu/hayward/hayward_history.html)
 
-![height:520px](https://seismo.berkeley.edu/hayward/goole_earth_hayward_fault.jpg)
+![height:470px](https://seismo.berkeley.edu/hayward/goole_earth_hayward_fault.jpg)
 
 ---
 
 ### [The California Memorial Stadium](https://pressbooks.pub/haywardfaultucberkeley/chapter/the-california-memorial-stadium/)
 
-![height:520px](https://upload.wikimedia.org/wikipedia/commons/a/a3/Berkeley_stadium_fault_creep_P1320489.jpg)
+![height:470px](https://upload.wikimedia.org/wikipedia/commons/a/a3/Berkeley_stadium_fault_creep_P1320489.jpg)
 
 ---
 
 ### An estimated magnitude of 6.3 or greater. 
-![height:520px](https://seismo.berkeley.edu/hayward/hf_history.jpg)
-
----
-
-<!-- _class: lead -->
-
-# 2 · Before, during, after
+![height:470px](https://seismo.berkeley.edu/hayward/hf_history.jpg)
 
 ---
 
@@ -141,12 +132,6 @@ p { margin: 0.3em 0; }
 
 ---
 
-<!-- _class: lead -->
-
-# 3 · The data
-
----
-
 <style scoped>
 section { font-size: 23px; }
 section { column-count: 2; column-gap: 2.5rem; }
@@ -166,13 +151,7 @@ p { margin: 0.3em 0; }
 ### What information can we get from seismic data?
 
 - Take a look at a recent earthquake: [M 5.1 - 7 km SE of Ojai, CA](https://earthquake.usgs.gov/earthquakes/eventpage/ci39645386/executive)
-![height:520px](assets/M5.1.png)
-
----
-
-<!-- _class: lead -->
-
-# 4 · From waveforms to a catalogue
+![height:470px](assets/M5.1.png)
 
 ---
 
@@ -272,7 +251,7 @@ $X$: the epicentral distance
 
 ----
 
-### Richter Magnitude (Local magnitude $M_L$)
+### Richter magnitude: the empirical formula
 
 An approximate empirical formula has been derived for $\log_{10} A_0(X)$ at different ranges. 
 The local magnitude can be calculated by
@@ -315,12 +294,6 @@ where $A(X)$ is the displacement amplitude in microns (10$^{-6}$ m) and X is in 
 
 ---
 
-<!-- _class: lead -->
-
-# 5 · What a catalogue is for
-
----
-
 ### What can we learn from millions of earthquakes?
 
 - Earthquake catalog
@@ -342,31 +315,11 @@ where $A(X)$ is the displacement amplitude in microns (10$^{-6}$ m) and X is in 
 
 ---
 
-<!-- _class: lead -->
-
-# 6 · What learning changed
-
----
-
-<style scoped>
-section { font-size: 23px; }
-section { column-count: 2; column-gap: 2.5rem; }
-h3 { column-span: all; }
-p { margin: 0.3em 0; }
-</style>
-
-### Detect, learned
+### Detection, learned
 
 - Generalized similarity search
 
-![width:460px](./assets/Screenshot%202023-09-24%20at%2023.39.39.png)
-
-![w:460](https://www.science.org/cms/10.1126/sciadv.1700578/asset/06ce7224-a642-4b78-9ba5-d854cc8baf88/assets/graphic/1700578-f2.jpeg)
-
-
---- 
-
-![w:460](./assets/cread.jpeg)
+![width:1100px](./assets/Screenshot%202023-09-24%20at%2023.39.39.png)
 
 ---
 
@@ -393,13 +346,13 @@ p { margin: 0.3em 0; }
 
 ### EQTransformer for simultaneous earthquake detection and phase picking
 
-![height:520px](./assets/eqtransformer.jpg)
+![height:470px](./assets/eqtransformer.jpg)
 
 ---
 
 ### Next-Generation Seismic Monitoring with Neural Operators (PhaseNO)
 
-![height:520px](./assets/phaseno.png)
+![height:470px](./assets/phaseno.png)
 
 ---
 
@@ -427,7 +380,7 @@ p { margin: 0.3em 0; }
 
 ### Deep learning for earthquake statistics
 
-![h:450 height:520px](https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41586-018-0438-y/MediaObjects/41586_2018_438_Fig1_HTML.png?as=webp)
+![h:450 height:470px](https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41586-018-0438-y/MediaObjects/41586_2018_438_Fig1_HTML.png?as=webp)
 
 <!-- _footer: "Deep learning of aftershock patterns following large earthquakes, Devries et al. 2018" -->
 
@@ -437,13 +390,11 @@ p { margin: 0.3em 0; }
 
 ![width:700px](./assets/dataset.png)
 
-*Missing figure: [Zhu & Beroza (2018), PhaseNet, GJI](https://doi.org/10.1093/gji/ggy423)*
-
 <!-- FIXME: figure lost to an expired CDN link; paste a screenshot here -->
 
 ---
 
-### Deep learning
+### What deep learning costs
 
 - Pros:
     - Robust to noise
@@ -453,12 +404,6 @@ p { margin: 0.3em 0; }
     - Need large amount of labeled data
     - Black box
     - Generalization ability
-
----
-
-<!-- _class: lead -->
-
-# 7 · This course
 
 ---
 
@@ -622,7 +567,7 @@ The units for $M_0$ are N$\cdot$m (or dyne$\cdot$cm), the same as for force coup
 
 [Global Centroid Moment Tensor](https://www.globalcmt.org/)
 
-![height:520px](https://raw.githubusercontent.com/zhuwq0/images/main/20250319214231.png)
+![height:470px](https://raw.githubusercontent.com/zhuwq0/images/main/20250319214231.png)
 
 ---
 
@@ -637,19 +582,19 @@ The units for $M_0$ are N$\cdot$m (or dyne$\cdot$cm), the same as for force coup
 
 ### Review: Basic types of faulting
 
-![height:520px](https://raw.githubusercontent.com/zhuwq0/images/main/202503302341109.png)
+![height:470px](https://raw.githubusercontent.com/zhuwq0/images/main/202503302341109.png)
 
 ---
 
 ### Basic types of faulting
 
-![20250330233905 height:520px](https://raw.githubusercontent.com/zhuwq0/images/main/20250330233905.png)
+![20250330233905 height:470px](https://raw.githubusercontent.com/zhuwq0/images/main/20250330233905.png)
 
 ---
 
 ### First-motion polarity
 
-![20250330234223 height:520px](https://raw.githubusercontent.com/zhuwq0/images/main/20250330234223.png)
+![20250330234223 height:470px](https://raw.githubusercontent.com/zhuwq0/images/main/20250330234223.png)
 
 ---
 
@@ -720,7 +665,7 @@ where is the moment measured in N-m.
 
 ### Magnitude as a function of moment
 
-![20250402234333 height:520px](https://raw.githubusercontent.com/zhuwq0/images/main/20250402234333.png)
+![20250402234333 height:470px](https://raw.githubusercontent.com/zhuwq0/images/main/20250402234333.png)
 
 [USGS Magnitude Types](https://www.usgs.gov/programs/earthquake-hazards/magnitude-types); [Latest earthquake](https://earthquake.usgs.gov/earthquakes/eventpage/us7000pn9s/origin/magnitude)
 
@@ -887,7 +832,7 @@ $$
 ### STA/LTA
 
 
-![height:520px](https://docs.obspy.org/_images/trigger_tutorial_classic_sta_lta.png)
+![height:470px](https://docs.obspy.org/_images/trigger_tutorial_classic_sta_lta.png)
 
 ---
 
@@ -973,7 +918,7 @@ p {
 
 ### Seismic phases
 
-![height:520px](http://ds.iris.edu/media/product/globalstacks/images/TraceProcessing2.png)
+![height:470px](http://ds.iris.edu/media/product/globalstacks/images/TraceProcessing2.png)
 
 ---
 
@@ -993,32 +938,16 @@ Try the SAM model: [link](https://segment-anything.com/demo)
 
 ---
 
-### Grid-search / Back-projection, e.g. REAL
-
-*Missing figure: [Zhang, Ellsworth & Beroza (2019), Rapid Earthquake Association and Location, SRL](https://doi.org/10.1785/0220190052)*
-
-<!-- FIXME: figure lost to an expired CDN link; paste a screenshot here -->
-
----
-
-### Graph-Neural-Network-based, e.g. GENIE
-
-*Missing figure: [McBrearty & Beroza (2023), Earthquake Phase Association with Graph Neural Networks, BSSA](https://doi.org/10.1785/0120220182)*
-
-<!-- FIXME: figure lost to an expired CDN link; paste a screenshot here -->
-
----
-
 ### K-means
 
-![height:520px](https://sandipanweb.files.wordpress.com/2016/08/k3.gif?w=676)
+![height:470px](https://sandipanweb.files.wordpress.com/2016/08/k3.gif?w=676)
 
 ---
 
 ### Gaussian Mixture Model (GMM)
 
 
-![height:520px](https://raw.githubusercontent.com/wayneweiqiang/GaMMA/master/docs/assets/diagram_gamma_annotated.png)
+![height:470px](https://raw.githubusercontent.com/wayneweiqiang/GaMMA/master/docs/assets/diagram_gamma_annotated.png)
 
 <!-- FIXME: figure lost to an expired CDN link; paste a screenshot here -->
 
@@ -1222,7 +1151,7 @@ Then we can use the estimated $\sigma^i$ to calculate the $\chi^2$ value; then o
 
 Case: Earthquakes located along a fault will often be mislocated if the seismic velocity changes across the fault.
 
-![20250317220051 height:520px](https://raw.githubusercontent.com/zhuwq0/images/main/20250317220051.png)
+![20250317220051 height:470px](https://raw.githubusercontent.com/zhuwq0/images/main/20250317220051.png)
 
 ---
 
@@ -1268,7 +1197,7 @@ where $t_k^i$ and $\hat{t}_k^i$ are the observed and predicted arrival times at 
 
 ### [GrowClust: A Hierarchical Clustering Algorithm for Relative Earthquake Relocation](https://github.com/dttrugman/GrowClust)
 
-![height:520px](./assets/Screenshot%202023-10-08%20at%2022.01.21.png)
+![height:470px](./assets/Screenshot%202023-10-08%20at%2022.01.21.png)
 
 Review: [clusering](https://ai4eps.github.io/EPS207_Observational_Seismology/lectures/05_phase_association.html#6)
 
@@ -1397,14 +1326,14 @@ Where:
 ---
 
 ### The Gutenberg-Richter Law
-![h:500 height:520px](./assets/Ross2019.png)
+![h:500 height:470px](./assets/Ross2019.png)
 <!-- _footer: (Ross et al. 2019) -->
 
 ---
 
 ### What controls the slope $b$?
 
-![h:500 height:520px](./assets/Scholz1968.png)
+![h:500 height:470px](./assets/Scholz1968.png)
 <!-- _footer: (Scholz 1968) -->
 
 ---
@@ -1492,7 +1421,7 @@ $$
 
 ### The Epidemic Type Aftershock Sequence (ETAS) model
 
-![h:500px height:520px](https://raw.githubusercontent.com/zhuwq0/images/main/20250407180110.png)
+![h:500px height:470px](https://raw.githubusercontent.com/zhuwq0/images/main/20250407180110.png)
 
 
 <!-- _footer: "" -->

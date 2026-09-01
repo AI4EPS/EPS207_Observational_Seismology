@@ -38,11 +38,14 @@ backgroundColor: #fff
 style: |
   section {
     font-size: 28px;
+    /* gaia stacks content from the top, which leaves the bottom third of almost every
+       slide empty. Centre it vertically and let the heading stay put. */
+    justify-content: center;
   }
-  /* The 2023 decks mix slides authored for 16:9 and 16:12 and several set an explicit
-     image height that overflows the frame. Cap images so a slide cannot run off. */
+  /* Last-resort cap only. fit_slide() sizes figures per slide, so this must sit ABOVE
+     the heights it assigns (520px = 72vh) or it silently shrinks every figure. */
   section img {
-    max-height: 62vh;
+    max-height: 78vh;
     object-fit: contain;
   }
   img + br + em {
@@ -137,14 +140,18 @@ def two_pane(slide):
     text = [l for l in slide.split("\n")
             if l.strip() and not l.strip().startswith(("!", "#", "<", "$"))]
     if len(text) < 2:
-        # The figure IS the slide. Let it fill the frame instead of sitting small
-        # in the top-left corner with the rest of the slide empty.
+        # The figure IS the slide: give it whatever height is actually left after the
+        # heading and any stray line, rather than a fixed 520 that overflows.
         if re.search(r"\b(width:|w:)\d+", slide):
             return slide                       # the author already sized it
+        # 720px canvas, ~40px padding top and bottom, ~95px heading, ~40px per text line
+        avail = 720 - 80 - 95 - 40 * len(text) - 20
+        avail = max(220, min(avail, 470))
         if re.search(r"height:\d+px", slide):
-            return re.sub(r"height:\d+px", "height:520px", slide)
+            return re.sub(r"height:\d+px", f"height:{avail}px", slide)
         return re.sub(r"!\[([^\]]*)\]\(",
-                      lambda m: f"![{(m.group(1) + ' ').lstrip()}height:520px](", slide, count=1)
+                      lambda m: f"![{(m.group(1) + ' ').lstrip()}height:{avail}px](",
+                      slide, count=1)
     return re.sub(r"!\[([^\]]*)\]\(", "![bg right:47% contain](", slide, count=1)
 
 
@@ -196,12 +203,10 @@ MAIN = [
     (None, None, TITLE),
 
     # 1. Concrete and local first: what an earthquake does, and the fault under campus.
-    (None, None, divider("1 · Earthquakes")),
     ("00_introduction", [2, 3, 4, 5], None),
 
     # 2. The response, on its natural axis - time relative to the event. 00[16] is the
     #    frame slide that names the four stages, so it must lead them.
-    (None, None, divider("2 · Before, during, after")),
     ("00_introduction", [16], None),
     merge("00_introduction", [17, 18], "Before an earthquake"),
     merge("00_introduction", [19, 20], "A few seconds after"),
@@ -209,13 +214,11 @@ MAIN = [
 
     # 3. What we actually record. 00[10] and 00[12] carry the same heading; [12] keeps
     #    the worked M5.1 example, so [10] is dropped rather than shown twice.
-    (None, None, divider("3 · The data")),
     merge("00_introduction", [8, 9], "More sensors, recording for longer"),
     ("00_introduction", [12], None),
 
     # 4. The pipeline. 00[13] lists what gets extracted, so it opens the section and the
     #    six stages then answer it one at a time.
-    (None, None, divider("4 · From waveforms to a catalogue")),
     ("00_introduction", [13], None),
     merge("03_earthquake_detection", [2, 9], "Detect: is there an earthquake?"),
     ("04_phase_picking", [7, 8], None),   # 04[7] is a full slide; merging overflows
@@ -226,15 +229,13 @@ MAIN = [
 
     # 5. Why the catalogue is the product. These two were previously stacked in front of
     #    the pipeline, where they were a wall of bullets about work not yet described.
-    (None, None, divider("5 · What a catalogue is for")),
     ("00_introduction", [14, 15], None),
 
     # 6. The same pipeline, rebuilt.
-    (None, None, divider("6 · What learning changed")),
     # Same six stages as section 4, in the same order, so the replacement is visible
     # one-to-one. Then the progression PhaseNet -> EQTransformer -> PhaseNO, and a close
     # on what it cost rather than on what it promised.
-    merge("03_earthquake_detection", [13, 14], "Detect, learned"),
+    ("03_earthquake_detection", [13], None),   # [14]'s science.org figure is paywalled: blank slide
     merge("04_phase_picking", [9, 16], "Pick: it is a segmentation problem"),
     ("04_phase_picking", [17, 18, 19], None),          # PhaseNet -> EQTransformer -> PhaseNO
     ("05_phase_association", [5], None),               # associate: GaMMA
@@ -243,7 +244,6 @@ MAIN = [
     ("04_phase_picking", [20], None),                  # what made it work
     ("03_earthquake_detection", [15], None),           # and what it costs
 
-    (None, None, divider("7 · This course")),
     ("00_introduction", [24], None),
 ]
 
@@ -358,8 +358,7 @@ def cite_from_url(line):
         return None
     doi = m.group(1).replace("_", "/")
     title = TITLES.get(doi)
-    return (f"*Missing figure: [{title or doi}](https://doi.org/{doi})*"
-            if title else None)
+    return None   # a dangling citation reads as the caption of whatever survived
 
 
 def strip_dead(slide):
@@ -384,6 +383,17 @@ def strip_dead(slide):
 
 # Typos carried over from the 2023 decks. Fixed here rather than on the fall2023
 # branch, which is an archive and stays as it was delivered.
+RENAME = {
+    # two 2023 slides share the title "Deep learning"; say what each one is about
+    "### Deep learning\n\n- Generalized similarity search":
+        "### Detection, learned\n\n- Generalized similarity search",
+    "### Deep learning\n\n- Pros:":
+        "### What deep learning costs\n\n- Pros:",
+    # 01[60] renders as two slides that carried the same title in 2023
+    "### Richter Magnitude (Local magnitude $M_L$)\n\nAn approximate empirical formula":
+        "### Richter magnitude: the empirical formula\n\nAn approximate empirical formula",
+}
+
 TYPOS = {
     "Earthquake monitoring and earthquake rick?": "Earthquake monitoring and earthquake risk?",
     "How are information extracted/determined?": "How is information extracted?",
@@ -403,6 +413,8 @@ TYPOS = {
 
 
 def fix_typos(slide):
+    for wrong, right in RENAME.items():
+        slide = slide.replace(wrong, right)
     for wrong, right in TYPOS.items():
         slide = slide.replace(wrong, right)
     return slide
@@ -453,7 +465,13 @@ def main():
                 cache[src] = load(src)
             body_parts = []
             for i in idxs:
-                c = localise_directives(fix_typos(defragment(cache[src][i].strip())))
+                raw = cache[src][i].strip()
+                if re.search(r"^-{3,}\s*$", raw, flags=re.M):
+                    raise SystemExit(
+                        f"cannot merge {src}[{i}]: it already contains a slide break, so "
+                        f"merging produces a broken pair (a headless slide with a stray "
+                        f"figure). Select it as a plain slide instead.")
+                c = localise_directives(fix_typos(defragment(raw)))
                 c, _ = strip_dead(c)
                 # drop the chunk's own heading; the merged slide supplies one
                 c = "\n".join(l for l in c.split("\n")
