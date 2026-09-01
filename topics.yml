@@ -1,0 +1,216 @@
+# EPS 207 Fall 2026 — the fourteen topics.
+#
+# One entry per topic. `papers` holds AT MOST TWO we follow: one origin, one state of the art.
+# Anything else is a number to compare against or a fact, not an anchor.
+# `concepts` is capped at three: the ML a student must leave able to use.
+# `scale` is filled by RECON, not by hand. A topic with no `finding` has no session in it.
+
+meeting: "Tuesdays 9:00–10:59, McCone 325 · 14 sessions Sep 1 – Dec 1 · presentations Dec 8 (RRR)"
+grading: "participation 50%, project 50% (proposal 10 / presentation 20 / report 20)"
+platform: "Google Colab + Berkeley DataHub. NO gs:// — both quakeflow buckets are private (403 anon).
+           Public routes only: USGS/IRIS FDSN, HuggingFace, GitHub release assets."
+delivery: "live in the room, ~100 teaching minutes, notebook worked not watched"
+
+topics:
+  - n: 1
+    slug: regression_uncertainty
+    title: "Regression & uncertainty"
+    question: "How do you turn an amplitude into a magnitude - and how well do you know the answer?"
+    papers:
+      origin: "Richter 1935, BSSA, 10.1785/bssa0250010001 (invented magnitude; it is a regression)"
+      sota:   "Hutton & Boore 1987, BSSA, 10.1785/bssa0770062074 (the curve still used; what you fit against)"
+    concepts: ["least squares as MLE and the normal equations", "confidence vs prediction interval", "ridge as MAP under a Gaussian prior"]
+    baseline: "least squares on the cumulative FMD, then Aki MLE for the b-value"
+    finding: "Wood-Anderson amplitude is a CONVENTION: zero-to-peak reproduces modern SCEDC AML
+              (median ratio 0.989 over 8 broadband channels) while Hutton & Boore's own definition
+              (half peak-to-peak of the largest single S swing) sits 0.036 magnitude units away --
+              SoCal recomputed ML in 2008 under Uhrhammer+ 2011. M_L is CIRCULAR w.r.t. this regression
+              (regressing on station magnitude returns c1=1.0037, c2=-1.1050). Site terms carry 51% of
+              total scatter. M_L saturates because amplitude ~ M0^(1/3) above fc (slope ratio 2.9 vs 3)."
+    scale: "20,000 readings preserve every lesson; the PI/CI ratio scales as sqrt(n). BUILT: 46 cells,
+            27 code, 10 figures, 3 exercises, 0 errors. Strong-motion channels do NOT reproduce (0.24) --
+            broadband only, cause unresolved."
+    risk: "built and executed"
+
+  - n: 2
+    slug: classification
+    title: "Classification — logistic, SVM, XGBoost"
+    question: "Where do aftershocks occur — and what was the deep model actually buying?"
+    papers:
+      origin: "DeVries, Viégas, Wattenberg & Meade 2018, Nature, 10.1038/s41586-018-0438-y"
+      sota:   "Mignan & Broccardo 2019, Nature, 10.1038/s41586-019-1582-8 (one neuron matches it)"
+    concepts: [model capacity vs evidence, the metric is the question, decision boundary = what the model class can express]
+    baseline: "logistic regression on the same features — the necessity test"
+    data_hint: "DeVries stress-change features + Mignan's reproduction code. NOT in quakeflow. LOCATE FIRST."
+    risk: "highest — the only topic whose data is not already in hand"
+
+    finding: "logistic regression (13 params) AUC 0.8310; the published deep net (13,451 params) 0.8486
+              (matches DeVries reported 0.849); MAX SHEAR STRESS CHANGE, zero fitted parameters, 0.8474
+              -- 0.0012 below the deep net. Coulomb failure stress 0.4767, worse than a coin.
+              The deep net advantage does not clear its own uncertainty on any subset tried."
+    scale: "public, 11 s download, reproduces on CPU in under a minute. RISK RETIRED."
+  - n: 3
+    slug: bias_variance
+    title: "Bias & variance, boosting, cross-validation"
+    question: "How far does a hypocentre move when relocated — predicted from network geometry alone?"
+    papers:
+      origin: "Waldhauser & Ellsworth 2000, BSSA, 10.1785/0120000006 (HypoDD) — ALSO topic 13's origin"
+      sota:   "Trugman & Shearer 2017, SRL, 10.1785/0220160188 (GrowClust) — produced the target column"
+    finding: "random 5-fold R2 0.198 vs spatial-cluster 0.025; gap 0.172 [0.141, 0.208] = 87% of apparent skill.
+              Reported depthError is factor 1.94 optimistic and WORST where most confident (2.71x best decile);
+              65% of events move further than their own reported error where ~32% should."
+    scale: "n=2000 clears zero; ship the full join, 6.96 MB gz. OMP_NUM_THREADS=1 or 80x slower.
+            CAVEAT: at class scale the model is worse than the mean -- it measures optimism, not skill."
+    concepts: [bias-variance decomposition, CV design must respect data structure (leakage), regularization as a family]
+    baseline: "predict the mean; then a random split against a spatial-cluster split"
+    data_hint: "target = depth change between a routine and a relocated catalogue; features = azimuthal gap,
+                station distances, N stations, rms residual, error ellipse. USGS ComCat carries all of these."
+
+  - n: 4
+    slug: clustering
+    title: "Clustering, mixture models, EM"
+    question: "Can you see the faults in the catalogue — and do they survive a change of k?"
+    papers:
+      origin: "Ouillon & Sornette 2011, JGR, 10.1029/2010JB007752 (3-D Gaussian mixture of fault planes by EM)"
+      sota:   "Ross, Cochran, Trugman & Smith 2020, Science, 10.1126/science.abb0779"
+    finding: "three label-free criteria disagree on the SAME cloud: k=2 (silhouette), k=3 (gap 1-SE),
+              no k at all (BIC falling at k=300); DBSCAN spans 12 to 2321 clusters.
+              k-means recovers ZERO planar clusters at every k -- Voronoi cells are isotropic.
+              NO FINDING on planes matching mapped faults: survives at one DBSCAN setting, no GMM setting."
+    scale: "box A at M>=0.5, n=22,113, 0.41 MB. Whole-cloud PCA is a trap: finds the seismogenic layer, dip 8.3."
+    concepts: [latent variables, EM as alternating optimization (and local optima), model selection without labels]
+    baseline: "k-means at fixed k, then GMM and DBSCAN; recovered planes vs mapped surface traces"
+    data_hint: "a dense relocated catalogue as a 3-D point cloud. Ridgecrest or SCEDC QTM."
+
+  - n: 5
+    slug: nn_classification
+    title: "Neural networks: classification"
+    question: "Earthquake or quarry blast — did the model read the waveform or the depth column?"
+    papers:
+      origin: "Musil & Plesinger 1996, BSSA, 10.1785/bssa0860041077 (MLP + Kohonen on spectral features)"
+      sota:   "Linville, Pankow & Draelos 2019, GRL, 10.1029/2018GL081119"
+    concepts: ["making a network train (LR, init, spotting overfitting)", "the loss encodes what you care about", "shortcut learning and ablation"]
+    baseline: "majority class -> a depth threshold -> XGBoost on catalogue features"
+    data_hint: "NCEDC catalogue event_type = quarry_blast/sonic_boom/thunder/long_period. MEASURED: 16,069 blasts,
+                1.438% (1984-2026) / 0.777% (2005-2026); 94.1% at NEGATIVE depth. Public via NCEDC FDSN.
+                Tokens are quarry_blast (underscore) and lp (not long_period); FDSN caps at 10,000 rows silently.
+                xgboost + torch in one process SEGFAULTS on arm64 -- split the notebook."
+
+    finding: "at true prevalence (0.777%) depth<0 gets 94.7% recall at 9.2% PRECISION -- 36,000 false
+              positives against 865 blasts; majority class is 99.566% accurate having never found a blast.
+              Shortcut caught in one number: ablate depth, keep location -> AUC 0.989 random split,
+              0.322 SITE split (worse than a coin). Station-balanced + magnitude-matched + sites held out:
+              waveforms 0.858 [0.827,0.887] vs metadata 0.407 [0.367,0.455]. CNN beats hand features on the
+              site split (0.922 vs 0.887, non-overlapping) -- an honest counterpoint to topic 2."
+    scale: "~13 MB, 200 events/class recovers 97% of full AUC, CNN 93 s on CPU. CAVEAT: the waveform track
+            is 1:1 by construction while the shortcut track runs at 0.777% -- two priors, say it aloud."
+  - n: 6
+    slug: nn_segmentation
+    title: "Neural networks: segmentation"
+    question: "How many earthquakes are we missing — and does the 0.5 threshold mean anything?"
+    papers:
+      origin: "Allen 1978, BSSA, 10.1785/bssa0680051521 (single-trace detection AND timing;
+               its own claim, 0.05 s for ~70% of events, is the benchmark PhaseNet is measured against)"
+      sota:   "Zhu & Beroza 2018, GJI, 10.1093/gji/ggy423 (PhaseNet)"
+    concepts: [architecture as inductive bias, label construction is where the science enters, calibration]
+    baseline: "STA/LTA on the same continuous data; new Mc against the regional catalogue"
+    data_hint: "SeisBench pretrained PhaseNet + Colab notebooks. Split picks BY EVENT.
+                USE 2 HOURS, not 1: at 1 h the delta-M50 interval straddles zero. ~30 MB total, no GPU.
+                Teach leakage from Iquique METADATA (2.7 MB, 100% event-level leak), not from training."
+
+    finding: "PhaseNet + a ten-line associator on 7 stations beats STA/LTA network coincidence at matched
+              detection count (delta-M50 +0.396 [0.266,0.537]) AND beats the operational SCEDC catalogue
+              built from the whole network. All gain is below M1. Calibration fails usefully: ECE 0.409,
+              a 0.97 pick right 64% of the time, and the miscalibration is a property of the TRAINING SET
+              not the architecture (original 0.409 / scedc 0.072 / stead 0.243). Library default is 0.3.
+              Three incompatible label widths in circulation (0.06 / 0.10 / 0.30 s): timing MAE +79%
+              across that range WHILE confidence rises. NO FINDING on the from-scratch split experiment."
+    scale: "2 hours x 7 stations, ~30 MB, 34 s inference, no GPU. At 1 h the delta-M50 interval
+            straddles zero. Teach leakage from Iquique METADATA: 407/407 events span splits, 2.7 MB."
+  - n: 7
+    slug: nn_detection
+    title: "Neural networks: object detection (DAS)"
+    question: "Ten labelled events on a fiber — how do you get a picker?"
+    papers: {origin: TBD, sota: "Zhu, Biondi, Li, Yin, Ross & Zhan 2023, Nat Commun, 10.1038/s41467-023-43355-3"}
+    concepts: [transfer learning and fine-tuning, domain shift, pseudo-labelling and self-training]
+    baseline: "the station-trained model applied naively to DAS; picks vs the co-located network"
+    data_hint: "HuggingFace AI4EPS/quakeflow_das (public). DAS workshop labs 2a/2c/2d. GPU on Colab."
+
+  - n: 8
+    slug: transformers
+    title: "Transformers, attention & masked modelling"
+    question: "One masked model, three ground-motion tasks — what does the masking choice decide?"
+    papers: {origin: TBD, sota: "QuakeFormer, AI4EPS/QuakeFormer, arXiv:2412.00815"}
+    concepts: [attention as learned input-dependent weighting, permutation invariance (stations are a set), masked modelling as task definition]
+    baseline: "the non-ergodic GMM shipped in quakeformer/ngmm_tool/"
+    data_hint: "released checkpoints + worked event nc73827571. CHECKPOINTS ARE ON GOOGLE DRIVE — mirror them."
+
+  - n: 9
+    slug: similarity
+    title: "Embeddings & similarity search"
+    question: "What is still missing after the picker — and at whose correlation threshold?"
+    papers: {origin: TBD, sota: "Ross, Trugman, Hauksson & Shearer 2019, Science, 10.1126/science.aaw6888 (QTM)"}
+    concepts: [similarity is an inner product in a representation, learned embeddings generalise it, the detection/false-alarm trade]
+    baseline: "the picker's own catalogue. Same operation on noise gives ambient-noise interferometry."
+    data_hint: "CCTorch. Template matching needs GPU; check Colab feasibility."
+
+  - n: 10
+    slug: vae
+    title: "Generative models: train a VAE"
+    question: "What has the latent space learned — source, path, or site?"
+    papers: {origin: TBD, sota: TBD}
+    concepts: [latent-variable generative model, the reparameterisation trick, the KL term as a prior on the latent]
+    baseline: "a plain autoencoder, same architecture, no KL term — what does the probabilistic part buy?"
+    data_hint: "waveforms from a public set. Built from scratch in PyTorch — no external repo. STATE the ELBO, do not derive it."
+
+  - n: 11
+    slug: denoising
+    title: "Denoising"
+    question: "Does denoising actually help downstream, or only look better?"
+    papers: {origin: TBD, sota: "Zhu, Mousavi & Beroza 2019, IEEE TGRS, 10.1109/TGRS.2019.2926772 (DeepDenoiser)"}
+    concepts: [learning a mapping vs learning a prior, self-supervised denoising with no clean target, evaluate downstream not on reconstruction error]
+    baseline: "a bandpass filter — then judge both on picks and magnitudes, not on appearance"
+    data_hint: "SeisBench 02b_deep_denoiser + 03e_training_denoiser are Colab-ready."
+
+  - n: 12
+    slug: inversion_linear
+    title: "Inversion I — the linear case: moment tensor & focal mechanism"
+    question: "First motions constrain the double couple, waveforms the full tensor — they disagree. Which do you believe?"
+    papers: {origin: TBD, sota: "Li, Zhu, Biondi & Zhan 2023, Nat Commun, 10.1038/s41467-023-39639-3"}
+    concepts: [d = Gm as a matrix, the null space from the SVD, damping as a prior (the week-1 penalty again)]
+    baseline: "first-motion mechanisms vs the catalogue's moment tensors"
+    data_hint: "USGS ComCat carries 56,447 focal mechanisms and 54,169 moment tensors (1970-2021, public via FDSN
+                event service with includeallmagnitudes). The repo's 78-cell MT notebook is the richest existing material."
+
+  - n: 13
+    slug: inversion_nonlinear
+    title: "Inversion II — the non-linear case: location, relocation and the posterior"
+    question: "Where was it — and does the formal error ellipse mean what it says?"
+    papers: {origin: "Waldhauser & Ellsworth 2000, BSSA, 10.1785/0120000006 (HypoDD)",
+             sota:   "Smith, Ross, Azizzadenesheli & Muir 2021, GJI, 10.1093/gji/ggab309 (HypoSVI)"}
+    concepts: ["linearisation and iteration (Gauss-Newton, the Jacobian)", "parameter trade-offs (depth vs origin time)", "from a point estimate to a posterior"]
+    baseline: "catalogue location -> relocated events vs mapped fault traces; formal ellipse vs repeater scatter"
+    data_hint: "picks + station geometry from FDSN. This is where week 1's collinearity returns."
+
+  - n: 14
+    slug: inversion_fields
+    title: "Inversion III — estimating a field: regularisation, and physics instead of it"
+    question: "What is resolved — and can the physics do the regularising for you?"
+    papers:
+      origin: "Aki & Lee 1976, JGR, 10.1029/JB081i023p04381 (damped least-squares block inversion)"
+      sota:   "Smith, Azizzadenesheli & Ross, EikoNet, 10.1109/TGRS.2020.3039165 -- cite as 2021,
+               TGRS 59(12) 10685-10696; 2020 is the preprint year"
+    concepts: [ill-posedness, resolution analysis (checkerboard and spike tests), physics as the prior]
+    baseline: "a published tomographic model; resolution tests before any interpretation"
+    data_hint: "ZERO download, ZERO install: straight-ray tomography in stock numpy/scipy.
+                EikoNet RUNS after deleting 2 lines from setup.py (numpy.distutils), BUT it is a FORWARD
+                solver and cannot carry 'physics as the prior' -- it never estimates a field from data.
+                Use a PDE-residual PINN tomography for the contrast; EikoNet is a 10-min existence proof."
+    finding: "recovered amplitude falls 0.796 -> 0.547 from lambda=1 to 10 while checkerboard correlation
+              barely moves (0.921 -> 0.856): the number you would interpret off a tomogram is set by the
+              regularisation weight and the resolution test does not notice. At the lambda where the
+              checkerboard passes, a spike keeps only 9.5% of its energy within 5 km. A PDE-residual PINN
+              reaches 0.446 +/- 0.031 in 229 s vs 0.796 +/- 0.005 in 65 ms -- the physics prior is still a
+              prior, with its own lambda."
+    scale: "ZERO download, ZERO install. Full 180-inversion lambda sweep in 11.6 s. Lesson survives to
+            90 picks on a 15x15 grid; dies at 40. Rescale lambda with grid spacing."

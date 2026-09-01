@@ -1,4 +1,43 @@
-# EPS 207 · Laboratory in Observational Seismology
+#!/usr/bin/env python
+"""Generate docs/README.md and the mkdocs nav from topics.yml.
+
+Both are GENERATED. Edit topics.yml and re-run; never hand-edit the outputs, or the schedule on the
+site and the schedule the course actually follows will drift apart -- which is how the site spent
+three years advertising a Monday class that met on Tuesday.
+
+    python tools/make_site.py
+"""
+import datetime as dt
+import pathlib
+import re
+
+import yaml
+
+ROOT = pathlib.Path(__file__).resolve().parent.parent
+spec = yaml.safe_load((ROOT / "topics.yml").read_text())
+topics = {t["n"]: t for t in spec["topics"]}
+
+FIRST = dt.date(2026, 9, 1)                      # Tue 1 Sep 2026
+DATES = [FIRST + dt.timedelta(weeks=k) for k in range(14)]
+PRESENT = FIRST + dt.timedelta(weeks=14)         # Dec 8, RRR week
+
+nb_dir = ROOT / "docs" / "notebooks"
+built = {}
+for f in sorted(nb_dir.glob("*.ipynb")):
+    if f.stem.endswith("_solution"):
+        continue                                  # solutions are never published
+    m = re.match(r"(\d+)_", f.name)
+    if m:
+        built[int(m.group(1))] = f"notebooks/{f.name}"
+
+rows = []
+for k, d in enumerate(DATES, start=1):
+    t = topics.get(k)
+    title = t["title"] if t else "TBA"
+    link = f"[{title}]({built[k]})" if k in built else title
+    rows.append(f"| {k} | {d:%b %-d} | {link} |")
+
+readme = f"""# EPS 207 · Laboratory in Observational Seismology
 
 **Fall 2026 · University of California, Berkeley · Department of Earth and Planetary Science**
 
@@ -20,21 +59,8 @@ notebook live, reproduce part of the published result, and then try to break it.
 
 | # | Date | Topic |
 |---|---|---|
-| 1 | Sep 1 | [Regression & uncertainty](notebooks/01_regression_uncertainty.ipynb) |
-| 2 | Sep 8 | Classification — logistic, SVM, XGBoost |
-| 3 | Sep 15 | Bias & variance, boosting, cross-validation |
-| 4 | Sep 22 | Clustering, mixture models, EM |
-| 5 | Sep 29 | Neural networks: classification |
-| 6 | Oct 6 | Neural networks: segmentation |
-| 7 | Oct 13 | Neural networks: object detection (DAS) |
-| 8 | Oct 20 | Transformers, attention & masked modelling |
-| 9 | Oct 27 | Embeddings & similarity search |
-| 10 | Nov 3 | Generative models: train a VAE |
-| 11 | Nov 10 | Denoising |
-| 12 | Nov 17 | Inversion I — the linear case: moment tensor & focal mechanism |
-| 13 | Nov 24 | Inversion II — the non-linear case: location, relocation and the posterior |
-| 14 | Dec 1 | Inversion III — estimating a field: regularisation, and physics instead of it |
-| — | Dec 8 | Final project presentations |
+{chr(10).join(rows)}
+| — | {PRESENT:%b %-d} | Final project presentations |
 
 Notebooks are linked as they are released, normally the week before the session.
 
@@ -64,3 +90,18 @@ writing Python and reading a paper.
 
 Fall 2023 is preserved on the [`fall2023`](https://github.com/AI4EPS/EPS207_Observational_Seismology/tree/fall2023)
 branch, including the lecture slides.
+"""
+(ROOT / "docs" / "README.md").write_text(readme)
+
+# ── mkdocs nav
+mk = (ROOT / "mkdocs.yml").read_text()
+nav = ["nav:", "  - Overview: README.md"]
+if built:
+    nav.append("  - Notebooks:")
+    for k in sorted(built):
+        nav.append(f'    - "{k}. {topics[k]["title"]}": {built[k]}')
+mk = re.sub(r"^nav:.*?(?=^theme:)", "\n".join(nav) + "\n\n", mk, flags=re.S | re.M)
+(ROOT / "mkdocs.yml").write_text(mk)
+
+print(f"docs/README.md: {len(DATES)} sessions, {len(built)} notebook(s) linked {sorted(built)}")
+print("mkdocs.yml nav regenerated")

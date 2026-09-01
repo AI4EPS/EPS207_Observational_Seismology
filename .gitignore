@@ -11,3 +11,9 @@ hash.log
 picks*
 hashpy2*
 MT-Exercise*
+
+# Solution notebooks: released with `git add -f` after the session
+docs/notebooks/*_solution.ipynb
+.cache/
+__pycache__/
+*.pyc

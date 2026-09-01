@@ -8,36 +8,9 @@ edit_uri: blob/main/docs/
 
 nav:
   - Overview: README.md
-  # - Syllabus: syllabus.md
   - Notebooks:
-    - "Spring Slider": lectures/codes/spring_slider.ipynb
-    - "1D seismic wave": lectures/codes/wave_propagation.ipynb
-    - "Obspy": 
-      - "Download Data": lectures/codes/obspy_download_data.ipynb
-      - "Signal Processing": lectures/codes/obspy_process_data.ipynb
-    - "Signal Processing": lectures/codes/signal_processing.ipynb 
-    - "Denoising": lectures/codes/denoising.ipynb
-    - "Earthquake Detection": lectures/codes/earthquake_detection.ipynb
-    - "Phase Picking and Association": lectures/codes/quakeflow_demo.ipynb
-    - "Earthquake Location": lectures/codes/earthquake_location.ipynb
-    - "Focal Mechanism and Moment Tensor": lectures/08_focal_mechanism_and_momemt_tensor.ipynb
-    - "Focal Mechanism": lectures/codes/focal_mechanism.ipynb
-    - "Phase Picking on DAS": lectures/codes/phasenet_das.ipynb
+    - "1. Regression & uncertainty": notebooks/01_regression_uncertainty.ipynb
 
-  # - Obspy:
-  #     - Install packages: obspy/install.md
-  #     - Download catalog: obspy/download_catalog.ipynb
-  #     - Realtime data streaming: obspy/animation_seedlink.ipynb
-  #     - Signal processing: obspy/signal_processing.ipynb
-  # - Earthquake:
-  #     - Earthquake detection: earthquake/detection.ipynb
-  #     - Earthquake location: earthquake/location.ipynb
-  #     - Focal mechanism: earthquake/focal_mechanism.ipynb
-  #     - Phase travel time: earthquake/travel_time.ipynb
-  #     - Earthquake statistics: earthquake/statistics.ipynb
-  #     - Sorting earthquakes: earthquake/sorting.ipynb
-  # - Visualization:
-      # - Projection: visualization/projection.ipynb
 theme:
   name: "material"
   features:
@@ -45,11 +18,16 @@ theme:
     - content.action.edit
     - navigation.expand
 
+# Solutions must not reach the site at all: mkdocs-jupyter's `ignore` only stops them being
+# RENDERED, and mkdocs still copies the raw .ipynb in as a static file.
+exclude_docs: |
+  notebooks/*_solution.ipynb
+
 plugins:
   - mkdocs-jupyter:
       ignore_h1_titles: True
-      include: ["*.ipynb"]
-      ignore: ["docs/lectures/codes/QuakeFlow/*.ipynb","docs/lectures/codes/QuakeFlow/*/*.ipynb","docs/lectures/codes/QuakeFlow/*/*/*.ipynb","docs/lectures/codes/QuakeFlow/*/*/*.ipynb","docs/lectures/codes/QuakeFlow/*/*/*/*.ipynb"]
+      include: ["notebooks/*.ipynb"]        # only this year's notebooks
+      ignore: ["notebooks/*_solution.ipynb"] # solutions are released separately, after class
 
 extra:
   generator: false

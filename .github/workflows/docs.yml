@@ -12,19 +12,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          submodules: true
-          lfs: true
 
-      - run: git clone --recursive https://github.com/AI4EPS/QuakeFlow.git docs/lectures/codes/QuakeFlow/
 
       # - name: Convert Markdown into HTML and PDF
       #   uses: KoharaKazuya/marp-cli-action@v2
       #   with:
       #     config-file: .marprc.yml
       
-      - uses: actions/setup-node@v3
-      - run: npx @marp-team/marp-cli@latest -I docs/lectures
 
       - uses: actions/setup-python@v5
         with:

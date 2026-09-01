@@ -1,11 +1,8 @@
-tensorflow
-kfp
-fsspec
-gcsfs
-wandb
-obspy
-cartopy
-tqdm
+# EPS 207, Fall 2026. Everything runs on Colab or Berkeley DataHub; no GPU is needed.
+numpy
 pandas
-gmma
-s3fs
+scikit-learn
+torch
+matplotlib
+scipy
+obspy
