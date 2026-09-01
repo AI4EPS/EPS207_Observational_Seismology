@@ -22,10 +22,10 @@ together with the machine learning methods now used for each.
 | Sep 29 | Earthquake / quarry-blast discrimination | NN: classification |
 | Oct 6 | Phase picking | NN: segmentation |
 | Oct 13 | Event detection on DAS | NN: object detection |
-| Oct 20 | Denoising | NN: Denoising |
+| Oct 20 | Denoising | NN: denoising |
 | Oct 27 | Ground-motion prediction | Transformers |
 | Nov 3 | Template matching | Similarity & embeddings |
-| Nov 10 | Waveform generation | VAE and Diffusion |
+| Nov 10 | Waveform generation | VAE & diffusion |
 | Nov 17 | Focal mechanism & moment tensor | Inversion I — linear |
 | Nov 24 | Location & relocation | Inversion II — non-linear |
 | Dec 1 | Tomography | Inversion III — fields |
@@ -35,8 +35,8 @@ together with the machine learning methods now used for each.
 
 | | |
 |---|---|
-| Homework | 40% — the session notebooks |
-| Project | 60% — presentation 30%, report 30% |
+| Homework | 40% |
+| Final project | 60% |
 
 ## What you need
 

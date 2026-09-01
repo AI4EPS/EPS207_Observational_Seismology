@@ -6,7 +6,7 @@
 # `scale` is filled by RECON, not by hand. A topic with no `finding` has no session in it.
 
 meeting: "Tuesdays 9:00–10:59, McCone 325 · 14 sessions Sep 1 – Dec 1 · presentations Dec 8 (RRR)"
-grading: "homework 40%, project 60% (presentation 30 / report 30)"
+grading: "homework 40%, final project 60%"
 platform: "Google Colab + Berkeley DataHub. NO gs:// — both quakeflow buckets are private (403 anon).
            Public routes only: USGS/IRIS FDSN, HuggingFace, GitHub release assets."
 delivery: "live in the room, ~100 teaching minutes, the notebook is worked"
@@ -149,7 +149,7 @@ topics:
 
   - n: 11
     slug: denoising
-    title: "NN: Denoising"
+    title: "NN: denoising"
     task: "Denoising"
     question: "Does denoising actually help downstream, or only look better?"
     papers: {origin: TBD, sota: "Zhu, Mousavi & Beroza 2019, IEEE TGRS, 10.1109/TGRS.2019.2926772 (DeepDenoiser)"}
@@ -179,7 +179,7 @@ topics:
 
   - n: 10
     slug: vae
-    title: "VAE and Diffusion"
+    title: "VAE & diffusion"
     task: "Waveform generation"
     question: "What has the latent space learned — source, path, or site?"
     papers: {origin: TBD, sota: TBD}

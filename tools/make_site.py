@@ -89,8 +89,8 @@ together with the machine learning methods now used for each.
 
 | | |
 |---|---|
-| Homework | 40% — the session notebooks |
-| Project | 60% — presentation 30%, report 30% |
+| Homework | 40% |
+| Final project | 60% |
 
 ## What you need
 
