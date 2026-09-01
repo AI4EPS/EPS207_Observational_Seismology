@@ -93,6 +93,8 @@ branch, including the lecture slides.
 # ── mkdocs nav
 mk = (ROOT / "mkdocs.yml").read_text()
 nav = ["nav:", "  - Overview: README.md"]
+if (ROOT / "docs" / "project.md").exists():
+    nav.append("  - Final project: project.md")
 if built:
     nav.append("  - Notebooks:")
     for k in sorted(built):
