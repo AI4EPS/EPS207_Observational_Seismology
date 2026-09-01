@@ -410,6 +410,32 @@ print(f"model 1  logA ~ M                    sd = {np.sqrt(s2_1):.3f}")
 print(f"model 2  logA ~ M + log R            sd = {np.sqrt(s2_2):.3f}")
 print(f"model 3  logA ~ M + log R + R        sd = {np.sqrt(s2_3):.3f}")""")
 
+md(r"""We have been minimising squared residuals because that is what everyone does. It is worth
+seeing *why* once. If the errors are independent and Gaussian with variance $\sigma^2$, the
+log-likelihood of the data given $\beta$ is
+
+$$\ln L(\beta) = -\tfrac{n}{2}\ln(2\pi\sigma^2) - \frac{1}{2\sigma^2}\,\|y - X\beta\|^2$$
+
+Only the last term depends on $\beta$, and it is the sum of squares with a minus sign. So the
+$\beta$ that maximises the likelihood is the one that minimises the residual sum of squares — the
+two are the same estimator. Maximise the likelihood numerically from a deliberately bad start and
+see where it lands.""")
+
+run("""from scipy.optimize import minimize
+
+def neg_loglik(b, sigma):
+    r = y - X3 @ b
+    return 0.5*len(y)*np.log(2*np.pi*sigma**2) + (r @ r) / (2*sigma**2)
+
+sigma_hat = np.sqrt(s2_3)
+mle = minimize(neg_loglik, x0=np.zeros(4), args=(sigma_hat,), method="BFGS",
+               options={"gtol": 1e-10})
+
+print(f"{'':14s}{'c0':>10s}{'c1':>10s}{'c2':>10s}{'c3':>11s}")
+print(f"{'normal eqns':14s}" + "".join(f"{v:10.4f}" for v in b3[:3]) + f"{b3[3]:11.5f}")
+print(f"{'max likelihood':14s}" + "".join(f"{v:10.4f}" for v in mle.x[:3]) + f"{mle.x[3]:11.5f}")
+print(f"largest difference: {np.abs(mle.x - b3).max():.2e}")""")
+
 run("""fig, axs = plt.subplots(1, 3, figsize=(11, 3.2), sharey=True)
 idx = rng.choice(len(d), 25000, replace=False)
 for ax, r, t in zip(axs, [r1, r2, r3], ["M only", "+ log R", "+ log R + R"]):
@@ -555,6 +581,27 @@ tuned by eye is a statement of belief with units.**
 This is the idea the rest of the course is built on. In topic 12 the same penalty will say *the earth
 model is smooth*; in topic 14, *the model obeys the eikonal equation*. The equation does not change
 — only the prior gets better.""")
+run("""# Is ridge really the MAP estimate? Pick a prior width, derive lambda from it, and compare
+# the closed-form ridge solution against a direct maximisation of the log-posterior.
+s_prior = 0.5                       # we believe each coefficient is within roughly +-0.5 of zero
+lam_map = s2_3 / s_prior**2         # lambda = sigma^2 / s^2
+
+b_ridge = np.linalg.solve(X3.T @ X3 + lam_map*np.eye(4), X3.T @ y)
+
+def neg_logpost(b):
+    r = y - X3 @ b
+    return (r @ r) / (2*s2_3) + (b @ b) / (2*s_prior**2)
+
+b_map = minimize(neg_logpost, x0=np.zeros(4), method="BFGS",
+                 options={"gtol": 1e-12}).x
+
+print(f"prior sd s = {s_prior},  sigma = {np.sqrt(s2_3):.3f}  ->  lambda = {lam_map:.4f}")
+print()
+print(f"{'':22s}{'c1':>10s}{'c2':>10s}{'c3':>11s}")
+print(f"{'ridge, closed form':22s}" + "".join(f"{v:10.4f}" for v in b_ridge[1:3]) + f"{b_ridge[3]:11.5f}")
+print(f"{'MAP, maximised':22s}" + "".join(f"{v:10.4f}" for v in b_map[1:3]) + f"{b_map[3]:11.5f}")
+print(f"largest difference: {np.abs(b_ridge - b_map).max():.2e}")""")
+
 run("""lams = np.logspace(-1, 6, 40)
 path = np.array([np.linalg.solve(X3.T @ X3 + l*np.eye(4), X3.T @ y) for l in lams])
 rms  = [np.sqrt(np.mean((y - X3 @ p)**2)) for p in path]
@@ -772,14 +819,18 @@ md(r"""## Seismology takeaways
   different station sets average different site terms, so their answers differ systematically and the
   difference does not shrink as either network grows. Hutton & Boore relied on that cancellation and
   warned it would not always hold (1987, p. 2083).
-- **M<sub>L</sub> saturates because the instrument has a fixed period and the source does not.** As
-  earthquakes grow, the corner frequency moves below the band the seismometer measures, so amplitude
-  stops tracking moment. That is why moment magnitude had to be invented, and why the two scales
-  cannot be used interchangeably for large events.
-- **Magnitude scales are held hostage by their own catalogues.** Recalibrating would put a
-  discontinuity into a decades-long time series and break the seismicity statistics computed from
-  it, so known systematic errors are kept on purpose — Hutton & Boore's own improved curve was not
-  put into routine use for exactly that reason.
+- **M<sub>L</sub> saturates because the instrument has a fixed period and the source does not.** In
+  Brune's (1970) $\omega^{-2}$ source model the corner frequency falls as $M_0^{-1/3}$, so for large
+  earthquakes it drops below the band a Wood-Anderson measures and the recorded amplitude stops
+  tracking moment. Moment magnitude is defined from $M_0$ itself to avoid this (Hanks & Kanamori
+  1979, `10.1029/JB084iB05p02348`), which is why the two scales cannot be used interchangeably for
+  large events.
+- **A better calibration is not adopted the moment it is published.** Hutton & Boore's own curve was
+  held back because changing it "would cause a discontinuity in the local magnitude scale with time
+  and wreak havoc with the seismicity statistics", and they wrote that routine determinations must
+  continue with the old definition "until such time as all phase and amplitude readings back to 1932
+  are in computer-readable form" (1987, p. 2091). That condition was eventually met: southern
+  California recalibrated in 2008, twenty-one years later.
 
 ## Machine learning takeaways
 
@@ -795,8 +846,8 @@ md(r"""## Seismology takeaways
 - Regularisation adds information the data does not contain: ridge is damped least squares, and it
   is the MAP estimate under a Gaussian prior on the coefficients.
 - Standard errors assume rows are independent draws. When observations are grouped, the effective
-  sample size is the number of groups, and ignoring that understates the uncertainty by an order of
-  magnitude.
+  sample size is the number of groups — resampling whole stations here inflates the uncertainty on
+  the distance coefficient about thirtyfold.
 
 ---
 
