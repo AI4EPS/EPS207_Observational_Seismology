@@ -31,19 +31,6 @@ Bürgmann (2016) track a seasonal signal migrating **downward, ≤6 months to re
 injection depth** (`10.1002/2016gl069546`). A good project should be able to say *why* 1984 saw
 nothing — and what would have been needed to see it.
 
-## The data
-
-| | |
-|---|---|
-| **ML relocated catalogue** | 593,172 events, 2000–2025, with depth. Released with this course. |
-| **NCEDC routine catalogue** | The same region from the standard network catalogue, public via FDSN. **Your baseline.** Anything the ML catalogue reveals, ask whether the routine one shows it too. |
-| **Waveforms** | NCEDC, public, no credentials. |
-
-⚠️ **Well-level injection records are not provided**, and I have not confirmed they are publicly
-downloadable in bulk. Every question below is answerable without them, because the seasonal cycle is
-in the catalogue. If you find and validate a public injection record, that is a contribution in
-itself — tell everyone.
-
 ## Questions
 
 Each one is live in the literature. Each names the sessions whose methods apply, and the baseline you
@@ -79,9 +66,9 @@ reported to change. Separate a real change from a change in what the network can
 Cross-correlate waveforms, build families, ask whether recurrence follows the injection cycle.
 *Weeks 9, 11.* **Baseline:** catalogue locations alone — are "repeaters" merely nearby events?
 
-**7 · What does the ML catalogue add, and what does it get wrong?**
-It has far more events than the routine catalogue. Where do the extra events come from — smaller
-magnitudes, busier periods, particular places? Which do you not believe?
+**7 · What does a machine-learning catalogue add, and what does it get wrong?**
+A deep-learning catalogue finds far more events than a routine network catalogue. Where do the extra
+events come from — smaller magnitudes, busier periods, particular places? Which do you not believe?
 *Weeks 6, 9.* **Baseline:** the routine catalogue. A genuine evaluation problem.
 
 **8 · Can next month's rate be forecast?**
