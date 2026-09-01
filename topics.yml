@@ -55,7 +55,7 @@ topics:
   - n: 3
     slug: bias_variance
     title: "Bias & variance, boosting, cross-validation"
-    task: "Relocation uncertainty"
+    task: "Are catalogue error estimates honest?"
     question: "How far does a hypocentre move when relocated — predicted from network geometry alone?"
     papers:
       origin: "Waldhauser & Ellsworth 2000, BSSA, 10.1785/0120000006 (HypoDD) — ALSO topic 13's origin"
