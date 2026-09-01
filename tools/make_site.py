@@ -22,7 +22,13 @@ ordered = [(t["n"], t) for t in spec["topics"]]
 
 FIRST = dt.date(2026, 9, 1)                      # Tue 1 Sep 2026 - the introduction
 PRESENT = dt.date(2026, 12, 8)                   # Dec 8, RRR week - presentations
+# The marp HTML exists only after CI renders it, and it is gitignored. Relative to the site
+# root it is `lectures/00_introduction.html` -- correct for the mkdocs nav, but the README is
+# also read on GitHub, which resolves a relative link to a blob/main/... URL that 404s.
+# So: relative for the nav, absolute for the README.
+SITE = "https://ai4eps.github.io/EPS207_Observational_Seismology"
 INTRO_SLIDES = "lectures/00_introduction.html"
+INTRO_URL = f"{SITE}/{INTRO_SLIDES}"
 
 # Session 1 is the introduction, so the topics start a week later and there are 13
 # Tuesdays left (Sep 8 - Dec 1) for 14 topics. Whichever topic is not in `topics.yml`
@@ -52,7 +58,7 @@ for f in sorted(nb_dir.glob("*.ipynb")):
     if m:
         built[int(m.group(1))] = f"docs/notebooks/{f.name}"
 
-rows = [f"| {FIRST:%b %-d} | [Introduction]({INTRO_SLIDES}) | |"]
+rows = [f"| {FIRST:%b %-d} | [Introduction]({INTRO_URL}) | |"]
 for (k, t), d in zip(ordered, DATES):
     title = t["title"]
     link = f"[{title}]({datahub(built[k])})" if k in built else title
