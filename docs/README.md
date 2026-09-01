@@ -25,7 +25,7 @@ together with the machine learning methods now used for each.
 | Oct 20 | Denoising | NN: Denoising |
 | Oct 27 | Ground-motion prediction | Transformers |
 | Nov 3 | Template matching | Similarity & embeddings |
-| Nov 10 | Waveform generation | VAE |
+| Nov 10 | Waveform generation | VAE and Diffusion |
 | Nov 17 | Focal mechanism & moment tensor | Inversion I — linear |
 | Nov 24 | Location & relocation | Inversion II — non-linear |
 | Dec 1 | Tomography | Inversion III — fields |

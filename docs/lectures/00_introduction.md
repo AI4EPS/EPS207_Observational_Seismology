@@ -1736,7 +1736,7 @@ Deep Learning (Deep Neural Networks) is a new paradigm of software development
 | 10/20 | Denoising | NN: Denoising |
 | 10/27 | Ground-motion prediction | Transformers |
 | 11/03 | Template matching | Similarity & embeddings |
-| 11/10 | Waveform generation | VAE |
+| 11/10 | Waveform generation | VAE and Diffusion |
 | 11/17 | Focal mechanism & moment tensor | Inversion I — linear |
 | 11/24 | Location & relocation | Inversion II — non-linear |
 | 12/01 | Tomography | Inversion III — fields |

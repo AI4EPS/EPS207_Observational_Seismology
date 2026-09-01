@@ -179,7 +179,7 @@ topics:
 
   - n: 10
     slug: vae
-    title: "VAE"
+    title: "VAE and Diffusion"
     task: "Waveform generation"
     question: "What has the latent space learned — source, path, or site?"
     papers: {origin: TBD, sota: TBD}
