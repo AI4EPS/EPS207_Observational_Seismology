@@ -743,7 +743,7 @@ $$
 
 Filtering is a process of removing unwanted components or features from a signal.
 
-<!-- FIXME: figure lost to an expired CDN link; paste a screenshot here -->
+![w:1140px](./assets/filtering_response.png)
 
 ---
 
@@ -925,17 +925,17 @@ Try the SAM model: [link](https://segment-anything.com/demo)
 
 ### Grid-search / Back-projection, e.g. REAL
 
-[Zhang, Ellsworth & Beroza (2019), Rapid Earthquake Association and Location, SRL](https://doi.org/10.1785/0220190052)
+![w:676px](./assets/real_concept.png)
 
-<!-- FIXME: figure lost to an expired CDN link; paste a screenshot here -->
+<small>[Zhang, Ellsworth & Beroza (2019), Rapid Earthquake Association and Location, SRL](https://doi.org/10.1785/0220190052)</small>
 
 ---
 
 ### Graph-Neural-Network-based, e.g. GENIE
 
-[McBrearty & Beroza (2023), Earthquake Phase Association with Graph Neural Networks, BSSA](https://doi.org/10.1785/0120220182)
+![w:1036px](./assets/genie_fig2.png)
 
-<!-- FIXME: figure lost to an expired CDN link; paste a screenshot here -->
+<small>[McBrearty & Beroza (2023), Earthquake Phase Association with Graph Neural Networks, BSSA](https://doi.org/10.1785/0120220182)</small>
 
 ---
 
