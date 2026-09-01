@@ -36,7 +36,7 @@ topics:
 
   - n: 2
     slug: classification
-    title: "Classification — logistic, SVM, XGBoost"
+    title: "Classification"
     task: "Aftershock location forecasting"
     question: "Where do aftershocks occur — and what was the deep model actually buying?"
     papers:
@@ -54,7 +54,7 @@ topics:
     scale: "public, 11 s download, reproduces on CPU in under a minute. RISK RETIRED."
   - n: 3
     slug: bias_variance
-    title: "Bias & variance, boosting, cross-validation"
+    title: "Bias–variance, boosting, CV"
     task: "Are catalogue error estimates honest?"
     question: "How far does a hypocentre move when relocated — predicted from network geometry alone?"
     papers:
@@ -89,7 +89,7 @@ topics:
 
   - n: 5
     slug: nn_classification
-    title: "Neural networks: classification"
+    title: "NN: classification"
     task: "Earthquake / quarry-blast discrimination"
     question: "Earthquake or quarry blast — did the model read the waveform or the depth column?"
     papers:
@@ -112,7 +112,7 @@ topics:
             is 1:1 by construction while the shortcut track runs at 0.777% -- two priors, say it aloud."
   - n: 6
     slug: nn_segmentation
-    title: "Neural networks: segmentation"
+    title: "NN: segmentation"
     task: "Phase picking"
     question: "How many earthquakes are we missing — and does the 0.5 threshold mean anything?"
     papers:
@@ -136,7 +136,7 @@ topics:
             straddles zero. Teach leakage from Iquique METADATA: 407/407 events span splits, 2.7 MB."
   - n: 7
     slug: nn_detection
-    title: "Neural networks: object detection"
+    title: "NN: object detection"
     task: "Event detection on DAS"
     question: "Ten labelled events on a fiber — how do you get a picker?"
     papers: {origin: TBD, sota: "Zhu, Biondi, Li, Yin, Ross & Zhan 2023, Nat Commun, 10.1038/s41467-023-43355-3"}
@@ -146,7 +146,7 @@ topics:
 
   - n: 8
     slug: transformers
-    title: "Transformers, attention & masked modelling"
+    title: "Transformers"
     task: "Ground-motion prediction"
     question: "One masked model, three ground-motion tasks — what does the masking choice decide?"
     papers: {origin: TBD, sota: "QuakeFormer, AI4EPS/QuakeFormer, arXiv:2412.00815"}
@@ -156,7 +156,7 @@ topics:
 
   - n: 9
     slug: similarity
-    title: "Embeddings & similarity search"
+    title: "Similarity & embeddings"
     task: "Template matching"
     question: "What is still missing after the picker — and at whose correlation threshold?"
     papers: {origin: TBD, sota: "Ross, Trugman, Hauksson & Shearer 2019, Science, 10.1126/science.aaw6888 (QTM)"}
@@ -166,7 +166,7 @@ topics:
 
   - n: 10
     slug: vae
-    title: "Generative models: the VAE"
+    title: "VAE"
     task: "Waveform generation"
     question: "What has the latent space learned — source, path, or site?"
     papers: {origin: TBD, sota: TBD}
@@ -176,7 +176,7 @@ topics:
 
   - n: 11
     slug: denoising
-    title: "Denoising autoencoders; self-supervised learning"
+    title: "Denoising autoencoders"
     task: "Denoising"
     question: "Does denoising actually help downstream, or only look better?"
     papers: {origin: TBD, sota: "Zhu, Mousavi & Beroza 2019, IEEE TGRS, 10.1109/TGRS.2019.2926772 (DeepDenoiser)"}
@@ -186,7 +186,7 @@ topics:
 
   - n: 12
     slug: inversion_linear
-    title: "Linear inversion: d = Gm, the SVD and the null space"
+    title: "Inversion I — linear"
     task: "Focal mechanism & moment tensor"
     question: "First motions constrain the double couple, waveforms the full tensor — they disagree. Which do you believe?"
     papers: {origin: TBD, sota: "Li, Zhu, Biondi & Zhan 2023, Nat Commun, 10.1038/s41467-023-39639-3"}
@@ -197,7 +197,7 @@ topics:
 
   - n: 13
     slug: inversion_nonlinear
-    title: "Non-linear inversion: from a point estimate to a posterior"
+    title: "Inversion II — non-linear"
     task: "Location & relocation"
     question: "Where was it — and does the formal error ellipse mean what it says?"
     papers: {origin: "Waldhauser & Ellsworth 2000, BSSA, 10.1785/0120000006 (HypoDD)",
@@ -208,7 +208,7 @@ topics:
 
   - n: 14
     slug: inversion_fields
-    title: "Estimating a field: regularisation, and physics as the prior"
+    title: "Inversion III — fields"
     task: "Tomography"
     question: "What is resolved — and can the physics do the regularising for you?"
     papers:

@@ -16,19 +16,19 @@ together with the machine learning methods now used for each.
 | Date | Seismology | Machine learning |
 |---|---|---|
 | Sep 1 | Magnitude calibration | [Regression & uncertainty](https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2FAI4EPS%2FEPS207_Observational_Seismology&urlpath=lab%2Ftree%2FEPS207_Observational_Seismology%2Fdocs%2Fnotebooks%2F01_regression_uncertainty.ipynb&branch=main) |
-| Sep 8 | Aftershock location forecasting | Classification — logistic, SVM, XGBoost |
-| Sep 15 | Are catalogue error estimates honest? | Bias & variance, boosting, cross-validation |
+| Sep 8 | Aftershock location forecasting | Classification |
+| Sep 15 | Are catalogue error estimates honest? | Bias–variance, boosting, CV |
 | Sep 22 | Fault structure from seismicity | Clustering, mixture models, EM |
-| Sep 29 | Earthquake / quarry-blast discrimination | Neural networks: classification |
-| Oct 6 | Phase picking | Neural networks: segmentation |
-| Oct 13 | Event detection on DAS | Neural networks: object detection |
-| Oct 20 | Ground-motion prediction | Transformers, attention & masked modelling |
-| Oct 27 | Template matching | Embeddings & similarity search |
-| Nov 3 | Waveform generation | Generative models: the VAE |
-| Nov 10 | Denoising | Denoising autoencoders; self-supervised learning |
-| Nov 17 | Focal mechanism & moment tensor | Linear inversion: d = Gm, the SVD and the null space |
-| Nov 24 | Location & relocation | Non-linear inversion: from a point estimate to a posterior |
-| Dec 1 | Tomography | Estimating a field: regularisation, and physics as the prior |
+| Sep 29 | Earthquake / quarry-blast discrimination | NN: classification |
+| Oct 6 | Phase picking | NN: segmentation |
+| Oct 13 | Event detection on DAS | NN: object detection |
+| Oct 20 | Ground-motion prediction | Transformers |
+| Oct 27 | Template matching | Similarity & embeddings |
+| Nov 3 | Waveform generation | VAE |
+| Nov 10 | Denoising | Denoising autoencoders |
+| Nov 17 | Focal mechanism & moment tensor | Inversion I — linear |
+| Nov 24 | Location & relocation | Inversion II — non-linear |
+| Dec 1 | Tomography | Inversion III — fields |
 | Dec 8 | Final project presentations | |
 
 ## Assessment
