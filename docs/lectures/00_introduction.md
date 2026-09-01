@@ -129,7 +129,7 @@ Weiqiang Zhu · Tuesdays 9:00-10:59 · McCone 325
 | 7            | 1,000          | 30 x 30                              |
 | 8            | 10,000         | 50 x 200                             |
 
---- 
+---
 
 ### Hours/days after an earthquake (cont.)
 
@@ -254,7 +254,7 @@ $X$: the epicentral distance
 
 ![20250402232519 bg right:50% contain](https://raw.githubusercontent.com/zhuwq0/images/main/20250402232519.png)
 
-----
+---
 
 ### Richter magnitude: the empirical formula
 
@@ -287,7 +287,7 @@ where $A(X)$ is the displacement amplitude in microns (10$^{-6}$ m) and X is in 
 
 ![bg right:50% 80%](./assets/Screenshot%202023-10-29%20at%2014.53.33.png)
 
---- 
+---
 
 ### Radiation pattern
 
@@ -363,9 +363,7 @@ where $A(X)$ is the displacement amplitude in microns (10$^{-6}$ m) and X is in 
 
 ![w:619px](https://raw.githubusercontent.com/wayneweiqiang/GaMMA/master/docs/assets/diagram_gamma_annotated.png)
 
-
-
---- 
+---
 
 ### Clustering
 
@@ -732,17 +730,12 @@ F(\omega) &= \int_{-\infty}^{\infty} f(t) e^{-i\omega t} dt \\
 \end{align}
 $$
 
---- 
+---
 
 ### Fourier Transform
 ![w:570px](https://mriquestions.com/uploads/3/4/5/7/34572113/9600204.gif?508)
 
---- 
-<style scoped>section img { max-height: 460px; }</style>
-
-
-### Fourier Analysis
-![](https://www.nti-audio.com/portals/0/pic/news/FFT-Time-Frequency-View-540.png)
+<!-- FIXME: figure lost to an expired CDN link; paste a screenshot here -->
 
 ---
 
@@ -791,12 +784,6 @@ $$
 & = F(-\omega) G(\omega)
 \end{align}
 $$
-
----
-
-### Deep Denoiser for Seismic Data
-
-[Paper](https://drive.google.com/file/d/19g0nyCgAIUPOrQ6sPsU1PPA5B9zhQbBG/view?usp=drive_link)
 
 ---
 
@@ -859,8 +846,7 @@ Notebook: [cross-correlation](https://ai4eps.github.io/EPS207_Observational_Seis
 
 ![w:1032px](https://www.science.org/cms/10.1126/science.aaw6888/asset/a82e0ba0-4c86-4db8-9d24-5b16db8361bc/assets/graphic/364_767_f1.jpeg)
 
-
---- 
+---
 
 ### Template matching / Matched filter
 
@@ -874,17 +860,11 @@ Notebook: [cross-correlation](https://ai4eps.github.io/EPS207_Observational_Seis
 
 ---
 
-### Similarity search
-
-
-
---- 
-
 ### FAST (Fingerprint And Similarity Thresholding)
 
 ![w:406px](https://www.its.caltech.edu/~cyoon/img/fastgraphic_final.png)
 
---- 
+---
 
 ### Similarity search
 
@@ -934,10 +914,6 @@ p {
 ### Demo: Segment Anything Model (SAM)
 
 Try the SAM model: [link](https://segment-anything.com/demo)
-
----
-
-### How to apply deep learning to seismic phase picking?
 
 ---
 
