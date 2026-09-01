@@ -27,6 +27,9 @@ Author the solution notebook for topic {N}, derive the student notebook from it,
   you must justify or delete.
 - **Write the idiom the field uses**, not the shortest correct code — see `TEMPLATE.md`,
   "Write code the way the field writes it".
+- **Name the dataset near the top** - region, span, selection - and list what differs between your
+  fit and any published value you compare against. See `TEMPLATE.md`, "Name your data".
+- **Grep your own forward references before shipping.** Every "section N will show" is a promise.
 - **Public data only.** Both `gs://quakeflow_*` buckets are 403 anonymous. Students have no credentials.
 - **Every live cell needs a retry and a stated fallback.** Count your network calls and multiply by
   eight students in the same two minutes. One FDSN endpoint will rate-limit; SCEDC returns

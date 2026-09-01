@@ -208,6 +208,39 @@ source catalogue files some readings twice — but the section existed because t
 asset carried them. Clean the data where it is prepared, keep one sentence saying what was removed
 and why, and give the section back to the science.
 
+## Name your data, and say what it is not
+
+The notebook must state, near the top, **what the dataset actually is** — region, time span, how it
+was selected. Topic 1 shipped with the word "Ridgecrest" appearing exactly once in fifty-six cells,
+inside a URL. A reviewer had to load the file to discover that every event lay in one 0.9-degree box.
+
+This is not housekeeping. It decides whether the session's headline comparison is valid at all:
+topic 1 reported its refit as **12.1 of Hutton & Boore's published standard errors** away from their
+value, while having fitted one aftershock sequence against their whole-province result, without
+station terms, over a different distance range and a different amplitude floor. H&B say on p. 2077
+that they had the data to fit sub-regions and chose not to. The number was arithmetically right and
+the comparison was meaningless.
+
+**Before any comparison with a published value, list what differs between the two fits.** If the
+list is not short, the comparison is not a measurement.
+
+## Promises the notebook makes to itself
+
+Every forward reference is a promise: "section 8 measures how much this matters", "you will test
+this at the end". Grep for them before shipping and check each is kept. Topic 1 told students twice
+that a later section would test the sensitivity of *their* chosen cut; that section varied the
+magnitude range instead and never touched the cut.
+
+The same applies backwards: a paragraph that says "you added a station term and a third of the
+scatter became structure" must come *after* the cell that adds it, and must quote the number that
+cell printed.
+
+## Report the numbers that did not cooperate
+
+A cell in topic 1 introduced itself as "the first honest comparison in this notebook" and then
+listed the two coefficients that improved, omitting the one that moved further from the published
+value. If a table has three rows and two of them help your argument, the paragraph names all three.
+
 ## Rules that cost something to learn
 
 - **Every number in prose is computed by a cell.** Never recalled, never lifted from a paper without

@@ -68,6 +68,12 @@ interval around the wrong thing is the failure mode, and it recurs in every sess
 **Circularity.** Is any predictor derived from the target? Is any "validation" source downstream of the
 thing being validated? Both have already been found in this course.
 
+**Does the notebook say what its data IS?** Region, time span, selection. If you have to load the
+file to find out, that is a blocking finding - and check whether any comparison with a published
+result survives knowing it.
+
+**Forward references that are never honoured.** Grep for "section N", "later", "at the end".
+
 **Comparisons between incomparable things.** For every pair of numbers the notebook sets against
 each other, check they were computed on the same sample, at the same n, under the same conditions.
 This is the single highest-yield check in this document: topic 1 shipped a bootstrap at n=40,000

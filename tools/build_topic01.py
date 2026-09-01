@@ -228,7 +228,8 @@ and nobody hands you the correction. You measure it.""")
 md("""## 3 · Which readings are you willing to use?
 
 Real catalogues contain values that cannot be true, and the cut you make changes the answer.
-Section 8 measures by how much.""")
+Section 8 measures how much the answer moves when the *sample* changes; the cut you are about to
+make is one such choice, and nothing in the regression output will tell you it mattered.""")
 
 run("""print(f"amplitude spans {d.amp_mm.min():.2e} to {d.amp_mm.max():.2e} mm")
 tiny = d[d.amp_mm < 1e-3]          # below a micron
@@ -236,7 +237,9 @@ print(f"\\nreadings below 1 micron: {len(tiny):,} ({100*len(tiny)/len(d):.2f}%)"
 print(f"  their distances: {tiny.hyp_km.min():.0f}–{tiny.hyp_km.max():.0f} km, "
       f"median {tiny.hyp_km.median():.0f} km")
 print(f"  their magnitudes: {tiny.magnitude.min():.1f}–{tiny.magnitude.max():.1f}")
-print("\\nA micron of ground motion is at or below the noise floor of most instruments.")
+print()
+print("These are trace amplitudes on a simulated pendulum with a gain of 2080, so a")
+print("micron of trace is about half a nanometre of ground - at or under the noise floor.")
 print("These are measurements of noise, recorded as if they were signal.")""")
 
 yrs("""# solution
@@ -286,7 +289,9 @@ measures amplitude *in that band* — it cannot see $\Omega_0$ directly.
   M_0^{1/3}$. **Growth compresses by a factor of three**, and the scale saturates.
 
 This is why every amplitude-at-a-fixed-period scale saturates, each at its own size: $m_b$ near 6.5
-(1 s), $M_S$ near 8 (20 s), $M_L$ around 6.5–7. And it is why $M_w$ does not — it is defined from
+(1 s), $M_S$ near 8 (20 s), $M_L$ around 6 (SCSN's own catalogue paper puts it near 6.3). Note the cartoon in the next
+figure bends earlier than that, because it treats the instrument as a single frequency rather than
+a band. And it is why $M_w$ does not — it is defined from
 $M_0$ itself, $M_w = \tfrac{2}{3}\log_{10}M_0 - 6.07$ (Hanks & Kanamori 1979), so it measures the
 flat level rather than a band.
 
@@ -550,8 +555,9 @@ Any $c_2$ can be compensated by a matching $c_3$. The fit constrains the *combin
 each coefficient loosely — so *geometric spreading* and *anelastic attenuation* are **not separately
 measured by this experiment**, however small their standard errors look.
 
-When two parameters trade off, the data cannot separate them, and collecting more of the same data
-will not help. To get a unique answer you must add information from outside the data.
+When two parameters trade off, the fit constrains their combination tightly and each one loosely.
+More rows over the same distance range shrink both standard errors while leaving the correlation
+where it is: what breaks a trade-off is a wider range of $R$, not more of the same. To get a unique answer you must add information from outside the data.
 
 **You already know one way to do this, under a different name.** Damped least squares — the standard
 fix for an ill-conditioned inverse problem — minimises
@@ -743,16 +749,19 @@ print(f"{'no station terms':22s}{b3[1]:9.4f}{b3[2]:10.4f}{b3[3]:11.5f}{r3.std():
 print(f"{'+ station terms':22s}{m[0]:9.4f}{m[1]:10.4f}{m[2]:11.5f}{rfe.std():11.3f}")
 print(f"{'Hutton & Boore 1987':22s}{1.0:9.4f}{-1.110:10.4f}{-0.00189:11.5f}{0.208:11.3f}")""")
 
-md(r"""Two things changed. $c_1$ moved from 1.0254 to 1.0089 — **most of its excess over Richter's
-1 was the missing station term**, not non-linearity in the scale. And the residual scatter dropped
-to a value close to Hutton & Boore's 0.208, which is the first honest comparison in this notebook:
-their 0.21 is the scatter *after* station corrections, so every earlier comparison against it was
-against a number computed a different way.""")
+md(r"""**Three things changed.** $c_1$ moved from 1.0254 to 1.0089 — most of its excess over
+Richter's 1 was the missing station term. The residual scatter dropped to 0.233, near Hutton &
+Boore's 0.208, and this is the first comparison in the notebook computed the way they computed
+theirs: their 0.21 is the scatter *after* station corrections, so every earlier comparison against
+it was against a number made a different way.
+
+But $c_2$ is still nine of their standard errors from $-1.110$, and $c_3$ moved *further* from their
+value, not closer. **Station terms fixed the scatter and did not fix the curve.**""")
 
 md("""## 8 · What this calibration cannot tell you
 
-Where did the `magnitude` column come from? Below about M3.4 it is the network's average of the very
-station magnitudes in this table, and each of those was computed as $M_{L,i} = \\log_{10}A_i +
+Where did the `magnitude` column come from? Below about M3.4 it is the network's median of the
+station magnitudes in this table, after outlier rejection, and each of those was computed as $M_{L,i} = \\log_{10}A_i +
 f(R_i)$ with $f$ the attenuation table SCSN already assumes. Rearranged,
 $\\log_{10}A_i = M_{L,i} - f(R_i)$ — so this regression partly **recovers an assumption**.
 
