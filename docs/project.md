@@ -4,9 +4,6 @@ Everyone works the same field. You choose the question.
 
 ![Seismicity at The Geysers, 2000–2025](assets/geysers_ml_catalog.png)
 
-*Relocated seismicity, coloured by depth. The field is about 15 km across and almost everything is
-shallower than 3.5 km. Black lines are mapped faults.*
-
 ## Why this field
 
 **The Geysers has been generating electricity since 1960, and drawing down ever since.** Installed

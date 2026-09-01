@@ -87,9 +87,7 @@ print(f"amplitude falls by a factor of {one.amp_mm.max()/one.amp_mm.min():,.0f} 
 
 md("""## 2 · Do the amplitudes mean what you think?
 
-You are about to regress hundreds of thousands of numbers somebody else measured. Before trusting a column,
-**measure one of them yourself.** This is the only cell in the notebook that touches a raw
-seismogram, and it exists so the rest of the session rests on something you checked.
+**Measure one of these yourself before trusting the column.**
 
 A Wood–Anderson seismograph has not been built in decades. "Wood–Anderson amplitude" means: take
 the real instrument's record, remove its response, and *simulate* what a Wood–Anderson would have
@@ -440,12 +438,11 @@ b3, se3, r3, s2_3, XtX_inv = ols(X3, y)
 print(f"model refitted: c2 = {b3[2]:.4f}")""")
 
 md(r"""**Note that condition number.** $(X^\top X)$ is nearly singular, which is a warning that some
-combination of the columns is barely constrained. Hold that thought.
+combination of the columns is barely constrained.
 
 ## 5 · How well do we know the coefficients?
 
-Everything so far has been `np.linalg` doing the work. Before trusting the numbers it returns, derive
-them once.
+Derive what `np.linalg` has been returning.
 
 **The estimator.** Least squares minimises the sum of squared residuals,
 
@@ -865,9 +862,7 @@ value, not closer. **Station terms fixed the scatter and did not fix the curve.*
 
 md("""## 8 · What this calibration cannot tell you
 
-Everything so far has treated the `magnitude` column as an independent measurement. It is not, and
-the three tests in this section are the ones most worth carrying out of the room — each says
-something about *any* published fit, not just this one.
+Everything so far has treated the `magnitude` column as an independent measurement. It is not.
 
 **Where did the magnitude come from?** Below about M3.4 it is the network's median of the station
 magnitudes in this table, after outlier rejection, and each of those was computed as
@@ -921,8 +916,8 @@ Then answer: **the standard error on $c_2$ was about 0.003. How far does $c_2$ m
 the sample?** What does that imply about quoting a standard error as the uncertainty on a
 calibration?""")
 
-md(r"""**Put the three tests together.** Each one is invisible in the regression output, and each one
-applies to any published calibration you will ever read.
+md(r"""**Put the three tests together.** Each is invisible in the regression output, and each applies to any published
+calibration.
 
 - **The target was built from the predictor.** Catalogue magnitude comes from these amplitudes
   through an assumed attenuation table, so part of what any such fit recovers is that assumption
