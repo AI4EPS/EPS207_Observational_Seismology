@@ -316,7 +316,10 @@ plt.tight_layout(); plt.show()
 lo = np.polyfit(MW[MW < 3.5], np.log10(amp)[MW < 3.5], 1)[0]
 hi = np.polyfit(MW[MW > 6.5], np.log10(amp)[MW > 6.5], 1)[0]
 print(f"slope of measured amplitude vs Mw:  {lo:.2f} at small M,  {hi:.2f} at large M")
-print(f"the ratio is {lo/hi:.1f} — the factor of 3 the f^-2 falloff predicts")""")
+print(f"the ratio is {lo/hi:.1f} — the factor of 3 the f^-2 falloff predicts")
+print()
+print("Careful: that 2.9 is a fit to OUR OWN synthetic curve against its own asymptotes.")
+print("It checks the code, not the Earth. The catalogue test comes next.")""")
 
 md("""**The figure above is the mechanism**: three earthquakes, three corner frequencies, and the
 instrument's fixed window. At M3 the corner is far to the right of the red line and the instrument
@@ -352,7 +355,13 @@ ax.legend(fontsize=8); plt.tight_layout(); plt.show()""")
 md("""Two things. Below ~M3.4 the offset is zero **by construction** — there the catalogue magnitude
 *is* the average of those station M<sub>L</sub>s. Above it the catalogue switches to M<sub>w</sub>
 and the two scales separate. And at the top, the M7.1: its own stations say 6.72 against a
-catalogue 7.10 — **M<sub>L</sub> under-reads by 0.38.** That is saturation.
+catalogue 7.10 — **$M_L$ under-reads by 0.38.**
+
+That is saturation, and it is also a warning about the cartoon. The Brune model above, taken
+literally, predicts a deficit of well over a magnitude unit at $M_w$ 7.1; the catalogue shows 0.38.
+The mechanism is right in direction and wrong in size, because a Wood-Anderson is not a filter at
+1.25 Hz — it is flat to *displacement* above it, so the measured peak integrates the whole band
+rather than sampling one frequency. **Keep the mechanism; do not trust the cartoon's numbers.**
 
 **The ground truth changes in the middle of your dataset.** Remember it when you read the fit.
 
@@ -501,7 +510,7 @@ $\mathrm{SE}(\hat\beta_j) = \hat\sigma\sqrt{[(X^\top X)^{-1}]_{jj}}$.
 
 **Read what that says.** All the uncertainty comes through $(X^\top X)^{-1}$ — the geometry of where
 you sampled — scaled by how badly the model fits. It says nothing about whether the model is right,
-and that is the whole of sections 6 and 7.
+and that is the whole of sections 7 and 8.
 
 $\mathrm{Cov}(\hat{\boldsymbol\beta}) = \sigma^2 (X^\top X)^{-1}$. The diagonal gave the
 standard errors. The **off-diagonal** explains the condition number.""")
@@ -573,6 +582,10 @@ When two parameters trade off, the fit constrains their combination tightly and 
 More rows over the same distance range shrink both standard errors while leaving the correlation
 where it is: what breaks a trade-off is a wider range of $R$, not more of the same. To get a unique,
 stable answer you must add information from outside the data.
+
+""")
+
+md(r"""## 6 · Adding information the data does not contain
 
 **You already know one way to do this, under a different name.** Damped least squares — the standard
 fix for an ill-conditioned inverse problem — minimises $\|y - X\beta\|^2 + \lambda\|\beta\|^2$
@@ -716,7 +729,7 @@ plt.tight_layout(); plt.show()""")
 md(r"""$c_2$ travels a long way for almost no cost in rms — the data barely distinguishes it from
 $c_3$, exactly as the bootstrap cloud showed.
 
-## 6 · Two different questions, two different intervals
+## 7 · Two different questions, two different intervals
 
 Both intervals come from the covariance you just derived. Only the second question has an extra term,
 and it is worth seeing where it comes from.
@@ -746,10 +759,7 @@ $$\mathrm{Var} = \sigma^2\, x^\top (X^\top X)^{-1} x + \sigma^2
 with $n$: no amount of data tells you what the next station will do, because that station's noise has
 not happened yet.
 
-- **Confidence interval** — where is the *mean* $\log_{10}A$ here? Width $\propto
-  \sqrt{\mathbf{x}^\top\mathrm{Cov}(\hat\beta)\mathbf{x}}$, shrinking as $1/\sqrt n$.
-- **Prediction interval** — what will *one station* record next time? Adds $\hat\sigma^2$, which
-  **does not shrink with $n$ at all**.""")
+Now evaluate both at M3.0 and see how far apart they are.""")
 run("""Rg = np.logspace(np.log10(5), np.log10(400), 200); M0 = 3.0
 Xg = np.column_stack([np.ones_like(Rg), np.full_like(Rg, M0), np.log10(Rg), Rg])
 vm = np.einsum("ij,jk,ik->i", Xg, cov, Xg)
@@ -868,14 +878,20 @@ it was against a number made a different way.
 But $c_2$ is still nine of their standard errors from $-1.110$, and $c_3$ moved *further* from their
 value, not closer. **Station terms fixed the scatter and did not fix the curve.**""")
 
-md("""## 7 · What this calibration cannot tell you
+md("""## 8 · What this calibration cannot tell you
 
-Where did the `magnitude` column come from? Below about M3.4 it is the network's median of the
-station magnitudes in this table, after outlier rejection, and each of those was computed as $M_{L,i} = \\log_{10}A_i +
-f(R_i)$ with $f$ the attenuation table SCSN already assumes. Rearranged,
-$\\log_{10}A_i = M_{L,i} - f(R_i)$ — so this regression partly **recovers an assumption**.
+Everything so far has treated the `magnitude` column as an independent measurement. It is not, and
+the three tests in this section are the ones most worth carrying out of the room — each says
+something about *any* published fit, not just this one.
 
-Test it: regress on the station magnitude, the one derived from that exact reading.""")
+**Where did the magnitude come from?** Below about M3.4 it is the network's median of the station
+magnitudes in this table, after outlier rejection, and each of those was computed as
+$M_{L,i} = \\log_{10}A_i + f(R_i)$ with $f$ the attenuation table the network already assumes.
+Rearranged, $\\log_{10}A_i = M_{L,i} - f(R_i)$: the left side of our regression is the right side of
+theirs. A fit against it partly **recovers an assumption** rather than measuring the Earth.
+
+Test it by regressing on the *station* magnitude — the one derived from that exact reading, where
+the circularity is complete.""")
 run("""n_big = d[d.magnitude > 3.4].event_id.nunique()
 print(f"events above M3.4 (the range where moment tensors are obtainable): {n_big}")
 def fit_on(mag):
@@ -919,6 +935,21 @@ Boore's values.
 Then answer: **the standard error on $c_2$ was about 0.003. How far does $c_2$ move when you change
 the sample?** What does that imply about quoting a standard error as the uncertainty on a
 calibration?""")
+
+md(r"""**Put the three tests together.** Each one is invisible in the regression output, and each one
+applies to any published calibration you will ever read.
+
+- **The target was built from the predictor.** Catalogue magnitude comes from these amplitudes
+  through an assumed attenuation table, so part of what any such fit recovers is that assumption
+  coming back.
+- **The largest term in the model was the one we left out.** Adding a station intercept moved $c_1$
+  most of the way to Richter's 1 and removed about a third of the scatter. That was an omitted
+  variable, not a discovery about the magnitude scale — and nothing in the four-parameter fit hinted
+  at it.
+- **Choosing the sample moved the answer a hundred times further than the standard error did.**
+
+So when you next read a calibration quoted as $c \pm \sigma$, the honest questions are not about
+$\sigma$. They are: what was the target built from, what was left out, and which events were kept.""")
 
 md(r"""## Seismology takeaways
 
