@@ -380,7 +380,7 @@ MAIN = [
 
     # 3. What we actually record. 00[10] and 00[12] carry the same heading; [12] keeps
     #    the worked M5.1 example, so [10] is dropped rather than shown twice.
-    ("00_introduction", [8, 9], None),
+    ("00_introduction", [8], None),   # [9] IRIS annual-shipments chart: cut
     ("00_introduction", [12], None),
 
     # 4. The pipeline. 00[13] lists what gets extracted, so it opens the section and the

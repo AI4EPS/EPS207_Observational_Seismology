@@ -159,12 +159,6 @@ Weiqiang Zhu · Tuesdays 9:00-10:59 · McCone 325
 
 ---
 
-### Mining the IRIS dataset
-
-![w:595px](https://ds.iris.edu/files/stats/data/shipments/GigabytesByYearAndType.jpg)
-
----
-
 ### What information can we get from seismic data?
 
 - Take a look at a recent earthquake: [M 5.1 - 7 km SE of Ojai, CA](https://earthquake.usgs.gov/earthquakes/eventpage/ci39645386/executive)
