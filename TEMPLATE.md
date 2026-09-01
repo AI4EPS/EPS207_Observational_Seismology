@@ -241,6 +241,17 @@ A cell in topic 1 introduced itself as "the first honest comparison in this note
 listed the two coefficients that improved, omitting the one that moved further from the published
 value. If a table has three rows and two of them help your argument, the paragraph names all three.
 
+## Any table worth discussing is a view, not a message
+
+The working schedule — ML method, seismology problem, anchor papers, baseline, data — was built and
+revised across a dozen chat messages and existed nowhere else. When the conversation was compacted
+it was gone, and had to be recovered by grepping a JSONL transcript. Every field in it was already
+in `topics.yml`; only the view had been lost.
+
+So: if a table is worth iterating on, it is worth generating. `tools/make_table.py` emits the full
+planning view, `tools/make_site.py` emits the student-facing one. Both read `topics.yml`. Edit the
+spine and re-run; never paste a table into a reply and treat that as the record.
+
 ## Rules that cost something to learn
 
 - **Every number in prose is computed by a cell.** Never recalled, never lifted from a paper without
