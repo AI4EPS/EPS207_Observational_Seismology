@@ -37,7 +37,7 @@ topics:
   - n: 2
     slug: classification
     title: "Classification"
-    task: "Aftershock location forecasting"
+    task: "Where aftershocks occur"
     question: "Where do aftershocks occur — and what was the deep model actually buying?"
     papers:
       origin: "DeVries, Viégas, Wattenberg & Meade 2018, Nature, 10.1038/s41586-018-0438-y"
@@ -55,7 +55,7 @@ topics:
   - n: 3
     slug: bias_variance
     title: "Bias–variance, boosting, CV"
-    task: "Are catalogue error estimates honest?"
+    task: "How far a hypocentre moves when relocated"
     question: "How far does a hypocentre move when relocated — predicted from network geometry alone?"
     papers:
       origin: "Waldhauser & Ellsworth 2000, BSSA, 10.1785/0120000006 (HypoDD) — ALSO topic 13's origin"
