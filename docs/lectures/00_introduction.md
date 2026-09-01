@@ -3,9 +3,16 @@ marp: true
 paginate: true
 theme: gaia
 backgroundColor: #fff
+size: 16:12
 style: |
   section {
     font-size: 28px;
+  }
+  /* The 2023 decks mix slides authored for 16:9 and 16:12 and several set an explicit
+     image height that overflows the frame. Cap images so a slide cannot run off. */
+  section img {
+    max-height: 62vh;
+    object-fit: contain;
   }
   img + br + em {
     font-style: normal;
@@ -25,15 +32,7 @@ Weiqiang Zhu · Tuesdays 9:00-10:59 · McCone 325
 
 <!-- _class: lead -->
 
-# Part 1
-# Why we monitor
-
-**What is the cost of not knowing?**
-
-Classically: instrument the ground and wait.
-With learning: the same instruments, read faster and more completely.
-
-*Returns in every week*
+# 1 · Earthquakes
 
 ---
 
@@ -66,99 +65,13 @@ With learning: the same instruments, read faster and more completely.
 
 ---
 
-[Many more small earthquakes](https://earthquake.usgs.gov/earthquakes/map/?extent=-88.45674,-106.875&extent=88.43769,506.25&range=month&magnitude=all&showUSFaults=true&baseLayer=ocean&settings=true)
-- [California](https://earthquake.usgs.gov/earthquakes/map/?extent=30.78904,-128.58398&extent=43.05283,-109.42383&range=month&magnitude=all&showUSFaults=true&baseLayer=ocean&settings=true)
-- [Alaska](https://earthquake.usgs.gov/earthquakes/map/?extent=45.3367,-190.2832&extent=74.04372,-113.64258&range=month&magnitude=all&showUSFaults=true&baseLayer=ocean&settings=true)
-- [Hawaii](https://earthquake.usgs.gov/earthquakes/map/?extent=16.35177,-161.78467&extent=23.58413,-152.20459&range=month&magnitude=all&showUSFaults=true&baseLayer=ocean&settings=true)
-- [Oklahoma & Texas](https://earthquake.usgs.gov/earthquakes/map/?extent=26.78485,-109.81934&extent=39.62261,-90.65918&range=month&magnitude=all&showUSFaults=true&baseLayer=street&settings=true)
+<!-- _class: lead -->
+
+# 2 · Before, during, after
 
 ---
 
-[Seismic Networks](http://ds.iris.edu/gmap/#network=*&starttime=2023-01-01&datacenter=IRISDMC&plates=on&planet=earth)
-- [California](http://ds.iris.edu/gmap/#network=*&starttime=2023-01-01&maxlat=43.0799&maxlon=-113.3789&minlat=30.9776&minlon=-125.9234&datacenter=NCEDC,SCEDC&drawingmode=box&plates=on&planet=earth)
-- [Alaska](http://ds.iris.edu/gmap/#network=AV,AK&starttime=2023-01-01&plates=on&planet=earth)
-- [Hawaii](http://ds.iris.edu/gmap/#network=HV&maxlat=20.3285&maxlon=-154.6436&minlat=18.7711&minlon=-156.389&drawingmode=box&plates=on&planet=earth)
-- [Oklahoma & Texas](http://ds.iris.edu/gmap/#network=*&starttime=2023-01-01&maxlat=38.2544&maxlon=-93.4717&minlat=27.2156&minlon=-105.608&drawingmode=box&plates=on&planet=earth)
-
-[GPS Networks](https://www.unavco.org/instrumentation/networks/map/map.html#!/@45.65835440549003,-117.90988182323227,3.368z?network=nota,nota%20affiliated,polar,pi,igs,ggn,sgp,other&type=gps,gps%20realtime&view=map)
-
----
-
-### Large-N and Large-T challenge
-
-[IRIS dataset](https://ds.iris.edu/data/distribution/)
-![height:500px](https://ds.iris.edu/files/stats/data/archive/Archive_Growth.jpg)
-
----
-
-### Mining the IRIS dataset
-
-![height:500px](https://ds.iris.edu/files/stats/data/shipments/GigabytesByYearAndType.jpg)
-
----
-
-### What information can we get from seismic data?
-
-- Take a look at seismic waveforms:
-[ncedc.org/waveformDisplay/](https://ncedc.org/waveformDisplay/)
-
-[Station Channel Codes](https://docs.fdsn.org/projects/source-identifiers/en/v1.0/channel-codes.html) 
-
-[Station Channels Codes IRIS](https://ds.iris.edu/ds/nodes/dmc/data/formats/seed-channel-naming/)
-
-![height:500px](https://ncedc.org/gifs/annotatedQuakes.jpg)
-
----
-
-- Can you find an earthquake?
-
-[Raspberry Shake Network](https://stationview.raspberryshake.org/#/?lat=9.22307&lon=-0.57266&zoom=2.444)
-
-<!-- FIXME: figure lost to an expired CDN link; paste a screenshot here -->
-
----
-
-### What information can we get from seismic data?
-
-- Take a look at a recent earthquake: [M 5.1 - 7 km SE of Ojai, CA](https://earthquake.usgs.gov/earthquakes/eventpage/ci39645386/executive)
-![height:500px](assets/M5.1.png)
-
----
-
-### How are information extracted/determined?
-
-* Detection of earthquakes
-* Earthquake origin time and location
-* Earthquake magnitude
-* Earthquake focal mechanism/moment tensor
-* Shake map/ground motion prediction
-* Earthquake early warning
-* "Did you feel it?"
-
----
-
-### What additional information can we get from millions of earthquakes?
-
-* Earthquake catalog
-* Earthquake statistics
-* Earthquake triggering
-* Earthquake forecasting
-* Fault zone structure
-* Seismic tomography
-* Volcano, glacier, and landslide monitoring
-
----
-
-### How to use these information?
-
-* Monitoring earthquakes and earthquake early warning
-* Understand earthquake source physics
-* Understanding the Earth's structure
-* Applying seismology to environmental science, planetary science, climate science, etc.
-
----
-
-### Earthquake monitoring and earthquake rick?
+### Earthquake monitoring and earthquake risk?
 
 - Before an earthquake
 - A few seconds after an earthquake
@@ -230,15 +143,446 @@ With learning: the same instruments, read faster and more completely.
 
 <!-- _class: lead -->
 
-# Part 2
-# What an earthquake is
+# 3 · The data
 
-**What quantity are we actually estimating?**
+---
 
-Classically: a double couple, six moment-tensor components, one magnitude.
-With learning: nothing yet - this is the vocabulary the rest of the course uses.
+### Large-N and Large-T challenge
 
-*Returns in weeks 1 and 12*
+[IRIS dataset](https://ds.iris.edu/data/distribution/)
+![height:500px](https://ds.iris.edu/files/stats/data/archive/Archive_Growth.jpg)
+
+---
+
+### Mining the IRIS dataset
+
+![height:500px](https://ds.iris.edu/files/stats/data/shipments/GigabytesByYearAndType.jpg)
+
+---
+
+### What information can we get from seismic data?
+
+- Take a look at a recent earthquake: [M 5.1 - 7 km SE of Ojai, CA](https://earthquake.usgs.gov/earthquakes/eventpage/ci39645386/executive)
+![height:500px](assets/M5.1.png)
+
+---
+
+<!-- _class: lead -->
+
+# 4 · From waveforms to a catalogue
+
+---
+
+### How is information extracted?
+
+- Detection of earthquakes
+- Earthquake origin time and location
+- Earthquake magnitude
+- Earthquake focal mechanism/moment tensor
+- Shake map/ground motion prediction
+- Earthquake early warning
+- "Did you feel it?"
+
+---
+
+### How to detect earthquakes?
+
+- Amplitude threshold
+- STA/LTA
+- Template matching / Matched filter
+- Deep learning
+
+---
+
+### STA/LTA
+
+- Pros:
+    - Simple and fast
+    - More sensitive than amplitude threshold
+    - More robust for noisy data
+
+- Cons:
+    - More parameters for tuning
+    - Prone to false detections
+
+---
+
+<style scoped>
+section {
+  column-count: 2;
+}
+h3 {
+  column-span: all;
+}
+p {
+  margin: 0;
+}
+</style>
+
+### Information from seismic phases
+
+- Earthquake source
+- Earth's (Planetary) interior structure
+- Subsurface exploration (reservior, geothermal, etc.)
+- ...
+
+![width:500px](https://www.science.org/cms/10.1126/science.abi7730/asset/50a260db-ccff-43b4-a8ca-b83c05832d16/assets/graphic/373_443_f3.jpeg)
+
+---
+
+### Picking P and S waves
+
+![width:1100px](https://d3i71xaburhd42.cloudfront.net/5ae0f6a3b5fc882ce0b05ff1e8f333caf2e0549e/6-Figure4-1.png)
+
+---
+
+### What is phase association?
+
+![width:1200px](./assets/phase_picks.png)
+
+---
+
+### How to locate an earthquake?
+
+![height:500px](https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/styles/full_width/public/thumbnails/image/locating%20earthquakes%201.gif?itok=z60HGZwY)
+
+---
+
+### Optimization (Inverse) problem
+
+- Minimize the difference between observed and predicted values
+
+![height:400px](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Linear_regression.svg/1920px-Linear_regression.svg.png)
+
+---
+
+### Earthquake Magnitude
+
+How to quantify the size of an earthquake?
+
+- For historical reasons the most well-known measure of earthquake size is the  earthquake magnitude.
+- Derived from the largest amplitude that is recorded on  seismograms.
+- There are now many different types of magnitude  scales, but all are connected in some way to the earliest definitions of  magnitude.
+
+![bg right:40% fit](https://raw.githubusercontent.com/zhuwq0/images/main/20250403091807.png)
+
+---
+
+### Richter Magnitude (Local magnitude $M_L$)
+
+The original magnitude scale is based on the maximum amplitude recorded on a standard Wood-Anderson torsion seismograph.
+
+$$
+M_L = \log_{10} A(X) - \log_{10} A_0(X)
+$$
+$A_0$: the amplitude of the reference event
+$X$: the epicentral distance
+
+![20250402232519 bg right:50% fit](https://raw.githubusercontent.com/zhuwq0/images/main/20250402232519.png)
+
+----
+
+### Richter Magnitude (Local magnitude $M_L$)
+
+An approximate empirical formula has been derived for $\log_{10} A_0(X)$ at different ranges. 
+The local magnitude can be calculated by
+$$
+M_L = \log_{10} A(X) + 2.56 \log_{10} X - 1.67
+$$
+where $A(X)$ is the displacement amplitude in microns (10$^{-6}$ m) and X is in  kilometers.
+
+- Events below about $M_L 3$ are generally not felt
+- Significant damage to structures in California begins to  occur at about $M_L 5.5$
+- A $M_L 6.0$ earthquake implies amplitude 100 times greater than a $M_L 4.0$ event.
+
+---
+
+### Fault plane
+
+![w:500](./assets/Screenshot%202023-10-29%20at%2014.36.58.png)
+
+![bg right:55% 80%](./assets/Screenshot%202023-10-29%20at%2014.55.02.png)
+
+---
+
+### Focal Mechanism Beachball
+
+<!-- ![](./assets/Screenshot%202023-10-29%20at%2014.49.33.png) -->
+
+![w:400](./assets/Screenshot%202023-10-29%20at%2014.58.03.png)
+
+![bg right:50% 80%](./assets/Screenshot%202023-10-29%20at%2014.53.33.png)
+
+--- 
+
+### Radiation pattern
+
+![h:500](./assets/Screenshot%202023-10-29%20at%2014.38.56.png)
+
+![bg right:50% 80%](./assets/Screenshot%202023-10-29%20at%2015.04.01.png)
+
+<!-- footer: "Kumar et al. (2016)" -->
+
+---
+
+<!-- _class: lead -->
+
+# 5 · What a catalogue is for
+
+---
+
+### What can we learn from millions of earthquakes?
+
+- Earthquake catalog
+- Earthquake statistics
+- Earthquake triggering
+- Earthquake forecasting
+- Fault zone structure
+- Seismic tomography
+- Volcano, glacier, and landslide monitoring
+
+---
+
+### How is this information used?
+
+- Monitoring earthquakes and earthquake early warning
+- Understand earthquake source physics
+- Understanding the Earth's structure
+- Applying seismology to environmental science, planetary science, climate science, etc.
+
+---
+
+<!-- _class: lead -->
+
+# 6 · What learning changed
+
+---
+
+### Deep learning
+
+- Generalized similarity search
+
+![width:1100px](./assets/Screenshot%202023-09-24%20at%2023.39.39.png)
+
+---
+
+### Convolutional Neural Network for Earthquake detection and location
+
+![height:500px](https://www.science.org/cms/10.1126/sciadv.1700578/asset/06ce7224-a642-4b78-9ba5-d854cc8baf88/assets/graphic/1700578-f2.jpeg)
+
+
+--- 
+### Residual Network of Convolutional and Recurrent Units for Earthquake Signal Detection
+
+![height:480px](./assets/cread.jpeg)
+
+---
+
+### Background: Semantic Segmentation vs. Classification
+
+![width:950px](./assets/cv_tasks.png)
+
+---
+
+### Generalized seismic phase detection with deep learning
+
+![width:900px](https://d3i71xaburhd42.cloudfront.net/e178d94a0601f0f395cf6d81b884a238331fa869/3-Figure1-1.png)
+
+---
+
+### PhaseNet
+
+![width:1200px](./assets/phasenet.png)
+
+---
+
+<style scoped>
+section {
+  column-count: 2;
+}
+h3 {
+  column-span: all;
+}
+p {
+  margin: 0;
+}
+</style>
+
+### Large training dataset + Clear objective function
+
+*Figure: [Zhu & Beroza (2018), PhaseNet, GJI](https://doi.org/10.1093/gji/ggy423)*
+![width:700px](./assets/dataset.png)
+
+<!-- FIXME: figure lost to an expired CDN link; paste a screenshot here -->
+
+---
+
+### Clustering-based (Unsupervised), e.g. GaMMA
+
+![height:500px](https://raw.githubusercontent.com/wayneweiqiang/GaMMA/master/docs/assets/diagram_gamma_annotated.png)
+
+
+
+--- 
+
+### Clustering
+
+![height:500px](https://scikit-learn.org/stable/_images/sphx_glr_plot_cluster_comparison_001.png)
+
+---
+
+### Deep Denoiser
+
+- Short-time Fourier Transform (STFT) + Wiener Filter + Neural Network
+
+![width:1000px](./assets/Screenshot%202023-09-17%20at%2018.16.57.png)
+
+---
+
+### Deep learning for earthquake statistics
+
+![h:450](https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41586-018-0438-y/MediaObjects/41586_2018_438_Fig1_HTML.png?as=webp)
+
+<!-- footer: "Deep learning of aftershock patterns following large earthquakes, Devries et al. 2018" -->
+
+---
+
+### The advantages of machine learning
+
+Deep Learning (Deep Neural Networks) is a new paradigm of software development
+
+- [Software 2.0](https://karpathy.medium.com/software-2-0-a64152b37c35)
+
+- [Universal Approximation Theorem](https://en.wikipedia.org/wiki/Universal_approximation_theorem)
+
+---
+
+### Applications of deep learning in seismology
+
+- Neural Networks
+- Automatic Differentiation
+- Optimization/Inversion
+
+---
+
+<!-- _class: lead -->
+
+# 7 · The catch
+
+---
+
+### A deep net, and a number with no parameters
+
+DeVries et al. (2018, *Nature*) predicted where aftershocks occur from static stress
+change, with a 13,451-parameter neural network.
+
+| model | fitted parameters | AUC |
+| --- | --- | --- |
+| the published network | 13,451 | 0.8486 |
+| **max shear stress change** | **0** | **0.8474** |
+| logistic regression | 13 | 0.8310 |
+
+Mignan & Broccardo (2019, *Nature*) showed a two-parameter model matches the network.
+Measured here: a single stress quantity, **nothing fitted at all**, comes within 0.0012.
+
+---
+
+### How to get +0.067 AUC out of nothing
+
+Same data. Add one extra feature: a **random number, constant within each mainshock**,
+carrying no information whatsoever.
+
+| split | what the noise feature is worth |
+| --- | --- |
+| random split over cells | **+0.067 AUC** |
+| split by mainshock | −0.032 AUC |
+
+That is roughly **four times** the entire advantage the deep network was reported to have.
+
+Cells around one mainshock share a rupture and a stress field. Split them at random and
+the model reads the answer off the group it is in.
+
+---
+
+### The error bar decides the result
+
+The same comparison, bootstrapped two ways:
+
+| resampled over | 95% interval | reads as |
+| --- | --- | --- |
+| 1,378,120 cells | [−0.0194, −0.0153] | a clear result |
+| **33 independent earthquakes** | **[−0.0280, +0.0059]** | **no result** |
+
+**8.3x wider**, and it now contains zero. The data did not change; the assumption about
+what counts as an independent observation did.
+
+So: every week, a **baseline** and an **honest interval**.
+
+---
+
+<!-- _class: lead -->
+
+# 8 · This course
+
+---
+
+### Things to learn in this course
+
+- Familiar with seismic data
+- Learn the state-of-the-art machine learning methods for seismic data processing
+- Process seismic data, build seismic catalogs, and analyzing seismicity
+- Learn basic inverse theory for earthquake location, focal mechanism, seismic tomography, etc.
+
+---
+
+### Schedule
+
+| Date | Seismology | Machine learning |
+| --- | --- | --- |
+| 09/01 | **Introduction** | *today* |
+| 09/08 | Magnitude calibration | Regression & uncertainty |
+| 09/15 | Where aftershocks occur | Bias–variance, boosting, CV |
+| 09/22 | Fault structure from seismicity | Clustering, mixture models, EM |
+| 09/29 | Earthquake / quarry-blast discrimination | NN: classification |
+| 10/06 | Phase picking | NN: segmentation |
+| 10/13 | Event detection on DAS | NN: object detection |
+| 10/20 | Denoising | NN: Denoising |
+| 10/27 | Ground-motion prediction | Transformers |
+| 11/03 | Template matching | Similarity & embeddings |
+| 11/10 | Waveform generation | VAE and Diffusion |
+| 11/17 | Focal mechanism & moment tensor | Inversion I — linear |
+| 11/24 | Location & relocation | Inversion II — non-linear |
+| 12/01 | Tomography | Inversion III — fields |
+
+---
+
+### Final project
+
+**The Geysers** - the most seismically active field in California, where the shaking is
+a side effect of an industrial process.
+
+---
+
+### Grading
+
+- Attendance and participation (50%)
+- Final project (50%)
+
+---
+
+### Questions?
+
+---
+
+<!-- _class: lead -->
+
+# Appendix
+
+---
+
+<!-- _class: lead -->
+
+# A · Earthquake source
 
 ---
 
@@ -380,47 +724,6 @@ The scalar seismic moment of the earthquake; units of dyn-cm, or N-m
 
 ---
 
-### Earthquake Magnitude
-
-How to quantify the size of an earthquake?
-
-* For historical reasons the most well-known measure of earthquake size is the  earthquake magnitude.
-* Derived from the largest amplitude that is recorded on  seismograms.
-* There are now many different types of magnitude  scales, but all are connected in some way to the earliest definitions of  magnitude.
-
-![bg right:40% fit](https://raw.githubusercontent.com/zhuwq0/images/main/20250403091807.png)
-
----
-
-### Richter Magnitude (Local magnitude $M_L$)
-
-The original magnitude scale is based on the maximum amplitude recorded on a standard Wood-Anderson torsion seismograph.
-
-$$
-M_L = \log_{10} A(X) - \log_{10} A_0(X)
-$$
-$A_0$: the amplitude of the reference event
-$X$: the epicentral distance
-
-![20250402232519 bg right:50% fit](https://raw.githubusercontent.com/zhuwq0/images/main/20250402232519.png)
-
-----
-
-### Richter Magnitude (Local magnitude $M_L$)
-
-An approximate empirical formula has been derived for $\log_{10} A_0(X)$ at different ranges. 
-The local magnitude can be calculated by
-$$
-M_L = \log_{10} A(X) + 2.56 \log_{10} X - 1.67
-$$
-where $A(X)$ is the displacement amplitude in microns (10$^{-6}$ m) and X is in  kilometers.
-
-* Events below about $M_L 3$ are generally not felt
-* Significant damage to structures in California begins to  occur at about $M_L 5.5$
-* A $M_L 6.0$ earthquake implies amplitude 100 times greater than a $M_L 4.0$ event.
-
----
-
 ### Global earthquakes: body wave magnitude $m_b$
 
 
@@ -430,8 +733,8 @@ $$
 
 where A is the ground displacement in microns, T is the dominant period of  the measured waves, $\Delta$ is the epicentral distance in degrees, and Q is an  empirical function of range and event depth h.
 
-* Why $A/T$?
-* h?
+- Why $A/T$?
+- h?
 
 ---
 
@@ -447,8 +750,8 @@ $$
 M_s = \log_{10} A_{20} + 2.46 \log_{10} \Delta + 2.0
 $$
 
-* Note that this equation is applicable only to shallow events
-* surface wave amplitudes are greatly reduced for deep events.
+- Note that this equation is applicable only to shallow events
+- surface wave amplitudes are greatly reduced for deep events.
 
 ---
 
@@ -467,9 +770,9 @@ M_w = \frac{2}{3} (\log_{10} M_0 - 9.1)
 $$
 where is the moment measured in N-m.
 
-* The advantage of the scale is that it is clearly related to a physical property of the source and it does not saturate for even the largest  earthquakes.
-* One unit increase in $M_w$ corresponds to a $10^{3/2} \approx 32$ times increase in the moment.
-* A $M_w 7$ earthquake releases about 1000 times more energy than a $M_w 5$ event.
+- The advantage of the scale is that it is clearly related to a physical property of the source and it does not saturate for even the largest  earthquakes.
+- One unit increase in $M_w$ corresponds to a $10^{3/2} \approx 32$ times increase in the moment.
+- A $M_w 7$ earthquake releases about 1000 times more energy than a $M_w 5$ event.
 
 ---
 
@@ -485,7 +788,7 @@ where is the moment measured in N-m.
 
 The local strength of ground shaking as determined by damage to  structures and the perceptions of people who experienced the earthquake.
 
-* One earthquake can have different intensities at different locations.
+- One earthquake can have different intensities at different locations.
 
 [USGS Latest Earthquakes](https://earthquake.usgs.gov/earthquakes/map/?extent=26.07652,-136.80176&extent=49.92294,-98.48145&range=month&listOnlyShown=true&settings=true&search=%7B%22name%22:%22Search%20Results%22,%22params%22:%7B%22starttime%22:%222020-12-02%2000:00:00%22,%22endtime%22:%222023-12-09%2023:59:59%22,%22maxlatitude%22:37.642,%22minlatitude%22:37.588,%22maxlongitude%22:-122.344,%22minlongitude%22:-122.412,%22orderby%22:%22time%22%7D%7D)
 
@@ -493,15 +796,7 @@ The local strength of ground shaking as determined by damage to  structures and 
 
 <!-- _class: lead -->
 
-# Part 3
-# The waveform
-
-**Which part of this record is signal?**
-
-Classically: a bandpass filter, chosen by eye.
-With learning: a learned mask - but you must show it helps downstream, not that it looks better.
-
-*Returns in week 11*
+# B · Signal processing
 
 ---
 
@@ -603,14 +898,6 @@ $$
 
 ---
 
-### Deep Denoiser
-
-- Short-time Fourier Transform (STFT) + Wiener Filter + Neural Network
-
-![width:1000px](./assets/Screenshot%202023-09-17%20at%2018.16.57.png)
-
----
-
 ### Deep Denoiser for Seismic Data
 
 [Paper](https://drive.google.com/file/d/19g0nyCgAIUPOrQ6sPsU1PPA5B9zhQbBG/view?usp=drive_link)
@@ -619,24 +906,7 @@ $$
 
 <!-- _class: lead -->
 
-# Part 4
-# Detection
-
-**Is there an earthquake in this hour of data?**
-
-Classically: amplitude threshold, then STA/LTA, then template matching.
-With learning: a detector trained on catalogues, finding events below every earlier threshold.
-
-*Returns in weeks 6, 7 and 9*
-
----
-
-### How to detect earthquakes?
-
-* Amplitude threshold
-* STA/LTA
-* Template matching / Matched filter
-* Deep learning
+# C · Detection
 
 ---
 
@@ -652,14 +922,14 @@ With learning: a detector trained on catalogues, finding events below every earl
 
 ### Amplitude threshold
 
-* Pros:
+- Pros:
     - Simple and fast
     - Physical parameter
     - Directly related to shaking/damage
-* Cons:
+- Cons:
     - Limit to large earthquakes
     - Need backgroud noise level for small earthquakes
-* Improvments:
+- Improvments:
     - How to make the threshold adaptive to the background noise level?
 
 ---
@@ -676,19 +946,6 @@ With learning: a detector trained on catalogues, finding events below every earl
 
 
 ![height:500px](https://docs.obspy.org/_images/trigger_tutorial_classic_sta_lta.png)
-
----
-
-### STA/LTA
-
-* Pros:
-    - Simple and fast
-    - More sensitive than amplitude threshold
-    - More robust for noisy data
-
-* Cons:
-    - More parameters for tuning
-    - Prone to false detections
 
 ---
 
@@ -733,7 +990,7 @@ Notebook: [cross-correlation](https://ai4eps.github.io/EPS207_Observational_Seis
 
 --- 
 
-### Siminlarity search
+### Similarity search
 
 - Pros:
     - Sensitive to small earthquakes
@@ -743,14 +1000,6 @@ Notebook: [cross-correlation](https://ai4eps.github.io/EPS207_Observational_Seis
     - Complex to implement
 
 <!-- FIXME: figure lost to an expired CDN link; paste a screenshot here -->
-
----
-
-### Deep learning
-
-- Generalized similarity search
-
-![width:1100px](./assets/Screenshot%202023-09-24%20at%2023.39.39.png)
 
 ---
 
@@ -769,15 +1018,7 @@ Notebook: [cross-correlation](https://ai4eps.github.io/EPS207_Observational_Seis
 
 <!-- _class: lead -->
 
-# Part 5
-# Phase picking
-
-**When did P and S arrive, on each station?**
-
-Classically: an analyst, by hand, at a few tens of thousands of picks a year.
-With learning: segmentation of the trace - the single change that grew catalogues by an order of magnitude.
-
-*Returns in week 6*
+# D · Phase picking
 
 ---
 
@@ -806,41 +1047,6 @@ p {
 
 ---
 
-<style scoped>
-section {
-  column-count: 2;
-}
-h3 {
-  column-span: all;
-}
-p {
-  margin: 0;
-}
-</style>
-
-### Information from seismic phases
-
-* Earthquake source
-* Earth's (Planetary) interior structure
-* Subsurface exploration (reservior, geothermal, etc.)
-* ...
-
-![width:500px](https://www.science.org/cms/10.1126/science.abi7730/asset/50a260db-ccff-43b4-a8ca-b83c05832d16/assets/graphic/373_443_f3.jpeg)
-
----
-
-### Picking P and S waves
-
-![width:1100px](https://d3i71xaburhd42.cloudfront.net/5ae0f6a3b5fc882ce0b05ff1e8f333caf2e0549e/6-Figure4-1.png)
-
----
-
-### Background: Semantic Segmentation vs. Classification
-
-![width:950px](./assets/cv_tasks.png)
-
----
-
 ### Demo: Segment Anything Model (SAM)
 
 Try the SAM model: [link](https://segment-anything.com/demo)
@@ -848,18 +1054,6 @@ Try the SAM model: [link](https://segment-anything.com/demo)
 ---
 
 ### How to apply deep learning to seismic phase picking?
-
----
-
-### Generalized seismic phase detection with deep learning
-
-![width:900px](https://d3i71xaburhd42.cloudfront.net/e178d94a0601f0f395cf6d81b884a238331fa869/3-Figure1-1.png)
-
----
-
-### PhaseNet
-
-![width:1200px](./assets/phasenet.png)
 
 ---
 
@@ -875,44 +1069,9 @@ Try the SAM model: [link](https://segment-anything.com/demo)
 
 ---
 
-<style scoped>
-section {
-  column-count: 2;
-}
-h3 {
-  column-span: all;
-}
-p {
-  margin: 0;
-}
-</style>
-
-### Large training dataset + Clear objective function
-
-*Figure: [Zhu & Beroza (2018), PhaseNet, GJI](https://doi.org/10.1093/gji/ggy423)*
-![width:700px](./assets/dataset.png)
-
-<!-- FIXME: figure lost to an expired CDN link; paste a screenshot here -->
-
----
-
 <!-- _class: lead -->
 
-# Part 6
-# Association
-
-**Which picks belong to the same earthquake?**
-
-Classically: grid search over candidate origins.
-With learning: clustering with a physical forward model inside it.
-
-*Returns in week 4*
-
----
-
-### What is phase association?
-
-![width:1200px](./assets/phase_picks.png)
+# E · Association
 
 ---
 
@@ -942,20 +1101,6 @@ p {
 *Figure: [McBrearty & Beroza (2023), Earthquake Phase Association with Graph Neural Networks, BSSA](https://doi.org/10.1785/0120220182)*
 
 <!-- FIXME: figure lost to an expired CDN link; paste a screenshot here -->
-
----
-
-### Clustering-based (Unsupervised), e.g. GaMMA
-
-![height:500px](https://raw.githubusercontent.com/wayneweiqiang/GaMMA/master/docs/assets/diagram_gamma_annotated.png)
-
-
-
---- 
-
-### Clustering
-
-![height:500px](https://scikit-learn.org/stable/_images/sphx_glr_plot_cluster_comparison_001.png)
 
 ---
 
@@ -995,29 +1140,7 @@ p {
 
 <!-- _class: lead -->
 
-# Part 7
-# Location, and how wrong it is
-
-**Where was it, and how far could that be off?**
-
-Classically: linearised least squares; a covariance matrix; a chi-square ellipse.
-With learning: the same inverse problem, differentiated automatically, with a posterior instead of an ellipse.
-
-*Returns in weeks 1, 3, 13 and 14*
-
----
-
-### How to locate an earthquake?
-
-![height:500px](https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/styles/full_width/public/thumbnails/image/locating%20earthquakes%201.gif?itok=z60HGZwY)
-
----
-
-### Optimization (Inverse) problem
-
-- Minimize the difference between observed and predicted values
-
-![height:400px](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Linear_regression.svg/1920px-Linear_regression.svg.png)
+# F · Location and its uncertainty
 
 ---
 
@@ -1210,7 +1333,7 @@ Case: Earthquakes located along a fault will often be mislocated if the seismic 
 
 ---
 
-### Challenges: trade-off between event dpeth and origin time
+### Challenges: trade-off between event depth and origin time
 
 Case: Earthquake locations for events outside of a network are often not well constrained.
 
@@ -1289,15 +1412,7 @@ Review: [clusering](https://ai4eps.github.io/EPS207_Observational_Seismology/lec
 
 <!-- _class: lead -->
 
-# Part 8
-# What a catalogue is for
-
-**What do a million earthquakes say that one does not?**
-
-Classically: Gutenberg-Richter, Omori, ETAS - three laws and a few parameters.
-With learning: the same laws, but now the catalogue is large enough that the parameters move.
-
-*Returns in weeks 1 and 4*
+# G · Catalogue statistics
 
 ---
 
@@ -1392,7 +1507,7 @@ Where:
 
 ---
 
-### What controls the slop $b$?
+### What controls the slope $b$?
 
 ![h:500](./assets/Scholz1968.png)
 <!-- footer: (Scholz 1968) -->
@@ -1410,10 +1525,10 @@ Where:
 
 What affects the magnitude completeness?
 
-* Station coverage
-* Background noise
-* Detection algorithms
-* ...
+- Station coverage
+- Background noise
+- Detection algorithms
+- ...
 
 ![bg right h:500](./assets/Hutton2010.png)
 
@@ -1548,53 +1663,9 @@ $\mu$ : friction coefficient
 
 ---
 
-### Deep learning for earthquake statistics
-
-![h:450](https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41586-018-0438-y/MediaObjects/41586_2018_438_Fig1_HTML.png?as=webp)
-
-<!-- footer: "Deep learning of aftershock patterns following large earthquakes, Devries et al. 2018" -->
-
----
-
 <!-- _class: lead -->
 
-# Part 9
-# Mechanism
-
-**How did the fault move?**
-
-Classically: first motions on a stereonet, or a waveform inversion.
-With learning: machine polarities at a scale that makes mechanisms routine.
-
-*Returns in week 12*
-
----
-
-### Fault plane
-
-![w:500](./assets/Screenshot%202023-10-29%20at%2014.36.58.png)
-
-![bg right:55% 80%](./assets/Screenshot%202023-10-29%20at%2014.55.02.png)
-
----
-
-### Focal Mechanism Beachball
-
-<!-- ![](./assets/Screenshot%202023-10-29%20at%2014.49.33.png) -->
-
-![w:400](./assets/Screenshot%202023-10-29%20at%2014.58.03.png)
-
-![bg right:50% 80%](./assets/Screenshot%202023-10-29%20at%2014.53.33.png)
-
---- 
-
-### Radiation pattern
-
-![h:500](./assets/Screenshot%202023-10-29%20at%2014.38.56.png)
-
-![bg right:50% 80%](./assets/Screenshot%202023-10-29%20at%2015.04.01.png)
-
-<!-- footer: "Kumar et al. (2016)" -->
+# H · Focal mechanism
 
 ---
 
@@ -1628,155 +1699,3 @@ $P_0^{j, k} are P_t^{i, k}$ are the observed and theoretical first-motion polari
 $w_t^{i, k}=[A(i, k)]^{1 / 2}$ is the square root of the normalized theoretical P-wave radiation amplitude $A(i, k)$ of earthquake $E^j$ recorded at the $k^{\text {th }}$ station for source model $M^i$.
 
 <!-- footer: "Reasenberg (1985)" -->
-
----
-
-### Focal mechanism from first motion polarity
-
-- HASH
-
-*Figure: [Hardebeck & Shearer (2002), A New Method for Determining First-Motion Focal Mechanisms, BSSA](https://doi.org/10.1785/0120010200)*
-
-<!-- footer: "Hardebeck and Shearer (2002)" -->
-
-<!-- FIXME: figure lost to an expired CDN link; paste a screenshot here -->
-
----
-
-<!-- _class: lead -->
-
-# Part 10
-# This course
-
----
-
-### How can we better monitor earthquakes?
-
-**Instrument side**
-(How to collect more and better data?)
-
-- Dense seismic networks
-- New sensors: broadband seismometer, nodal array, and DAS (Distributed Acoustic Sensing)
-- Remote sensing, LiDAR, etc.
-
---- 
-
-### How can we better monitor earthquakes?
-
-**Algorithm side**
-(New techniques for processing data and extracting information?)
-
-- Many signal processing algorithms, such as, STA/LTA, template matching, filtering, etc.
-
-- Machine learning & deep learning
-
-- Numerical simulation
-
-- Inverse theory
-
-- Statistical analysis
-
----
-
-### Things to learn in this course
-
-- Faimilar with seismic data
-- Learn the state-of-the-art machine learning methods for seismic data processing
-- Process seismic data, build seismic catalogs, and analyzing seismicity
-- Learn basic inverse theory for earthquake location, focal mechanism, seismic tomography, etc.
-
----
-
-### The advantages of machine learning
-
-Deep Learning (Deep Neural Networks) is a new paradigm of software development
-
-- [Software 2.0](https://karpathy.medium.com/software-2-0-a64152b37c35)
-
-- [Universal Approximation Theorem](https://en.wikipedia.org/wiki/Universal_approximation_theorem)
-
----
-
-### Applications of deep learning in seismology
-
-- Neural Networks
-- Automatic Differentiation
-- Optimization/Inversion
-
----
-
-<span style="color:Violet;">Machine Learning</span> and <span style="color:LimeGreen;">Inversion</span>
-
-
-|||
-| --- | --- | 
-| 09/18 | <span style="color:Violet;">Seismic Data Processing</span>  |
-| 09/25 | <span style="color:Violet;">Earthquake Detection</span> |
-| 10/02 | <span style="color:Violet;">Phase Picking & Association</span> |
-| 10/09 | <span style="color:LimeGreen;">Earthquake Location & Relative Location |
-| 10/16 | <span style="color:LimeGreen;">Focal Mechanism & Moment Tensor |
-| 10/23 | <span style="color:Violet;">Earthquake Statistics</span> |
-| 10/30 | <span style="color:black;">Ambient Noise</span> |
-| 11/06 | <span style="color:LimeGreen;">Seismic Tomography</span> |
-| 11/13 | <span style="color:LimeGreen;">Full-waveform Inversion</span> |
-
----
-
-### Schedule
-
-| Date | Seismology | Machine learning |
-| --- | --- | --- |
-| 09/01 | **Introduction** | *today* |
-| 09/08 | Magnitude calibration | Regression & uncertainty |
-| 09/15 | Where aftershocks occur | Bias–variance, boosting, CV |
-| 09/22 | Fault structure from seismicity | Clustering, mixture models, EM |
-| 09/29 | Earthquake / quarry-blast discrimination | NN: classification |
-| 10/06 | Phase picking | NN: segmentation |
-| 10/13 | Event detection on DAS | NN: object detection |
-| 10/20 | Denoising | NN: Denoising |
-| 10/27 | Ground-motion prediction | Transformers |
-| 11/03 | Template matching | Similarity & embeddings |
-| 11/10 | Waveform generation | VAE and Diffusion |
-| 11/17 | Focal mechanism & moment tensor | Inversion I — linear |
-| 11/24 | Location & relocation | Inversion II — non-linear |
-| 12/01 | Tomography | Inversion III — fields |
-
----
-
-### How each week runs
-
-One notebook, worked in the room.
-
-1. A published claim, and the paper it comes from.
-2. The data, and what is wrong with it.
-3. **A baseline** - the simplest thing that could work.
-4. The method, against that baseline, on the same data and the same metric.
-5. What would have to be true for the result to be wrong.
-
-A method that does not beat its baseline has not earned the week.
-
----
-
-### Final project
-
-The Geysers: the most seismically active field in California, and the shaking is
-a side effect of an industrial process.
-
-- One field, one catalogue, your own question.
-- Proposal in week 5, presentations in week 15.
-- `docs/project.md` lists nine questions - or bring your own.
-
----
-
-### Grading
-
-- Attendance and participation (50%)
-- Final project (50%)
-    - Project proposal (10%)
-    - Project presentation (20%)
-    - Project report (20%)
-- Extra credit (up to 10%)
-
----
-
-### Questions?

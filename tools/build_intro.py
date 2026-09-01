@@ -35,9 +35,16 @@ marp: true
 paginate: true
 theme: gaia
 backgroundColor: #fff
+size: 16:12
 style: |
   section {
     font-size: 28px;
+  }
+  /* The 2023 decks mix slides authored for 16:9 and 16:12 and several set an explicit
+     image height that overflows the frame. Cap images so a slide cannot run off. */
+  section img {
+    max-height: 62vh;
+    object-fit: contain;
   }
   img + br + em {
     font-style: normal;
@@ -55,113 +62,172 @@ TITLE = """
 Weiqiang Zhu · Tuesdays 9:00-10:59 · McCone 325
 """
 
-# A divider before each part. (heading, question, classical answer, what learning
-# changed, which weeks return to it)
-def divider(n, name, question, classical, learned, weeks):
+# ── The argument ──────────────────────────────────────────────────────────────
+# Day one has to make ONE claim and support it, not tour nine decks. The claim:
+#
+#   Seismology's catalogues grew by orders of magnitude because the pipeline that
+#   builds them was replaced with learned models. That same scale makes it much
+#   easier to fool yourself, so every week of this course tests a published claim
+#   against a baseline and an honest error bar.
+#
+# Six movements: why it matters -> what we have -> how a catalogue is built ->
+# what learning changed -> why that is dangerous -> how the course runs.
+#
+# Everything else from 2023 moves to an APPENDIX behind a divider: present for
+# questions and reference, out of the way of the argument. Roughly 50 slides in
+# front, ~100 behind.
+
+def divider(name, sub=""):
+    # Title only. Any strapline here reads as filler on a projector.
     return f"""
 <!-- _class: lead -->
 
-# Part {n}
 # {name}
-
-**{question}**
-
-Classically: {classical}
-With learning: {learned}
-
-*Returns in {weeks}*
 """
 
-# (source deck, [chunk indices]) -- indices from the 2023 files, see notes/.
-PARTS = [
+
+# The three slides that carry the course's own argument. Every number here was
+# measured in preparing this course, on the DeVries aftershock data used in week 3,
+# except where a paper is named. Do not round them or restate them from memory.
+CATCH_1 = """
+### A deep net, and a number with no parameters
+
+DeVries et al. (2018, *Nature*) predicted where aftershocks occur from static stress
+change, with a 13,451-parameter neural network.
+
+| model | fitted parameters | AUC |
+| --- | --- | --- |
+| the published network | 13,451 | 0.8486 |
+| **max shear stress change** | **0** | **0.8474** |
+| logistic regression | 13 | 0.8310 |
+
+Mignan & Broccardo (2019, *Nature*) showed a two-parameter model matches the network.
+Measured here: a single stress quantity, **nothing fitted at all**, comes within 0.0012.
+"""
+
+CATCH_2 = """
+### How to get +0.067 AUC out of nothing
+
+Same data. Add one extra feature: a **random number, constant within each mainshock**,
+carrying no information whatsoever.
+
+| split | what the noise feature is worth |
+| --- | --- |
+| random split over cells | **+0.067 AUC** |
+| split by mainshock | −0.032 AUC |
+
+That is roughly **four times** the entire advantage the deep network was reported to have.
+
+Cells around one mainshock share a rupture and a stress field. Split them at random and
+the model reads the answer off the group it is in.
+"""
+
+CATCH_3 = """
+### The error bar decides the result
+
+The same comparison, bootstrapped two ways:
+
+| resampled over | 95% interval | reads as |
+| --- | --- | --- |
+| 1,378,120 cells | [−0.0194, −0.0153] | a clear result |
+| **33 independent earthquakes** | **[−0.0280, +0.0059]** | **no result** |
+
+**8.3x wider**, and it now contains zero. The data did not change; the assumption about
+what counts as an independent observation did.
+
+So: every week, a **baseline** and an **honest interval**.
+"""
+
+
+MAIN = [
     (None, None, TITLE),
-    (None, None, divider(
-        1, "Why we monitor",
-        "What is the cost of not knowing?",
-        "instrument the ground and wait.",
-        "the same instruments, read faster and more completely.",
-        "every week")),
-    ("00_introduction", list(range(2, 23)), None),
 
-    (None, None, divider(
-        2, "What an earthquake is",
-        "What quantity are we actually estimating?",
-        "a double couple, six moment-tensor components, one magnitude.",
-        "nothing yet - this is the vocabulary the rest of the course uses.",
-        "weeks 1 and 12")),
-    ("01_source_and_wave",
-     [2, 3, 4, 5, 6, 7, 9, 29, 30, 32, 45, 59, 60, 61, 62, 63, 70, 71, 74], None),
+    # 1. Concrete and local first: what an earthquake does, and the fault under campus.
+    (None, None, divider("1 · Earthquakes")),
+    ("00_introduction", [2, 3, 4, 5], None),
 
-    (None, None, divider(
-        3, "The waveform",
-        "Which part of this record is signal?",
-        "a bandpass filter, chosen by eye.",
-        "a learned mask - but you must show it helps downstream, not that it looks better.",
-        "week 11")),
-    ("02_signal_processing", [2, 3, 6, 7, 10, 12, 13, 17, 20], None),
+    # 2. The response, on its natural axis - time relative to the event. 00[16] is the
+    #    frame slide that names the four stages, so it must lead them.
+    (None, None, divider("2 · Before, during, after")),
+    ("00_introduction", [16, 17, 18, 19, 20, 21, 22], None),
 
-    (None, None, divider(
-        4, "Detection",
-        "Is there an earthquake in this hour of data?",
-        "amplitude threshold, then STA/LTA, then template matching.",
-        "a detector trained on catalogues, finding events below every earlier threshold.",
-        "weeks 6, 7 and 9")),
-    ("03_earthquake_detection", [2, 3, 6, 7, 8, 9, 10, 11, 12, 13, 15], None),
+    # 3. What we actually record. 00[10] and 00[12] carry the same heading; [12] keeps
+    #    the worked M5.1 example, so [10] is dropped rather than shown twice.
+    (None, None, divider("3 · The data")),
+    ("00_introduction", [8, 9, 12], None),
 
-    (None, None, divider(
-        5, "Phase picking",
-        "When did P and S arrive, on each station?",
-        "an analyst, by hand, at a few tens of thousands of picks a year.",
-        "segmentation of the trace - the single change that grew catalogues by an order of magnitude.",
-        "week 6")),
-    ("04_phase_picking", [2, 3, 7, 8, 9, 14, 15, 16, 17, 18, 19, 20], None),
+    # 4. The pipeline. 00[13] lists what gets extracted, so it opens the section and the
+    #    six stages then answer it one at a time.
+    (None, None, divider("4 · From waveforms to a catalogue")),
+    ("00_introduction", [13], None),
+    ("03_earthquake_detection", [2, 9], None),
+    ("04_phase_picking", [7, 8], None),
+    ("05_phase_association", [2], None),
+    ("06_location_and_relocation", [2, 4], None),
+    ("01_source_and_wave", [59, 60], None),
+    ("09_focal_mechanism", [2, 3], None),
 
-    (None, None, divider(
-        6, "Association",
-        "Which picks belong to the same earthquake?",
-        "grid search over candidate origins.",
-        "clustering with a physical forward model inside it.",
-        "week 4")),
-    ("05_phase_association", [2, 3, 4, 5, 6, 7, 8], None),
+    # 5. Why the catalogue is the product. These two were previously stacked in front of
+    #    the pipeline, where they were a wall of bullets about work not yet described.
+    (None, None, divider("5 · What a catalogue is for")),
+    ("00_introduction", [14, 15], None),
 
-    (None, None, divider(
-        7, "Location, and how wrong it is",
-        "Where was it, and how far could that be off?",
-        "linearised least squares; a covariance matrix; a chi-square ellipse.",
-        "the same inverse problem, differentiated automatically, with a posterior instead of an ellipse.",
-        "weeks 1, 3, 13 and 14")),
-    ("06_location_and_relocation",
-     [2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 22, 23, 24, 25], None),
+    # 6. The same pipeline, rebuilt.
+    (None, None, divider("6 · What learning changed")),
+    ("03_earthquake_detection", [13, 14], None),
+    ("04_phase_picking", [9, 16, 17, 20], None),
+    ("05_phase_association", [5], None),
+    ("02_signal_processing", [17], None),
+    ("07_statistics", [39], None),
+    ("00_introduction", [25, 26], None),
 
-    (None, None, divider(
-        8, "What a catalogue is for",
-        "What do a million earthquakes say that one does not?",
-        "Gutenberg-Richter, Omori, ETAS - three laws and a few parameters.",
-        "the same laws, but now the catalogue is large enough that the parameters move.",
-        "weeks 1 and 4")),
-    ("07_statistics",
-     [2, 3, 5, 8, 9, 10, 11, 12, 13, 14, 15, 17, 19, 20, 21, 22, 24, 25, 26, 29, 33, 39], None),
+    # 7. The course's own argument.
+    (None, None, divider("7 · The catch")),
+    (None, None, CATCH_1),
+    (None, None, CATCH_2),
+    (None, None, CATCH_3),
 
-    (None, None, divider(
-        9, "Mechanism",
-        "How did the fault move?",
-        "first motions on a stereonet, or a waveform inversion.",
-        "machine polarities at a scale that makes mechanisms routine.",
-        "week 12")),
-    ("09_focal_mechanism", [2, 3, 4, 5, 6], None),
-
-    (None, None, """
-<!-- _class: lead -->
-
-# Part 10
-# This course
-"""),
-    ("00_introduction", [23, 24, 25, 26, 27], None),
+    (None, None, divider("8 · This course")),
+    ("00_introduction", [24], None),
 ]
 
+APPENDIX = [
+    (None, None, divider("Appendix")),
+
+    (None, None, divider("A · Earthquake source")),
+    ("01_source_and_wave",
+     [2, 3, 4, 5, 6, 7, 9, 29, 30, 32, 45, 61, 62, 63, 70, 71, 74], None),
+
+    (None, None, divider("B · Signal processing")),
+    ("02_signal_processing", [2, 3, 6, 7, 10, 12, 13, 20], None),
+
+    (None, None, divider("C · Detection")),
+    ("03_earthquake_detection", [3, 6, 7, 8, 10, 11, 12, 15], None),
+
+    (None, None, divider("D · Phase picking")),
+    ("04_phase_picking", [2, 3, 14, 15, 18, 19], None),
+
+    (None, None, divider("E · Association")),
+    ("05_phase_association", [3, 4, 6, 7, 8], None),
+
+    (None, None, divider("F · Location and its uncertainty")),
+    ("06_location_and_relocation",
+     [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 22, 23, 24, 25], None),
+
+    (None, None, divider("G · Catalogue statistics")),
+    ("07_statistics",
+     [2, 3, 5, 8, 9, 10, 11, 12, 13, 14, 15, 17, 19, 20, 21, 22, 24, 25, 26, 29, 33], None),
+
+    (None, None, divider("H · Focal mechanism")),
+    ("09_focal_mechanism", [4, 5], None),
+]
+
+PARTS = MAIN + [(None, None, "@@CLOSING@@")] + APPENDIX
+
+
 def schedule_table():
-    """Same source and same dates as docs/README.md: Sep 1 is the introduction,
-    topics run from Sep 8, and any topic past the 13th Tuesday is unscheduled."""
+    """Same source and dates as docs/README.md: Sep 1 is the introduction, topics run
+    from Sep 8, and topics.yml order is the schedule order."""
     spec = yaml.safe_load((REPO / "topics.yml").read_text())
     first = dt.date(2026, 9, 1)
     rows = ["| Date | Seismology | Machine learning |", "| --- | --- | --- |",
@@ -179,28 +245,10 @@ CLOSING = """
 
 ---
 
-### How each week runs
-
-One notebook, worked in the room.
-
-1. A published claim, and the paper it comes from.
-2. The data, and what is wrong with it.
-3. **A baseline** - the simplest thing that could work.
-4. The method, against that baseline, on the same data and the same metric.
-5. What would have to be true for the result to be wrong.
-
-A method that does not beat its baseline has not earned the week.
-
----
-
 ### Final project
 
-The Geysers: the most seismically active field in California, and the shaking is
+**The Geysers** - the most seismically active field in California, where the shaking is
 a side effect of an industrial process.
-
-- One field, one catalogue, your own question.
-- Proposal in week 5, presentations in week 15.
-- `docs/project.md` lists nine questions - or bring your own.
 
 ---
 
@@ -208,10 +256,6 @@ a side effect of an industrial process.
 
 - Attendance and participation (50%)
 - Final project (50%)
-    - Project proposal (10%)
-    - Project presentation (20%)
-    - Project report (20%)
-- Extra credit (up to 10%)
 
 ---
 
@@ -275,6 +319,41 @@ def strip_dead(slide):
     return "\n".join(out), removed
 
 
+# Typos carried over from the 2023 decks. Fixed here rather than on the fall2023
+# branch, which is an archive and stays as it was delivered.
+TYPOS = {
+    "Earthquake monitoring and earthquake rick?": "Earthquake monitoring and earthquake risk?",
+    "How are information extracted/determined?": "How is information extracted?",
+    "How to use these information?": "How is this information used?",
+    "What additional information can we get from millions of earthquakes?":
+        "What can we learn from millions of earthquakes?",
+    "Faimilar with seismic data": "Familiar with seismic data",
+    "Siminlarity search": "Similarity search",
+    "trade-off between event dpeth and origin time": "trade-off between event depth and origin time",
+    "The far-\ufb01eld radiation pattern": "The far-field radiation pattern",
+    "Self-Similar Earthquake Scaling": "Self-similar earthquake scaling",
+    "Stess and Radiated Energy": "Stress and radiated energy",
+    "fractial scaling": "fractal scaling",
+    "What controls the slop $b$?": "What controls the slope $b$?",
+    "Obpsy": "ObsPy",
+}
+
+
+def fix_typos(slide):
+    for wrong, right in TYPOS.items():
+        slide = slide.replace(wrong, right)
+    return slide
+
+
+def defragment(slide):
+    """Marp renders `* item` lists as fragments that appear one click at a time.
+    Rewrite the marker to `-` so every slide arrives whole. Only list markers are
+    touched: `*emphasis*` and `**bold**` need the asterisk and are left alone."""
+    return "\n".join(
+        re.sub(r"^(\s*)\*(\s)", r"\1-\2", ln) if re.match(r"^\s*\*\s", ln) else ln
+        for ln in slide.split("\n"))
+
+
 def is_empty(slide):
     """A slide with no image and no real prose left."""
     import re as _re
@@ -298,6 +377,8 @@ def main():
     dropped, thinned = [], []
     for src, idxs, literal in PARTS:
         if literal is not None:
+            if literal == "@@CLOSING@@":
+                literal = CLOSING.replace("@@SCHEDULE@@", schedule_table())
             slides.append(literal.strip())
             continue
         if src not in cache:
@@ -307,6 +388,11 @@ def main():
             s = chunks[i].strip()
             if not s:
                 raise SystemExit(f"{src}[{i}] is empty - the deck changed, re-index it")
+            if "09/18" in s or "Full-waveform Inversion" in s:
+                raise SystemExit(
+                    f"{src}[{i}] is the FALL 2023 schedule - never select it; the live "
+                    f"schedule is generated by schedule_table() from topics.yml")
+            s = fix_typos(defragment(s))
             s, removed = strip_dead(s)
             if removed and is_empty(s):
                 dropped.append(f"{src}[{i}]")
@@ -315,7 +401,7 @@ def main():
                 s = s.rstrip() + "\n\n" + FIXME
                 thinned.append(f"{src}[{i}]")
             slides.append(s.strip())
-    slides.append(CLOSING.strip().replace("@@SCHEDULE@@", schedule_table()))
+
 
     body = FRONT + "\n\n" + "\n\n---\n\n".join(slides) + "\n"
     OUT.write_text(body)
