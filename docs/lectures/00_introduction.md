@@ -500,8 +500,8 @@ where $A(X)$ is the displacement amplitude in microns (10$^{-6}$ m) and X is in 
 
 ### Grading
 
-- Attendance and participation (50%)
-- Final project (50%)
+- Attendance and participation (40%)
+- Final project (60%)
 
 ---
 

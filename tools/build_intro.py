@@ -385,8 +385,8 @@ CLOSING = """
 
 ### Grading
 
-- Attendance and participation (50%)
-- Final project (50%)
+- Attendance and participation (40%)
+- Final project (60%)
 
 ---
 
