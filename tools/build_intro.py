@@ -44,6 +44,13 @@ style: |
   }
   /* Last-resort cap only. fit_slide() sizes figures per slide, so this must sit ABOVE
      the heights it assigns (520px = 72vh) or it silently shrinks every figure. */
+  small {
+    display: block;
+    text-align: center;
+    font-size: 0.62em;
+    opacity: 0.75;
+    margin-top: 0.5em;
+  }
   section img {
     max-height: 78vh;
     max-width: 100%;
@@ -152,6 +159,34 @@ def add_heading(slide, last_head):
     return "".join(out)
 
 
+def per_rendered_slide(chunk, fn):
+    """Apply a layout rule to each RENDERED slide of a chunk.
+
+    A 2023 chunk can hold several slides separated by a thematic rule. Deciding a
+    layout from the whole chunk reads the wrong content -- it was choosing a two-pane
+    layout from one sub-slide's text and then applying it to another's figure.
+    """
+    parts = re.split(r"(^-{3,}\s*$)", chunk, flags=re.M)
+    return "".join(part if re.match(r"^-{3,}\s*$", part.strip()) else fn(part)
+                   for part in parts)
+
+
+def caption_below(slide):
+    """A single short link sitting above a big figure is a stray line, not a design.
+    Move it under the figure and set it as a caption."""
+    lines = slide.split("\n")
+    img = [i for i, l in enumerate(lines) if l.strip().startswith("![")]
+    txt = [i for i, l in enumerate(lines)
+           if l.strip() and not l.strip().startswith(("!", "#", "<", "$"))]
+    if len(img) != 1 or len(txt) != 1 or txt[0] > img[0]:
+        return slide
+    cap = re.sub(r"^\s*[-*]\s*", "", lines[txt[0]]).strip()
+    if len(re.sub(r"\]\([^)]*\)|https?://\S+|[\[\]*_`#>-]", "", cap).strip()) > 60:
+        return slide                       # long enough to be real body text
+    body = [l for i, l in enumerate(lines) if i != txt[0]]
+    return "\n".join(body).rstrip() + f"\n\n<small>{cap}</small>"
+
+
 def two_pane(slide):
     """One figure under a few bullets fills the left half and wastes the right.
 
@@ -167,14 +202,21 @@ def two_pane(slide):
         return slide
     text = [l for l in slide.split("\n")
             if l.strip() and not l.strip().startswith(("!", "#", "<", "$"))]
-    if len(text) < 2:
+    # Two panes only pay off when the text can hold its own half. One short bullet
+    # beside a floating figure is worse than a caption over a large centred figure.
+    # Measure what the audience SEES: a bare URL inside a link is not text on the slide.
+    def visible(line):
+        line = re.sub(r"\]\([^)]*\)", "]", line)          # drop link targets
+        line = re.sub(r"https?://\S+", "", line)           # drop bare URLs
+        return re.sub(r"[\[\]*_`#>-]", "", line).strip()
+    if sum(len(visible(l)) for l in text) < 180:
         # The figure IS the slide: give it whatever height is actually left after the
         # heading and any stray line, rather than a fixed 520 that overflows.
-        if re.search(r"\b(width:|w:)\d+", slide):
-            return slide                       # the author already sized it
-        # 720px canvas, ~40px padding top and bottom, ~95px heading, ~40px per text line
-        avail = 720 - 80 - 95 - 40 * len(text) - 20
-        avail = max(220, min(avail, 470))
+        # 720px canvas. Padding top+bottom ~100, heading ~100 (allow two lines),
+        # ~46 per text line including its margin, and 30 spare so nothing sits on the
+        # edge. Measured against the rendered PNGs, not guessed.
+        avail = 720 - 100 - 100 - 46 * len(text) - 30
+        avail = max(200, min(avail, 460))
         # strip whatever the 2023 author sized it to and fill the space we have;
         # max-width in the stylesheet keeps a wide figure inside the frame
         slide = re.sub(r"!\[([^\]]*?)\s*\b(?:w|width|h|height):\d+(?:px)?\s*([^\]]*)\]",
@@ -239,7 +281,7 @@ MAIN = [
     #    frame slide that names the four stages, so it must lead them.
     ("00_introduction", [16], None),
     ("00_introduction", [17, 18], None),   # two figures: better one per slide
-    merge("00_introduction", [19, 20], "A few seconds after"),
+    merge("00_introduction", [20, 19], "A few seconds after"),   # bullets first, figure below
     ("00_introduction", [21, 22], None),
 
     # 3. What we actually record. 00[10] and 00[12] carry the same heading; [12] keeps
@@ -250,7 +292,7 @@ MAIN = [
     # 4. The pipeline. 00[13] lists what gets extracted, so it opens the section and the
     #    six stages then answer it one at a time.
     ("00_introduction", [13], None),
-    merge("03_earthquake_detection", [2, 9], "Detect: is there an earthquake?"),
+    ("03_earthquake_detection", [2], None),   # [9] STA/LTA pros/cons: too much detail for an intro
     ("04_phase_picking", [7, 8], None),   # 04[7] is a full slide; merging overflows
     ("05_phase_association", [2], None),
     ("06_location_and_relocation", [2, 4], None),
@@ -439,6 +481,9 @@ TYPOS = {
     "fractial scaling": "fractal scaling",
     "What controls the slop $b$?": "What controls the slope $b$?",
     "Obpsy": "ObsPy",
+    "Eathquake Hazard Map": "Earthquake Hazard Map",
+    "reservior": "reservoir",
+    "momemt": "moment",
 }
 
 
@@ -555,7 +600,8 @@ def main():
                 s = s.rstrip() + "\n\n" + FIXME
                 thinned.append(f"{src}[{i}]")
             s = add_heading(drop_stale_columns(s.strip()), last_head)
-            slides.append(fit_slide(two_pane(s)))
+            s = per_rendered_slide(s, lambda x: fit_slide(two_pane(caption_below(x))))
+            slides.append(s.strip())
 
 
     body = FRONT + "\n\n" + "\n\n---\n\n".join(slides) + "\n"
