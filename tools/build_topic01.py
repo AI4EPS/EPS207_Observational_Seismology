@@ -463,12 +463,47 @@ X3 = np.column_stack([np.ones(len(d)), d.magnitude, np.log10(d.hyp_km), d.hyp_km
 b3, se3, r3, s2_3, XtX_inv = ols(X3, y)
 print(f"model refitted: c2 = {b3[2]:.4f}")""")
 
-md("""**Note that condition number.** $(X^\\top X)$ is nearly singular, which is a warning that some
+md(r"""**Note that condition number.** $(X^\top X)$ is nearly singular, which is a warning that some
 combination of the columns is barely constrained. Hold that thought.
 
 ## 5 · How well do we know the coefficients?
 
-$\\mathrm{Cov}(\\hat{\\boldsymbol\\beta}) = \\sigma^2 (X^\\top X)^{-1}$. The diagonal gave the
+Everything so far has been `np.linalg` doing the work. Before trusting the numbers it returns, derive
+them once.
+
+**The estimator.** Least squares minimises the sum of squared residuals,
+
+$$J(\beta) = \|y - X\beta\|^2 = (y - X\beta)^\top(y - X\beta)
+          = y^\top y - 2\beta^\top X^\top y + \beta^\top X^\top X\beta$$
+
+Differentiate with respect to $\beta$ and set to zero:
+
+$$\nabla J = -2X^\top y + 2X^\top X\beta = 0
+\qquad\Longrightarrow\qquad
+X^\top X\,\hat\beta = X^\top y$$
+
+Those are the **normal equations**, and if $X^\top X$ can be inverted,
+
+$$\hat\beta = (X^\top X)^{-1}X^\top y$$
+
+**Its uncertainty.** Notice that $\hat\beta$ is *linear* in $y$. So if the data really were generated
+by $y = X\beta + \varepsilon$ with $\mathbb{E}[\varepsilon] = 0$ and
+$\mathrm{Var}(\varepsilon) = \sigma^2 I$, then $\hat\beta$ is unbiased, and its covariance follows
+from $\mathrm{Var}(Ay) = A\,\mathrm{Var}(y)\,A^\top$ with $A = (X^\top X)^{-1}X^\top$:
+
+$$\mathrm{Var}(\hat\beta) = A(\sigma^2 I)A^\top
+ = \sigma^2 (X^\top X)^{-1}X^\top X (X^\top X)^{-1}
+ = \boxed{\sigma^2 (X^\top X)^{-1}}$$
+
+$\sigma^2$ is unknown, so estimate it from the residuals, $\hat\sigma^2 = \|r\|^2/(n-p)$, and the
+standard error of a single coefficient is the square root of a diagonal entry,
+$\mathrm{SE}(\hat\beta_j) = \hat\sigma\sqrt{[(X^\top X)^{-1}]_{jj}}$.
+
+**Read what that says.** All the uncertainty comes through $(X^\top X)^{-1}$ — the geometry of where
+you sampled — scaled by how badly the model fits. It says nothing about whether the model is right,
+and that is the whole of sections 6 and 7.
+
+$\mathrm{Cov}(\hat{\boldsymbol\beta}) = \sigma^2 (X^\top X)^{-1}$. The diagonal gave the
 standard errors. The **off-diagonal** explains the condition number.""")
 run("""cov = s2_3 * XtX_inv
 corr = cov / np.outer(se3, se3)
@@ -572,7 +607,7 @@ $$p(\beta \mid y) = \frac{p(y \mid \beta)\, p(\beta)}{p(y)} \;\propto\; p(y \mid
 The denominator $p(y)$ does not involve $\beta$, so it is an irrelevant constant for finding the
 maximum.
 
-### 3 · Take the negative logarithm
+### 4 · Take the negative logarithm
 
 Maximising the posterior is the same as minimising its negative log, and the log turns the product
 into a sum:
@@ -581,7 +616,7 @@ $$-\log p(\beta \mid y) = \frac{\|y - X\beta\|^2}{2\sigma^2} + \frac{\|\beta\|^2
 
 Both exponents were quadratic, so the whole thing is quadratic in $\beta$.
 
-### 4 · Rescale to recover the damped objective
+### 5 · Rescale to recover the damped objective
 
 Multiply through by $2\sigma^2$ — a positive constant, so it moves the value of the function but not
 the location of its minimum:
@@ -598,7 +633,7 @@ the ratio: $\lambda$ is large when the data are noisy or when you are confident 
 small, and $\lambda \to 0$ returns ordinary least squares — the statement that you had no prior
 opinion at all.
 
-### 5 · Minimise, to get the estimator
+### 6 · Minimise, to get the estimator
 
 $$J(\beta) = y^\top y - 2\beta^\top X^\top y + \beta^\top X^\top X\beta + \lambda\beta^\top\beta$$
 
@@ -615,7 +650,7 @@ $X^\top X$ is singular** — so the minimum exists and is unique. And because th
 Gaussian, this MAP point is also the posterior *mean*, with covariance
 $\sigma^2(X^\top X + \lambda I)^{-1}$.
 
-### 6 · Why $\lambda I$ actually cures the ill-conditioning
+### 7 · Why $\lambda I$ actually cures the ill-conditioning
 
 Use the SVD $X = UDV^\top$ with singular values $d_i$. Then $X^\top X = VD^2V^\top$, and
 
@@ -678,14 +713,42 @@ axs[1].semilogx(lams, rms, lw=1.6, color="#2b6cb0")
 axs[1].set(xlabel=r"$\\lambda$", ylabel="rms residual", title="What the prior costs you")
 plt.tight_layout(); plt.show()""")
 
-md("""$c_2$ travels a long way for almost no cost in rms — the data barely distinguishes it from
+md(r"""$c_2$ travels a long way for almost no cost in rms — the data barely distinguishes it from
 $c_3$, exactly as the bootstrap cloud showed.
 
 ## 6 · Two different questions, two different intervals
 
-- **Confidence interval** — where is the *mean* $\\log_{10}A$ here? Width $\\propto
-  \\sqrt{\\mathbf{x}^\\top\\mathrm{Cov}(\\hat\\beta)\\mathbf{x}}$, shrinking as $1/\\sqrt n$.
-- **Prediction interval** — what will *one station* record next time? Adds $\\hat\\sigma^2$, which
+Both intervals come from the covariance you just derived. Only the second question has an extra term,
+and it is worth seeing where it comes from.
+
+**Where is the line?** At a point $x$ the fitted mean is $x^\top\hat\beta$, a linear function of
+$\hat\beta$, so
+
+$$\mathrm{Var}(x^\top\hat\beta) = x^\top \mathrm{Var}(\hat\beta)\, x
+ = \sigma^2\, x^\top (X^\top X)^{-1} x$$
+
+Every factor of that shrinks as you add data, because $(X^\top X)^{-1}$ does.
+
+**What will one station read?** A future observation at the same $x$ is
+$y_{\text{new}} = x^\top\beta + \varepsilon_{\text{new}}$, and you predict it with
+$x^\top\hat\beta$. The prediction error is
+
+$$x^\top\hat\beta - y_{\text{new}} = \underbrace{x^\top(\hat\beta - \beta)}_{\text{where the line is}}
+ \;-\; \underbrace{\varepsilon_{\text{new}}}_{\text{that station's own noise}}$$
+
+$\varepsilon_{\text{new}}$ belongs to an earthquake that has not happened yet, so it took no part in
+the fit and is independent of $\hat\beta$. Variances of independent terms add:
+
+$$\mathrm{Var} = \sigma^2\, x^\top (X^\top X)^{-1} x + \sigma^2
+ = \boxed{\sigma^2\left(1 + x^\top (X^\top X)^{-1} x\right)}$$
+
+**That $1$ is the whole difference.** It does not contain $(X^\top X)^{-1}$, so it does not shrink
+with $n$: no amount of data tells you what the next station will do, because that station's noise has
+not happened yet.
+
+- **Confidence interval** — where is the *mean* $\log_{10}A$ here? Width $\propto
+  \sqrt{\mathbf{x}^\top\mathrm{Cov}(\hat\beta)\mathbf{x}}$, shrinking as $1/\sqrt n$.
+- **Prediction interval** — what will *one station* record next time? Adds $\hat\sigma^2$, which
   **does not shrink with $n$ at all**.""")
 run("""Rg = np.logspace(np.log10(5), np.log10(400), 200); M0 = 3.0
 Xg = np.column_stack([np.ones_like(Rg), np.full_like(Rg, M0), np.log10(Rg), Rg])
@@ -695,29 +758,19 @@ k = np.argmin(abs(Rg - 50))
 print(f"at M{M0}, R=50 km:  confidence ±{ci[k]:.4f}   prediction ±{pi[k]:.4f}"
       f"   ratio {pi[k]/ci[k]:.0f}x")""")
 
-md(r"""**These two have standard names, and every later topic uses them.**
+md(r"""**These two have standard names.** *Aleatoric* uncertainty is scatter more data cannot remove — one
+station's spread about the model, which is what the prediction interval is made of. *Epistemic*
+uncertainty is not knowing the right model; the covariance you just derived is only the part of it
+that concerns the coefficients of the form you already chose, which is why a confidence interval can
+be narrow around a model that is wrong.
 
-*Aleatoric uncertainty* is scatter that more data cannot remove — the spread of one station's
-reading about the model. The **prediction interval** is dominated by it, which is exactly why it does
-not shrink with $n$.
+Neither word is seismological — the split is standard across uncertainty quantification and routine
+in machine learning. What seismology adds is a decomposition of the aleatoric part into between-event
+and within-event terms, and the within-event part again into site-to-site and single-station.
 
-*Epistemic uncertainty* is not knowing the right model. The parameter covariance you just computed
-is one piece of it — uncertainty in the coefficients *of the form you chose*. It is only one piece:
-alternative functional forms and alternative datasets are epistemic too, and seismic-hazard practice
-carries them explicitly on a logic tree over competing models. The **confidence interval** covers the
-coefficient piece and nothing else, which is why it can be narrow around a model that is wrong.
-
-Neither word is seismological: the aleatoric/epistemic split is standard across uncertainty
-quantification and is now routine in machine learning. What seismology contributes is the
-*decomposition* of the aleatory part — ground-motion papers write it *aleatory
-variability* — as $\sigma^2 = \tau^2 + \phi^2$, a between-event term and a
-within-event term, with the within-event part split again into site-to-site and single-station
-components.
-
-**And the split is a property of your model, not of the Earth.** Whatever your model does not
-explain is called irreducible — so what counts as aleatoric depends on what you are willing to
-model, not on the ground. Section 7 puts a station term into the fit and watches part of this
-"irreducible" scatter turn into explained structure.""")
+**And the split is a property of your model, not of the Earth.** Whatever the model does not explain
+gets called irreducible. Section 7 adds a station term and watches some of this "irreducible" scatter
+become structure.""")
 
 run("""mu = Xg @ b3
 sub = d[(d.magnitude > 2.9) & (d.magnitude < 3.1)]
