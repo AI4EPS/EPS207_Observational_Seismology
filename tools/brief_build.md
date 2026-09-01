@@ -72,6 +72,8 @@ The checker verifies that a *number* in prose appears in an output. It cannot ve
 - **Two numbers you compare must be computed under the same conditions, and the cell must say so.**
   Print the n, the sample, the seed for both sides. Most of the false conclusions in this course so
   far were comparisons between things that were never comparable.
+- **Do not editorialise about your own method.** No paragraph telling the reader what not to
+  conclude, or what a check could not do. State the source, state the measurement, move on.
 - **Never derive a conclusion the sources do not state.** Report what the source says, report what
   you measured, and say plainly when they disagree - a documented disagreement you cannot resolve
   teaches more than a tidy conclusion you invented.

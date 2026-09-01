@@ -92,6 +92,10 @@ citation behind it.
 **Concepts introduced more than once.** Grep the notebook for each core idea. If it appears before
 the argument needs it, the structure is wrong and the earlier appearance should move.
 
+**Editorialising about the method.** Paragraphs that step back to comment on the reasoning — "do
+not conclude", "note what this could not do", "conclude something narrower". This is the most
+reliable machine-written tell in the material and it is always cuttable.
+
 **Conclusions the sources do not support.** Where the notebook states what a catalogue, network or
 community does, check the source says it. An inference from the notebook's own measurement, written
 in the register of settled fact, is the defect to hunt.

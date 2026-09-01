@@ -137,6 +137,23 @@ something the student already has, not a parallel track running alongside it.
 **Check before shipping:** grep the notebook for each core concept and count where it is introduced.
 More than once means the structure is wrong, not the prose.
 
+## Do not editorialise about your own method
+
+State what the source says, state what you measured, and move on. The failure mode is a paragraph
+that steps back to comment on the reasoning itself, and it is the most reliable "written by a machine"
+tell in this material. Topic 1 shipped 222 words of it around a three-line result — telling the
+reader what not to conclude, what the check could not do, what to conclude instead, and why that was
+more useful.
+
+Sentences that begin like these are the marker; cut them:
+
+> *Do not conclude from this that…* · *Conclude something narrower and more useful…* ·
+> *Note also what the single-record check could **not** do…* · *That is worse than a fixed bias, not
+> better.*
+
+An epistemological point earns its place at most once in a notebook, in the takeaways, and only if it
+is the session's lesson. Inside the body, the numbers make the point.
+
 ## Do not derive conclusions the sources do not state
 
 Topic 1 measured three amplitude conventions against a catalogue column, found zero-to-peak matched
