@@ -35,7 +35,6 @@ marp: true
 paginate: true
 theme: gaia
 backgroundColor: #fff
-size: 16:12
 style: |
   section {
     font-size: 28px;
@@ -86,64 +85,12 @@ def divider(name, sub=""):
 """
 
 
-# The three slides that carry the course's own argument. Every number here was
-# measured in preparing this course, on the DeVries aftershock data used in week 3,
-# except where a paper is named. Do not round them or restate them from memory.
-CATCH_1 = """
-### A deep net, and a number with no parameters
-
-DeVries et al. (2018, *Nature*) predicted where aftershocks occur from static stress
-change, with a 13,451-parameter neural network.
-
-| model | fitted parameters | AUC |
-| --- | --- | --- |
-| the published network | 13,451 | 0.8486 |
-| **max shear stress change** | **0** | **0.8474** |
-| logistic regression | 13 | 0.8310 |
-
-Mignan & Broccardo (2019, *Nature*) showed a two-parameter model matches the network.
-Measured here: a single stress quantity, **nothing fitted at all**, comes within 0.0012.
-"""
-
-CATCH_2 = """
-### How to get +0.067 AUC out of nothing
-
-Same data. Add one extra feature: a **random number, constant within each mainshock**,
-carrying no information whatsoever.
-
-| split | what the noise feature is worth |
-| --- | --- |
-| random split over cells | **+0.067 AUC** |
-| split by mainshock | −0.032 AUC |
-
-That is roughly **four times** the entire advantage the deep network was reported to have.
-
-Cells around one mainshock share a rupture and a stress field. Split them at random and
-the model reads the answer off the group it is in.
-"""
-
-CATCH_3 = """
-### The error bar decides the result
-
-The same comparison, bootstrapped two ways:
-
-| resampled over | 95% interval | reads as |
-| --- | --- | --- |
-| 1,378,120 cells | [−0.0194, −0.0153] | a clear result |
-| **33 independent earthquakes** | **[−0.0280, +0.0059]** | **no result** |
-
-**8.3x wider**, and it now contains zero. The data did not change; the assumption about
-what counts as an independent observation did.
-
-So: every week, a **baseline** and an **honest interval**.
-"""
-
-
-# 16:12 at 28px leaves roughly 960px of usable height once the heading is drawn.
-# Merging two 2023 slides routinely blows past that, so every slide is measured and
-# shrunk to fit: image heights first (they cost the most and lose the least), then a
-# scoped font size. Background images are free vertically and are not counted.
-BUDGET = 820
+# The gaia theme renders 1280x720 -- it defines only 16:9 and 4:3, so the 2023 decks'
+# "size: 16:12" was always silently ignored. After the heading and the page padding
+# roughly 560px of body height is left. Merging two 2023 slides blows past that, so
+# every slide is measured and shrunk: image heights first (they cost the most and lose
+# the least), then a scoped font size. Background images are free vertically.
+BUDGET = 560
 
 
 def _cost(slide):
@@ -158,10 +105,47 @@ def _cost(slide):
     text = [l for l in slide.split("\n")
             if l.strip() and not l.strip().startswith(("!", "#", "<", "|"))]
     tbl = [l for l in slide.split("\n") if l.strip().startswith("|")]
-    px = sum(heights) + 34 * len(text) + 30 * len(tbl)
+    px = sum(heights) + 34 * len(text) + 50 * len(tbl)
     if inline and not heights:
         px += 300 * len(inline)          # an unsized inline image renders large
     return px, len(inline)
+
+
+def drop_stale_columns(slide):
+    """A 2023 slide that set `column-count: 2` for two figures should not keep it when
+    one of them died with its CDN link -- the survivor gets squeezed into a column and
+    half the slide stays blank."""
+    imgs = re.findall(r"!\[[^\]]*\]\(", slide)
+    if "column-count" in slide and len(imgs) < 2:
+        slide = re.sub(r"<style scoped>.*?</style>\n*", "", slide, flags=re.S)
+    return slide
+
+
+def two_pane(slide):
+    """One figure under a few bullets fills the left half and wastes the right.
+
+    A slide with text and exactly one inline figure becomes a two-pane slide: text
+    left, figure right, using marp's own `bg right:` idiom. Slides that already place
+    a background image, already set a column layout, or are figure-only are untouched
+    -- there the 2023 author had chosen a layout and it should stand.
+    """
+    if "column-count" in slide or re.search(r"!\[[^\]]*\bbg\b", slide):
+        return slide
+    imgs = re.findall(r"!\[([^\]]*)\]\([^)]*\)", slide)
+    if len(imgs) != 1:
+        return slide
+    text = [l for l in slide.split("\n")
+            if l.strip() and not l.strip().startswith(("!", "#", "<", "$"))]
+    if len(text) < 2:
+        # The figure IS the slide. Let it fill the frame instead of sitting small
+        # in the top-left corner with the rest of the slide empty.
+        if re.search(r"\b(width:|w:)\d+", slide):
+            return slide                       # the author already sized it
+        if re.search(r"height:\d+px", slide):
+            return re.sub(r"height:\d+px", "height:520px", slide)
+        return re.sub(r"!\[([^\]]*)\]\(",
+                      lambda m: f"![{(m.group(1) + ' ').lstrip()}height:520px](", slide, count=1)
+    return re.sub(r"!\[([^\]]*)\]\(", "![bg right:47% contain](", slide, count=1)
 
 
 def fit_slide(slide):
@@ -169,7 +153,7 @@ def fit_slide(slide):
     if px <= BUDGET:
         return slide
     if n_inline >= 1:
-        cap = 300 if n_inline >= 2 else 420
+        cap = 230 if n_inline >= 2 else 380
         slide = re.sub(r"height:(\d+)px",
                        lambda m: f"height:{min(int(m.group(1)), cap)}px", slide)
         # an inline image with no height at all gets one, or it fills the slide
@@ -182,8 +166,18 @@ def fit_slide(slide):
         slide = re.sub(r"!\[([^\]]*)\]\(", _size, slide)
         px, _ = _cost(slide)
     if px > BUDGET:
-        size = 24 if px < BUDGET * 1.35 else 21
-        slide = f"<style scoped>section {{ font-size: {size}px; }}</style>\n\n" + slide
+        size = 23 if px < BUDGET * 1.35 else 19
+        if "<style scoped>" in slide:
+            # fold into the existing block; two scoped blocks on one slide is asking
+            # for trouble and the 2023 decks already ship several
+            slide = slide.replace("<style scoped>",
+                                  f"<style scoped>\nsection {{ font-size: {size}px; }}", 1)
+        else:
+            slide = f"<style scoped>section {{ font-size: {size}px; }}</style>\n\n" + slide
+    # A figure wider than one column is pushed out of view by column-count.
+    if "column-count" in slide:
+        slide = re.sub(r"\b(width:|w:)(\d+)",
+                       lambda m: f"{m.group(1)}{min(int(m.group(2)), 460)}", slide)
     return slide
 
 
@@ -227,7 +221,7 @@ MAIN = [
     ("04_phase_picking", [7, 8], None),   # 04[7] is a full slide; merging overflows
     ("05_phase_association", [2], None),
     merge("06_location_and_relocation", [2, 4], "Locate: an inverse problem"),
-    merge("01_source_and_wave", [59, 60], "Size it: magnitude"),
+    ("01_source_and_wave", [59, 60], None),  # both are full slides; merging overflows
     ("09_focal_mechanism", [2, 3], None),  # 09[3] alone carries five images
 
     # 5. Why the catalogue is the product. These two were previously stacked in front of
@@ -237,21 +231,19 @@ MAIN = [
 
     # 6. The same pipeline, rebuilt.
     (None, None, divider("6 · What learning changed")),
-    merge("03_earthquake_detection", [13, 14], "Detection, learned"),
-    merge("04_phase_picking", [9, 16], "Picking is segmentation"),
-    ("04_phase_picking", [17, 20], None),
-    ("05_phase_association", [5], None),
-    ("02_signal_processing", [17], None),
-    ("07_statistics", [39], None),
-    merge("00_introduction", [25, 26], "Why machine learning"),
+    # Same six stages as section 4, in the same order, so the replacement is visible
+    # one-to-one. Then the progression PhaseNet -> EQTransformer -> PhaseNO, and a close
+    # on what it cost rather than on what it promised.
+    merge("03_earthquake_detection", [13, 14], "Detect, learned"),
+    merge("04_phase_picking", [9, 16], "Pick: it is a segmentation problem"),
+    ("04_phase_picking", [17, 18, 19], None),          # PhaseNet -> EQTransformer -> PhaseNO
+    ("05_phase_association", [5], None),               # associate: GaMMA
+    ("02_signal_processing", [17], None),              # denoise
+    ("07_statistics", [39], None),                     # and downstream, forecasting
+    ("04_phase_picking", [20], None),                  # what made it work
+    ("03_earthquake_detection", [15], None),           # and what it costs
 
-    # 7. The course's own argument.
-    (None, None, divider("7 · The catch")),
-    (None, None, CATCH_1),
-    (None, None, CATCH_2),
-    (None, None, CATCH_3),
-
-    (None, None, divider("8 · This course")),
+    (None, None, divider("7 · This course")),
     ("00_introduction", [24], None),
 ]
 
@@ -266,10 +258,10 @@ APPENDIX = [
     ("02_signal_processing", [2, 3, 6, 7, 10, 12, 13, 20], None),
 
     (None, None, divider("C · Detection")),
-    ("03_earthquake_detection", [3, 6, 7, 8, 10, 11, 12, 15], None),
+    ("03_earthquake_detection", [3, 6, 7, 8, 10, 11, 12], None),
 
     (None, None, divider("D · Phase picking")),
-    ("04_phase_picking", [2, 3, 14, 15, 18, 19], None),
+    ("04_phase_picking", [2, 3, 14, 15], None),
 
     (None, None, divider("E · Association")),
     ("05_phase_association", [3, 4, 6, 7, 8], None),
@@ -313,6 +305,8 @@ CLOSING = """
 
 **The Geysers** - the most seismically active field in California, where the shaking is
 a side effect of an industrial process.
+
+![bg right:52% contain](assets/geysers_ml_catalog.png)
 
 ---
 
@@ -364,23 +358,28 @@ def cite_from_url(line):
         return None
     doi = m.group(1).replace("_", "/")
     title = TITLES.get(doi)
-    return f"*Figure: [{title or doi}](https://doi.org/{doi})*" if title else None
+    return (f"*Missing figure: [{title or doi}](https://doi.org/{doi})*"
+            if title else None)
 
 
 def strip_dead(slide):
     """Drop image lines pointing at dead URLs. Return (slide, n_removed)."""
-    out, removed = [], 0
+    out, cites, removed = [], [], 0
     for line in slide.split("\n"):
         if any(d in line for d in DEAD) and ("![" in line or line.strip().startswith("<!--")):
             if line.strip().startswith("<!--"):
                 continue          # already commented out; just delete it
             removed += 1
             cite = cite_from_url(line)
-            if cite and cite not in out:
-                out.append(cite)
+            if cite:
+                cites.append(cite)
             continue
         out.append(line)
-    return "\n".join(out), removed
+    body = "\n".join(out).rstrip()
+    for c in cites:
+        if c not in body:
+            body += f"\n\n{c}"
+    return body, removed
 
 
 # Typos carried over from the 2023 decks. Fixed here rather than on the fall2023
@@ -407,6 +406,14 @@ def fix_typos(slide):
     for wrong, right in TYPOS.items():
         slide = slide.replace(wrong, right)
     return slide
+
+
+def localise_directives(slide):
+    """`<!-- footer: x -->` is a GLOBAL marp directive: once one 2023 slide sets it,
+    every later slide carries that citation. The underscore form scopes it to the
+    slide it is written on, which is what the 2023 decks meant."""
+    return (slide.replace("<!-- footer:", "<!-- _footer:")
+                 .replace("<!-- header:", "<!-- _header:"))
 
 
 def defragment(slide):
@@ -446,20 +453,33 @@ def main():
                 cache[src] = load(src)
             body_parts = []
             for i in idxs:
-                c = fix_typos(defragment(cache[src][i].strip()))
+                c = localise_directives(fix_typos(defragment(cache[src][i].strip())))
                 c, _ = strip_dead(c)
                 # drop the chunk's own heading; the merged slide supplies one
                 c = "\n".join(l for l in c.split("\n")
                                if not l.strip().startswith(("#", "<!-- footer")))
                 if c.strip():
                     body_parts.append(c.strip())
-            slides.append(fit_slide(f"### {heading}\n\n" + "\n\n".join(body_parts)))
+            merged = f"### {heading}\n\n" + "\n\n".join(body_parts)
+            # Two figures stacked in one column waste the right half of a 16:9 slide.
+            # The 2023 decks already solve this with a scoped two-column section, so
+            # reuse that rather than inventing a layout.
+            inline = [a for a in re.findall(r"!\[([^\]]*)\]\(", merged)
+                      if "bg" not in a.split()]
+            if len(inline) >= 2:
+                merged = re.sub(r"height:\d+px", "w:470", merged)
+                merged = ("<style scoped>\n"
+                          "section { column-count: 2; column-gap: 2.5rem; }\n"
+                          "h3 { column-span: all; }\n"
+                          "p { margin: 0.3em 0; }\n"
+                          "</style>\n\n" + merged)
+            slides.append(fit_slide(two_pane(merged)))
             continue
         src, idxs, literal = entry
         if literal is not None:
             if literal == "@@CLOSING@@":
                 literal = CLOSING.replace("@@SCHEDULE@@", schedule_table())
-            slides.append(literal.strip())
+            slides.append(fit_slide(literal.strip()))
             continue
         if src not in cache:
             cache[src] = load(src)
@@ -472,7 +492,7 @@ def main():
                 raise SystemExit(
                     f"{src}[{i}] is the FALL 2023 schedule - never select it; the live "
                     f"schedule is generated by schedule_table() from topics.yml")
-            s = fix_typos(defragment(s))
+            s = localise_directives(fix_typos(defragment(s)))
             s, removed = strip_dead(s)
             if removed and is_empty(s):
                 dropped.append(f"{src}[{i}]")
@@ -480,7 +500,7 @@ def main():
             if removed:
                 s = s.rstrip() + "\n\n" + FIXME
                 thinned.append(f"{src}[{i}]")
-            slides.append(fit_slide(s.strip()))
+            slides.append(fit_slide(two_pane(drop_stale_columns(s.strip()))))
 
 
     body = FRONT + "\n\n" + "\n\n---\n\n".join(slides) + "\n"
