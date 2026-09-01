@@ -79,9 +79,6 @@ the machine-learning methods the field now uses for each.
 | Participation | 50% — the notebooks are worked in the room, not watched |
 | Project | 50% — presentation 20%, report 20% |
 
-There are no problem sets. The project is yours to choose; a region or dataset of your own works
-best, and the proposal is due in week 5.
-
 ## What you need
 
 **Python**: `numpy`, `pandas`, `scikit-learn`, `pytorch`, plus `matplotlib`, `obspy` and `scipy`.
