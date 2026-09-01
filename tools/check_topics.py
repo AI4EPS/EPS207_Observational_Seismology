@@ -59,6 +59,25 @@ missing = sorted(set(recon) - seen_n)
 if missing:
     errs.append(f"recon reports with no topics.yml entry: {missing}")
 
+# ── docs/project.md names the sessions its questions rely on. Those were once week
+# numbers and broke silently when a topic was retired, so they are dates now and this
+# checks every one of them is a real session date.
+proj = ROOT / "docs" / "project.md"
+if proj.exists():
+    import datetime as _dt
+    first = _dt.date(2026, 9, 1)
+    valid = {f"{first + _dt.timedelta(weeks=i):%b %-d}"
+             for i in range(1, len(spec["topics"]) + 1)}
+    named = set(re.findall(r"\*Sessions?: ([^*]+)\*", proj.read_text()))
+    for group in named:
+        for d in [x.strip().rstrip(".") for x in group.split(",")]:
+            if d and d not in valid:
+                errs.append(f"docs/project.md names session '{d}', which is not a "
+                            f"session date in topics.yml")
+    if re.search(r"\*Weeks? \d", proj.read_text()):
+        errs.append("docs/project.md still uses week NUMBERS; they break when a topic "
+                    "is retired. Use session dates.")
+
 print(f"── topics.yml: {len(spec['topics'])} topics, {len(recon)} with recon reports")
 for e in errs:  print(f"   ERROR  {e}")
 for w in warns: print(f"   warn   {w}")
