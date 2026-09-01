@@ -307,9 +307,13 @@ def side_by_side(slide):
     seen = sum(len(re.sub(r"\]\([^)]*\)|https?://\S+|[\[\]*_`#>-]", "", l).strip())
               for l in text)
     if seen > 80:
-        # real prose on the slide: columns would strand it beside a figure. Keep one
-        # column and bound the figures so the pair still fits under the text.
-        return ("<style scoped>section img { max-height: 30vh; }</style>\n\n" + slide)
+        # Real prose on the slide: columns would strand it beside a figure. Keep one
+        # column and divide the REMAINING height between the figures -- a fixed share
+        # pushed the closing bullets of the depth/origin-time slide off the bottom.
+        room = 720 - 100 - 95 - 46 * len(text) - 30
+        each = max(120, room // len(inline))
+        return (f"<style scoped>section img {{ max-height: {each}px; }}</style>\n\n"
+                + slide)
     return ("<style scoped>\n"
             "section { column-count: 2; column-gap: 2rem; }\n"
             "h3 { column-span: all; }\n"
@@ -538,7 +542,7 @@ def strip_dead(slide):
                 continue          # already commented out; just delete it
             removed += 1
             cite = cite_from_url(line)
-            if cite:
+            if cite and cite not in cites:
                 cites.append(cite)
             continue
         out.append(line)
@@ -547,7 +551,7 @@ def strip_dead(slide):
     # figure it would read as that figure's attribution, which is how a Zhao table
     # once ended up credited to Zhu & Beroza.
     if cites and "![" not in body:
-        body += "\n\n" + "\n\n".join(f"<small>{c}</small>" for c in cites)
+        body += "\n\n" + "\n\n".join(cites)
     return body, removed
 
 
@@ -583,6 +587,15 @@ TYPOS = {
     "Eathquake Hazard Map": "Earthquake Hazard Map",
     "reservior": "reservoir",
     "momemt": "moment",
+    # gaps and slips in the 2023 prose, found by reading the rendered slides
+    "The saturation of the and scales": "The saturation of the $m_b$ and $M_s$ scales",
+    "where is the moment measured in N-m.": "where $M_0$ is the moment measured in N-m.",
+    "The advantage of the scale is that": "The advantage of the $M_w$ scale is that",
+    "$P_0^{j, k} are P_t^{i, k}$ are": "$P_0^{j,k}$ and $P_t^{i,k}$ are",
+    "backgroud": "background",
+    "Improvments": "Improvements",
+    "until the locatin converges": "until the location converges",
+    "clusering": "clustering",
 }
 
 
@@ -653,7 +666,7 @@ def is_empty(slide):
     A figure, a recovered citation, or a section divider always counts as content.
     """
     import re as _re
-    if "![" in slide or "<small>[" in slide or "_class: lead" in slide:
+    if ("![" in slide or "doi.org/" in slide or "_class: lead" in slide):
         return False
     txt = _re.sub(r"<style scoped>.*?</style>", "", slide, flags=_re.S)
     txt = _re.sub(r"<!--.*?-->", "", txt, flags=_re.S)

@@ -601,7 +601,7 @@ img { width: 100%; height: auto; max-height: 52vh; }
 
 ---
 
-<style scoped>section img { max-height: 30vh; }</style>
+<style scoped>section img { max-height: 201px; }</style>
 
 ### Magnitude $M_0$
 
@@ -654,14 +654,14 @@ $$
 
 ### Moment magnitude $M_w$
 
-The saturation of the and scales for large events helped motivate  development of the moment magnitude $M_w$
+The saturation of the $m_b$ and $M_s$ scales for large events helped motivate  development of the moment magnitude $M_w$
 
 $$
 M_w = \frac{2}{3} (\log_{10} M_0 - 9.1)
 $$
-where is the moment measured in N-m.
+where $M_0$ is the moment measured in N-m.
 
-- The advantage of the scale is that it is clearly related to a physical property of the source and it does not saturate for even the largest  earthquakes.
+- The advantage of the $M_w$ scale is that it is clearly related to a physical property of the source and it does not saturate for even the largest  earthquakes.
 - One unit increase in $M_w$ corresponds to a $10^{3/2} \approx 32$ times increase in the moment.
 - A $M_w 7$ earthquake releases about 1000 times more energy than a $M_w 5$ event.
 
@@ -811,8 +811,8 @@ $$
     - Directly related to shaking/damage
 - Cons:
     - Limit to large earthquakes
-    - Need backgroud noise level for small earthquakes
-- Improvments:
+    - Need background noise level for small earthquakes
+- Improvements:
     - How to make the threshold adaptive to the background noise level?
 
 ---
@@ -925,7 +925,7 @@ Try the SAM model: [link](https://segment-anything.com/demo)
 
 ### Grid-search / Back-projection, e.g. REAL
 
-<small>[Zhang, Ellsworth & Beroza (2019), Rapid Earthquake Association and Location, SRL](https://doi.org/10.1785/0220190052)</small>
+[Zhang, Ellsworth & Beroza (2019), Rapid Earthquake Association and Location, SRL](https://doi.org/10.1785/0220190052)
 
 <!-- FIXME: figure lost to an expired CDN link; paste a screenshot here -->
 
@@ -933,9 +933,7 @@ Try the SAM model: [link](https://segment-anything.com/demo)
 
 ### Graph-Neural-Network-based, e.g. GENIE
 
-<small>[McBrearty & Beroza (2023), Earthquake Phase Association with Graph Neural Networks, BSSA](https://doi.org/10.1785/0120220182)</small>
-
-<small>[McBrearty & Beroza (2023), Earthquake Phase Association with Graph Neural Networks, BSSA](https://doi.org/10.1785/0120220182)</small>
+[McBrearty & Beroza (2023), Earthquake Phase Association with Graph Neural Networks, BSSA](https://doi.org/10.1785/0120220182)
 
 <!-- FIXME: figure lost to an expired CDN link; paste a screenshot here -->
 
@@ -1066,7 +1064,7 @@ r^i(m_0) &= G \Delta m
 \end{aligned}
 $$
 
-$\Delta m$ can be obtained using standard least squares. Next, we set $m_0$ to $m_0 + \Delta m$ and repeat the process until the locatin converges.
+$\Delta m$ can be obtained using standard least squares. Next, we set $m_0$ to $m_0 + \Delta m$ and repeat the process until the location converges.
 
 ---
 
@@ -1159,7 +1157,7 @@ Case: Earthquakes located along a fault will often be mislocated if the seismic 
 ---
 
 <style scoped>
-section { font-size: 23px; }section img { max-height: 30vh; }</style>
+section { font-size: 23px; }section img { max-height: 155px; }</style>
 
 ### Challenges: trade-off between event depth and origin time
 
@@ -1202,7 +1200,7 @@ where $t_k^i$ and $\hat{t}_k^i$ are the observed and predicted arrival times at 
 ### GrowClust: A Hierarchical Clustering Algorithm for Relative Earthquake Relocation
 ![w:735px](./assets/Screenshot%202023-10-08%20at%2022.01.21.png)
 
-Review: [clusering](https://ai4eps.github.io/EPS207_Observational_Seismology/lectures/05_phase_association.html#6)
+Review: [clustering](https://ai4eps.github.io/EPS207_Observational_Seismology/lectures/05_phase_association.html#6)
 
 ---
 
@@ -1522,7 +1520,7 @@ $$
 F^{i, j}=\frac{\sum_k \left\{| p_0^{j, k}-p_t^{i, k} \mid \cdot w_0^{j, k} \cdot w_t^{i, k}\right\}}{\sum_k\left\{w_0^{j, k} \cdot w_t^{i, k}\right\}}
 $$
 
-$P_0^{j, k} are P_t^{i, k}$ are the observed and theoretical first-motion polarity (0.5 for compression, -0.5 for dilatation).
+$P_0^{j,k}$ and $P_t^{i,k}$ are the observed and theoretical first-motion polarity (0.5 for compression, -0.5 for dilatation).
 $w_t^{i, k}=[A(i, k)]^{1 / 2}$ is the square root of the normalized theoretical P-wave radiation amplitude $A(i, k)$ of earthquake $E^j$ recorded at the $k^{\text {th }}$ station for source model $M^i$.
 
 <!-- _footer: "Reasenberg (1985)" -->
