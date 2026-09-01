@@ -54,7 +54,6 @@ style: |
   section img {
     max-height: 78vh;
     max-width: 100%;
-    object-fit: contain;
     /* a portrait figure left-aligned strands two thirds of the slide */
     display: block;
     margin-left: auto;
@@ -217,13 +216,14 @@ def two_pane(slide):
         # edge. Measured against the rendered PNGs, not guessed.
         avail = 720 - 100 - 100 - 46 * len(text) - 30
         avail = max(200, min(avail, 460))
-        # strip whatever the 2023 author sized it to and fill the space we have;
-        # max-width in the stylesheet keeps a wide figure inside the frame
+        # Size with max-height in a scoped style, not an inline height directive: a
+        # hard height plus max-width either distorts the figure or letterboxes it
+        # inside a box taller than the picture. max-height lets it scale to fit both
+        # constraints with its aspect ratio intact.
         slide = re.sub(r"!\[([^\]]*?)\s*\b(?:w|width|h|height):\d+(?:px)?\s*([^\]]*)\]",
                        r"![\1\2]", slide)
-        return re.sub(r"!\[([^\]]*)\]\(",
-                      lambda m: f"![{(m.group(1) + ' ').strip() + ' ' if m.group(1).strip() else ''}height:{avail}px](",
-                      slide, count=1)
+        return (f"<style scoped>section img {{ max-height: {avail}px; }}</style>\n\n"
+                + slide)
     return re.sub(r"!\[([^\]]*)\]\(", "![bg right:47% contain](", slide, count=1)
 
 
@@ -495,10 +495,24 @@ def fix_typos(slide):
     return slide
 
 
+def normalise_bg(slide):
+    """`bg ... fit` is not a marp keyword -- marp takes `contain` or `cover`. An
+    unrecognised word is ignored and the pane falls back to cover, which crops the
+    figure. Several 2023 slides say `fit` and were losing an axis off the edge."""
+    def fix(m):
+        alt = m.group(1)
+        alt = re.sub(r"\bfit\b", "contain", alt)
+        if not re.search(r"\b(contain|cover)\b|\d+%\s*$", alt):
+            alt = alt.rstrip() + " contain"
+        return f"![{alt}]"
+    return re.sub(r"!\[([^\]]*\bbg\b[^\]]*)\]", fix, slide)
+
+
 def localise_directives(slide):
     """`<!-- footer: x -->` is a GLOBAL marp directive: once one 2023 slide sets it,
     every later slide carries that citation. The underscore form scopes it to the
     slide it is written on, which is what the 2023 decks meant."""
+    slide = normalise_bg(slide)
     return (slide.replace("<!-- footer:", "<!-- _footer:")
                  .replace("<!-- header:", "<!-- _header:"))
 
