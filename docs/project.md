@@ -84,19 +84,6 @@ during high injection (Martínez-Garzón et al. 2017, `10.1002/2016gl071963`). T
 
 Bring your own question if you have one. It must be answerable with these data in the time available.
 
-## What a project must contain
-
-The standards the notebooks are held to.
-
-- **A falsifiable question.** "Study The Geysers" is not one.
-- **A baseline you actually ran**, same data, same metric, comparison visible.
-- **An uncertainty statement.** Not a standard error alone — the course's argument is that the
-  standard error is usually the smallest of your uncertainties. Which of your choices moves the
-  answer more than your error bars do?
-- **Threats to your own conclusion.** Circularity, confounding, selection, a network that changed
-  under you. Argue against yourself.
-- **Every number computed, none recalled.**
-
 ## Milestones
 
 | | |
