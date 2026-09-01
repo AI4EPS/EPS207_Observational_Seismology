@@ -1,7 +1,5 @@
 # EPS 207 · Laboratory in Observational Seismology
 
-**Fall 2026 · University of California, Berkeley · Department of Earth and Planetary Science**
-
 Machine learning now builds earthquake catalogues, locates events, and inverts for structure.
 Each week takes one **method** and one **published result**: you work the notebook live in class,
 reproduce part of the result, then try to break it.
