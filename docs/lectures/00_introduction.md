@@ -15,6 +15,10 @@ style: |
   section img {
     max-height: 78vh;
     object-fit: contain;
+    /* a portrait figure left-aligned strands two thirds of the slide */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
   img + br + em {
     font-style: normal;
@@ -70,21 +74,16 @@ Weiqiang Zhu · Tuesdays 9:00-10:59 · McCone 325
 
 ---
 
-<style scoped>
-section { font-size: 19px; }
-section { column-count: 2; column-gap: 2.5rem; }
-h3 { column-span: all; }
-p { margin: 0.3em 0; }
-</style>
-
 ### Before an earthquake
 
 - [Eathquake Hazard Map](https://earthquake.usgs.gov/earthquakes/map/?extent=27.95559,-130.8252&extent=51.28941,-92.50488&range=month&magnitude=all&showPopulationDensity=true&showUSHazard=true&settings=true)
-![w:460](https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/styles/side_image/public/thumbnails/image/2018nshm-longterm.jpg?itok=6tMRRjk3)
+![height:470px](https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/styles/side_image/public/thumbnails/image/2018nshm-longterm.jpg?itok=6tMRRjk3)
+
+---
 
 - Simulating earthquake scenarios
 [Hayward Fault Scenarios](https://youtu.be/qZaKE4GuBXs?si=wI949Vnbk1EbO6xT)
-![w:460](https://earthquake.usgs.gov/education/shakingsimulations/hayward/images/tn-HaywardM72_SanPabloBayEp.jpg)
+![bg right:47% contain](https://earthquake.usgs.gov/education/shakingsimulations/hayward/images/tn-HaywardM72_SanPabloBayEp.jpg)
 
 ---
 
@@ -132,19 +131,16 @@ p { margin: 0.3em 0; }
 
 ---
 
-<style scoped>
-section { font-size: 23px; }
-section { column-count: 2; column-gap: 2.5rem; }
-h3 { column-span: all; }
-p { margin: 0.3em 0; }
-</style>
-
-### More sensors, recording for longer
+### Large-N and Large-T challenge
 
 [IRIS dataset](https://ds.iris.edu/data/distribution/)
-![w:460](https://ds.iris.edu/files/stats/data/archive/Archive_Growth.jpg)
+![height:470px](https://ds.iris.edu/files/stats/data/archive/Archive_Growth.jpg)
 
-![w:460](https://ds.iris.edu/files/stats/data/shipments/GigabytesByYearAndType.jpg)
+---
+
+### Mining the IRIS dataset
+
+![height:470px](https://ds.iris.edu/files/stats/data/shipments/GigabytesByYearAndType.jpg)
 
 ---
 
@@ -208,20 +204,17 @@ p { margin: 0.3em 0; }
 
 ---
 
-<style scoped>
-section { font-size: 23px; }
-section { column-count: 2; column-gap: 2.5rem; }
-h3 { column-span: all; }
-p { margin: 0.3em 0; }
-</style>
+### How to locate an earthquake?
 
-### Locate: an inverse problem
+![height:470px](https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/styles/full_width/public/thumbnails/image/locating%20earthquakes%201.gif?itok=z60HGZwY)
 
-![w:460](https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/styles/full_width/public/thumbnails/image/locating%20earthquakes%201.gif?itok=z60HGZwY)
+---
+
+### Optimization (Inverse) problem
 
 - Minimize the difference between observed and predicted values
 
-![w:460](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Linear_regression.svg/1920px-Linear_regression.svg.png)
+![height:470px](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Linear_regression.svg/1920px-Linear_regression.svg.png)
 
 ---
 
@@ -323,18 +316,15 @@ where $A(X)$ is the displacement amplitude in microns (10$^{-6}$ m) and X is in 
 
 ---
 
-<style scoped>
-section { font-size: 23px; }
-section { column-count: 2; column-gap: 2.5rem; }
-h3 { column-span: all; }
-p { margin: 0.3em 0; }
-</style>
+### Background: Semantic Segmentation vs. Classification
 
-### Pick: it is a segmentation problem
+![width:950px](./assets/cv_tasks.png)
 
-![width:460px](./assets/cv_tasks.png)
+---
 
-![width:460px](https://d3i71xaburhd42.cloudfront.net/e178d94a0601f0f395cf6d81b884a238331fa869/3-Figure1-1.png)
+### Generalized seismic phase detection with deep learning
+
+![width:900px](https://d3i71xaburhd42.cloudfront.net/e178d94a0601f0f395cf6d81b884a238331fa869/3-Figure1-1.png)
 
 ---
 

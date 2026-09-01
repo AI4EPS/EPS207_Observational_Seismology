@@ -47,6 +47,10 @@ style: |
   section img {
     max-height: 78vh;
     object-fit: contain;
+    /* a portrait figure left-aligned strands two thirds of the slide */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
   img + br + em {
     font-style: normal;
@@ -208,13 +212,13 @@ MAIN = [
     # 2. The response, on its natural axis - time relative to the event. 00[16] is the
     #    frame slide that names the four stages, so it must lead them.
     ("00_introduction", [16], None),
-    merge("00_introduction", [17, 18], "Before an earthquake"),
+    ("00_introduction", [17, 18], None),   # two figures: better one per slide
     merge("00_introduction", [19, 20], "A few seconds after"),
     ("00_introduction", [21, 22], None),
 
     # 3. What we actually record. 00[10] and 00[12] carry the same heading; [12] keeps
     #    the worked M5.1 example, so [10] is dropped rather than shown twice.
-    merge("00_introduction", [8, 9], "More sensors, recording for longer"),
+    ("00_introduction", [8, 9], None),
     ("00_introduction", [12], None),
 
     # 4. The pipeline. 00[13] lists what gets extracted, so it opens the section and the
@@ -223,7 +227,7 @@ MAIN = [
     merge("03_earthquake_detection", [2, 9], "Detect: is there an earthquake?"),
     ("04_phase_picking", [7, 8], None),   # 04[7] is a full slide; merging overflows
     ("05_phase_association", [2], None),
-    merge("06_location_and_relocation", [2, 4], "Locate: an inverse problem"),
+    ("06_location_and_relocation", [2, 4], None),
     ("01_source_and_wave", [59, 60], None),  # both are full slides; merging overflows
     ("09_focal_mechanism", [2, 3], None),  # 09[3] alone carries five images
 
@@ -236,7 +240,7 @@ MAIN = [
     # one-to-one. Then the progression PhaseNet -> EQTransformer -> PhaseNO, and a close
     # on what it cost rather than on what it promised.
     ("03_earthquake_detection", [13], None),   # [14]'s science.org figure is paywalled: blank slide
-    merge("04_phase_picking", [9, 16], "Pick: it is a segmentation problem"),
+    ("04_phase_picking", [9, 16], None),
     ("04_phase_picking", [17, 18, 19], None),          # PhaseNet -> EQTransformer -> PhaseNO
     ("05_phase_association", [5], None),               # associate: GaMMA
     ("02_signal_processing", [17], None),              # denoise
@@ -485,11 +489,16 @@ def main():
             inline = [a for a in re.findall(r"!\[([^\]]*)\]\(", merged)
                       if "bg" not in a.split()]
             if len(inline) >= 2:
-                merged = re.sub(r"height:\d+px", "w:470", merged)
+                # let each figure fill its column instead of sitting at a fixed 460px
+                # with the bottom of the slide empty
+                merged = re.sub(r"!\[([^\]]*?)\s*(?:w|width|h|height):\d+(?:px)?([^\]]*)\]",
+                                r"![\1\2]", merged)
                 merged = ("<style scoped>\n"
                           "section { column-count: 2; column-gap: 2.5rem; }\n"
                           "h3 { column-span: all; }\n"
                           "p { margin: 0.3em 0; }\n"
+                          "img { width: 100%; height: auto; max-height: 44vh; "
+                          "object-fit: contain; }\n"
                           "</style>\n\n" + merged)
             slides.append(fit_slide(two_pane(merged)))
             continue
