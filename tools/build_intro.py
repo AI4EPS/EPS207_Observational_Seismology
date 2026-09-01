@@ -19,9 +19,12 @@ SELECTION rules used below:
 
 Run:  python tools/build_intro.py       (rewrites docs/lectures/00_introduction.md)
 """
+import datetime as dt
 import re
 import subprocess
 from pathlib import Path
+
+import yaml
 
 REPO = Path(__file__).resolve().parent.parent
 REF = "origin/fall2023"
@@ -156,25 +159,23 @@ PARTS = [
     ("00_introduction", [23, 24, 25, 26, 27], None),
 ]
 
+def schedule_table():
+    """Same source and same dates as docs/README.md: Sep 1 is the introduction,
+    topics run from Sep 8, and any topic past the 13th Tuesday is unscheduled."""
+    spec = yaml.safe_load((REPO / "topics.yml").read_text())
+    first = dt.date(2026, 9, 1)
+    rows = ["| Date | Seismology | Machine learning |", "| --- | --- | --- |",
+            "| 09/01 | **Introduction** | *today* |"]
+    for i, t in enumerate(sorted(spec["topics"], key=lambda x: x["n"])[:13], start=1):
+        d = first + dt.timedelta(weeks=i)
+        rows.append(f"| {d:%m/%d} | {t.get('task','')} | {t['title']} |")
+    return "\n".join(rows)
+
+
 CLOSING = """
 ### Schedule
 
-| Date | Seismology | Machine learning |
-| --- | --- | --- |
-| 09/01 | Magnitude calibration | Regression & uncertainty |
-| 09/08 | Where aftershocks occur | Classification |
-| 09/15 | Where aftershocks occur | Bias-variance, boosting, CV |
-| 09/22 | Fault structure from seismicity | Clustering, mixture models, EM |
-| 09/29 | Earthquake / quarry-blast discrimination | NN: classification |
-| 10/06 | Phase picking | NN: segmentation |
-| 10/13 | Event detection on DAS | NN: object detection |
-| 10/20 | Ground-motion prediction | Transformers |
-| 10/27 | Template matching | Similarity & embeddings |
-| 11/03 | Waveform generation | VAE |
-| 11/10 | Denoising | Denoising autoencoders |
-| 11/17 | Focal mechanism & moment tensor | Inversion I - linear |
-| 11/24 | Location & relocation | Inversion II - non-linear |
-| 12/01 | Tomography | Inversion III - fields |
+@@SCHEDULE@@
 
 ---
 
@@ -314,7 +315,7 @@ def main():
                 s = s.rstrip() + "\n\n" + FIXME
                 thinned.append(f"{src}[{i}]")
             slides.append(s.strip())
-    slides.append(CLOSING.strip())
+    slides.append(CLOSING.strip().replace("@@SCHEDULE@@", schedule_table()))
 
     body = FRONT + "\n\n" + "\n\n---\n\n".join(slides) + "\n"
     OUT.write_text(body)

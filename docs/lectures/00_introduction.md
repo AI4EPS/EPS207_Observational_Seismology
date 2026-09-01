@@ -1726,9 +1726,9 @@ Deep Learning (Deep Neural Networks) is a new paradigm of software development
 
 | Date | Seismology | Machine learning |
 | --- | --- | --- |
-| 09/01 | Magnitude calibration | Regression & uncertainty |
-| 09/08 | Where aftershocks occur | Classification |
-| 09/15 | Where aftershocks occur | Bias-variance, boosting, CV |
+| 09/01 | **Introduction** | *today* |
+| 09/08 | Magnitude calibration | Regression & uncertainty |
+| 09/15 | Where aftershocks occur | Bias–variance, boosting, CV |
 | 09/22 | Fault structure from seismicity | Clustering, mixture models, EM |
 | 09/29 | Earthquake / quarry-blast discrimination | NN: classification |
 | 10/06 | Phase picking | NN: segmentation |
@@ -1737,9 +1737,9 @@ Deep Learning (Deep Neural Networks) is a new paradigm of software development
 | 10/27 | Template matching | Similarity & embeddings |
 | 11/03 | Waveform generation | VAE |
 | 11/10 | Denoising | Denoising autoencoders |
-| 11/17 | Focal mechanism & moment tensor | Inversion I - linear |
-| 11/24 | Location & relocation | Inversion II - non-linear |
-| 12/01 | Tomography | Inversion III - fields |
+| 11/17 | Focal mechanism & moment tensor | Inversion I — linear |
+| 11/24 | Location & relocation | Inversion II — non-linear |
+| 12/01 | Tomography | Inversion III — fields |
 
 ---
 

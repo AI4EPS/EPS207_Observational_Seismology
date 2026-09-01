@@ -23,9 +23,9 @@ def cell(text):
 
 
 rows = []
-for t in sorted(spec["topics"], key=lambda x: x["n"]):
-    n = t["n"]
-    date = (FIRST + dt.timedelta(weeks=n - 1)).strftime("%b %-d")
+for week, t in enumerate(sorted(spec["topics"], key=lambda x: x["n"]), start=1):
+    n = t["n"]                                    # stable topic id; gaps are retired topics
+    date = (FIRST + dt.timedelta(weeks=week)).strftime("%b %-d")   # Sep 1 is the introduction
     pap = t.get("papers") or {}
     anchor = f"**origin** {cell(pap.get('origin', 'TBD'))}<br>**sota** {cell(pap.get('sota', 'TBD'))}"
     anchor += f"<br>**baseline** {cell(t.get('baseline'))}"

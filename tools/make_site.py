@@ -17,9 +17,14 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 spec = yaml.safe_load((ROOT / "topics.yml").read_text())
 topics = {t["n"]: t for t in spec["topics"]}
 
-FIRST = dt.date(2026, 9, 1)                      # Tue 1 Sep 2026
-DATES = [FIRST + dt.timedelta(weeks=k) for k in range(14)]
-PRESENT = FIRST + dt.timedelta(weeks=14)         # Dec 8, RRR week
+FIRST = dt.date(2026, 9, 1)                      # Tue 1 Sep 2026 - the introduction
+PRESENT = dt.date(2026, 12, 8)                   # Dec 8, RRR week - presentations
+INTRO_SLIDES = "lectures/00_introduction.html"
+
+# Session 1 is the introduction, so the topics start a week later and there are 13
+# Tuesdays left (Sep 8 - Dec 1) for 14 topics. Whichever topic is not in `topics.yml`
+# order within the first 13 is simply unscheduled; the warning below names it.
+DATES = [FIRST + dt.timedelta(weeks=k) for k in range(1, 14)]
 
 # Students open notebooks on Berkeley DataHub via nbgitpuller: the link clones/updates the repo
 # into their account and opens the file. Change HUB if the course moves to a departmental hub.
@@ -44,12 +49,11 @@ for f in sorted(nb_dir.glob("*.ipynb")):
     if m:
         built[int(m.group(1))] = f"docs/notebooks/{f.name}"
 
-rows = []
-for k, d in enumerate(DATES, start=1):
-    t = topics.get(k)
-    title = t["title"] if t else "TBA"
+rows = [f"| {FIRST:%b %-d} | Introduction | [Slides]({INTRO_SLIDES}) |"]
+for (k, t), d in zip(sorted(topics.items()), DATES):
+    title = t["title"]
     link = f"[{title}]({datahub(built[k])})" if k in built else title
-    task = t.get("task", "") if t else ""
+    task = t.get("task", "")
     rows.append(f"| {d:%b %-d} | {task} | {link} |")
 
 readme = f"""# EPS 207 · Laboratory in Observational Seismology
@@ -96,7 +100,11 @@ nav = ["nav:", "  - Overview: README.md"]
 if (ROOT / "docs" / "project.md").exists():
     nav.append("  - Final project: project.md")
 if (ROOT / "docs" / "lectures" / "00_introduction.md").exists():
-    nav.append("  - Introduction: lectures/00_introduction.md")
+    # Point at the marp HTML, never the markdown. mkdocs would render the .md as one long
+    # scrolling page and the deck would silently stop being slides; docs/lectures/*.md is
+    # excluded from the build for the same reason. CI runs marp BEFORE mkdocs, so the HTML
+    # exists by then -- locally, run `npx @marp-team/marp-cli -I docs/lectures` first.
+    nav.append(f"  - Introduction: {INTRO_SLIDES}")
 if built:
     nav.append("  - Notebooks:")
     for k in sorted(built):
@@ -104,5 +112,12 @@ if built:
 mk = re.sub(r"^nav:.*?(?=^theme:)", "\n".join(nav) + "\n\n", mk, flags=re.S | re.M)
 (ROOT / "mkdocs.yml").write_text(mk)
 
-print(f"docs/README.md: {len(DATES)} sessions, {len(built)} notebook(s) linked {sorted(built)}")
+unscheduled = [n for n, _ in sorted(topics.items())[len(DATES):]]
+print(f"docs/README.md: 1 intro + {len(DATES)} topic sessions, "
+      f"{len(built)} notebook(s) linked {sorted(built)}")
+if unscheduled:
+    for n in unscheduled:
+        print(f"  !! topic {n} ({topics[n]['title']}) has NO SESSION - "
+              f"{len(DATES)} Tuesdays remain after the Sep 1 introduction, "
+              f"for {len(topics)} topics")
 print("mkdocs.yml nav regenerated")

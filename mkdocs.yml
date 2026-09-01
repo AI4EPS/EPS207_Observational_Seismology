@@ -9,7 +9,7 @@ edit_uri: blob/main/docs/
 nav:
   - Overview: README.md
   - Final project: project.md
-  - Introduction: lectures/00_introduction.md
+  - Introduction: lectures/00_introduction.html
 
 theme:
   name: "material"
@@ -22,6 +22,7 @@ theme:
 # RENDERED, and mkdocs still copies the raw .ipynb in as a static file.
 exclude_docs: |
   notebooks/*_solution.ipynb
+  lectures/*.md
 
 plugins:
   - mkdocs-jupyter:

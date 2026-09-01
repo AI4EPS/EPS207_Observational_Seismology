@@ -15,8 +15,8 @@ together with the machine learning methods now used for each.
 
 | Date | Seismology | Machine learning |
 |---|---|---|
-| Sep 1 | Magnitude calibration | Regression & uncertainty |
-| Sep 8 | Where aftershocks occur | Classification |
+| Sep 1 | Introduction | [Slides](lectures/00_introduction.html) |
+| Sep 8 | Magnitude calibration | Regression & uncertainty |
 | Sep 15 | Where aftershocks occur | Bias–variance, boosting, CV |
 | Sep 22 | Fault structure from seismicity | Clustering, mixture models, EM |
 | Sep 29 | Earthquake / quarry-blast discrimination | NN: classification |

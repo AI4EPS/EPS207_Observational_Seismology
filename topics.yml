@@ -34,44 +34,44 @@ topics:
             broadband only, cause unresolved."
     risk: "built and executed"
 
-  - n: 2
-    slug: classification
-    title: "Classification"
-    task: "Where aftershocks occur"
-    shared_case: >
-      aftershock locations from static stress change (DeVries 2018); week 3 re-examines
-      the classifier built here.
-    question: "Where do aftershocks occur — and what was the deep model actually buying?"
-    papers:
-      origin: "DeVries, Viégas, Wattenberg & Meade 2018, Nature, 10.1038/s41586-018-0438-y"
-      sota:   "Mignan & Broccardo 2019, Nature, 10.1038/s41586-019-1582-8 (one neuron matches it)"
-    concepts: [model capacity vs evidence, the metric is the question, decision boundary = what the model class can express]
-    baseline: "logistic regression on the same features — the necessity test"
-    data_hint: "DeVries stress-change features + Mignan's reproduction code. NOT in quakeflow. LOCATE FIRST."
-    risk: "highest — the only topic whose data is not already in hand"
-
-    finding: "logistic regression (13 params) AUC 0.8310; the published deep net (13,451 params) 0.8486
-              (matches DeVries reported 0.849); MAX SHEAR STRESS CHANGE, zero fitted parameters, 0.8474
-              -- 0.0012 below the deep net. Coulomb failure stress 0.4767, worse than a coin.
-              The deep net advantage does not clear its own uncertainty on any subset tried."
-    scale: "public, 11 s download, reproduces on CPU in under a minute. RISK RETIRED."
   - n: 3
     slug: bias_variance
     title: "Bias–variance, boosting, CV"
     task: "Where aftershocks occur"
     question: "The deep net beat logistic regression by 0.018 AUC - is that real, or capacity fitting
                noise that the right split would expose?"
-    shared_case: "the SAME data and task as week 2, so bias-variance is examined on a classifier the
-                  students have already built and understand"
+    shared_case: >
+      aftershock locations from static stress change (DeVries 2018). The classifier is built
+      from scratch in this session - there is no earlier week to inherit it from.
     papers:
       origin: "DeVries, Viégas, Wattenberg & Meade 2018, Nature, 10.1038/s41586-018-0438-y"
       sota:   "Mignan & Broccardo 2019, Nature, 10.1038/s41586-019-1582-8"
     concepts: ["bias-variance decomposition", "CV design must respect data structure (grouped, not random)", "boosting reduces bias, bagging reduces variance"]
-    baseline: "week 2's logistic regression, rescored under a mainshock-grouped split"
-    data_hint: "same assets as topic 2 - class_train.parquet / class_test.parquet, already built.
-                Cells around one mainshock share a stress field and a rupture, so they are NOT
-                independent draws: split BY MAINSHOCK, not at random."
-    risk: "needs recon: the size of the random-vs-grouped gap on this data is unmeasured"
+    baseline: "logistic regression on the 12 log-scaled stress features, built in-session, then
+               rescored under a mainshock-grouped split. Also max shear stress change - zero fitted
+               parameters - which ties the published deep net."
+    data_hint: "class_train.parquet (400,000 rows) + class_test.parquet (1,378,120), mirrored as
+                release assets, 86.9 MB, 199 slip models over 135 earthquakes. The mainshock key is
+                `eqkey = event.str[:12]`. Cap at 3,000 cells per slip model - the pair is 8.6x
+                unbalanced and the imbalance halves the effect. Cells around one mainshock share a
+                stress field and a rupture, so they are NOT independent draws: split BY MAINSHOCK.
+                Set OMP_NUM_THREADS=1 before importing sklearn, and early_stopping=False on any
+                capacity sweep."
+    finding: "a random split over cells makes boosting beat logistic regression by +0.0167
+              [+0.0166, +0.0167] pooled AUC on 6.12M cells - numerically the published 0.018.
+              Grouping by mainshock erases it: -0.0013 [-0.0035, +0.0006]. The optimism a random
+              split buys is +0.015 to +0.018 AUC at EVERY sample size from 100k to 6.1M.
+              DeVries DID group correctly (their 142/57 split is earthquake-disjoint, 102 vs 33
+              earthquakes, verified from the file lists) - so the session must NOT claim a
+              splitting error. The honest claim: the split was right, the ERROR BAR was wrong.
+              Cluster-bootstrapping over the 33 independent earthquakes rather than 1.38M cells
+              widens the interval 8.3x, to -0.0175 [-0.0280, +0.0059] - it straddles zero.
+              Best single demonstration: one feature that is a random constant per mainshock,
+              carrying zero information, buys +0.067 AUC under a random split - four times the
+              entire published deep-net advantage - and is indistinguishable from an oracle."
+    scale: "no new download; reuses the mirrored pair plus one line for the mainshock key.
+            Whole session under 8 minutes of CPU at 400k cells. RECON COMPLETE."
+    risk: "recon complete - see notes/topics/03_bias_variance.md"
 
   - n: 4
     slug: clustering
