@@ -22,11 +22,8 @@ style: |
   /* Several 2023 slides lay two figures out with a raw HTML flex div and a width
      percentage. The markdown fitter never sees those, so cap them here or they run
      off the bottom. */
-  section div img,
-  section img[width] {
-    max-height: 44vh !important;
-    height: auto !important;
-    object-fit: contain;
+  section div img {
+    max-height: 44vh;
   }
   section img {
     max-height: 78vh;
@@ -64,29 +61,22 @@ Weiqiang Zhu · Tuesdays 9:00-10:59 · McCone 325
 
 ---
 
-<style scoped>section img { max-height: 460px; }</style>
-
 ### Hayward Fault
 
 
-![](https://seismo.berkeley.edu/hayward/goole_earth_hayward_fault.jpg)
+![w:885px](https://seismo.berkeley.edu/hayward/goole_earth_hayward_fault.jpg)
 
 <small>[History](https://seismo.berkeley.edu/hayward/hayward_history.html)</small>
 
 ---
 
-<style scoped>section img { max-height: 460px; }</style>
-
-### [The California Memorial Stadium](https://pressbooks.pub/haywardfaultucberkeley/chapter/the-california-memorial-stadium/)
-
-![](https://upload.wikimedia.org/wikipedia/commons/a/a3/Berkeley_stadium_fault_creep_P1320489.jpg)
+### The California Memorial Stadium
+![w:345px](https://upload.wikimedia.org/wikipedia/commons/a/a3/Berkeley_stadium_fault_creep_P1320489.jpg)
 
 ---
 
-<style scoped>section img { max-height: 460px; }</style>
-
 ### An estimated magnitude of 6.3 or greater. 
-![](https://seismo.berkeley.edu/hayward/hf_history.jpg)
+![w:997px](https://seismo.berkeley.edu/hayward/hf_history.jpg)
 
 ---
 
@@ -99,27 +89,20 @@ Weiqiang Zhu · Tuesdays 9:00-10:59 · McCone 325
 
 ---
 
-<style scoped>section img { max-height: 460px; }</style>
-
 ### Before an earthquake
 
-![](https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/styles/side_image/public/thumbnails/image/2018nshm-longterm.jpg?itok=6tMRRjk3)
+![w:688px](https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/styles/side_image/public/thumbnails/image/2018nshm-longterm.jpg?itok=6tMRRjk3)
 
 <small>[Earthquake Hazard Map](https://earthquake.usgs.gov/earthquakes/map/?extent=27.95559,-130.8252&extent=51.28941,-92.50488&range=month&magnitude=all&showPopulationDensity=true&showUSHazard=true&settings=true)</small>
 
 ---
 
-<style scoped>section img { max-height: 398px; }</style>
-
-
 ### Before an earthquake (cont.)
 - Simulating earthquake scenarios
 [Hayward Fault Scenarios](https://youtu.be/qZaKE4GuBXs?si=wI949Vnbk1EbO6xT)
-![](https://earthquake.usgs.gov/education/shakingsimulations/hayward/images/tn-HaywardM72_SanPabloBayEp.jpg)
+![w:706px](https://earthquake.usgs.gov/education/shakingsimulations/hayward/images/tn-HaywardM72_SanPabloBayEp.jpg)
 
 ---
-
-<style scoped>section img { max-height: 306px; }</style>
 
 ### A few seconds after
 
@@ -129,7 +112,7 @@ Weiqiang Zhu · Tuesdays 9:00-10:59 · McCone 325
 - Mobile phones as seismometers
 [Android EEW](https://www.youtube.com/watch?v=zFin2wZ56tM&ab_channel=Android)
 
-![](./assets/ShakeAlert.webp)
+![w:391px](./assets/ShakeAlert.webp)
 
 ---
 
@@ -147,13 +130,11 @@ Weiqiang Zhu · Tuesdays 9:00-10:59 · McCone 325
 | 8            | 10,000         | 50 x 200                             |
 
 --- 
-<style scoped>section img { max-height: 460px; }</style>
-
 
 ### Hours/days after an earthquake (cont.)
 
 
-![](https://earthquake.usgs.gov/data/oaf/images/fig4.gif)
+![w:730px](https://earthquake.usgs.gov/data/oaf/images/fig4.gif)
 
 <small>[Aftershock prediction](https://earthquake.usgs.gov/data/oaf/overview.php)</small>
 
@@ -170,30 +151,24 @@ Weiqiang Zhu · Tuesdays 9:00-10:59 · McCone 325
 
 ---
 
-<style scoped>section img { max-height: 460px; }</style>
-
 ### Large-N and Large-T challenge
 
-![](https://ds.iris.edu/files/stats/data/archive/Archive_Growth.jpg)
+![w:595px](https://ds.iris.edu/files/stats/data/archive/Archive_Growth.jpg)
 
 <small>[IRIS dataset](https://ds.iris.edu/data/distribution/)</small>
 
 ---
 
-<style scoped>section img { max-height: 460px; }</style>
-
 ### Mining the IRIS dataset
 
-![](https://ds.iris.edu/files/stats/data/shipments/GigabytesByYearAndType.jpg)
+![w:595px](https://ds.iris.edu/files/stats/data/shipments/GigabytesByYearAndType.jpg)
 
 ---
-
-<style scoped>section img { max-height: 444px; }</style>
 
 ### What information can we get from seismic data?
 
 - Take a look at a recent earthquake: [M 5.1 - 7 km SE of Ojai, CA](https://earthquake.usgs.gov/earthquakes/eventpage/ci39645386/executive)
-![](assets/M5.1.png)
+![w:994px](assets/M5.1.png)
 
 ---
 
@@ -218,8 +193,6 @@ Weiqiang Zhu · Tuesdays 9:00-10:59 · McCone 325
 
 ---
 
-<style scoped>section img { max-height: 306px; }</style>
-
 ### Information from seismic phases
 
 - Earthquake source
@@ -227,41 +200,33 @@ Weiqiang Zhu · Tuesdays 9:00-10:59 · McCone 325
 - Subsurface exploration (reservoir, geothermal, etc.)
 - ...
 
-![](https://www.science.org/cms/10.1126/science.abi7730/asset/50a260db-ccff-43b4-a8ca-b83c05832d16/assets/graphic/373_443_f3.jpeg)
+![w:342px](https://www.science.org/cms/10.1126/science.abi7730/asset/50a260db-ccff-43b4-a8ca-b83c05832d16/assets/graphic/373_443_f3.jpeg)
 
 ---
-
-<style scoped>section img { max-height: 460px; }</style>
 
 ### Picking P and S waves
 
-![](https://d3i71xaburhd42.cloudfront.net/5ae0f6a3b5fc882ce0b05ff1e8f333caf2e0549e/6-Figure4-1.png)
+![w:627px](https://d3i71xaburhd42.cloudfront.net/5ae0f6a3b5fc882ce0b05ff1e8f333caf2e0549e/6-Figure4-1.png)
 
 ---
-
-<style scoped>section img { max-height: 460px; }</style>
 
 ### What is phase association?
 
-![](./assets/phase_picks.png)
+![w:1036px](./assets/phase_picks.png)
 
 ---
-
-<style scoped>section img { max-height: 460px; }</style>
 
 ### How to locate an earthquake?
 
-![](https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/styles/full_width/public/thumbnails/image/locating%20earthquakes%201.gif?itok=z60HGZwY)
+![w:736px](https://d9-wret.s3.us-west-2.amazonaws.com/assets/palladium/production/s3fs-public/styles/full_width/public/thumbnails/image/locating%20earthquakes%201.gif?itok=z60HGZwY)
 
 ---
-
-<style scoped>section img { max-height: 444px; }</style>
 
 ### Optimization (Inverse) problem
 
 - Minimize the difference between observed and predicted values
 
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Linear_regression.svg/1920px-Linear_regression.svg.png)
+![w:672px](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Linear_regression.svg/1920px-Linear_regression.svg.png)
 
 ---
 
@@ -355,100 +320,78 @@ where $A(X)$ is the displacement amplitude in microns (10$^{-6}$ m) and X is in 
 
 ---
 
-<style scoped>section img { max-height: 460px; }</style>
-
 ### Detection, learned
 
 
-![](./assets/Screenshot%202023-09-24%20at%2023.39.39.png)
+![w:1139px](./assets/Screenshot%202023-09-24%20at%2023.39.39.png)
 
 <small>Generalized similarity search</small>
 
 ---
 
-<style scoped>section img { max-height: 460px; }</style>
-
 ### Background: Semantic Segmentation vs. Classification
 
-![](./assets/cv_tasks.png)
+![w:897px](./assets/cv_tasks.png)
 
 ---
-
-<style scoped>section img { max-height: 460px; }</style>
 
 ### Generalized seismic phase detection with deep learning
 
-![](https://d3i71xaburhd42.cloudfront.net/e178d94a0601f0f395cf6d81b884a238331fa869/3-Figure1-1.png)
+![w:914px](https://d3i71xaburhd42.cloudfront.net/e178d94a0601f0f395cf6d81b884a238331fa869/3-Figure1-1.png)
 
 ---
-
-<style scoped>section img { max-height: 460px; }</style>
 
 ### PhaseNet
 
-![](./assets/phasenet.png)
+![w:1102px](./assets/phasenet.png)
 
 ---
-
-<style scoped>section img { max-height: 460px; }</style>
 
 ### EQTransformer for simultaneous earthquake detection and phase picking
 
-![](./assets/eqtransformer.jpg)
+![w:582px](./assets/eqtransformer.jpg)
 
 ---
-
-<style scoped>section img { max-height: 460px; }</style>
 
 ### Next-Generation Seismic Monitoring with Neural Operators (PhaseNO)
 
-![](./assets/phaseno.png)
+![w:870px](./assets/phaseno.png)
 
 ---
 
-<style scoped>section img { max-height: 460px; }</style>
-
 ### Clustering-based (Unsupervised), e.g. GaMMA
 
-![](https://raw.githubusercontent.com/wayneweiqiang/GaMMA/master/docs/assets/diagram_gamma_annotated.png)
+![w:619px](https://raw.githubusercontent.com/wayneweiqiang/GaMMA/master/docs/assets/diagram_gamma_annotated.png)
 
 
 
 --- 
-<style scoped>section img { max-height: 460px; }</style>
-
 
 ### Clustering
 
-![](https://scikit-learn.org/stable/_images/sphx_glr_plot_cluster_comparison_001.png)
+![w:743px](https://scikit-learn.org/stable/_images/sphx_glr_plot_cluster_comparison_001.png)
 
 ---
-
-<style scoped>section img { max-height: 444px; }</style>
 
 ### Deep Denoiser
 
 - Short-time Fourier Transform (STFT) + Wiener Filter + Neural Network
 
-![](./assets/Screenshot%202023-09-17%20at%2018.16.57.png)
+![w:1110px](./assets/Screenshot%202023-09-17%20at%2018.16.57.png)
 
 ---
 
-<style scoped>section img { max-height: 460px; }</style>
-
 ### Deep learning for earthquake statistics
 
-![](https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41586-018-0438-y/MediaObjects/41586_2018_438_Fig1_HTML.png?as=webp)
+![w:909px](https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41586-018-0438-y/MediaObjects/41586_2018_438_Fig1_HTML.png?as=webp)
 
 <!-- _footer: "Deep learning of aftershock patterns following large earthquakes, DeVries et al. 2018" -->
 
 ---
 
-<style scoped>section img { max-height: 460px; }</style>
-
 ### Large training dataset + Clear objective function
 
-![](./assets/dataset.png)
+![w:795px](./assets/dataset.png)
 
 <!-- FIXME: figure lost to an expired CDN link; paste a screenshot here -->
 
@@ -489,10 +432,10 @@ where $A(X)$ is the displacement amplitude in microns (10$^{-6}$ m) and X is in 
 | 09/29 | Earthquake / quarry-blast discrimination | NN: classification |
 | 10/06 | Phase picking | NN: segmentation |
 | 10/13 | Event detection on DAS | NN: object detection |
-| 10/20 | Denoising | NN: Denoising |
+| 10/20 | Denoising | NN: denoising |
 | 10/27 | Ground-motion prediction | Transformers |
 | 11/03 | Template matching | Similarity & embeddings |
-| 11/10 | Waveform generation | VAE and Diffusion |
+| 11/10 | Waveform generation | VAE & diffusion |
 | 11/17 | Focal mechanism & moment tensor | Inversion I — linear |
 | 11/24 | Location & relocation | Inversion II — non-linear |
 | 12/01 | Tomography | Inversion III — fields |
@@ -624,12 +567,10 @@ The units for $M_0$ are N$\cdot$m (or dyne$\cdot$cm), the same as for force coup
 
 ---
 
-<style scoped>section img { max-height: 460px; }</style>
-
 ### Global CMT catalog
 
 
-![](https://raw.githubusercontent.com/zhuwq0/images/main/20250319214231.png)
+![w:786px](https://raw.githubusercontent.com/zhuwq0/images/main/20250319214231.png)
 
 <small>[Global Centroid Moment Tensor](https://www.globalcmt.org/)</small>
 
@@ -639,7 +580,7 @@ The units for $M_0$ are N$\cdot$m (or dyne$\cdot$cm), the same as for force coup
 section { font-size: 23px; }
 section { column-count: 2; column-gap: 2rem; }
 h3 { column-span: all; }
-img { width: 100%; height: auto; max-height: 42vh; }
+img { width: 100%; height: auto; max-height: 52vh; }
 </style>
 
 ### Beach balls
@@ -650,36 +591,19 @@ img { width: 100%; height: auto; max-height: 42vh; }
 
 ---
 
-<style scoped>section img { max-height: 460px; }</style>
-
-### Review: Basic types of faulting
-
-![](https://raw.githubusercontent.com/zhuwq0/images/main/202503302341109.png)
-
----
-
-<style scoped>section img { max-height: 460px; }</style>
-
 ### Basic types of faulting
 
-![20250330233905](https://raw.githubusercontent.com/zhuwq0/images/main/20250330233905.png)
+![20250330233905 w:775px](https://raw.githubusercontent.com/zhuwq0/images/main/20250330233905.png)
 
 ---
-
-<style scoped>section img { max-height: 460px; }</style>
 
 ### First-motion polarity
 
-![20250330234223](https://raw.githubusercontent.com/zhuwq0/images/main/20250330234223.png)
+![20250330234223 w:1037px](https://raw.githubusercontent.com/zhuwq0/images/main/20250330234223.png)
 
 ---
 
-<style scoped>
-section { font-size: 23px; }
-section { column-count: 2; column-gap: 2rem; }
-h3 { column-span: all; }
-img { width: 100%; height: auto; max-height: 42vh; }
-</style>
+<style scoped>section img { max-height: 30vh; }</style>
 
 ### Magnitude $M_0$
 
@@ -745,11 +669,9 @@ where is the moment measured in N-m.
 
 ---
 
-<style scoped>section img { max-height: 444px; }</style>
-
 ### Magnitude as a function of moment
 
-![20250402234333](https://raw.githubusercontent.com/zhuwq0/images/main/20250402234333.png)
+![20250402234333 w:702px](https://raw.githubusercontent.com/zhuwq0/images/main/20250402234333.png)
 
 [USGS Magnitude Types](https://www.usgs.gov/programs/earthquake-hazards/magnitude-types); [Latest earthquake](https://earthquake.usgs.gov/earthquakes/eventpage/us7000pn9s/origin/magnitude)
 
@@ -811,11 +733,9 @@ F(\omega) &= \int_{-\infty}^{\infty} f(t) e^{-i\omega t} dt \\
 $$
 
 --- 
-<style scoped>section img { max-height: 460px; }</style>
-
 
 ### Fourier Transform
-![](https://mriquestions.com/uploads/3/4/5/7/34572113/9600204.gif?508)
+![w:570px](https://mriquestions.com/uploads/3/4/5/7/34572113/9600204.gif?508)
 
 --- 
 <style scoped>section img { max-height: 460px; }</style>
@@ -918,20 +838,16 @@ $$
 
 ---
 
-<style scoped>section img { max-height: 460px; }</style>
-
 ### STA/LTA
 
 
-![](https://docs.obspy.org/_images/trigger_tutorial_classic_sta_lta.png)
+![w:613px](https://docs.obspy.org/_images/trigger_tutorial_classic_sta_lta.png)
 
 ---
 
-<style scoped>section img { max-height: 398px; }</style>
-
 ### Template matching / Matched filter
 
-![](https://upload.wikimedia.org/wikipedia/commons/9/98/Cross_Correlation_Animation.gif)
+![w:1134px](https://upload.wikimedia.org/wikipedia/commons/9/98/Cross_Correlation_Animation.gif)
 
 Review of convolution and cross-correlation in last lecture: [cross-correlation](https://ai4eps.github.io/EPS207_Observational_Seismology/lectures/02_signal_processing.html#12)
 
@@ -939,11 +855,9 @@ Notebook: [cross-correlation](https://ai4eps.github.io/EPS207_Observational_Seis
 
 ---
 
-<style scoped>section img { max-height: 460px; }</style>
-
 ### (QTM) Quake Template Matching
 
-![](https://www.science.org/cms/10.1126/science.aaw6888/asset/a82e0ba0-4c86-4db8-9d24-5b16db8361bc/assets/graphic/364_767_f1.jpeg)
+![w:1032px](https://www.science.org/cms/10.1126/science.aaw6888/asset/a82e0ba0-4c86-4db8-9d24-5b16db8361bc/assets/graphic/364_767_f1.jpeg)
 
 
 --- 
@@ -965,12 +879,10 @@ Notebook: [cross-correlation](https://ai4eps.github.io/EPS207_Observational_Seis
 
 
 --- 
-<style scoped>section img { max-height: 460px; }</style>
-
 
 ### FAST (Fingerprint And Similarity Thresholding)
 
-![](https://www.its.caltech.edu/~cyoon/img/fastgraphic_final.png)
+![w:406px](https://www.its.caltech.edu/~cyoon/img/fastgraphic_final.png)
 
 --- 
 
@@ -1013,11 +925,9 @@ p {
 
 ---
 
-<style scoped>section img { max-height: 460px; }</style>
-
 ### Seismic phases
 
-![](http://ds.iris.edu/media/product/globalstacks/images/TraceProcessing2.png)
+![w:496px](http://ds.iris.edu/media/product/globalstacks/images/TraceProcessing2.png)
 
 ---
 
@@ -1037,31 +947,43 @@ Try the SAM model: [link](https://segment-anything.com/demo)
 
 ---
 
-<style scoped>section img { max-height: 460px; }</style>
+### Grid-search / Back-projection, e.g. REAL
 
-### K-means
-
-![](https://sandipanweb.files.wordpress.com/2016/08/k3.gif?w=676)
-
----
-
-<style scoped>section img { max-height: 460px; }</style>
-
-### Gaussian Mixture Model (GMM)
-
-
-![](https://raw.githubusercontent.com/wayneweiqiang/GaMMA/master/docs/assets/diagram_gamma_annotated.png)
+<small>[Zhang, Ellsworth & Beroza (2019), Rapid Earthquake Association and Location, SRL](https://doi.org/10.1785/0220190052)</small>
 
 <!-- FIXME: figure lost to an expired CDN link; paste a screenshot here -->
 
 ---
 
-<style scoped>section img { max-height: 460px; }</style>
+### Graph-Neural-Network-based, e.g. GENIE
+
+<small>[McBrearty & Beroza (2023), Earthquake Phase Association with Graph Neural Networks, BSSA](https://doi.org/10.1785/0120220182)</small>
+
+<small>[McBrearty & Beroza (2023), Earthquake Phase Association with Graph Neural Networks, BSSA](https://doi.org/10.1785/0120220182)</small>
+
+<!-- FIXME: figure lost to an expired CDN link; paste a screenshot here -->
+
+---
+
+### K-means
+
+![w:460px](https://sandipanweb.files.wordpress.com/2016/08/k3.gif?w=676)
+
+---
+
+### Gaussian Mixture Model (GMM)
+
+
+![w:619px](https://raw.githubusercontent.com/wayneweiqiang/GaMMA/master/docs/assets/diagram_gamma_annotated.png)
+
+<!-- FIXME: figure lost to an expired CDN link; paste a screenshot here -->
+
+---
 
 ### Gaussian Mixture Model Association (GaMMA)
 
 
-![](https://raw.githubusercontent.com/wayneweiqiang/GaMMA/master/docs/assets/2019-07-04T18-02-01.074.png)
+![w:1133px](https://raw.githubusercontent.com/wayneweiqiang/GaMMA/master/docs/assets/2019-07-04T18-02-01.074.png)
 
 ---
 
@@ -1252,22 +1174,16 @@ Then we can use the estimated $\sigma^i$ to calculate the $\chi^2$ value; then o
 
 ---
 
-<style scoped>section img { max-height: 444px; }</style>
-
 ### Challenges: unmodeled velocity heterogeneity
 
 Case: Earthquakes located along a fault will often be mislocated if the seismic velocity changes across the fault.
 
-![20250317220051](https://raw.githubusercontent.com/zhuwq0/images/main/20250317220051.png)
+![20250317220051 w:708px](https://raw.githubusercontent.com/zhuwq0/images/main/20250317220051.png)
 
 ---
 
 <style scoped>
-section { font-size: 23px; }
-section { column-count: 2; column-gap: 2rem; }
-h3 { column-span: all; }
-img { width: 100%; height: auto; max-height: 42vh; }
-</style>
+section { font-size: 23px; }section img { max-height: 30vh; }</style>
 
 ### Challenges: trade-off between event depth and origin time
 
@@ -1296,8 +1212,7 @@ In the common situation where the location error is dominated by the biasing eff
 
 <style scoped>section { font-size: 23px; }</style>
 
-### [HypoDD: Double-difference earthquake location](https://www.ldeo.columbia.edu/~felixw/hypoDD.html)
-
+### HypoDD: Double-difference earthquake location
 $$
 \Delta r_k^{i j}=\left(t_k^i-t_k^j\right)-\left(\hat{t}_k^i-\hat{t}_k^j\right)
 $$
@@ -1308,11 +1223,8 @@ where $t_k^i$ and $\hat{t}_k^i$ are the observed and predicted arrival times at 
 
 ---
 
-<style scoped>section img { max-height: 444px; }</style>
-
-### [GrowClust: A Hierarchical Clustering Algorithm for Relative Earthquake Relocation](https://github.com/dttrugman/GrowClust)
-
-![](./assets/Screenshot%202023-10-08%20at%2022.01.21.png)
+### GrowClust: A Hierarchical Clustering Algorithm for Relative Earthquake Relocation
+![w:735px](./assets/Screenshot%202023-10-08%20at%2022.01.21.png)
 
 Review: [clusering](https://ai4eps.github.io/EPS207_Observational_Seismology/lectures/05_phase_association.html#6)
 
@@ -1343,11 +1255,8 @@ Review: [clusering](https://ai4eps.github.io/EPS207_Observational_Seismology/lec
 
 ---
 
-<style scoped>section img { max-height: 460px; }</style>
-
-### [HypoSVI: Hypocentre inversion with Stein variational inference](https://arxiv.org/abs/2101.03271)
-
-![](./assets/Screenshot%202023-10-08%20at%2021.43.21.png)
+### HypoSVI: Hypocentre inversion with Stein variational inference
+![w:1019px](./assets/Screenshot%202023-10-08%20at%2021.43.21.png)
 
 ---
 
@@ -1357,12 +1266,10 @@ Review: [clusering](https://ai4eps.github.io/EPS207_Observational_Seismology/lec
 
 ---
 
-<style scoped>section img { max-height: 460px; }</style>
-
 ## The Earthquake Cycle
 
 
-![](https://raw.githubusercontent.com/zhuwq0/images/main/20250407142312.png)
+![w:1082px](https://raw.githubusercontent.com/zhuwq0/images/main/20250407142312.png)
 
 <small>Elastic rebound</small>
 
@@ -1445,28 +1352,22 @@ Where:
 
 ---
 
-<style scoped>section img { max-height: 460px; }</style>
-
 ### The Gutenberg-Richter Law
-![](./assets/Ross2019.png)
+![w:1018px](./assets/Ross2019.png)
 <!-- _footer: (Ross et al. 2019) -->
 
 ---
 
-<style scoped>section img { max-height: 460px; }</style>
-
 ### What controls the slope $b$?
 
-![](./assets/Scholz1968.png)
+![w:830px](./assets/Scholz1968.png)
 <!-- _footer: (Scholz 1968) -->
 
 ---
 
-<style scoped>section img { max-height: 460px; }</style>
-
 ### Temporal variation of $b$
 
-![](./assets/Gulia_Wiemer_2019.png)
+![w:1140px](./assets/Gulia_Wiemer_2019.png)
 <!-- _footer: (Gulia and Wiemer 2019) -->
 
 ---
@@ -1545,11 +1446,9 @@ $$
 
 ---
 
-<style scoped>section img { max-height: 460px; }</style>
-
 ### The Epidemic Type Aftershock Sequence (ETAS) model
 
-![](https://raw.githubusercontent.com/zhuwq0/images/main/20250407180110.png)
+![w:748px](https://raw.githubusercontent.com/zhuwq0/images/main/20250407180110.png)
 
 
 <!-- _footer: "" -->

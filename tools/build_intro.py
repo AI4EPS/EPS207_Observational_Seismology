@@ -54,11 +54,8 @@ style: |
   /* Several 2023 slides lay two figures out with a raw HTML flex div and a width
      percentage. The markdown fitter never sees those, so cap them here or they run
      off the bottom. */
-  section div img,
-  section img[width] {
-    max-height: 44vh !important;
-    height: auto !important;
-    object-fit: contain;
+  section div img {
+    max-height: 44vh;
   }
   section img {
     max-height: 78vh;
@@ -197,6 +194,42 @@ def caption_below(slide):
     return "\n".join(body).rstrip() + f"\n\n<small>{cap}</small>"
 
 
+SIZES = REPO / "tools" / "image_sizes.json"
+
+
+def natural_size(url):
+    """Intrinsic pixel size of a figure, cached on disk.
+
+    This is the whole point of the sizing pass: `max-height` only ever CAPS an image,
+    it never enlarges one, so a figure whose source is 470px wide renders 470px wide
+    on a 1280px slide -- unreadable from the back of a room. To enlarge it we have to
+    set an explicit width, and to set a width without distorting it we need the aspect
+    ratio. Hence: measure once, cache, bake the number into the markdown.
+    """
+    import json
+    cache = json.loads(SIZES.read_text()) if SIZES.exists() else {}
+    if url in cache:
+        return tuple(cache[url]) if cache[url] else None
+    size = None
+    try:
+        from PIL import Image
+        import io, urllib.request
+        if url.startswith("http"):
+            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+            data = urllib.request.urlopen(req, timeout=25).read()
+            size = Image.open(io.BytesIO(data)).size
+        else:
+            from urllib.parse import unquote
+            p = OUT.parent / unquote(url).lstrip("./")
+            if p.exists():
+                size = Image.open(p).size
+    except Exception:
+        size = None
+    cache[url] = list(size) if size else None
+    SIZES.write_text(json.dumps(cache, indent=0, sort_keys=True))
+    return size
+
+
 def two_pane(slide):
     """One figure under a few bullets fills the left half and wastes the right.
 
@@ -227,12 +260,17 @@ def two_pane(slide):
         # edge. Measured against the rendered PNGs, not guessed.
         avail = 720 - 100 - 100 - 46 * len(text) - 30
         avail = max(200, min(avail, 460))
-        # Size with max-height in a scoped style, not an inline height directive: a
-        # hard height plus max-width either distorts the figure or letterboxes it
-        # inside a box taller than the picture. max-height lets it scale to fit both
-        # constraints with its aspect ratio intact.
         slide = re.sub(r"!\[([^\]]*?)\s*\b(?:w|width|h|height):\d+(?:px)?\s*([^\]]*)\]",
                        r"![\1\2]", slide)
+        url = re.search(r"!\[[^\]]*\]\(([^)\s]+)", slide)
+        nat = natural_size(url.group(1)) if url else None
+        if nat:
+            nw, nh = nat
+            # widest the figure may be, and tallest, then take whichever binds
+            width = min(1140, int(avail * nw / nh))
+            return re.sub(r"!\[([^\]]*)\]\(",
+                          lambda m: f"![{(m.group(1) + ' ').strip() + ' ' if m.group(1).strip() else ''}w:{width}px](",
+                          slide, count=1)
         return (f"<style scoped>section img {{ max-height: {avail}px; }}</style>\n\n"
                 + slide)
     return re.sub(r"!\[([^\]]*)\]\(", "![bg right:47% contain](", slide, count=1)
@@ -247,10 +285,18 @@ def side_by_side(slide):
     inline = [a for a in imgs if "bg" not in a.split()]
     if len(inline) != 2 or any(re.search(r"\b(w|width|h|height):", a) for a in inline):
         return slide
+    text = [l for l in slide.split("\n")
+            if l.strip() and not l.strip().startswith(("!", "#", "<", "$"))]
+    seen = sum(len(re.sub(r"\]\([^)]*\)|https?://\S+|[\[\]*_`#>-]", "", l).strip())
+              for l in text)
+    if seen > 80:
+        # real prose on the slide: columns would strand it beside a figure. Keep one
+        # column and bound the figures so the pair still fits under the text.
+        return ("<style scoped>section img { max-height: 30vh; }</style>\n\n" + slide)
     return ("<style scoped>\n"
             "section { column-count: 2; column-gap: 2rem; }\n"
             "h3 { column-span: all; }\n"
-            "img { width: 100%; height: auto; max-height: 42vh; }\n"
+            "img { width: 100%; height: auto; max-height: 52vh; }\n"
             "</style>\n\n" + slide)
 
 
@@ -351,7 +397,7 @@ APPENDIX = [
 
     (None, None, divider("A · Earthquake source")),
     ("01_source_and_wave",
-     [2, 3, 4, 5, 6, 7, 9, 29, 30, 32, 45, 61, 62, 63, 70, 71, 74], None),
+     [2, 3, 4, 5, 6, 7, 9, 30, 32, 45, 61, 62, 63, 70, 71, 74], None),  # 29 is 30 unlabelled
 
     (None, None, divider("B · Signal processing")),
     ("02_signal_processing", [2, 3, 6, 7, 10, 12, 13, 20], None),
@@ -452,13 +498,17 @@ TITLES = {
 
 
 def cite_from_url(line):
-    """Recover a citation from a signed-CDN image URL that embeds the DOI."""
+    """Recover a citation from a signed-CDN image URL that embeds the DOI.
+
+    Used ONLY when the slide keeps no figure at all -- see strip_dead. With a figure
+    still on the slide a loose citation reads as that figure's attribution.
+    """
     m = re.search(r"(10\.\d{4}_[0-9A-Za-z_.]+?)/", line)
     if not m:
         return None
     doi = m.group(1).replace("_", "/")
     title = TITLES.get(doi)
-    return None   # a dangling citation reads as the caption of whatever survived
+    return f"[{title}](https://doi.org/{doi})" if title else None
 
 
 def strip_dead(slide):
@@ -475,9 +525,11 @@ def strip_dead(slide):
             continue
         out.append(line)
     body = "\n".join(out).rstrip()
-    for c in cites:
-        if c not in body:
-            body += f"\n\n{c}"
+    # Only re-attach a citation when NOTHING is left to caption; with a surviving
+    # figure it would read as that figure's attribution, which is how a Zhao table
+    # once ended up credited to Zhu & Beroza.
+    if cites and "![" not in body:
+        body += "\n\n" + "\n\n".join(f"<small>{c}</small>" for c in cites)
     return body, removed
 
 
@@ -516,7 +568,14 @@ TYPOS = {
 }
 
 
+def plain_headings(slide):
+    """A 2023 heading written as a markdown link renders as a long underlined title.
+    Keep the text, drop the link -- the URL is still in the notes and the slide."""
+    return re.sub(r"^(#{1,3} )\[([^\]]+)\]\([^)]*\)\s*$", r"\1\2", slide, flags=re.M)
+
+
 def fix_typos(slide):
+    slide = plain_headings(slide)
     for wrong, right in RENAME.items():
         slide = slide.replace(wrong, right)
     for wrong, right in TYPOS.items():
