@@ -199,17 +199,7 @@ peak-to-peak distance on the largest single swing of the S wave."* And the SCSN 
 the same of its own practice — $M_L = \log_{10}A - \log A_0 + C_s$, where *"the amplitude that was
 actually read was half the peak-to-peak distance on the largest single swing of the trace"*, and
 *"for most records (≥ 95%), the peak occurred on the S wave"* (Hutton, Woessner & Hauksson 2010,
-`10.1785/0120090130`).
-
-Our simulation matches zero-to-peak more closely than either of those. We cannot resolve that from
-here: both papers describe reading photographic records, neither states the procedure used on modern
-digital data, and the network recalibrated again in 2008.
-
-**The amplitude also falls steeply with distance** — the same earthquake looks a thousand times
-smaller at 300 km than at 5 km. Before it can mean anything you have to remove that, and nobody
-hands you the correction. You measure it.""")
-
-md("""The catalogue also contains values that cannot be true. Look before you fit.""")
+`10.1785/0120090130`).""")
 
 run("""print(f"amplitude spans {d.amp_mm.min():.2e} to {d.amp_mm.max():.2e} mm")
 tiny = d[d.amp_mm < 1e-3]          # below a micron
