@@ -430,10 +430,10 @@ where $A(X)$ is the displacement amplitude in microns (10$^{-6}$ m) and X is in 
 | 09/29 | Earthquake / quarry-blast discrimination | NN: classification |
 | 10/06 | Phase picking | NN: segmentation |
 | 10/13 | Event detection on DAS | NN: object detection |
-| 10/20 | Denoising | NN: denoising |
+| 10/20 | Denoising | NN: Denoising |
 | 10/27 | Ground-motion prediction | Transformers |
 | 11/03 | Template matching | Similarity & embeddings |
-| 11/10 | Waveform generation | VAE & diffusion |
+| 11/10 | Waveform generation | VAE and Diffusion |
 | 11/17 | Focal mechanism & moment tensor | Inversion I — linear |
 | 11/24 | Location & relocation | Inversion II — non-linear |
 | 12/01 | Tomography | Inversion III — fields |

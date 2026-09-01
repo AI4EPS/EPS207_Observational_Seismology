@@ -149,7 +149,7 @@ topics:
 
   - n: 11
     slug: denoising
-    title: "NN: denoising"
+    title: "NN: Denoising"
     task: "Denoising"
     question: "Does denoising actually help downstream, or only look better?"
     papers: {origin: TBD, sota: "Zhu, Mousavi & Beroza 2019, IEEE TGRS, 10.1109/TGRS.2019.2926772 (DeepDenoiser)"}
@@ -179,7 +179,7 @@ topics:
 
   - n: 10
     slug: vae
-    title: "VAE & diffusion"
+    title: "VAE and Diffusion"
     task: "Waveform generation"
     question: "What has the latent space learned — source, path, or site?"
     papers: {origin: TBD, sota: TBD}
