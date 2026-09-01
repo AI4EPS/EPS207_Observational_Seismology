@@ -20,7 +20,8 @@ topics:
       origin: "Richter 1935, BSSA, 10.1785/bssa0250010001 (invented magnitude; it is a regression)"
       sota:   "Hutton & Boore 1987, BSSA, 10.1785/bssa0770062074 (the curve still used; what you fit against)"
     concepts: ["least squares as MLE and the normal equations", "confidence vs prediction interval", "ridge as MAP under a Gaussian prior"]
-    baseline: "least squares on the cumulative FMD, then Aki MLE for the b-value"
+    baseline: "predict a constant, then add magnitude, then log10(R), then R - each term judged
+               on whether the residual structure it was added to remove actually goes away"
     finding: "Wood-Anderson amplitude is a CONVENTION: zero-to-peak reproduces modern SCEDC AML
               (median ratio 0.989 over 8 broadband channels) while Hutton & Boore's own definition
               (half peak-to-peak of the largest single S swing) sits 0.036 magnitude units away --

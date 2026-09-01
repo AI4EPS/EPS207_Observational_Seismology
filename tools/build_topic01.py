@@ -18,8 +18,19 @@ correction from data. That paper invented magnitude, and it is a regression.
 **Hutton & Boore (1987)** — fifty years later, the same correction refitted for southern California
 with far more data. They published
 $-\log_{10}A_0 = 1.110\log_{10}(R/100) + 0.00189(R-100) + 3.0$, with standard errors of **±0.017**
-and **±0.0005** on those two coefficients. That is the curve you will compare your own fit against.
-[`10.1785/bssa0770062074`]
+and **±0.0005** on those two coefficients. That is the curve you will compare your own fit against — **but not on equal terms.** They fitted
+7,355 amplitudes spread across the whole of southern California, *with* per-station corrections,
+over 10-700 km, discarding readings below 0.3 mm. We will fit one sequence in one box, with no
+station terms, over 1-400 km, keeping readings 300x smaller. On p. 2077 they say explicitly that
+they had enough data to break the region into smaller areas but chose not to. We are about to do the
+sub-regional fit they declined. Any gap between the two numbers is at least as much about that as
+about the Earth. [`10.1785/bssa0770062074`]
+
+**The data.** Every reading in this notebook comes from the **2019 Ridgecrest sequence** — one
+aftershock sequence inside a single 0.9-degree box of the eastern California desert, recorded over
+one year. That matters more than anything else you will read here: a correction curve fitted to one
+sequence in one small region is not the same object as one fitted to a whole province, and the
+comparison you are about to make turns on that difference.
 
 It is **not** the curve the network uses now. Since January 2008 SCSN has used a statewide
 calibration with its own per-station corrections, so working out what your fit is and is not
@@ -70,7 +81,7 @@ print(f"amplitude falls by a factor of {one.amp_mm.max()/one.amp_mm.min():,.0f} 
 
 md("""## 2 · Do you believe the `amp_mm` column?
 
-You are about to regress 734,277 numbers somebody else measured. Before trusting a column,
+You are about to regress hundreds of thousands of numbers somebody else measured. Before trusting a column,
 **measure one of them yourself.** This is the only cell in the notebook that touches a raw
 seismogram, and it exists so the rest of the session rests on something you checked.
 
@@ -101,7 +112,8 @@ def fetch(net, sta, cha, t, pre=20, post=80, tries=3):
             if k == tries - 1:
                 raise RuntimeError(
                     f"SCEDC failed {tries}x for {net}.{sta}.{cha} ({type(e).__name__}). "
-                    f"If the room is rate-limited, load the mirrored MSEED bundle instead."
+                    f"SCEDC may be throttling the room. Section 2 is self-contained - nothing after it "
+                    f"depends on these waveforms - so re-run in a minute, or skip to section 3."
                 ) from e
             time.sleep(2 * (k + 1))
 
@@ -138,11 +150,11 @@ measured_mm = CONV["zero-to-peak"]""")
 
 md("""One station cannot settle this: for a roughly symmetric swing the three definitions differ
 by less than a factor of two, so any of them would look like agreement. Repeat it across the
-broadband channels that recorded this earthquake.""")
+nearest broadband channels that recorded this earthquake.""")
 
 run("""ev = d[(d.event_id == ROW.event_id) & (d.channel.str.startswith("HH"))]
 rows = []
-for _, r in ev.nsmallest(8, "hyp_km").iterrows():
+for _, r in ev.nsmallest(4, "hyp_km").iterrows():   # 4, not 8: eight students share one endpoint
     try:
         a = to_wood_anderson(fetch(r.network, r.station, r.channel, UTCDateTime(str(r.time))))
         rows.append((r.station, r.channel, r.amp_mm, np.abs(a).max(),
@@ -153,7 +165,7 @@ for _, r in ev.nsmallest(8, "hyp_km").iterrows():
 cmp = pd.DataFrame(rows, columns=["station", "channel", "catalogue",
                                   "zero_pk", "half_p2p", "half_swing"])
 assert len(cmp) >= 3, (f"only {len(cmp)} channel(s) returned - too few to separate the "
-                       f"conventions. Re-run, or load the mirrored bundle.")
+                       f"conventions. Re-run, or skip to section 3; nothing later needs this.")
 print(f"measured {len(cmp)} broadband channels")
 for c in ["zero_pk", "half_p2p", "half_swing"]:
     ratio = cmp[c] / cmp.catalogue
@@ -336,12 +348,12 @@ hi = np.polyfit(MW[MW > 6.5], np.log10(amp)[MW > 6.5], 1)[0]
 print(f"slope of measured amplitude vs Mw:  {lo:.2f} at small M,  {hi:.2f} at large M")
 print(f"the ratio is {lo/hi:.1f} — the factor of 3 the f^-2 falloff predicts")""")
 
-md("""The left panel is the mechanism: three earthquakes, three corner frequencies, and the
+md("""**The figure above is the mechanism**: three earthquakes, three corner frequencies, and the
 instrument's fixed window. At M3 the corner is far to the right of the red line and the instrument
 sees the flat level. At M7 the corner has moved to the *left* of it, and the instrument is measuring
 the falling tail.
 
-The right panel is the consequence. The dashed line is what the moment does — slope 1.5 per
+**The next figure is the consequence.** The dashed line is what the moment does — slope 1.5 per
 magnitude unit, forever. The solid line is what the instrument records: the same slope while the
 corner is above the band, then a bend to a third of it.
 
@@ -450,7 +462,7 @@ for t, b, s, h, hs in zip(TERMS, b3, se3, HB, HB_SE):
 print(f"\\nresidual sd = {np.sqrt(s2_3):.3f} log10 units")
 print(f"condition number of X'X = {np.linalg.cond(X3.T @ X3):.3e}")""")
 
-ckpt(2, """y = d.logA.values
+ckpt(1, """y = d.logA.values
 X3 = np.column_stack([np.ones(len(d)), d.magnitude, np.log10(d.hyp_km), d.hyp_km])
 b3, se3, r3, s2_3, XtX_inv = ols(X3, y)
 print(f"model refitted: c2 = {b3[2]:.4f}")""")
@@ -606,10 +618,10 @@ variability* — as $\sigma^2 = \tau^2 + \phi^2$, a between-event term and a
 within-event term, with the within-event part split again into site-to-site and single-station
 components.
 
-**And the split is a property of your model, not of the Earth.** Half the scatter here looked
-irreducible until you added a station term, at which point a third of it turned into explained
-structure. What counts as aleatoric depends on what you are willing to model — so "irreducible" is a
-statement about your model, not about the ground.""")
+**And the split is a property of your model, not of the Earth.** Whatever your model does not
+explain is called irreducible — so what counts as aleatoric depends on what you are willing to
+model, not on the ground. Section 8 puts a station term into the fit and watches part of this
+"irreducible" scatter turn into explained structure.""")
 
 run("""mu = Xg @ b3
 sub = d[(d.magnitude > 2.9) & (d.magnitude < 3.1)]
@@ -672,16 +684,16 @@ part. Report both as a percentage of the variance, then plot the distribution of
 Then answer: **how much better would one station's magnitude be if you corrected for site — and
 would averaging 30 stations still help?**""")
 
-ckpt(3, """y = d.logA.values
+ckpt(2, """y = d.logA.values
 X3 = np.column_stack([np.ones(len(d)), d.magnitude, np.log10(d.hyp_km), d.hyp_km])
 b3, se3, r3, s2_3, XtX_inv = ols(X3, y)
 cov = s2_3 * XtX_inv
 print("state rebuilt")""")
 
-md(r"""**Now put the station terms into the model**, which is what Hutton & Boore actually did —
-they solved for per-station corrections jointly with the attenuation curve. Fitting a separate
-intercept per station is the same thing, and it is one line if you subtract each station's mean
-from both sides first.""")
+md(r"""**Now put the station terms into the model**, which is what Hutton & Boore were trying to achieve.
+They could not afford the joint solve in 1987 — "computer resources proved insufficient to do this"
+(p. 2079) — and iterated between station residuals and a two-parameter attenuation fit instead.
+Doing it in one sparse solve is the thing that has changed.""")
 
 run("""from scipy.sparse import csr_matrix, hstack
 from scipy.sparse.linalg import lsqr
@@ -767,12 +779,17 @@ md(r"""## Seismology takeaways
   differently, and proposed re-anchoring the scale at 17 km rather than 100 km precisely to allow
   "a more meaningful comparison of earthquakes in situations where the attenuation of Wood-Anderson
   motions is strongly dependent on geographic region."
-- **Recomputing magnitudes from the archived amplitudes does not reproduce the catalogue.** Hutton &
-  Boore found the published values ran high, by more than half a magnitude unit for some earthquakes
-  — a systematic error in the numbers everything downstream is built on.
-- **Site response is a first-order term, not noise.** Half the scatter in a single-station magnitude
-  is a fixed property of that station, so it has to be corrected rather than averaged away:
-  averaging over more stations does not remove a bias that is constant at each one.
+- **Recomputing with a refitted curve does not reproduce the catalogue, and the discrepancy depends
+  on magnitude.** Hutton & Boore's recomputed M<sub>L</sub> ran *above* the Caltech catalogue for
+  small earthquakes and *below* it for large ones, by as much as 0.6 units — and they attributed most
+  of that trend to the non-uniform distribution of data in magnitude-distance space, small events
+  being recorded preferentially at short distances (1987, abstract and p. 2091).
+- **Site response is a first-order term, not noise.** Between-station scatter is 51% of the variance
+  around the curve, so one station's magnitude is dominated by which station it is. Averaging over
+  stations *does* beat it down — thirty give ±0.06 against ±0.34 for one — but two agencies averaging
+  different station sets average different site terms, so their answers differ systematically and the
+  difference does not shrink as either network grows. Hutton & Boore relied on that cancellation and
+  warned it would not always hold (1987, p. 2083).
 - **M<sub>L</sub> saturates because the instrument has a fixed period and the source does not.** As
   earthquakes grow, the corner frequency moves below the band the seismometer measures, so amplitude
   stops tracking moment. That is why moment magnitude had to be invented, and why the two scales
