@@ -67,7 +67,7 @@ the machine-learning methods the field now uses for each.
 
 ## Schedule
 
-| Date | Seismology task | Machine learning |
+| Date | Seismology | Machine learning |
 |---|---|---|
 {chr(10).join(rows)}
 | {PRESENT:%b %-d} | Final project presentations | |
