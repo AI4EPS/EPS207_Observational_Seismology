@@ -95,6 +95,8 @@ mk = (ROOT / "mkdocs.yml").read_text()
 nav = ["nav:", "  - Overview: README.md"]
 if (ROOT / "docs" / "project.md").exists():
     nav.append("  - Final project: project.md")
+if (ROOT / "docs" / "lectures" / "00_introduction.md").exists():
+    nav.append("  - Introduction: lectures/00_introduction.md")
 if built:
     nav.append("  - Notebooks:")
     for k in sorted(built):

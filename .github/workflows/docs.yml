@@ -20,6 +20,10 @@ jobs:
       #     config-file: .marprc.yml
       
 
+      # The lecture decks are marp markdown; render them to HTML slides.
+      - uses: actions/setup-node@v4
+      - run: npx @marp-team/marp-cli@latest -I docs/lectures
+
       - uses: actions/setup-python@v5
         with:
           python-version: 3.x

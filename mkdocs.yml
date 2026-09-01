@@ -9,6 +9,7 @@ edit_uri: blob/main/docs/
 nav:
   - Overview: README.md
   - Final project: project.md
+  - Introduction: lectures/00_introduction.md
 
 theme:
   name: "material"
