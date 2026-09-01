@@ -83,14 +83,3 @@ during high injection (Martínez-Garzón et al. 2017, `10.1002/2016gl071963`). T
 *Week 12.* **Baseline:** a pure double-couple fit — show what it fails to explain.
 
 Bring your own question if you have one. It must be answerable with these data in the time available.
-
-## Milestones
-
-| | |
-|---|---|
-| **Sep 29** (week 5) | **Proposal**, two pages: question, data, baseline, and what result would tell you that you are wrong. |
-| **Nov 3** (week 10) | **Milestone**: baseline running, a first result, and what has already gone wrong. |
-| **Dec 8** | **Presentation**, 15 minutes. |
-| End of finals week | **Report**. |
-
-Presentation 20%, report 20%.
