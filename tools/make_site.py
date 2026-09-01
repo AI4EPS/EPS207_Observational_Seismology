@@ -54,10 +54,10 @@ for k, d in enumerate(DATES, start=1):
 
 readme = f"""# EPS 207 · Laboratory in Observational Seismology
 
-Observational seismology turns recorded ground motion into statements about earthquakes and the
-Earth's interior. This laboratory course covers how that is done today — from magnitudes and
-catalogues through phase picking, location, source mechanisms and ground motion to tomography — and
-the machine-learning methods the field now uses for each.
+Seismology is the study of earthquakes and the seismic waves that travel through the Earth. This
+course covers the main tasks of observational seismology — magnitude estimation, phase picking,
+event location, focal mechanism determination, ground-motion prediction, and seismic tomography —
+together with the machine learning methods now used for each.
 
 ## Time and place
 
