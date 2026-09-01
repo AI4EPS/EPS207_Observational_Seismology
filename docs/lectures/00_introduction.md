@@ -35,6 +35,8 @@ style: |
   }
 ---
 
+<!-- _class: lead -->
+
 # Observational Seismology
 
 ### EPS 207 · Fall 2026
@@ -429,7 +431,7 @@ where $A(X)$ is the displacement amplitude in microns (10$^{-6}$ m) and X is in 
 
 ![](https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41586-018-0438-y/MediaObjects/41586_2018_438_Fig1_HTML.png?as=webp)
 
-<!-- _footer: "Deep learning of aftershock patterns following large earthquakes, Devries et al. 2018" -->
+<!-- _footer: "Deep learning of aftershock patterns following large earthquakes, DeVries et al. 2018" -->
 
 ---
 
@@ -490,8 +492,7 @@ where $A(X)$ is the displacement amplitude in microns (10$^{-6}$ m) and X is in 
 
 ### Final project
 
-**The Geysers** - the most seismically active field in California, where the shaking is
-a side effect of an industrial process.
+**The Geysers** - the most seismically active field in California, where the shaking is a side effect of an industrial process.
 
 ![bg right:52% contain](assets/geysers_ml_catalog.png)
 
@@ -503,6 +504,8 @@ a side effect of an industrial process.
 - Final project (50%)
 
 ---
+
+<!-- _class: lead -->
 
 ### Questions?
 

@@ -68,6 +68,8 @@ style: |
 ---"""
 
 TITLE = """
+<!-- _class: lead -->
+
 # Observational Seismology
 
 ### EPS 207 · Fall 2026
@@ -375,8 +377,7 @@ CLOSING = """
 
 ### Final project
 
-**The Geysers** - the most seismically active field in California, where the shaking is
-a side effect of an industrial process.
+**The Geysers** - the most seismically active field in California, where the shaking is a side effect of an industrial process.
 
 ![bg right:52% contain](assets/geysers_ml_catalog.png)
 
@@ -388,6 +389,8 @@ a side effect of an industrial process.
 - Final project (50%)
 
 ---
+
+<!-- _class: lead -->
 
 ### Questions?
 """
@@ -481,6 +484,7 @@ TYPOS = {
     "fractial scaling": "fractal scaling",
     "What controls the slop $b$?": "What controls the slope $b$?",
     "Obpsy": "ObsPy",
+    "Devries et al. 2018": "DeVries et al. 2018",
     "Eathquake Hazard Map": "Earthquake Hazard Map",
     "reservior": "reservoir",
     "momemt": "moment",
