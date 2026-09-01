@@ -41,13 +41,9 @@ readme = f"""# EPS 207 · Laboratory in Observational Seismology
 
 **Fall 2026 · University of California, Berkeley · Department of Earth and Planetary Science**
 
-Modern earthquake seismology runs on machine learning: catalogues are built by neural networks,
-locations by automatic differentiation, and velocity models by inversions that look a lot like
-training. This course teaches those methods by rebuilding them, one published result per week.
-
-Each session is organised around a **machine-learning method** and anchored on a **real paper** —
-one that introduced the problem and one that represents the state of the art. You work through the
-notebook live, reproduce part of the published result, and then try to break it.
+Machine learning now builds earthquake catalogues, locates events, and inverts for structure.
+Each week takes one **method** and one **published result**: you work the notebook live in class,
+reproduce part of the result, then try to break it.
 
 ## Time and place
 
