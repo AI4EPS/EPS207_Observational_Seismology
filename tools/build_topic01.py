@@ -803,51 +803,33 @@ calibration?""")
 
 md(r"""## Seismology takeaways
 
-- **M<sub>L</sub> is defined by a regional calibration, so it is not directly comparable between
-  regions.** Hutton & Boore excluded the Mammoth Lakes earthquakes because that area attenuated
-  differently, and proposed re-anchoring the scale at 17 km rather than 100 km precisely to allow
-  "a more meaningful comparison of earthquakes in situations where the attenuation of Wood-Anderson
-  motions is strongly dependent on geographic region."
-- **Recomputing with a refitted curve does not reproduce the catalogue, and the discrepancy depends
-  on magnitude.** Hutton & Boore's recomputed M<sub>L</sub> ran *above* the Caltech catalogue for
-  small earthquakes and *below* it for large ones, by as much as 0.6 units — and they attributed most
-  of that trend to the non-uniform distribution of data in magnitude-distance space, small events
-  being recorded preferentially at short distances (1987, abstract and p. 2091).
-- **Site response is a first-order term, not noise.** Between-station scatter is 51% of the variance
-  around the curve, so one station's magnitude is dominated by which station it is. Averaging over
-  stations *does* beat it down — thirty give ±0.06 against ±0.34 for one — but two agencies averaging
-  different station sets average different site terms, so their answers differ systematically and the
-  difference does not shrink as either network grows. Hutton & Boore relied on that cancellation and
-  warned it would not always hold (1987, p. 2083).
-- **M<sub>L</sub> saturates because the instrument has a fixed period and the source does not.** In
-  Brune's (1970) $\omega^{-2}$ source model the corner frequency falls as $M_0^{-1/3}$, so for large
-  earthquakes it drops below the band a Wood-Anderson measures and the recorded amplitude stops
-  tracking moment. Moment magnitude is defined from $M_0$ itself to avoid this (Hanks & Kanamori
-  1979, `10.1029/JB084iB05p02348`), which is why the two scales cannot be used interchangeably for
-  large events.
-- **A better calibration is not adopted the moment it is published.** Hutton & Boore's own curve was
-  held back because changing it "would cause a discontinuity in the local magnitude scale with time
-  and wreak havoc with the seismicity statistics", and they wrote that routine determinations must
-  continue with the old definition "until such time as all phase and amplitude readings back to 1932
-  are in computer-readable form" (1987, p. 2091). That condition was eventually met: southern
-  California recalibrated in 2008, twenty-one years later.
+- **M<sub>L</sub> is a regional calibration and does not transfer.** Hutton & Boore excluded the
+  Mammoth Lakes events for attenuating differently, and re-anchored the scale at 17 km to make
+  regions comparable (1987, p. 2091).
+- **A refitted curve does not reproduce the catalogue.** Theirs ran above it for small earthquakes
+  and below for large ones, by up to 0.6 units, mostly from uneven sampling in magnitude-distance
+  space (1987, abstract).
+- **Site is half the scatter** — 51% of the residual variance sits between stations. Averaging beats
+  it down, but two networks averaging different stations differ systematically (1987, p. 2083).
+- **M<sub>L</sub> saturates** because the corner frequency falls as $M_0^{-1/3}$ (Brune 1970) until
+  it leaves the instrument's band; M<sub>w</sub> is defined from $M_0$ to avoid this (Hanks &
+  Kanamori 1979).
+- **A better calibration waits on its catalogue.** Hutton & Boore held theirs back rather than break
+  the seismicity statistics; southern California recalibrated twenty-one years later (1987, p. 2091).
 
 ## Machine learning takeaways
 
-- Least squares is maximum likelihood when the errors are Gaussian and independent, and it returns
-  the parameter covariance $\sigma^2(X^\top X)^{-1}$ along with the fit.
-- A confidence interval covers the mean response; a prediction interval covers one new observation
-  and carries an extra $\sigma^2$ that never shrinks with $n$. This is the *epistemic* / *aleatoric*
-  split used throughout uncertainty quantification and machine learning — and which scatter counts as
-  aleatoric depends on what your model explains, not on the Earth.
-- Collinear predictors make $X^\top X$ ill-conditioned, so the fit pins a *combination* of
-  coefficients tightly and each one loosely. A small standard error is not evidence that a
-  coefficient is determined.
-- Regularisation adds information the data does not contain: ridge is damped least squares, and it
-  is the MAP estimate under a Gaussian prior on the coefficients.
-- Standard errors assume rows are independent draws. When observations are grouped, the effective
-  sample size is the number of groups — resampling whole stations here inflates the uncertainty on
-  the distance coefficient about thirtyfold.
+- Least squares is maximum likelihood under independent Gaussian errors, and returns the parameter
+  covariance $\sigma^2(X^\top X)^{-1}$ with the fit.
+- A confidence interval covers the mean, a prediction interval one new observation; only the first
+  shrinks with $n$. That is the *epistemic* / *aleatoric* split, and which scatter is which depends
+  on your model.
+- Collinear predictors are determined as a combination, not individually. A small standard error is
+  not evidence that a coefficient is resolved.
+- Ridge is damped least squares, and the MAP estimate under a Gaussian prior with
+  $\lambda = \sigma^2/s^2$.
+- Standard errors assume independent rows. Group the data and the effective sample size is the
+  number of groups — resampling stations here inflates the uncertainty thirtyfold.
 
 ---
 
