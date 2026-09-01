@@ -89,6 +89,13 @@ opened. Ask for the source and the page. A takeaway that reads as a memorable ap
 likely to be invented — the sentence that sounds most quotable is the one least likely to have a
 citation behind it.
 
+**Concepts introduced more than once.** Grep the notebook for each core idea. If it appears before
+the argument needs it, the structure is wrong and the earlier appearance should move.
+
+**Conclusions the sources do not support.** Where the notebook states what a catalogue, network or
+community does, check the source says it. An inference from the notebook's own measurement, written
+in the register of settled fact, is the defect to hunt.
+
 **Domain claims with no source.** Statements about what a catalogue does, what a convention is, what
 a term means in the literature. Ask for the source. "It sounded right" is how topic 1 shipped a claim
 that operational practice does not apply site corrections, when the operative paper publishes them.

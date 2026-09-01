@@ -115,6 +115,46 @@ then the same numbers from the data in front of them.
 estimate under a Gaussian prior" is a claim a student can only take on trust; it teaches the name of
 a fact rather than the fact.
 
+## One idea is introduced once, where it is needed
+
+A concept must appear at the point the argument needs it, and nowhere before. Topic 1 introduced the
+Gaussian likelihood twice: once as an aside in the middle of the empirical model-building, and again
+as step 1 of the Bayesian derivation three sections later. The first one "came out of nowhere" —
+correct, but arriving before anything asked for it, and stealing the derivation's opening move.
+
+The order the notebook now follows, and the order to copy:
+
+1. **Build the thing empirically.** Add terms, look at what each removes. No probability yet.
+2. **Derive it deterministically.** Least squares as an optimisation: objective, derivative, normal
+   equations, estimator, covariance. Everything a student needs to read a regression output.
+3. **Then reinterpret it probabilistically.** Likelihood, and *there* the demonstration that
+   maximising it reproduces the estimator you already derived; then prior, Bayes, MAP, and the
+   mechanism.
+
+Deterministic first, probabilistic second. The probabilistic view is a *reinterpretation* of
+something the student already has, not a parallel track running alongside it.
+
+**Check before shipping:** grep the notebook for each core concept and count where it is introduced.
+More than once means the structure is wrong, not the prose.
+
+## Do not derive conclusions the sources do not state
+
+Topic 1 measured three amplitude conventions against a catalogue column, found zero-to-peak matched
+best on eight channels of one earthquake, and wrote that the catalogue "uses zero-to-peak". The
+network's own catalogue paper says the opposite — that the amplitude read is *half the peak-to-peak
+distance on the largest single swing* — and the notebook had asserted the inference three times in
+the register of settled fact.
+
+**Report what the sources say, report what you measured, and state plainly when they disagree.** A
+documented disagreement you cannot resolve is a better thing to teach than a tidy conclusion you
+invented: it is what research actually looks like, and it does not mislead.
+
+## The notebook ends on the takeaways
+
+No "next week" teaser, no trailer for the following session. The notebook closes on the two takeaway
+lists and stops. A session that has to advertise the next one is padding, and the schedule already
+says what comes next.
+
 ## Writing the takeaways
 
 Two lists, **Seismology** and **Machine learning**, four or five items each. They are the last thing

@@ -191,15 +191,30 @@ ax.set(xlim=(t[i0]-7, t[i0]+22), xlabel="seconds from origin time",
        title=f"{ROW.station}.{ROW.channel}  M{ROW.magnitude} at {ROW.hyp_km:.0f} km")
 plt.tight_layout(); plt.show()""")
 
-md("""**Three definitions, three numbers, and only one reproduces the column.** Hutton & Boore state
-theirs exactly — *"one-half the peak-to-peak distance on the largest single swing of the S wave"* —
-and it is not what this catalogue contains; the zero-to-peak row is. Neither is wrong, but the
-difference is not a constant you can correct away: it depends on how complicated the waveform is.
+md(r"""**Three definitions, three numbers.** Now compare them with what the people who made this catalogue
+say they did.
 
-Note what the single-record check could **not** do. It agreed to about a percent, and would have
+Hutton & Boore (1987) state their measurement exactly: *"The amplitudes are read as one-half the
+peak-to-peak distance on the largest single swing of the S wave."* And the SCSN catalogue paper says
+the same of its own practice — $M_L = \log_{10}A - \log A_0 + C_s$, where *"the amplitude that was
+actually read was half the peak-to-peak distance on the largest single swing of the trace"*, and
+*"for most records (≥ 95%), the peak occurred on the S wave"* (Hutton, Woessner & Hauksson 2010,
+`10.1785/0120090130`).
+
+**So the documentation and our reproduction disagree**, and we cannot resolve it from here. Both
+papers describe half peak-to-peak; our simulation matches zero-to-peak more closely. The catalogue
+paper describes reading amplitudes off *photographic drum records* and does not state the procedure
+used on modern digital data, and the network changed its calibration again in January 2008. Any of
+the response removal, the filter band, the assumed gain, or the digital measurement window could
+account for the difference.
+
+Do not conclude from this that the catalogue "uses zero-to-peak". Conclude something narrower and
+more useful: **the convention is worth a few hundredths of a magnitude unit, and reproducing a
+published amplitude requires knowing a procedure that is not always written down.**
+
+Note also what the single-record check could **not** do. It agreed to about a percent, and would have
 agreed that well under any of the three. **An agreement that every candidate explanation predicts is
-not evidence for one of them** — the convention was pinned down only by computing all three and
-letting them disagree.
+not evidence for one of them.**
 
 This recipe reproduces broadband channels only; on strong-motion channels it fails badly, for reasons
 this notebook does not resolve.
@@ -403,31 +418,7 @@ print(f"model 1  logA ~ M                    sd = {np.sqrt(s2_1):.3f}")
 print(f"model 2  logA ~ M + log R            sd = {np.sqrt(s2_2):.3f}")
 print(f"model 3  logA ~ M + log R + R        sd = {np.sqrt(s2_3):.3f}")""")
 
-md(r"""We have been minimising squared residuals because that is what everyone does. It is worth
-seeing *why* once. If the errors are independent and Gaussian with variance $\sigma^2$, the
-log-likelihood of the data given $\beta$ is
 
-$$\ln L(\beta) = -\tfrac{n}{2}\ln(2\pi\sigma^2) - \frac{1}{2\sigma^2}\,\|y - X\beta\|^2$$
-
-Only the last term depends on $\beta$, and it is the sum of squares with a minus sign. So the
-$\beta$ that maximises the likelihood is the one that minimises the residual sum of squares — the
-two are the same estimator. Maximise the likelihood numerically from a deliberately bad start and
-see where it lands.""")
-
-run("""from scipy.optimize import minimize
-
-def neg_loglik(b, sigma):
-    r = y - X3 @ b
-    return 0.5*len(y)*np.log(2*np.pi*sigma**2) + (r @ r) / (2*sigma**2)
-
-sigma_hat = np.sqrt(s2_3)
-mle = minimize(neg_loglik, x0=np.zeros(4), args=(sigma_hat,), method="BFGS",
-               options={"gtol": 1e-10})
-
-print(f"{'':14s}{'c0':>10s}{'c1':>10s}{'c2':>10s}{'c3':>11s}")
-print(f"{'normal eqns':14s}" + "".join(f"{v:10.4f}" for v in b3[:3]) + f"{b3[3]:11.5f}")
-print(f"{'max likelihood':14s}" + "".join(f"{v:10.4f}" for v in mle.x[:3]) + f"{mle.x[3]:11.5f}")
-print(f"largest difference: {np.abs(mle.x - b3).max():.2e}")""")
 
 run("""fig, axs = plt.subplots(1, 3, figsize=(11, 3.2), sharey=True)
 idx = rng.choice(len(d), 25000, replace=False)
@@ -603,7 +594,25 @@ $$p(y \mid \beta) = (2\pi\sigma^2)^{-n/2}\exp\!\left(-\frac{\|y - X\beta\|^2}{2\
 
 Maximising this alone *is* ordinary least squares: the exponent contains the misfit and nothing else.
 
-### 2 · Write down the prior
+Worth checking rather than believing. Maximise the likelihood numerically, from a deliberately bad
+start, and see whether it lands on the normal-equations solution.""")
+
+run("""from scipy.optimize import minimize
+
+def neg_loglik(b, sigma):
+    r = y - X3 @ b
+    return 0.5*len(y)*np.log(2*np.pi*sigma**2) + (r @ r) / (2*sigma**2)
+
+sigma_hat = np.sqrt(s2_3)
+mle = minimize(neg_loglik, x0=np.zeros(4), args=(sigma_hat,), method="BFGS",
+               options={"gtol": 1e-10})
+
+print(f"{'':14s}{'c0':>10s}{'c1':>10s}{'c2':>10s}{'c3':>11s}")
+print(f"{'normal eqns':14s}" + "".join(f"{v:10.4f}" for v in b3[:3]) + f"{b3[3]:11.5f}")
+print(f"{'max likelihood':14s}" + "".join(f"{v:10.4f}" for v in mle.x[:3]) + f"{mle.x[3]:11.5f}")
+print(f"largest difference: {np.abs(mle.x - b3).max():.2e}")""")
+
+md(r"""### 2 · Write down the prior
 
 The claim "the coefficients are probably small" becomes: each $\beta_j$ is drawn independently from
 a Gaussian centred on zero with variance $s^2$.
@@ -979,10 +988,6 @@ md(r"""## Seismology takeaways
 - Ridge is damped least squares, and the MAP estimate under a Gaussian prior with
   $\lambda = \sigma^2/s^2$.
 - Standard errors assume independent rows. Group the data and the effective sample size is the
-  number of groups — resampling stations here inflates the uncertainty thirtyfold.
-
----
-
-**Next week:** classification, and a *Nature* paper whose deep network was matched by a single neuron.""")
+  number of groups — resampling stations here inflates the uncertainty thirtyfold.""")
 
 write(SLUG)

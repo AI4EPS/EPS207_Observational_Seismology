@@ -52,6 +52,13 @@ steps** — see `TEMPLATE.md`, "The notebook IS the lecture". A named result a s
 trust is a defect, not a shortcut. After each derivation, compute the quantity on the session's own
 data so the abstraction lands on numbers they have in front of them.
 
+## Structure
+
+- **Introduce each concept once, where the argument needs it.** Grep for your core concepts before
+  shipping and count the introductions; more than one means the structure is wrong.
+- **Deterministic before probabilistic.** Build empirically, derive as an optimisation, and only then
+  reinterpret probabilistically. See `TEMPLATE.md`, "One idea is introduced once".
+
 ## Claims — where every notebook so far has failed
 
 The checker verifies that a *number* in prose appears in an output. It cannot verify that the
@@ -65,6 +72,9 @@ The checker verifies that a *number* in prose appears in an output. It cannot ve
 - **Two numbers you compare must be computed under the same conditions, and the cell must say so.**
   Print the n, the sample, the seed for both sides. Most of the false conclusions in this course so
   far were comparisons between things that were never comparable.
+- **Never derive a conclusion the sources do not state.** Report what the source says, report what
+  you measured, and say plainly when they disagree - a documented disagreement you cannot resolve
+  teaches more than a tidy conclusion you invented.
 - **Every domain claim needs a source you opened this session.** Not a number — a claim: what a
   catalogue does, what a convention is, what a term means in the literature. Topic 1 asserted
   "routine catalogues do not correct for site" when Uhrhammer et al. (2011) publish station
@@ -75,6 +85,7 @@ The checker verifies that a *number* in prose appears in an output. It cannot ve
 - **Every seismology takeaway must cite a source you opened this session** — a textbook page or a
   paper's abstract/conclusions — and you deliver each one with that source named. Synthesised
   takeaways are the single most-rejected thing in this course. If you cannot source it, cut it.
+- **End on the takeaways.** No 'next week' teaser.
 - **Takeaways: follow `TEMPLATE.md` -> "Writing the takeaways" exactly.** The governing test is
   whether the sentence would still be true if the notebook had produced different numbers. If it
   would, it is background and belongs in the body. Deliver each item with the cell and the
