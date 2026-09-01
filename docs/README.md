@@ -17,7 +17,7 @@ together with the machine learning methods now used for each.
 |---|---|---|
 | Sep 1 | Magnitude calibration | [Regression & uncertainty](https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2FAI4EPS%2FEPS207_Observational_Seismology&urlpath=lab%2Ftree%2FEPS207_Observational_Seismology%2Fdocs%2Fnotebooks%2F01_regression_uncertainty.ipynb&branch=main) |
 | Sep 8 | Where aftershocks occur | Classification |
-| Sep 15 | How far a hypocentre moves when relocated | Bias–variance, boosting, CV |
+| Sep 15 | Where aftershocks occur | Bias–variance, boosting, CV |
 | Sep 22 | Fault structure from seismicity | Clustering, mixture models, EM |
 | Sep 29 | Earthquake / quarry-blast discrimination | NN: classification |
 | Oct 6 | Phase picking | NN: segmentation |

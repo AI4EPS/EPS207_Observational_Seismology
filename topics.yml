@@ -38,6 +38,9 @@ topics:
     slug: classification
     title: "Classification"
     task: "Where aftershocks occur"
+    shared_case: >
+      aftershock locations from static stress change (DeVries 2018); week 3 re-examines
+      the classifier built here.
     question: "Where do aftershocks occur — and what was the deep model actually buying?"
     papers:
       origin: "DeVries, Viégas, Wattenberg & Meade 2018, Nature, 10.1038/s41586-018-0438-y"
@@ -55,20 +58,20 @@ topics:
   - n: 3
     slug: bias_variance
     title: "Bias–variance, boosting, CV"
-    task: "How far a hypocentre moves when relocated"
-    question: "How far does a hypocentre move when relocated — predicted from network geometry alone?"
+    task: "Where aftershocks occur"
+    question: "The deep net beat logistic regression by 0.018 AUC - is that real, or capacity fitting
+               noise that the right split would expose?"
+    shared_case: "the SAME data and task as week 2, so bias-variance is examined on a classifier the
+                  students have already built and understand"
     papers:
-      origin: "Waldhauser & Ellsworth 2000, BSSA, 10.1785/0120000006 (HypoDD) — ALSO topic 13's origin"
-      sota:   "Trugman & Shearer 2017, SRL, 10.1785/0220160188 (GrowClust) — produced the target column"
-    finding: "random 5-fold R2 0.198 vs spatial-cluster 0.025; gap 0.172 [0.141, 0.208] = 87% of apparent skill.
-              Reported depthError is factor 1.94 optimistic and WORST where most confident (2.71x best decile);
-              65% of events move further than their own reported error where ~32% should."
-    scale: "n=2000 clears zero; ship the full join, 6.96 MB gz. OMP_NUM_THREADS=1 or 80x slower.
-            CAVEAT: at class scale the model is worse than the mean -- it measures optimism, not skill."
-    concepts: [bias-variance decomposition, CV design must respect data structure (leakage), regularization as a family]
-    baseline: "predict the mean; then a random split against a spatial-cluster split"
-    data_hint: "target = depth change between a routine and a relocated catalogue; features = azimuthal gap,
-                station distances, N stations, rms residual, error ellipse. USGS ComCat carries all of these."
+      origin: "DeVries, Viégas, Wattenberg & Meade 2018, Nature, 10.1038/s41586-018-0438-y"
+      sota:   "Mignan & Broccardo 2019, Nature, 10.1038/s41586-019-1582-8"
+    concepts: ["bias-variance decomposition", "CV design must respect data structure (grouped, not random)", "boosting reduces bias, bagging reduces variance"]
+    baseline: "week 2's logistic regression, rescored under a mainshock-grouped split"
+    data_hint: "same assets as topic 2 - class_train.parquet / class_test.parquet, already built.
+                Cells around one mainshock share a stress field and a rupture, so they are NOT
+                independent draws: split BY MAINSHOCK, not at random."
+    risk: "needs recon: the size of the random-vs-grouped gap on this data is unmeasured"
 
   - n: 4
     slug: clustering
