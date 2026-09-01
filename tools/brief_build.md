@@ -45,6 +45,13 @@ Author the solution notebook for topic {N}, derive the student notebook from it,
 - **Checkpoint cells at section boundaries**, so a student who breaks at minute 40 can rejoin.
 - No local paths. Set a seed. ~20–30 code cells, a figure every ~15 minutes, 3–4 exercises.
 
+## The notebook is the lecture
+
+There are no slides, so **derive every mathematical result the session uses, on the page, in numbered
+steps** — see `TEMPLATE.md`, "The notebook IS the lecture". A named result a student must take on
+trust is a defect, not a shortcut. After each derivation, compute the quantity on the session's own
+data so the abstraction lands on numbers they have in front of them.
+
 ## Claims — where every notebook so far has failed
 
 The checker verifies that a *number* in prose appears in an output. It cannot verify that the

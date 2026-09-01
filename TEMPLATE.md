@@ -82,6 +82,39 @@ fumbles it loses the session. Put a checkpoint at each section boundary:
 - **Pre-compute anything over ~20 minutes** and mirror it as a release asset; show the code that
   built it as an appendix cell rather than running it live.
 
+## The notebook IS the lecture — derive the mathematics on the page
+
+There are no slides. Whatever a student needs to follow the session has to be in the notebook, which
+means **every mathematical result the session uses is derived, in numbered steps, with no step the
+reader has to supply.** A graduate student who has not seen the result should be able to follow it
+line by line without stopping.
+
+The worked example is topic 1's ridge/MAP equivalence, which had been one sentence — "it is exactly
+the MAP estimate under a Gaussian prior" — and is now seven steps:
+
+1. **Write the forward model probabilistically.** $y = X\beta + \varepsilon$, $\varepsilon \sim
+   N(0, \sigma^2 I)$, and from it the likelihood. Note that maximising it alone *is* least squares.
+2. **Write down the prior**, explicitly, before seeing the data, and say what its width means in the
+   units of the parameter.
+3. **Bayes' theorem**, and why the denominator can be dropped.
+4. **Take the negative log**, which turns the product into a sum of two quadratics.
+5. **Rescale** by a positive constant to recover the damped objective, and read off
+   $\lambda = \sigma^2/s^2$. This is the step that makes the equivalence *visible* rather than
+   asserted.
+6. **Minimise**: expand, differentiate, set to zero, get the estimator; then say why the Hessian is
+   positive definite even when $X^\top X$ is singular.
+7. **Explain the mechanism**, via the SVD and the filter factors $f_i = d_i^2/(d_i^2+\lambda)$.
+
+Then, and this is the half that makes it a notebook rather than a textbook: **compute the quantity on
+the session's own data immediately afterwards.** Topic 1 prints the four singular values of its
+actual design matrix and the filter factors at five values of $\lambda$, so the reader sees the
+best-resolved direction sitting at 1.0000 while the weakest falls to 0.2594. Abstract derivation,
+then the same numbers from the data in front of them.
+
+**The failure mode this replaces** is a sentence that names a result and moves on. "Ridge is the MAP
+estimate under a Gaussian prior" is a claim a student can only take on trust; it teaches the name of
+a fact rather than the fact.
+
 ## Writing the takeaways
 
 Two lists, **Seismology** and **Machine learning**, four or five items each. They are the last thing

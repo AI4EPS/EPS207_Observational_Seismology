@@ -550,43 +550,110 @@ print(f"bootstrap resampling whole STATIONS : {sd_st:.4f}   ({sd_st/se3[2]:.0f}x
 print("  -> readings are not independent. The effective sample size for anything")
 print("     path-related is the number of stations, not the number of rows.")""")
 
-md("""The left panel is **collinearity made visible**: the cloud is a diagonal ridge, not a blob.
+md(r"""The left panel is **collinearity made visible**: the cloud is a diagonal ridge, not a blob.
 Any $c_2$ can be compensated by a matching $c_3$. The fit constrains the *combination* tightly and
 each coefficient loosely — so *geometric spreading* and *anelastic attenuation* are **not separately
 measured by this experiment**, however small their standard errors look.
 
 When two parameters trade off, the fit constrains their combination tightly and each one loosely.
 More rows over the same distance range shrink both standard errors while leaving the correlation
-where it is: what breaks a trade-off is a wider range of $R$, not more of the same. To get a unique answer you must add information from outside the data.
+where it is: what breaks a trade-off is a wider range of $R$, not more of the same. To get a unique,
+stable answer you must add information from outside the data.
 
 **You already know one way to do this, under a different name.** Damped least squares — the standard
-fix for an ill-conditioned inverse problem — minimises
+fix for an ill-conditioned inverse problem — minimises $\|y - X\beta\|^2 + \lambda\|\beta\|^2$
+instead of the misfit alone. Statistics calls the same estimator **ridge regression**. What follows
+is why the damping term is not a numerical trick.
 
-$$\\|y - X\\beta\\|^2 + \\lambda\\|\\beta\\|^2$$
+### 1 · Write the forward model probabilistically
 
-instead of the misfit alone, which gives $\\hat\\beta_\\lambda = (X^\\top X + \\lambda I)^{-1}X^\\top y$.
-Adding $\\lambda$ to the diagonal is what stops $(X^\\top X)^{-1}$ blowing up when the columns are
-nearly parallel. Statistics calls the same estimator **ridge regression**.
+$$y = X\beta + \varepsilon, \qquad \varepsilon \sim N(0,\ \sigma^2 I_n)$$
 
-The second term is a choice, and it is worth saying out loud what it assumes. Minimising
-$\\|\\beta\\|^2$ says: among all the coefficient sets that fit the data about equally well, prefer the
-one with small coefficients. That is a claim about the answer, made before looking at the data.
+Gaussian noise of variance $\sigma^2$ on each of the $n$ observations, independent. That makes the
+**likelihood** — the probability of the data you actually recorded, for a candidate $\beta$ —
 
-**Bayes gives that claim a name.** Suppose you believe beforehand that each coefficient is drawn from
-a Gaussian centred on zero with variance $s^2$, and that the measurement noise has variance
-$\\sigma^2$. Then the most probable $\\beta$ *given* the data — the **maximum a posteriori**, or MAP,
-estimate — is exactly the damped solution above, with
+$$p(y \mid \beta) = (2\pi\sigma^2)^{-n/2}\exp\!\left(-\frac{\|y - X\beta\|^2}{2\sigma^2}\right)$$
 
-$$\\lambda = \\sigma^2 / s^2$$
+Maximising this alone *is* ordinary least squares: the exponent contains the misfit and nothing else.
 
-That ratio is readable. $\\lambda$ is large when the data are noisy ($\\sigma^2$ big) or when you are
-confident the coefficients are small ($s^2$ small); $\\lambda \\to 0$ returns ordinary least squares,
-which is the statement that you had no prior opinion at all. **The damping parameter you have always
-tuned by eye is a statement of belief with units.**
+### 2 · Write down the prior
 
-This is the idea the rest of the course is built on. In topic 12 the same penalty will say *the earth
-model is smooth*; in topic 14, *the model obeys the eikonal equation*. The equation does not change
-— only the prior gets better.""")
+The claim "the coefficients are probably small" becomes: each $\beta_j$ is drawn independently from
+a Gaussian centred on zero with variance $s^2$.
+
+$$p(\beta) = (2\pi s^2)^{-p/2}\exp\!\left(-\frac{\|\beta\|^2}{2s^2}\right)$$
+
+This is stated *before* seeing $y$. $s$ has the units of $\beta$ and encodes how big you think a
+coefficient plausibly is.
+
+### 3 · Bayes' theorem
+
+$$p(\beta \mid y) = \frac{p(y \mid \beta)\, p(\beta)}{p(y)} \;\propto\; p(y \mid \beta)\, p(\beta)$$
+
+The denominator $p(y)$ does not involve $\beta$, so it is an irrelevant constant for finding the
+maximum.
+
+### 4 · Take the negative logarithm
+
+Maximising the posterior is the same as minimising its negative log, and the log turns the product
+into a sum:
+
+$$-\log p(\beta \mid y) = \frac{\|y - X\beta\|^2}{2\sigma^2} + \frac{\|\beta\|^2}{2s^2} + \text{const}$$
+
+Both exponents were quadratic, so the whole thing is quadratic in $\beta$.
+
+### 5 · Rescale to recover the damped objective
+
+Multiply through by $2\sigma^2$ — a positive constant, so it moves the value of the function but not
+the location of its minimum:
+
+$$\|y - X\beta\|^2 + \frac{\sigma^2}{s^2}\|\beta\|^2$$
+
+Compare with the damped least-squares objective $\|y - X\beta\|^2 + \lambda\|\beta\|^2$. They are
+identical, with
+
+$$\boxed{\lambda = \sigma^2 / s^2}$$
+
+That is the whole equivalence. **Damping is not a numerical trick; it is the log-prior term.** Read
+the ratio: $\lambda$ is large when the data are noisy or when you are confident the coefficients are
+small, and $\lambda \to 0$ returns ordinary least squares — the statement that you had no prior
+opinion at all.
+
+### 6 · Minimise, to get the estimator
+
+$$J(\beta) = y^\top y - 2\beta^\top X^\top y + \beta^\top X^\top X\beta + \lambda\beta^\top\beta$$
+
+Differentiate and set to zero:
+
+$$\nabla J = -2X^\top y + 2X^\top X\beta + 2\lambda\beta = 0$$
+
+$$(X^\top X + \lambda I)\,\beta = X^\top y
+\qquad\Longrightarrow\qquad
+\hat\beta_\lambda = (X^\top X + \lambda I)^{-1}X^\top y$$
+
+The Hessian is $2(X^\top X + \lambda I)$, positive definite for any $\lambda > 0$ **even when
+$X^\top X$ is singular** — so the minimum exists and is unique. And because the posterior is
+Gaussian, this MAP point is also the posterior *mean*, with covariance
+$\sigma^2(X^\top X + \lambda I)^{-1}$.
+
+### 7 · Why $\lambda I$ actually cures the ill-conditioning
+
+Use the SVD $X = UDV^\top$ with singular values $d_i$. Then $X^\top X = VD^2V^\top$, and
+
+- **OLS:** $\hat\beta = VD^{-1}U^\top y$ — each component is divided by $d_i$, so a near-zero
+  singular value amplifies noise without bound.
+- **Ridge:** $\hat\beta_\lambda = V\,\mathrm{diag}\!\left(\dfrac{d_i}{d_i^2 + \lambda}\right)U^\top y$
+
+Equivalently, each OLS component is multiplied by a **filter factor**
+$f_i = d_i^2/(d_i^2 + \lambda)$:
+
+- $d_i^2 \gg \lambda$: $f_i \approx 1$ — well-resolved directions pass through untouched.
+- $d_i^2 \ll \lambda$: $f_i \approx 0$ — unresolved directions are shrunk toward the prior mean
+  instead of exploding.
+
+And as $d_i \to 0$ the ridge factor $d_i/(d_i^2 + \lambda) \to 0$ rather than $\infty$.
+
+Our own design matrix has four singular values. Compute them, and the filter factors.""")
 run("""# Is ridge really the MAP estimate? Pick a prior width, derive lambda from it, and compare
 # the closed-form ridge solution against a direct maximisation of the log-posterior.
 s_prior = 0.5                       # we believe each coefficient is within roughly +-0.5 of zero
@@ -607,6 +674,17 @@ print(f"{'':22s}{'c1':>10s}{'c2':>10s}{'c3':>11s}")
 print(f"{'ridge, closed form':22s}" + "".join(f"{v:10.4f}" for v in b_ridge[1:3]) + f"{b_ridge[3]:11.5f}")
 print(f"{'MAP, maximised':22s}" + "".join(f"{v:10.4f}" for v in b_map[1:3]) + f"{b_map[3]:11.5f}")
 print(f"largest difference: {np.abs(b_ridge - b_map).max():.2e}")""")
+
+run("""d_sv = np.linalg.svd(X3, compute_uv=False)
+print("singular values of X:", "  ".join(f"{v:.3g}" for v in d_sv))
+print(f"condition number d_max/d_min = {d_sv[0]/d_sv[-1]:.3g}")
+print()
+print(f"{'lambda':>10s}" + "".join(f"{'f'+str(i+1):>9s}" for i in range(len(d_sv))))
+for lam in [0.0, 1e-2, 1.0, 1e2, 1e4]:
+    f = d_sv**2 / (d_sv**2 + lam)
+    print(f"{lam:10.2f}" + "".join(f"{v:9.4f}" for v in f))
+print()
+print("f ~ 1 means the direction survives; f ~ 0 means it is replaced by the prior.")""")
 
 run("""lams = np.logspace(-1, 6, 40)
 path = np.array([np.linalg.solve(X3.T @ X3 + l*np.eye(4), X3.T @ y) for l in lams])
