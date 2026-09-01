@@ -47,7 +47,7 @@ style: |
 
 ### EPS 207 · Fall 2026
 
-Weiqiang Zhu · Tuesdays 9:00-10:59 · McCone 325
+Tuesdays 9:00-10:59 · McCone 325
 
 ---
 
