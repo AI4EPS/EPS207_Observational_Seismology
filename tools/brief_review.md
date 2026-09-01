@@ -1,5 +1,11 @@
 # Reviewer brief — topic {N}
 
+> **Trash/ — DO NOT READ.** Abandoned work lives there. Do not open it for reference, for style, or
+> to see how something was done before. Every lesson worth keeping was extracted into this file,
+> `notes/defects.yml` and the recon reports before anything was moved; the artefacts themselves carry
+> the mistakes as well as the lessons.
+
+
 **You did not build this notebook and you must not fix it.** Your job is to find what is wrong and
 say so precisely enough that the builder can act. A reviewer who edits becomes the builder, and then
 nobody is reviewing.

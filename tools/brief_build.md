@@ -1,5 +1,11 @@
 # Builder brief — topic {N}
 
+> **Trash/ — DO NOT READ.** Abandoned work lives there. Do not open it for reference, for style, or
+> to see how something was done before. Every lesson worth keeping was extracted into this file,
+> `notes/defects.yml` and the recon reports before anything was moved; the artefacts themselves carry
+> the mistakes as well as the lessons.
+
+
 Author the solution notebook for topic {N}, derive the student notebook from it, and pass the gates.
 **You will not review your own work.** An independent reviewer reads it afterwards from
 `tools/brief_review.md`; your job is to make that review boring.

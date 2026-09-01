@@ -9,8 +9,6 @@ edit_uri: blob/main/docs/
 nav:
   - Overview: README.md
   - Final project: project.md
-  - Notebooks:
-    - "1. Regression & uncertainty": notebooks/01_regression_uncertainty.ipynb
 
 theme:
   name: "material"

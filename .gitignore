@@ -17,3 +17,6 @@ docs/notebooks/*_solution.ipynb
 .cache/
 __pycache__/
 *.pyc
+
+# Abandoned work, kept locally only. Agents must not read it.
+Trash/

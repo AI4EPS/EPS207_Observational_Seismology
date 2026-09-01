@@ -1,5 +1,11 @@
 # RECON — one EPS 207 topic
 
+> **Trash/ — DO NOT READ.** Abandoned work lives there. Do not open it for reference, for style, or
+> to see how something was done before. Every lesson worth keeping was extracted into this file,
+> `notes/defects.yml` and the recon reports before anything was moved; the artefacts themselves carry
+> the mistakes as well as the lessons.
+
+
 You are answering one question, and only this question:
 
 > **Is there a session here, and what are the real numbers?**

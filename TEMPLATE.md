@@ -1,5 +1,11 @@
 # How to build an EPS 207 session
 
+> **Trash/ — DO NOT READ.** Abandoned work lives there. Do not open it for reference, for style, or
+> to see how something was done before. Every lesson worth keeping was extracted into this file,
+> `notes/defects.yml` and the recon reports before anything was moved; the artefacts themselves carry
+> the mistakes as well as the lessons.
+
+
 Every rule here exists because something went wrong. Topic 1 was rebuilt four times on
 2026-08-31; the reasons are recorded so the next thirteen cost less.
 
