@@ -19,6 +19,15 @@ style: |
     opacity: 0.75;
     margin-top: 0.5em;
   }
+  /* Several 2023 slides lay two figures out with a raw HTML flex div and a width
+     percentage. The markdown fitter never sees those, so cap them here or they run
+     off the bottom. */
+  section div img,
+  section img[width] {
+    max-height: 44vh !important;
+    height: auto !important;
+    object-fit: contain;
+  }
   section img {
     max-height: 78vh;
     max-width: 100%;
@@ -500,7 +509,7 @@ where $A(X)$ is the displacement amplitude in microns (10$^{-6}$ m) and X is in 
 
 ### Grading
 
-- Attendance and participation (40%)
+- Homework (40%)
 - Final project (60%)
 
 ---
@@ -626,12 +635,18 @@ The units for $M_0$ are N$\cdot$m (or dyne$\cdot$cm), the same as for force coup
 
 ---
 
+<style scoped>
+section { font-size: 23px; }
+section { column-count: 2; column-gap: 2rem; }
+h3 { column-span: all; }
+img { width: 100%; height: auto; max-height: 42vh; }
+</style>
+
 ### Beach balls
 
-<div style="display: flex; justify-content: space-between;">
-<img src="https://raw.githubusercontent.com/zhuwq0/images/main/20250319224343.png" width="48%">
-<img src="https://raw.githubusercontent.com/zhuwq0/images/main/20250319224401.png" width="48%">
-</div>
+![height:230px](https://raw.githubusercontent.com/zhuwq0/images/main/20250319224343.png)
+
+![height:230px](https://raw.githubusercontent.com/zhuwq0/images/main/20250319224401.png)
 
 ---
 
@@ -659,12 +674,18 @@ The units for $M_0$ are N$\cdot$m (or dyne$\cdot$cm), the same as for force coup
 
 ---
 
+<style scoped>
+section { font-size: 23px; }
+section { column-count: 2; column-gap: 2rem; }
+h3 { column-span: all; }
+img { width: 100%; height: auto; max-height: 42vh; }
+</style>
+
 ### Magnitude $M_0$
 
-<div style="display: flex; justify-content: center;">
-<img src="https://raw.githubusercontent.com/zhuwq0/images/main/20250331234322.png" width="44%">
-<img src="https://raw.githubusercontent.com/zhuwq0/images/main/20250331234224.png" width="44%">
-</div>
+![height:230px](https://raw.githubusercontent.com/zhuwq0/images/main/20250331234322.png)
+
+![height:230px](https://raw.githubusercontent.com/zhuwq0/images/main/20250331234224.png)
 
 
 The magnitude of the equivalent body forces is $M_0$
@@ -1241,14 +1262,20 @@ Case: Earthquakes located along a fault will often be mislocated if the seismic 
 
 ---
 
+<style scoped>
+section { font-size: 23px; }
+section { column-count: 2; column-gap: 2rem; }
+h3 { column-span: all; }
+img { width: 100%; height: auto; max-height: 42vh; }
+</style>
+
 ### Challenges: trade-off between event depth and origin time
 
 Case: Earthquake locations for events outside of a network are often not well constrained.
 
-<div style="display: flex; justify-content: space-between;">
-  <img src="https://raw.githubusercontent.com/zhuwq0/images/main/20250317220241.png" style="width: 48%;">
-  <img src="https://raw.githubusercontent.com/zhuwq0/images/main/20250317220317.png" style="width: 48%;">
-</div>
+![height:230px](https://raw.githubusercontent.com/zhuwq0/images/main/20250317220241.png)
+
+![height:230px](https://raw.githubusercontent.com/zhuwq0/images/main/20250317220317.png)
 
 Mitigations:
 

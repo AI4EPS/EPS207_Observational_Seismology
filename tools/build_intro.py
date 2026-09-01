@@ -51,6 +51,15 @@ style: |
     opacity: 0.75;
     margin-top: 0.5em;
   }
+  /* Several 2023 slides lay two figures out with a raw HTML flex div and a width
+     percentage. The markdown fitter never sees those, so cap them here or they run
+     off the bottom. */
+  section div img,
+  section img[width] {
+    max-height: 44vh !important;
+    height: auto !important;
+    object-fit: contain;
+  }
   section img {
     max-height: 78vh;
     max-width: 100%;
@@ -229,6 +238,22 @@ def two_pane(slide):
     return re.sub(r"!\[([^\]]*)\]\(", "![bg right:47% contain](", slide, count=1)
 
 
+def side_by_side(slide):
+    """Two figures with no size of their own: put them in two columns and bound their
+    height, which is what the 2023 flex div was reaching for."""
+    if "column-count" in slide or re.search(r"!\[[^\]]*\bbg\b", slide):
+        return slide
+    imgs = re.findall(r"!\[([^\]]*)\]\(", slide)
+    inline = [a for a in imgs if "bg" not in a.split()]
+    if len(inline) != 2 or any(re.search(r"\b(w|width|h|height):", a) for a in inline):
+        return slide
+    return ("<style scoped>\n"
+            "section { column-count: 2; column-gap: 2rem; }\n"
+            "h3 { column-span: all; }\n"
+            "img { width: 100%; height: auto; max-height: 42vh; }\n"
+            "</style>\n\n" + slide)
+
+
 def fit_slide(slide):
     px, n_inline = _cost(slide)
     if px <= BUDGET:
@@ -385,7 +410,7 @@ CLOSING = """
 
 ### Grading
 
-- Attendance and participation (40%)
+- Homework (40%)
 - Final project (60%)
 
 ---
@@ -499,6 +524,19 @@ def fix_typos(slide):
     return slide
 
 
+def html_figures_to_markdown(slide):
+    """Several 2023 slides lay two figures side by side with a raw HTML flex div.
+
+    Marp strips the inline `style` attribute, so `display: flex` never applies: the
+    figures stack instead, overflow the slide, and are invisible to the markdown
+    layout rules. Convert them to markdown images and let the normal rules place them.
+    """
+    def convert(m):
+        srcs = re.findall(r'<img[^>]*src="([^"]+)"', m.group(0))
+        return "\n\n".join(f"![]({u})" for u in srcs)
+    return re.sub(r"<div\b[^>]*>\s*(?:<img[^>]*>\s*)+</div>", convert, slide, flags=re.S)
+
+
 def normalise_bg(slide):
     """`bg ... fit` is not a marp keyword -- marp takes `contain` or `cover`. An
     unrecognised word is ignored and the pane falls back to cover, which crops the
@@ -516,7 +554,7 @@ def localise_directives(slide):
     """`<!-- footer: x -->` is a GLOBAL marp directive: once one 2023 slide sets it,
     every later slide carries that citation. The underscore form scopes it to the
     slide it is written on, which is what the 2023 decks meant."""
-    slide = normalise_bg(slide)
+    slide = normalise_bg(html_figures_to_markdown(slide))
     return (slide.replace("<!-- footer:", "<!-- _footer:")
                  .replace("<!-- header:", "<!-- _header:"))
 
@@ -618,7 +656,7 @@ def main():
                 s = s.rstrip() + "\n\n" + FIXME
                 thinned.append(f"{src}[{i}]")
             s = add_heading(drop_stale_columns(s.strip()), last_head)
-            s = per_rendered_slide(s, lambda x: fit_slide(two_pane(caption_below(x))))
+            s = per_rendered_slide(s, lambda x: fit_slide(side_by_side(two_pane(caption_below(x)))))
             slides.append(s.strip())
 
 
