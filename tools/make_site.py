@@ -16,6 +16,9 @@ import yaml
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 spec = yaml.safe_load((ROOT / "topics.yml").read_text())
 topics = {t["n"]: t for t in spec["topics"]}
+# topics.yml order IS the schedule order; `n` is only a stable id, so a topic can be
+# reordered by moving its block and retired by deleting it, with no renumbering.
+ordered = [(t["n"], t) for t in spec["topics"]]
 
 FIRST = dt.date(2026, 9, 1)                      # Tue 1 Sep 2026 - the introduction
 PRESENT = dt.date(2026, 12, 8)                   # Dec 8, RRR week - presentations
@@ -50,7 +53,7 @@ for f in sorted(nb_dir.glob("*.ipynb")):
         built[int(m.group(1))] = f"docs/notebooks/{f.name}"
 
 rows = [f"| {FIRST:%b %-d} | [Introduction]({INTRO_SLIDES}) | |"]
-for (k, t), d in zip(sorted(topics.items()), DATES):
+for (k, t), d in zip(ordered, DATES):
     title = t["title"]
     link = f"[{title}]({datahub(built[k])})" if k in built else title
     task = t.get("task", "")
@@ -80,7 +83,7 @@ together with the machine learning methods now used for each.
 
 | | |
 |---|---|
-| Participation | 50% — the notebooks are worked in the room, not watched |
+| Participation | 50% — the notebooks are worked in the room |
 | Project | 50% — presentation 20%, report 20% |
 
 ## What you need
@@ -112,7 +115,7 @@ if built:
 mk = re.sub(r"^nav:.*?(?=^theme:)", "\n".join(nav) + "\n\n", mk, flags=re.S | re.M)
 (ROOT / "mkdocs.yml").write_text(mk)
 
-unscheduled = [n for n, _ in sorted(topics.items())[len(DATES):]]
+unscheduled = [n for n, _ in ordered[len(DATES):]]
 print(f"docs/README.md: 1 intro + {len(DATES)} topic sessions, "
       f"{len(built)} notebook(s) linked {sorted(built)}")
 if unscheduled:

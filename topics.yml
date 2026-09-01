@@ -9,7 +9,7 @@ meeting: "Tuesdays 9:00–10:59, McCone 325 · 14 sessions Sep 1 – Dec 1 · pr
 grading: "participation 50%, project 50% (proposal 10 / presentation 20 / report 20)"
 platform: "Google Colab + Berkeley DataHub. NO gs:// — both quakeflow buckets are private (403 anon).
            Public routes only: USGS/IRIS FDSN, HuggingFace, GitHub release assets."
-delivery: "live in the room, ~100 teaching minutes, notebook worked not watched"
+delivery: "live in the room, ~100 teaching minutes, the notebook is worked"
 
 topics:
   - n: 1
@@ -147,6 +147,16 @@ topics:
     baseline: "the station-trained model applied naively to DAS; picks vs the co-located network"
     data_hint: "HuggingFace AI4EPS/quakeflow_das (public). DAS workshop labs 2a/2c/2d. GPU on Colab."
 
+  - n: 11
+    slug: denoising
+    title: "NN: Denoising"
+    task: "Denoising"
+    question: "Does denoising actually help downstream, or only look better?"
+    papers: {origin: TBD, sota: "Zhu, Mousavi & Beroza 2019, IEEE TGRS, 10.1109/TGRS.2019.2926772 (DeepDenoiser)"}
+    concepts: [learning a mapping vs learning a prior, self-supervised denoising with no clean target, evaluate downstream not on reconstruction error]
+    baseline: "a bandpass filter — then judge both on picks and magnitudes, not on appearance"
+    data_hint: "SeisBench 02b_deep_denoiser + 03e_training_denoiser are Colab-ready."
+
   - n: 8
     slug: transformers
     title: "Transformers"
@@ -176,16 +186,6 @@ topics:
     concepts: [latent-variable generative model, the reparameterisation trick, the KL term as a prior on the latent]
     baseline: "a plain autoencoder, same architecture, no KL term — what does the probabilistic part buy?"
     data_hint: "waveforms from a public set. Built from scratch in PyTorch — no external repo. STATE the ELBO, do not derive it."
-
-  - n: 11
-    slug: denoising
-    title: "Denoising autoencoders"
-    task: "Denoising"
-    question: "Does denoising actually help downstream, or only look better?"
-    papers: {origin: TBD, sota: "Zhu, Mousavi & Beroza 2019, IEEE TGRS, 10.1109/TGRS.2019.2926772 (DeepDenoiser)"}
-    concepts: [learning a mapping vs learning a prior, self-supervised denoising with no clean target, evaluate downstream not on reconstruction error]
-    baseline: "a bandpass filter — then judge both on picks and magnitudes, not on appearance"
-    data_hint: "SeisBench 02b_deep_denoiser + 03e_training_denoiser are Colab-ready."
 
   - n: 12
     slug: inversion_linear

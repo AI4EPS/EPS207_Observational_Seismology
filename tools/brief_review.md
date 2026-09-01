@@ -114,7 +114,7 @@ that operational practice does not apply site corrections, when the operative pa
 field, check the term's actual definition and whether the mapping survives it.
 
 **Room feasibility.** Count the live network calls and multiply by eight students in the same two
-minutes. Count the minutes of compute. A session is 100 minutes and the notebook is worked, not watched.
+minutes. Count the minutes of compute. A session is 100 minutes and the notebook is worked.
 
 ## Verdict format
 

@@ -1733,10 +1733,10 @@ Deep Learning (Deep Neural Networks) is a new paradigm of software development
 | 09/29 | Earthquake / quarry-blast discrimination | NN: classification |
 | 10/06 | Phase picking | NN: segmentation |
 | 10/13 | Event detection on DAS | NN: object detection |
-| 10/20 | Ground-motion prediction | Transformers |
-| 10/27 | Template matching | Similarity & embeddings |
-| 11/03 | Waveform generation | VAE |
-| 11/10 | Denoising | Denoising autoencoders |
+| 10/20 | Denoising | NN: Denoising |
+| 10/27 | Ground-motion prediction | Transformers |
+| 11/03 | Template matching | Similarity & embeddings |
+| 11/10 | Waveform generation | VAE |
 | 11/17 | Focal mechanism & moment tensor | Inversion I — linear |
 | 11/24 | Location & relocation | Inversion II — non-linear |
 | 12/01 | Tomography | Inversion III — fields |
@@ -1745,7 +1745,7 @@ Deep Learning (Deep Neural Networks) is a new paradigm of software development
 
 ### How each week runs
 
-One notebook, worked in the room, not watched.
+One notebook, worked in the room.
 
 1. A published claim, and the paper it comes from.
 2. The data, and what is wrong with it.

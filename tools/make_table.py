@@ -23,7 +23,7 @@ def cell(text):
 
 
 rows = []
-for week, t in enumerate(sorted(spec["topics"], key=lambda x: x["n"]), start=1):
+for week, t in enumerate(spec["topics"], start=1):
     n = t["n"]                                    # stable topic id; gaps are retired topics
     date = (FIRST + dt.timedelta(weeks=week)).strftime("%b %-d")   # Sep 1 is the introduction
     pap = t.get("papers") or {}

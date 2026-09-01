@@ -22,7 +22,7 @@ against corrected data, and every number here must be re-runnable.
     docs/notebooks/NN_slug_solution.ipynb  executed; every number computed
     docs/notebooks/NN_slug.ipynb           derived by deleting the exercise answers
 
-A session is **100 teaching minutes, live, worked not watched**: roughly 20–30 code cells, a figure
+A session is **100 teaching minutes, live, and worked**: roughly 20–30 code cells, a figure
 every ~15 minutes, 3–4 exercises. Fewer than 20 cells or fewer than 4 figures is a skeleton, and
 `check_notebook.py` fails it.
 

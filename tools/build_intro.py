@@ -166,7 +166,7 @@ def schedule_table():
     first = dt.date(2026, 9, 1)
     rows = ["| Date | Seismology | Machine learning |", "| --- | --- | --- |",
             "| 09/01 | **Introduction** | *today* |"]
-    for i, t in enumerate(sorted(spec["topics"], key=lambda x: x["n"])[:13], start=1):
+    for i, t in enumerate(spec["topics"][:13], start=1):
         d = first + dt.timedelta(weeks=i)
         rows.append(f"| {d:%m/%d} | {t.get('task','')} | {t['title']} |")
     return "\n".join(rows)
@@ -181,7 +181,7 @@ CLOSING = """
 
 ### How each week runs
 
-One notebook, worked in the room, not watched.
+One notebook, worked in the room.
 
 1. A published claim, and the paper it comes from.
 2. The data, and what is wrong with it.
