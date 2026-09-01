@@ -89,8 +89,8 @@ together with the machine learning methods now used for each.
 
 | | |
 |---|---|
-| Participation | 40% — the notebooks are worked in the room |
-| Project | 60% — proposal 10%, presentation 25%, report 25% |
+| Homework | 40% — the session notebooks |
+| Project | 60% — presentation 30%, report 30% |
 
 ## What you need
 

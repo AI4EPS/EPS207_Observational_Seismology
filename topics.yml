@@ -6,7 +6,7 @@
 # `scale` is filled by RECON, not by hand. A topic with no `finding` has no session in it.
 
 meeting: "Tuesdays 9:00–10:59, McCone 325 · 14 sessions Sep 1 – Dec 1 · presentations Dec 8 (RRR)"
-grading: "participation 40%, project 60% (proposal 10 / presentation 25 / report 25)"
+grading: "homework 40%, project 60% (presentation 30 / report 30)"
 platform: "Google Colab + Berkeley DataHub. NO gs:// — both quakeflow buckets are private (403 anon).
            Public routes only: USGS/IRIS FDSN, HuggingFace, GitHub release assets."
 delivery: "live in the room, ~100 teaching minutes, the notebook is worked"
