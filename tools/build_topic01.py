@@ -32,10 +32,6 @@ one year. That matters more than anything else you will read here: a correction 
 sequence in one small region is not the same object as one fitted to a whole province, and the
 comparison you are about to make turns on that difference.
 
-It is **not** the curve the network uses now. Since January 2008 SCSN has used a statewide
-calibration with its own per-station corrections, so working out what your fit is and is not
-comparable to is part of the problem.
-
 Code cells reading `# your code here` are yours to write. Everything else is written already — run
 it and read it.""")
 
@@ -89,7 +85,7 @@ plt.tight_layout(); plt.show()
 print(f"amplitude falls by a factor of {one.amp_mm.max()/one.amp_mm.min():,.0f} across "
       f"{one.hyp_km.min():.0f}–{one.hyp_km.max():.0f} km")""")
 
-md("""## 2 · Do you believe the `amp_mm` column?
+md("""## 2 · Measuring a Wood–Anderson amplitude
 
 You are about to regress hundreds of thousands of numbers somebody else measured. Before trusting a column,
 **measure one of them yourself.** This is the only cell in the notebook that touches a raw

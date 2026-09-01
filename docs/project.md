@@ -9,27 +9,33 @@ shallower than 3.5 km. Black lines are mapped faults.*
 
 ## Why this field
 
-**The Geysers** is the largest geothermal field in the world and the most seismically active place in
-northern California: **593,172 relocated events between 2000 and 2025**, almost all shallower than
-3.5 km, inside a box about 15 km across.
+**The Geysers has been generating electricity since 1960, and drawing down ever since.** Installed
+capacity peaked at **2,043 MW in 1989**. The plants lose 70–80% of the steam they produce to
+evaporation in their cooling towers, so only a fraction ever returns as condensate: the reservoir has
+been losing mass for sixty years, and pressure with it. Four-dimensional tomography watched it dry
+out — the low-Vₚ/Vₛ anomaly filling the reservoir strengthened from 9% to 13.4% between 1991 and
+1998 as liquid water was replaced by steam (Gunasekera et al. 2003, `10.1029/2001jb000638`).
 
-Two things make it unusually good for a first research project.
+**The response was to import water.** Treated municipal wastewater has been piped in since the late
+1990s, and in November 2003 the Santa Rosa–Geysers Recharge Project began delivering about
+42,000 m³ a day along a 65 km pipeline — a 40% increase in field-wide injection, undertaken to slow
+the pressure decline (Stark et al. 2005; Goyal & Conant 2010, `10.1016/j.geothermics.2010.09.007`).
 
-**The forcing is partly known.** The seismicity is induced by water injected into the reservoir, and
-injection is *seasonal* — it rises in winter, and rose sharply again when the Santa Rosa wastewater
-pipeline came online in 2003. Trugman, Shearer & Borsa (2016) found the background rate is highly
-correlated with injection, rising about 50% with strong seasonal fluctuation after the pipeline
-(`10.1002/2015jb012510`). **That annual cycle is visible in the catalogue itself**, so you can study
-the forcing without ever obtaining a well record.
+**The seismicity is the side effect of all this**, and it is why the field is worth a course project:
+the forcing is industrial, it is seasonal, and its history is documented. Injection rises in winter,
+and the seismicity follows.
 
-**The field argued about it and changed its mind.** Eberhart-Phillips & Oppenheimer (1984) analysed
-the first decade and reported *"no consistent pattern of correlation between injection and
-seismicity"* (`10.1029/jb089ib02p01191`). Forty years of denser catalogues later, the correlation is
-taken as established, and the discussion has moved to lag and mechanism: Leptokaropoulos et al.
-(2018) find peak correlation at a **≈2 week** delay (`10.1093/gji/ggx481`), while Johnson, Totten &
-Bürgmann (2016) track a seasonal signal migrating **downward, ≤6 months to reach >3 km below the
-injection depth** (`10.1002/2016gl069546`). A good project should be able to say *why* 1984 saw
-nothing — and what would have been needed to see it.
+**The field also changed its mind about that.** Eberhart-Phillips & Oppenheimer (1984) analysed the
+first decade and reported *"no consistent pattern of correlation between injection and seismicity"*
+(`10.1029/jb089ib02p01191`). Forty years and far denser catalogues later the correlation is taken as
+established — Trugman, Shearer & Borsa (2016) find the background rate rose about 50% with strong
+seasonal fluctuation after the pipeline (`10.1002/2015jb012510`) — and the argument has moved on to
+lag and mechanism: ≈2 weeks field-wide (Leptokaropoulos et al. 2018, `10.1093/gji/ggx481`), against a
+seasonal signal migrating downward and taking ≤6 months to reach 3 km below the injection depth
+(Johnson, Totten & Bürgmann 2016, `10.1002/2016gl069546`).
+
+A good project should be able to say **why 1984 saw nothing**, and what would have been needed to see
+it.
 
 ## Questions
 
@@ -54,7 +60,8 @@ They disagree. Confront it with σ_b = b/√N: with your *N*, is a difference of
 *Week 1.* **Baseline:** one *b* for the whole field, all time.
 
 **4 · What are the faults, and do they survive a change of method?**
-593,172 points is a dense 3-D cloud. Recover planes and compare with mapped structures.
+The seismicity is a dense 3-D point cloud. Recover planes from it and compare with mapped
+structures.
 *Week 4.* **Baseline:** *k*-means, which cannot find planes. Show why, then do better.
 
 **5 · Is the field deepening?**
