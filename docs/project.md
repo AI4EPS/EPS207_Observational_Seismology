@@ -2,6 +2,11 @@
 
 Everyone works the same field. You choose the question.
 
+![The Geysers, ML relocated catalogue, 2000–2025](assets/geysers_ml_catalog.png)
+
+*593,172 relocated events, coloured by depth. The field is about 15 km across and almost everything
+is shallower than 3.5 km. Black lines are mapped faults.*
+
 ## Why this field
 
 **The Geysers** is the largest geothermal field in the world and the most seismically active place in
