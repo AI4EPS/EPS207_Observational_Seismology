@@ -83,8 +83,11 @@ def write(slug, cells=None):
     for i, (kind, body, tag) in enumerate(cells):
         if kind != "code":
             continue
+        # strip IPython magics and shell escapes; they are valid in a notebook, not in compile()
+        plain = "\n".join("" if ln.lstrip().startswith(("%", "!")) else ln
+                          for ln in body.split("\n"))
         try:
-            compile(body, f"<cell {i}>", "exec")
+            compile(plain, f"<cell {i}>", "exec")
         except SyntaxError as e:
             raise SyntaxError(f"cell {i} does not compile: {e.msg} (line {e.lineno})") from None
 

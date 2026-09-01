@@ -40,6 +40,16 @@ Code cells reading `# your code here` are yours to write. Everything else is wri
 it and read it.""")
 
 md("""## 1 · What is an amplitude measurement?""")
+run("""# Berkeley DataHub does not ship obspy. Install it once per session if it is missing;
+# on Colab or a local environment that already has it, this cell does nothing.
+import sys, subprocess
+try:
+    import obspy
+except ImportError:
+    subprocess.run([sys.executable, "-m", "pip", "install", "-q", "obspy"], check=True)
+    import obspy
+print(f"obspy {obspy.__version__}")""")
+
 run("""import numpy as np, pandas as pd, matplotlib.pyplot as plt, warnings, time
 warnings.filterwarnings("ignore")
 rng = np.random.default_rng(0)
@@ -172,41 +182,17 @@ for c in ["zero_pk", "half_p2p", "half_swing"]:
     print(f"  {c:11s} median ratio {ratio.median():.3f}"
           f"   offset {abs(np.log10(ratio.median())):.3f} magnitude units")""")
 
-run("""hs, i0, i1 = largest_swing(wa_mm, with_index=True)
-pk = int(np.argmax(np.abs(wa_mm)))
-t  = np.arange(tr.stats.npts) / tr.stats.sampling_rate - 20
+run("""t = np.arange(tr.stats.npts) / tr.stats.sampling_rate - 20
+z = CONV["zero-to-peak"]
+_, i0, _ = largest_swing(wa_mm, with_index=True)
 
-fig, (a0, a1) = plt.subplots(1, 2, figsize=(10, 3.4),
-                             gridspec_kw={"width_ratios": [2.1, 1]})
-
-# left: where on the trace each measurement is taken
-a0.plot(t, wa_mm, lw=.5, color="#2b6cb0")
-a0.plot(t[pk], wa_mm[pk], "o", ms=8, mfc="none", mec="#c53030", mew=1.8)
-a0.annotate("largest excursion\\n(a trough, not a peak)", (t[pk], wa_mm[pk]),
-            xytext=(14, -1500), fontsize=7.5, color="#c53030",
-            arrowprops=dict(arrowstyle="->", color="#c53030", lw=.9))
-a0.annotate("", xy=(t[i1], wa_mm[i1]), xytext=(t[i0], wa_mm[i0]),
-            arrowprops=dict(arrowstyle="<->", color="#805ad5", lw=1.8))
-a0.annotate("largest single swing", (t[i1], wa_mm[i1]), xytext=(16, 1500),
-            fontsize=7.5, color="#805ad5",
-            arrowprops=dict(arrowstyle="->", color="#805ad5", lw=.9))
-a0.set(xlim=(t[i0]-7, t[i0]+22), xlabel="seconds from origin time",
+fig, ax = plt.subplots(figsize=(8, 3.2))
+ax.plot(t, wa_mm, lw=.5, color="#2b6cb0")
+for sign in (+1, -1):
+    ax.axhline(sign * z, color="#c53030", lw=1, ls="--")
+ax.set(xlim=(t[i0]-7, t[i0]+22), xlabel="seconds from origin time",
        ylabel="Wood-Anderson (mm)",
        title=f"{ROW.station}.{ROW.channel}  M{ROW.magnitude} at {ROW.hyp_km:.0f} km")
-
-# right: how much the three conventions actually differ - invisible as lines on the trace
-names = list(CONV)[::-1]
-vals  = [CONV[k] for k in names]
-a1.barh(names, vals, color=["#805ad5", "#dd6b20", "#c53030"], height=.55)
-a1.axvline(ROW.amp_mm, color="#2f855a", lw=1.6)
-a1.text(ROW.amp_mm*1.04, 1.0, f"catalogue {ROW.amp_mm:.0f} mm", color="#2f855a", fontsize=7.5,
-        rotation=90, va="center", ha="left")
-for k, (nm, v) in enumerate(zip(names, vals)):
-    a1.text(v*0.97, k, f"{v/ROW.amp_mm:.2f}x ", ha="right", va="center",
-            fontsize=7.5, color="white")
-a1.set(xlim=(0, ROW.amp_mm*1.32), xlabel="amplitude (mm)",
-       title="Same record, three conventions")
-a1.grid(axis="y", visible=False)
 plt.tight_layout(); plt.show()""")
 
 md("""**Three definitions, three different numbers, and only one reproduces the column.**
@@ -625,25 +611,21 @@ model, not on the ground. Section 8 puts a station term into the fit and watches
 
 run("""mu = Xg @ b3
 sub = d[(d.magnitude > 2.9) & (d.magnitude < 3.1)]
-fig, axs = plt.subplots(1, 2, figsize=(10, 3.8))
-axs[0].scatter(sub.hyp_km, sub.logA, s=1.5, alpha=.08, color="#718096")
-axs[0].fill_between(Rg, mu-pi, mu+pi, color="#dd6b20", alpha=.30, lw=0,
-                    label="95% prediction (one station)")
-axs[0].plot(Rg, mu-ci, color="#2b6cb0", lw=1); axs[0].plot(Rg, mu+ci, color="#2b6cb0", lw=1,
-                                                          label="95% confidence (the mean)")
-axs[0].set_xscale("log")
-axs[0].set(xlabel="R (km)", ylabel=r"$\\log_{10}$A", ylim=(-2.2, 2.2),
-           title=f"M 2.9–3.1  (n={len(sub):,})")
-axs[0].legend(fontsize=7.5, loc="lower left")
-axs[1].loglog(Rg, ci, lw=2, color="#2b6cb0", label="confidence half-width")
-axs[1].loglog(Rg, pi, lw=2, color="#dd6b20", label="prediction half-width")
-axs[1].set(xlabel="R (km)", ylabel="half-width (log10 units)",
-           title=f"The same two bands, on a log axis — {pi[k]/ci[k]:.0f}x apart")
-axs[1].legend(fontsize=8)
+
+fig, ax = plt.subplots(figsize=(6.4, 3.8))
+ax.scatter(sub.hyp_km, sub.logA, s=1.5, alpha=.08, color="#718096")
+ax.fill_between(Rg, mu-pi, mu+pi, color="#dd6b20", alpha=.30, lw=0,
+                label="95% prediction (one station)")
+ax.plot(Rg, mu-ci, color="#2b6cb0", lw=1)
+ax.plot(Rg, mu+ci, color="#2b6cb0", lw=1, label="95% confidence (the mean)")
+ax.set_xscale("log")
+ax.set(xlabel="R (km)", ylabel=r"$\\log_{10}$A", ylim=(-2.2, 2.2),
+       title=f"M 2.9-3.1  (n={len(sub):,})")
+ax.legend(fontsize=7.5, loc="lower left")
 plt.tight_layout(); plt.show()""")
 
-md("""On the left the confidence band is a hairline you can barely see. On the right, with a log
-axis, the gap is plain: **two orders of magnitude and more**, at every distance. No amount of extra
+md("""The confidence band is the hairline you can barely see; the prediction band is the wide one. The
+printed numbers above give the gap: **two orders of magnitude and more**. No amount of extra
 data narrows the orange one.
 
 That is most of the answer to a question you will be asked as a seismologist: *why do two agencies
