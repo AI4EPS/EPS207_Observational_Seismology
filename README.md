@@ -27,7 +27,7 @@ tomography — together with the machine learning methods now used for each.
 | Nov 17 | Event detection on DAS | NN: object detection |
 | Nov 24 | Ground-motion prediction | NN: transformer |
 | Dec 1 | Waveform generation | NN: VAE and Diffusion |
-| Dec 8 | Final project presentations | |
+| Dec 8 | [Final project](https://colab.research.google.com/github/AI4EPS/EPS207_Observational_Seismology/blob/main/docs/notebooks/project_geysers_data.ipynb) | |
 
 ## What this course is, and how it relates to EPS 130
 
