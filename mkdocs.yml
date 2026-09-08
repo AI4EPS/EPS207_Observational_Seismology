@@ -9,9 +9,8 @@ edit_uri: blob/main/docs/
 nav:
   - Overview: README.md
   - Introduction: lectures/00_introduction.html
+  - "1. Regression & uncertainty": notebooks/01_regression_uncertainty.ipynb
   - Project dataset: notebooks/project_geysers_data.ipynb
-  - Notebooks:
-    - "1. Regression & uncertainty": notebooks/01_regression_uncertainty.ipynb
 
 theme:
   name: "material"

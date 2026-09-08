@@ -66,7 +66,7 @@ The brief is in [`docs/project.md`](https://github.com/AI4EPS/EPS207_Observation
 | Date | Seismology | Machine learning | Open |
 |---|---|---|---|
 | Sep 1 | [Introduction](https://ai4eps.github.io/EPS207_Observational_Seismology/lectures/00_introduction.html) | | |
-| Sep 8 | Magnitude determination and the b-value | Regression & uncertainty | [DataHub](https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2FAI4EPS%2FEPS207_Observational_Seismology&urlpath=lab%2Ftree%2FEPS207_Observational_Seismology%2Fdocs%2Fnotebooks%2F01_regression_uncertainty.ipynb&branch=main) · [Colab](https://colab.research.google.com/github/AI4EPS/EPS207_Observational_Seismology/blob/main/docs/notebooks/01_regression_uncertainty.ipynb) |
+| Sep 8 | Injection-induced seismicity and the b-value | Regression & uncertainty | [DataHub](https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2FAI4EPS%2FEPS207_Observational_Seismology&urlpath=lab%2Ftree%2FEPS207_Observational_Seismology%2Fdocs%2Fnotebooks%2F01_regression_uncertainty.ipynb&branch=main) · [Colab](https://colab.research.google.com/github/AI4EPS/EPS207_Observational_Seismology/blob/main/docs/notebooks/01_regression_uncertainty.ipynb) |
 | Sep 15 | Where aftershocks occur | Classification & bias-variance |  |
 | Sep 22 | Fault structure from seismicity | Clustering |  |
 | Sep 29 | Focal mechanism & moment tensor | Inversion I — linear |  |
