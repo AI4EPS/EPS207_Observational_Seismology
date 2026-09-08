@@ -12,7 +12,8 @@ picks*
 hashpy2*
 MT-Exercise*
 
-# Solution notebooks: released with `git add -f` after the session
+# Solution notebooks live in the private build repository and are copied here, with `git add -f`,
+# only when they are released after the session.
 docs/notebooks/*_solution.ipynb
 .cache/
 __pycache__/
@@ -20,3 +21,10 @@ __pycache__/
 
 # Abandoned work, kept locally only. Agents must not read it.
 Trash/
+
+
+# generated when a notebook runs: the map-layer archive it unpacks, and the subset § 4.8 writes.
+# Every reader produces the same two beside the notebook, on DataHub, on Colab or locally.
+docs/notebooks/layers/
+docs/notebooks/my_catalog.csv
+docs/notebooks/data/
