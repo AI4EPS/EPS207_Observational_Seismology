@@ -77,6 +77,29 @@ def fetch(url, tries=4, timeout=120, headers=None, ok=(200,)):
     raise RuntimeError(f"unreachable after {tries} tries: {url}")
 
 
+CACHE = pathlib.Path("data")          # gitignored; shared by every notebook in the course
+
+
+def asset(name):
+    """A release asset as a local path, downloaded once per machine and reused thereafter.
+
+    The project notebook and each weekly notebook read the same files. Fetching the 13 MB
+    catalogue again in every notebook -- and again in every part of one notebook -- costs the
+    room several minutes it does not have, so the first read caches and the rest are free.
+    A directory that cannot be written (a read-only kernel) falls back to reading the URL.
+    """
+    url = f"{RELEASE}/{name}"
+    try:
+        CACHE.mkdir(exist_ok=True)
+        local = CACHE / name
+        if not local.exists() or local.stat().st_size == 0:
+            r = fetch(url)
+            local.write_bytes(r.content)
+        return local
+    except OSError:
+        return url
+
+
 def in_box(df, lat="latitude", lon="longitude"):
     """Rows inside the download box."""
     return df[df[lat].between(REGION[2], REGION[3]) & df[lon].between(REGION[0], REGION[1])]
@@ -264,7 +287,7 @@ LAYER_DIR = pathlib.Path("layers")
 
 def catalog(earthquakes_only=True):
     """The routine catalogue for the download box, placeholder magnitudes removed (fact 2)."""
-    c = pd.read_csv(f"{RELEASE}/geysers_catalog_1969-2026.csv.gz", low_memory=False)
+    c = pd.read_csv(asset("geysers_catalog_1969-2026.csv.gz"), low_memory=False)
     c["time"] = pd.to_datetime(c.time, format="mixed", utc=True)
     c["year"] = c.time.dt.year
     if earthquakes_only:
@@ -281,7 +304,7 @@ def mechanisms():
 
 def production():
     """CalGEM monthly field totals, converted from tonnes to megatonnes."""
-    p = pd.read_csv(f"{RELEASE}/geysers_injection_production_1969-2026.csv")
+    p = pd.read_csv(asset("geysers_injection_production_1969-2026.csv"))
     p.index = pd.to_datetime(dict(year=p.year, month=p.month, day=1))
     p["production"] = p.production_t / 1e6
     p["injection"] = p.injection_t / 1e6
