@@ -12,8 +12,9 @@ picks*
 hashpy2*
 MT-Exercise*
 
-# Solution notebooks are published. The assessment that matters is the final project, so the
-# worked answers are a study aid rather than an answer key to be withheld.
+# The published notebook IS the worked one; the blanked copy lives in the private build
+# repository. Nothing named *_solution belongs here.
+docs/notebooks/*_solution.ipynb
 .cache/
 __pycache__/
 *.pyc
