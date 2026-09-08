@@ -42,7 +42,10 @@ seismological problem it is being asked to solve.
 The first session is an overview of the seismic data available for The Geysers — the catalogue, the
 waveforms, the arrival times, the focal mechanisms, and the injection and production record — so
 that from the outset you can begin thinking about which problem you would like to look into. That
-material is the **project dataset** notebook, and every week afterwards returns to it.
+material is the **project dataset** notebook, and every week afterwards returns to it. Open it in
+[Colab](https://colab.research.google.com/github/AI4EPS/EPS207_Observational_Seismology/blob/main/docs/notebooks/project_geysers_data.ipynb), which is where it belongs: a complete run needs about two gigabytes
+of memory, and a DataHub session is given one. It is also on
+[DataHub](https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2FAI4EPS%2FEPS207_Observational_Seismology&urlpath=lab%2Ftree%2FEPS207_Observational_Seismology%2Fdocs%2Fnotebooks%2Fproject_geysers_data.ipynb&branch=main), which is the easier home for the weekly notebooks below.
 
 ## The final project
 
