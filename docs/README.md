@@ -10,32 +10,53 @@ together with the machine learning methods now used for each.
 - **Tuesdays 9:00–10:59 am, 325 McCone Hall**
 - Instructor: Weiqiang Zhu · 285 McCone Hall · `zhuwq@berkeley.edu`
 
+## What this course is, and how it relates to EPS 130
+
+EPS 130 develops the principal quantities of seismology from the physics: how a seismic wave
+propagates, how an earthquake is located, what a magnitude measures, how the geometry of slip on a
+fault is recovered, and how the statistics of many earthquakes behave. **EPS 207 takes those same
+quantities and applies them to real data**, where nothing is clean and every measurement carries a
+convention and an uncertainty.
+
+This semester we practise on **The Geysers**, a geothermal field in the Coast Ranges of northern
+California. It has been producing electricity since 1960, water has been injected into it for
+decades to sustain the reservoir, and it is among the most seismically active places in the state as
+a result — tens of thousands of catalogued earthquakes a year, recorded by a dense local network and
+archived, along with the rest of northern California, at the Northern California Earthquake Data
+Center here at Berkeley. A long and well documented history of production, a great deal of
+seismicity, and a network close enough to see it: that combination is what makes the field a
+practical target for a semester of work.
+
+Two threads run through the schedule below.
+
+**The seismology.** The *Seismology* column names a measurement task — magnitude, picking, location,
+focal mechanisms, tomography — carried out on real records from this field rather than on a textbook
+example.
+
+**The machine learning.** The *Machine learning* column follows a deliberate progression, and it
+begins where EPS 130 leaves off: linear regression and uncertainty, then classical statistical
+learning and inverse theory, and only then the neural methods, from classification and segmentation
+through to transformers and generative models. Each is introduced in the context of the
+seismological problem it is being asked to solve.
+
+The first session is an overview of the seismic data available for The Geysers — the catalogue, the
+waveforms, the arrival times, the focal mechanisms, and the injection and production record — so
+that from the outset you can begin thinking about which problem you would like to look into. That
+material is the **project dataset** notebook, and every week afterwards returns to it.
+
 ## The final project
 
-The course is built on **one field**: The Geysers, a geothermal field in the Coast Ranges about
-120 km north of San Francisco. It is the largest geothermal electricity-generating complex in
-operation, and it produces tens of thousands of earthquakes a year because the water injected to
-sustain the reservoir makes existing fractures easier to slip on. Every session draws its data from
-that field, and the final project answers a question about it.
+The final project is **60 per cent of the grade**, and you choose the question. Nine are offered:
+how long the reservoir takes to respond to injection and whether the lag depends on depth; why a
+1984 study of this same field found no correlation where one is now taken for granted; whether the
+*b*-value tracks injection at a resolution the data actually support; what a machine-learning
+catalogue adds and what it gets wrong; and others. Each names the sessions whose methods apply and
+the baseline you must beat or show to be sufficient, so a question that says *Sessions: Sep 8,
+Sep 15* points at rows in the schedule below. Bring your own question if you have one and it can be
+answered with these data in the time available.
 
-The design is deliberate. A tour of famous earthquakes would spend each week introducing a new
-dataset and never get past the introduction. Here the datasets are introduced once, in the **project
-dataset** notebook, and every week afterwards returns to them. By November they are familiar enough
-that a new method can be judged on what it adds rather than on whether it ran at all.
-
-**The project is 60 per cent of the grade, and you choose the question.** Nine are offered: how long
-the reservoir takes to respond to injection and whether the lag depends on depth; why a 1984 study of
-this same field found no correlation where one is now taken for granted; whether the *b*-value tracks
-injection at a resolution the data actually support; what a machine-learning catalogue adds and what
-it gets wrong; and others. Each names the sessions whose methods apply and the baseline you must beat
-or show to be sufficient. Bring your own question if you have one and it can be answered with these
-data in the time available. The brief is in [`docs/project.md`](https://github.com/AI4EPS/EPS207_Observational_Seismology/blob/main/docs/project.md).
-
-**How the schedule relates to it.** Each row below is one session. The *Seismology* column names a
-measurement task from this field and the *Machine learning* column the method applied to it; the
-pairing is the point, since every method is taught on data you already hold. When a project question
-says *Sessions: Sep 8, Sep 15*, those are the rows to return to. Presentations are on 8 December, in
-RRR week.
+The brief is in [`docs/project.md`](https://github.com/AI4EPS/EPS207_Observational_Seismology/blob/main/docs/project.md). Presentations are on
+8 December, in RRR week.
 
 ## Schedule
 
@@ -43,18 +64,18 @@ RRR week.
 |---|---|---|---|
 | Sep 1 | [Introduction](https://ai4eps.github.io/EPS207_Observational_Seismology/lectures/00_introduction.html) | | |
 | Sep 8 | Magnitude calibration | Regression & uncertainty |  |
-| Sep 15 | Where aftershocks occur | Bias–variance, boosting, CV |  |
-| Sep 22 | Fault structure from seismicity | Clustering, mixture models, EM |  |
-| Sep 29 | Earthquake / quarry-blast discrimination | NN: classification |  |
-| Oct 6 | Phase picking | NN: segmentation |  |
-| Oct 13 | Event detection on DAS | NN: object detection |  |
-| Oct 20 | Denoising | NN: Denoising |  |
-| Oct 27 | Ground-motion prediction | Transformers |  |
-| Nov 3 | Template matching | Similarity & embeddings |  |
-| Nov 10 | Waveform generation | VAE and Diffusion |  |
-| Nov 17 | Focal mechanism & moment tensor | Inversion I — linear |  |
-| Nov 24 | Location & relocation | Inversion II — non-linear |  |
-| Dec 1 | Tomography | Inversion III — fields |  |
+| Sep 15 | Where aftershocks occur | Classification & bias-variance |  |
+| Sep 22 | Fault structure from seismicity | Clustering |  |
+| Sep 29 | Focal mechanism & moment tensor | Inversion I — linear |  |
+| Oct 6 | Location & relocation | Inversion II — non-linear |  |
+| Oct 13 | Tomography | Inversion III — adjoint |  |
+| Oct 20 | Template matching | Similarity search |  |
+| Oct 27 | Source discrimination | NN: classification |  |
+| Nov 3 | Phase picking | NN: segmentation |  |
+| Nov 10 | Denoising | NN: denoising |  |
+| Nov 17 | Event detection on DAS | NN: object detection |  |
+| Nov 24 | Ground-motion prediction | NN: transformer |  |
+| Dec 1 | Waveform generation | NN: VAE and Diffusion |  |
 | Dec 8 | Final project presentations | | |
 
 ## Assessment

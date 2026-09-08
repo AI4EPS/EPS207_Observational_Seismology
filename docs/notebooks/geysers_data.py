@@ -344,9 +344,18 @@ def event_stations(event_id=None, year=2016, max_km=40.0):
 
 
 def _unpack():
+    """Download and unpack the map-layer archive once, into ./layers."""
     if not (LAYER_DIR / "geo" / "dem.npz").exists():
         with urllib.request.urlopen(f"{RELEASE}/geysers_map_layers.tar.gz") as r:
-            tarfile.open(fileobj=io.BytesIO(r.read())).extractall(LAYER_DIR, filter="data")
+            tar = tarfile.open(fileobj=io.BytesIO(r.read()))
+            try:
+                # `filter="data"` refuses members that would write outside the destination. It
+                # arrived in Python 3.12 and was backported to later 3.9-3.11 patch releases, so it
+                # is not available everywhere a student may run this -- DataHub, at the time of
+                # writing, is one such place.
+                tar.extractall(LAYER_DIR, filter="data")
+            except TypeError:
+                tar.extractall(LAYER_DIR)
     return LAYER_DIR
 
 
