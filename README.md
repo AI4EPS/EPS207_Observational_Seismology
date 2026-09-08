@@ -7,9 +7,8 @@ together with the machine learning methods now used for each.
 
 ## Time and place
 
-- **Tuesdays 9:00–10:59 am, 325 McCone Hall**, 1 September – 1 December 2026
-- Final project presentations **Tuesday 8 December** (RRR week)
-- Instructor: Weiqiang Zhu · 285 McCone Hall · `zhuwq@berkeley.edu`
+- **Tuesdays 9:00–10:59 am, 325 McCone Hall**
+- Instructor: Weiqiang Zhu · 325 McCone Hall · `zhuwq@berkeley.edu`
 
 ## Schedule
 
