@@ -8,9 +8,8 @@ edit_uri: blob/main/docs/
 
 nav:
   - Overview: README.md
-  - Final project: project.md
   - Introduction: lectures/00_introduction.html
-  - Foundation notebook: notebooks/project_geysers_data.ipynb
+  - Project dataset: notebooks/project_geysers_data.ipynb
 
 theme:
   name: "material"
@@ -24,6 +23,7 @@ theme:
 exclude_docs: |
   notebooks/*_solution.ipynb
   lectures/*.md
+  project.md
   notebooks/data/*
   notebooks/layers/*
   notebooks/my_catalog.csv
