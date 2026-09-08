@@ -73,9 +73,6 @@ injection, whether the *b*-value tracks it, what a machine-learning catalogue ad
 sessions whose methods apply and a baseline to compare against. Propose your own if you would
 rather.
 
-The brief is in [`docs/project.md`](https://github.com/AI4EPS/EPS207_Observational_Seismology/blob/main/docs/project.md). Presentations are on
-8 December, in RRR week.
-
 ## Previous offerings
 
 Fall 2023 is preserved on the [`fall2023`](https://github.com/AI4EPS/EPS207_Observational_Seismology/tree/fall2023)
