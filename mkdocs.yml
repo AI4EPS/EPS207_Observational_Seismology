@@ -34,7 +34,6 @@ plugins:
   - mkdocs-jupyter:
       ignore_h1_titles: True
       include: ["notebooks/*.ipynb"]        # only this year's notebooks
-      ignore: ["notebooks/*_solution.ipynb"] # solutions are released separately, after class
 
 extra:
   generator: false
