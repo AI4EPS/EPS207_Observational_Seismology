@@ -29,9 +29,6 @@ tomography — together with the machine learning methods now used for each.
 | Dec 1 | Waveform generation | NN: VAE and Diffusion |
 | Dec 8 | Final project presentations | |
 
-No local installation is required. Each week's notebook opens in Colab from the link in its
-title and installs its dependencies at run time.
-
 ## What this course is, and how it relates to EPS 130
 
 EPS 130 develops the principal quantities of seismology from the physics: how a wave propagates,
