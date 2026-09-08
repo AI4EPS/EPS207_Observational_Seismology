@@ -10,6 +10,8 @@ nav:
   - Overview: README.md
   - Introduction: lectures/00_introduction.html
   - Project dataset: notebooks/project_geysers_data.ipynb
+  - Notebooks:
+    - "1. Regression & uncertainty": notebooks/01_regression_uncertainty.ipynb
 
 theme:
   name: "material"
