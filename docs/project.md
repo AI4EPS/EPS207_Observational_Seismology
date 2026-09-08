@@ -34,6 +34,17 @@ seasonal signal migrating downward and taking ≤6 months to reach 3 km below th
 A good project should be able to say **why 1984 saw nothing**, and what would have been needed to see
 it.
 
+## Data
+
+Every dataset the questions below need, where its canonical copy is, and how to read it in place,
+is worked through in one notebook — open it on [DataHub](https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2FAI4EPS%2FEPS207_Observational_Seismology&urlpath=lab%2Ftree%2FEPS207_Observational_Seismology%2Fdocs%2Fnotebooks%2Fproject_geysers_data.ipynb&branch=main) or in
+[Colab](https://colab.research.google.com/github/AI4EPS/EPS207_Observational_Seismology/blob/main/docs/notebooks/project_geysers_data.ipynb) ([source](https://github.com/AI4EPS/EPS207_Observational_Seismology/blob/main/docs/notebooks/project_geysers_data.ipynb)). It reads CalGEM's monthly steam-production
+and water-injection totals for the field, the NCEDC routine catalogue and first-motion mechanisms
+(all three mirrored as release assets, cut to this region beforehand), the station
+inventory, the continuous BG and NC waveforms on `s3://ncedc-pds`, and the CEC dense array. Every
+dataset is reached the same way twice: an ObsPy FDSN client first, the public archive second, with
+the cost of each measured rather than asserted. All public, none of it downloaded in full.
+
 ## Questions
 
 Each one is live in the literature. Each names the sessions whose methods apply, and the baseline you
@@ -71,8 +82,11 @@ Cross-correlate waveforms, build families, ask whether recurrence follows the in
 *Sessions: Oct 20, Nov 3.* **Baseline:** catalogue locations alone — are "repeaters" merely nearby events?
 
 **7 · What does a machine-learning catalogue add, and what does it get wrong?**
-A deep-learning catalogue finds far more events than a routine network catalogue. Where do the extra
-events come from — smaller magnitudes, busier periods, particular places? Which do you not believe?
+A deep-learning catalogue finds far more events than a routine network catalogue: Guo, Ross, Wilding
+& Avouac (2026, `10.21203/rs.3.rs-8991397/v1`) report ~691,600 events over 12.8 years at The Geysers,
+about 4.5 times ComCat, with a completeness near −0.3 (catalogue available on request from the
+authors). Where do the extra events come from — smaller magnitudes, busier periods, particular
+places? Which do you not believe?
 *Sessions: Oct 6, Nov 3.* **Baseline:** the routine catalogue. A genuine evaluation problem.
 
 **8 · Can next month's rate be forecast?**

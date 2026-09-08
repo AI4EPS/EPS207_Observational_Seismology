@@ -12,23 +12,23 @@ together with the machine learning methods now used for each.
 
 ## Schedule
 
-| Date | Seismology | Machine learning |
-|---|---|---|
-| Sep 1 | [Introduction](https://ai4eps.github.io/EPS207_Observational_Seismology/lectures/00_introduction.html) | |
-| Sep 8 | Magnitude calibration | Regression & uncertainty |
-| Sep 15 | Where aftershocks occur | Bias–variance, boosting, CV |
-| Sep 22 | Fault structure from seismicity | Clustering, mixture models, EM |
-| Sep 29 | Earthquake / quarry-blast discrimination | NN: classification |
-| Oct 6 | Phase picking | NN: segmentation |
-| Oct 13 | Event detection on DAS | NN: object detection |
-| Oct 20 | Denoising | NN: Denoising |
-| Oct 27 | Ground-motion prediction | Transformers |
-| Nov 3 | Template matching | Similarity & embeddings |
-| Nov 10 | Waveform generation | VAE and Diffusion |
-| Nov 17 | Focal mechanism & moment tensor | Inversion I — linear |
-| Nov 24 | Location & relocation | Inversion II — non-linear |
-| Dec 1 | Tomography | Inversion III — fields |
-| Dec 8 | Final project presentations | |
+| Date | Seismology | Machine learning | Open |
+|---|---|---|---|
+| Sep 1 | [Introduction](https://ai4eps.github.io/EPS207_Observational_Seismology/lectures/00_introduction.html) | | |
+| Sep 8 | Magnitude calibration | Regression & uncertainty |  |
+| Sep 15 | Where aftershocks occur | Bias–variance, boosting, CV |  |
+| Sep 22 | Fault structure from seismicity | Clustering, mixture models, EM |  |
+| Sep 29 | Earthquake / quarry-blast discrimination | NN: classification |  |
+| Oct 6 | Phase picking | NN: segmentation |  |
+| Oct 13 | Event detection on DAS | NN: object detection |  |
+| Oct 20 | Denoising | NN: Denoising |  |
+| Oct 27 | Ground-motion prediction | Transformers |  |
+| Nov 3 | Template matching | Similarity & embeddings |  |
+| Nov 10 | Waveform generation | VAE and Diffusion |  |
+| Nov 17 | Focal mechanism & moment tensor | Inversion I — linear |  |
+| Nov 24 | Location & relocation | Inversion II — non-linear |  |
+| Dec 1 | Tomography | Inversion III — fields |  |
+| Dec 8 | Final project presentations | | |
 
 ## Assessment
 
