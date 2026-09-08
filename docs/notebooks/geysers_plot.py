@@ -17,6 +17,7 @@ import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.patheffects as pe
+from matplotlib import font_manager
 from matplotlib.colors import LinearSegmentedColormap, LogNorm
 from matplotlib.lines import Line2D
 from matplotlib.collections import LineCollection
@@ -33,7 +34,13 @@ CM = 1 / 2.54          # matplotlib works in inches; every size in these figures
 # Arial before Helvetica: this machine's Helvetica cannot rasterise digits below about
 # 6 pt ("failed to load glyph" on a station code like 68035), and several of these figures
 # label at 4-5 pt. Arial is metrically compatible, so nothing about the layout changes.
-plt.rcParams.update({"font.family": ["Arial", "Helvetica", "DejaVu Sans"], "font.size": 7,
+# A family name that is not installed costs one `findfont: Font family 'X' not found` warning for
+# every piece of text drawn, and on Linux -- DataHub, Colab -- neither Arial nor Helvetica is
+# present, so the notebook's own output disappears under thousands of them. Hence the preference
+# list is filtered to what this machine actually has. DejaVu Sans ships with matplotlib.
+_FAMILY = [f for f in ("Arial", "Helvetica", "DejaVu Sans")
+           if f in {m.name for m in font_manager.fontManager.ttflist}] or ["DejaVu Sans"]
+plt.rcParams.update({"font.family": _FAMILY, "font.size": 7,
                      "axes.linewidth": .6, "xtick.labelsize": 7, "ytick.labelsize": 7,
                      "axes.labelsize": 7.5, "xtick.major.width": .5, "ytick.major.width": .5,
                      "legend.fontsize": 6.5, "mathtext.fontset": "dejavusans", "pdf.fonttype": 42,
