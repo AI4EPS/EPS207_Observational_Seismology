@@ -45,7 +45,8 @@ that from the outset you can begin thinking about which problem you would like t
 material is the **project dataset** notebook, and every week afterwards returns to it. Open it in
 [Colab](https://colab.research.google.com/github/AI4EPS/EPS207_Observational_Seismology/blob/main/docs/notebooks/project_geysers_data.ipynb), which is where it belongs: a complete run needs about two gigabytes
 of memory, and a DataHub session is given one. It is also on
-[DataHub](https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2FAI4EPS%2FEPS207_Observational_Seismology&urlpath=lab%2Ftree%2FEPS207_Observational_Seismology%2Fdocs%2Fnotebooks%2Fproject_geysers_data.ipynb&branch=main), which is the easier home for the weekly notebooks below.
+[DataHub](https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2FAI4EPS%2FEPS207_Observational_Seismology&urlpath=lab%2Ftree%2FEPS207_Observational_Seismology%2Fdocs%2Fnotebooks%2Fproject_geysers_data.ipynb&branch=main), which keeps your edits between visits; the weekly notebooks
+below are small enough to run in either place, and their titles link to Colab.
 
 ## The final project
 
@@ -63,23 +64,23 @@ The brief is in [`docs/project.md`](https://github.com/AI4EPS/EPS207_Observation
 
 ## Schedule
 
-| Date | Seismology | Machine learning | Open |
-|---|---|---|---|
-| Sep 1 | [Introduction](https://ai4eps.github.io/EPS207_Observational_Seismology/lectures/00_introduction.html) | | |
-| Sep 8 | Injection-induced seismicity and the b-value | Regression & uncertainty | [DataHub](https://datahub.berkeley.edu/hub/user-redirect/git-pull?repo=https%3A%2F%2Fgithub.com%2FAI4EPS%2FEPS207_Observational_Seismology&urlpath=lab%2Ftree%2FEPS207_Observational_Seismology%2Fdocs%2Fnotebooks%2F01_regression_uncertainty.ipynb&branch=main) · [Colab](https://colab.research.google.com/github/AI4EPS/EPS207_Observational_Seismology/blob/main/docs/notebooks/01_regression_uncertainty.ipynb) |
-| Sep 15 | Where aftershocks occur | Classification & bias-variance |  |
-| Sep 22 | Fault structure from seismicity | Clustering |  |
-| Sep 29 | Focal mechanism & moment tensor | Inversion I — linear |  |
-| Oct 6 | Location & relocation | Inversion II — non-linear |  |
-| Oct 13 | Tomography | Inversion III — adjoint |  |
-| Oct 20 | Template matching | Similarity search |  |
-| Oct 27 | Source discrimination | NN: classification |  |
-| Nov 3 | Phase picking | NN: segmentation |  |
-| Nov 10 | Denoising | NN: denoising |  |
-| Nov 17 | Event detection on DAS | NN: object detection |  |
-| Nov 24 | Ground-motion prediction | NN: transformer |  |
-| Dec 1 | Waveform generation | NN: VAE and Diffusion |  |
-| Dec 8 | Final project presentations | | |
+| Date | Seismology | Machine learning |
+|---|---|---|
+| Sep 1 | [Introduction](https://ai4eps.github.io/EPS207_Observational_Seismology/lectures/00_introduction.html) | |
+| Sep 8 | [Injection-induced seismicity and the b-value](https://colab.research.google.com/github/AI4EPS/EPS207_Observational_Seismology/blob/main/docs/notebooks/01_regression_uncertainty.ipynb) | Regression & uncertainty |
+| Sep 15 | Where aftershocks occur | Classification & bias-variance |
+| Sep 22 | Fault structure from seismicity | Clustering |
+| Sep 29 | Focal mechanism & moment tensor | Inversion I — linear |
+| Oct 6 | Location & relocation | Inversion II — non-linear |
+| Oct 13 | Tomography | Inversion III — adjoint |
+| Oct 20 | Template matching | Similarity search |
+| Oct 27 | Source discrimination | NN: classification |
+| Nov 3 | Phase picking | NN: segmentation |
+| Nov 10 | Denoising | NN: denoising |
+| Nov 17 | Event detection on DAS | NN: object detection |
+| Nov 24 | Ground-motion prediction | NN: transformer |
+| Dec 1 | Waveform generation | NN: VAE and Diffusion |
+| Dec 8 | Final project presentations | |
 
 ## Assessment
 
