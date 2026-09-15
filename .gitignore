@@ -26,5 +26,5 @@ Trash/
 # generated when a notebook runs: the map-layer archive it unpacks, and the subset § 4.8 writes.
 # Every reader produces the same two beside the notebook, on DataHub, on Colab or locally.
 docs/notebooks/layers/
-docs/notebooks/my_catalog.csv
+docs/notebooks/my_*.csv
 docs/notebooks/data/

@@ -79,7 +79,7 @@ reported to change. Separate a real change from a change in what the network can
 
 **6 · Are there repeating earthquakes, and do they track the season?**
 Cross-correlate waveforms, build families, ask whether recurrence follows the injection cycle.
-*Sessions: Oct 20, Nov 3.* **Baseline:** catalogue locations alone — are "repeaters" merely nearby events?
+*Sessions: Oct 27, Nov 3.* **Baseline:** catalogue locations alone — are "repeaters" merely nearby events?
 
 **7 · What does a machine-learning catalogue add, and what does it get wrong?**
 A deep-learning catalogue finds far more events than a routine network catalogue: Guo, Ross, Wilding
@@ -98,6 +98,6 @@ you cannot beat persistence.
 **9 · Are the sources ordinary earthquakes?**
 About 65% of Geysers events carry non-double-couple components above 25%, larger near wells and
 during high injection (Martínez-Garzón et al. 2017, `10.1002/2016gl071963`). Test on your own events.
-*Session: Nov 17.* **Baseline:** a pure double-couple fit — show what it fails to explain.
+*Session: Sep 29.* **Baseline:** a pure double-couple fit — show what it fails to explain.
 
 Bring your own question if you have one. It must be answerable with these data in the time available.

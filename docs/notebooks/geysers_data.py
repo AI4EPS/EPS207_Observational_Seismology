@@ -185,6 +185,10 @@ RECORD = 4096          # miniSEED record length in the NCEDC continuous archive
 def read_window(key, t0, seconds, opener=None):
     """A window out of one channel-day file without downloading the file.
 
+    NOT used by the notebook, which reads whole files over HTTPS and trims them. This and
+    `fsspec_opener` below are kept for `tools/figures/waveform_routes.py`, which measures the cost
+    of the byte-range route against the others.
+
     miniSEED records are fixed length and every header carries the start time of its first sample,
     so a time is found by bisection on the record index and only the records that overlap the window
     are read. `opener` returns bytes for a byte interval; the default uses HTTP Range requests, and
