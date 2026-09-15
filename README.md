@@ -14,7 +14,7 @@ tomography — together with the machine learning methods now used for each.
 | Date | Seismology | Machine learning |
 |---|---|---|
 | Sep 1 | [Introduction](https://ai4eps.github.io/EPS207_Observational_Seismology/lectures/00_introduction.html) | |
-| Sep 8 | [Injection-induced seismicity and the b-value](https://colab.research.google.com/github/AI4EPS/EPS207_Observational_Seismology/blob/main/docs/notebooks/01_regression_uncertainty.ipynb) | Regression & uncertainty |
+| Sep 8 | [Magnitude as a regression, and the b-value of The Geysers](https://colab.research.google.com/github/AI4EPS/EPS207_Observational_Seismology/blob/main/docs/notebooks/01_regression_uncertainty.ipynb) | Regression & uncertainty |
 | Sep 15 | [Faulting style at The Geysers](https://colab.research.google.com/github/AI4EPS/EPS207_Observational_Seismology/blob/main/docs/notebooks/03_bias_variance.ipynb) | Classification & bias-variance |
 | Sep 22 | Fault structure from seismicity | Clustering |
 | Sep 29 | Focal mechanism & moment tensor | Inversion I — linear |
