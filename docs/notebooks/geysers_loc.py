@@ -15,7 +15,14 @@ Verified against the codes that made the catalogue:
   * end to end against HYPOINVERSE 1.40 on noise-free synthetic times through its own
     `gey.crh`: the planted hypocentre recovered exactly, HYPOINVERSE 50 m deep;
   * against closed forms where machine accuracy is meaningful: a two-layer head wave to
-    0.3 ulp, a homogeneous halfspace to 4e-12 s.
+    0.3 ulp, a homogeneous halfspace to 4e-12 s;
+  * `rays` against the VELEST 3.1 Fortran (Kissling et al. 1994) on 16,199 Geysers picks:
+    median 0.4 ms, which falls to 18 us once the comparison feeds this code the same rounded
+    station coordinates VELEST's own input format carries (4 decimal degrees, integer metres);
+    tightening VELEST's 0.02 km ray-tracing tolerance a thousandfold changes nothing, so the
+    remaining 18 us is not the ray tracing.  Its layer path lengths reproduce VELEST's separate
+    direct-ray and head-wave dT/dv expressions algebraically, and match a finite difference of
+    `rays` itself to a part in 10^4.
 
 Coordinates are local Cartesian km: x east, y north, z **down** from sea level, so a station
 1.2 km up the ridge sits at z = -1.2 and can be above the earthquake.
@@ -119,6 +126,69 @@ def first(top, v, zs, r, zr=0.0):
         if t < best:
             best, p, up = t, ph, False
     return best, p, up
+
+
+def rays(top, v, zs, r, zr=0.0, iters=70):
+    """First-arrival time and the length of the ray inside every layer, for many picks at once.
+
+    `zs`, `r` and `zr` are arrays of source depth, epicentral distance and receiver depth.
+    Returns `t` (n,), `L` (n, nlayer) path lengths, `p` (n,) ray parameters and `head` (n,)
+    marking the picks whose first arrival is a head wave.
+
+    The lengths are what a velocity inversion needs and a travel-time table cannot give:
+    dT/dv_k = -L_k / v_k**2.  Everything is vectorised over picks because the model changes
+    at every iteration, so the table would have to be rebuilt each time.
+    """
+    zs, r = np.atleast_1d(zs).astype(float), np.atleast_1d(r).astype(float)
+    zr = np.broadcast_to(np.atleast_1d(np.asarray(zr, float)), zs.shape).copy()
+    n, nl = len(r), len(v)
+    lo, hi = np.minimum(zs, zr), np.maximum(zs, zr)
+    dz = np.maximum(np.minimum(top[None, 1:], hi[:, None])
+                    - np.maximum(top[None, :-1], lo[:, None]), 0.0)
+
+    # --- the direct ray: find the ray parameter that covers exactly the distance r
+    vmax = np.where(dz > 0, v[None, :], 0.0).max(1)
+    plo, phi = np.zeros(n), (1.0 / np.maximum(vmax, 1e-9)) * (1 - 1e-9)
+
+    def reach(p):
+        eta = np.sqrt(np.maximum(1.0 - (p[:, None] * v[None, :]) ** 2, 1e-12))
+        return (dz * p[:, None] * v[None, :] / eta).sum(1)
+
+    for _ in range(iters):
+        pm = 0.5 * (plo + phi)
+        near = reach(pm) < r
+        plo, phi = np.where(near, pm, plo), np.where(near, phi, pm)
+    p = 0.5 * (plo + phi)
+    L = dz / np.sqrt(np.maximum(1.0 - (p[:, None] * v[None, :]) ** 2, 1e-12))
+    t = (L / v[None, :]).sum(1)
+    head = np.zeros(n, bool)
+
+    # --- head waves: one candidate refractor per layer below both ends of the path
+    for k in range(1, nl):
+        above = np.arange(nl) < k
+        if (v[above] >= v[k]).any():
+            continue                                  # not a refractor for any path
+        ok = (top[k] >= zs) & (top[k] >= zr)          # refractor must lie below both ends
+        if not ok.any():
+            continue
+        cos_i = np.sqrt(np.maximum(1.0 - (v[None, :] / v[k]) ** 2, 1e-12)) * above
+        legs = []
+        for z0 in (zs, zr):
+            d0 = np.maximum(np.minimum(top[None, 1:], top[k]) - np.maximum(top[None, :-1],
+                                                                          z0[:, None]), 0.0) * above
+            legs.append(np.divide(d0, cos_i, where=cos_i > 0, out=np.zeros_like(d0)))
+        slant = legs[0] + legs[1]
+        run = r - (slant * v[None, :] / v[k]).sum(1)  # what is left for the refractor itself
+        tk = (slant / v[None, :]).sum(1) + run / v[k]
+        better = ok & (run >= 0) & (tk < t)
+        if better.any():
+            Lk = slant.copy()
+            Lk[:, k] = run
+            t = np.where(better, tk, t)
+            L = np.where(better[:, None], Lk, L)
+            p = np.where(better, 1.0 / v[k], p)
+            head |= better
+    return t, L, p, head
 
 
 # ---------------------------------------------------------------------------------------
