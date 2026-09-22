@@ -180,6 +180,80 @@ def cell_mechanisms(m, x, y, cell_x, cell_y, nmin):
     return pd.DataFrame(rows)
 
 
+def sdr_to_mt(strike, dip, rake):
+    """The unit double couple of a mechanism, as a 3x3 tensor (Aki & Richards, 4.29-4.34)."""
+    s, d, r = np.radians([strike, dip, rake])
+    mxx = -(np.sin(d) * np.cos(r) * np.sin(2 * s) + np.sin(2 * d) * np.sin(r) * np.sin(s) ** 2)
+    myy = (np.sin(d) * np.cos(r) * np.sin(2 * s) - np.sin(2 * d) * np.sin(r) * np.cos(s) ** 2)
+    mzz = np.sin(2 * d) * np.sin(r)
+    mxy = (np.sin(d) * np.cos(r) * np.cos(2 * s) + 0.5 * np.sin(2 * d) * np.sin(r) * np.sin(2 * s))
+    mxz = -(np.cos(d) * np.cos(r) * np.cos(s) + np.cos(2 * d) * np.sin(r) * np.sin(s))
+    myz = -(np.cos(d) * np.cos(r) * np.sin(s) - np.cos(2 * d) * np.sin(r) * np.cos(s))
+    return np.array([[mxx, mxy, mxz], [mxy, myy, myz], [mxz, myz, mzz]])
+
+
+def mt_to_vec(M):
+    """A tensor as the six numbers an inversion solves for: Mxx, Myy, Mzz, Mxy, Mxz, Myz."""
+    return np.array([M[0, 0], M[1, 1], M[2, 2], M[0, 1], M[0, 2], M[1, 2]])
+
+
+def vec_to_mt(m):
+    """Those six numbers back as a tensor."""
+    m = np.asarray(m, float)
+    return np.array([[m[0], m[3], m[4]], [m[3], m[1], m[5]], [m[4], m[5], m[2]]])
+
+
+def mt_axes(M):
+    """Eigenvalues and the P, B, T axes (as columns) of the tensor's deviatoric part."""
+    return np.linalg.eigh(M - np.trace(M) / 3 * np.eye(3))       # ascending: P, B, T
+
+
+def nodal_planes(M):
+    """Both nodal planes of a tensor's double couple, each as (strike, dip, rake) in degrees."""
+    _, v = mt_axes(M)
+    p, t = v[:, 0], v[:, 2]
+    return [double_couple(p, t), double_couple(-p, t)]
+
+
+def kagan(M1, M2):
+    """The smallest rotation, in degrees, that carries one double couple onto the other.
+
+    A double couple is unchanged by a half turn about any of its own axes, and its axes come out of
+    `eigh` with arbitrary signs, so all four half turns are tried and the smallest angle wins. The
+    symmetry acts between the two frames, not after their product. The result runs 0 to 120 degrees.
+    """
+    def frame(M):
+        _, v = mt_axes(M)
+        R = np.stack([v[:, 2], v[:, 1], v[:, 0]], axis=1)        # T, B, P
+        return R if np.linalg.det(R) > 0 else np.stack([v[:, 2], v[:, 1], -v[:, 0]], axis=1)
+
+    R1, R2 = frame(M1), frame(M2)
+    best = 180.0
+    for S in (np.diag([1., 1., 1.]), np.diag([1., -1., -1.]),
+              np.diag([-1., 1., -1.]), np.diag([-1., -1., 1.])):
+        trace = np.trace(R2 @ S @ R1.T)
+        best = min(best, np.degrees(np.arccos(np.clip((trace - 1) / 2, -1, 1))))
+    return float(best)
+
+
+def mt_decompose(M):
+    """Isotropic, double-couple and CLVD shares of a tensor, and its moment magnitude.
+
+    The shares are taken on Bowers & Hudson's total moment, |isotropic| + |largest deviatoric
+    eigenvalue|, which is what Dreger's time-domain inversion reports. `f` is the CLVD parameter:
+    0 for a pure double couple, 1/2 for a pure CLVD. `M` is in dyne-centimetres.
+    """
+    iso = np.trace(M) / 3
+    w = np.linalg.eigvalsh(M - iso * np.eye(3))
+    w = w[np.argsort(np.abs(w))]                                 # smallest |eigenvalue| first
+    total = abs(iso) + abs(w[2])
+    f = 0.0 if w[2] == 0 else -w[0] / w[2]
+    return dict(M0=abs(w[2]), Mw=(np.log10(total) - 16.05) * 2 / 3,
+                iso=100 * abs(iso) / total,
+                dc=100 * abs(w[2]) / total * abs(1 - 2 * f),
+                clvd=200 * abs(w[2]) / total * abs(f))
+
+
 def radiation_p(strike, dip, rake, azimuth, takeoff):
     """Far-field P radiation amplitude for rays leaving the source at these angles.
 

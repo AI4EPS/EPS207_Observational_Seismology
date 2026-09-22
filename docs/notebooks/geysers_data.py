@@ -329,6 +329,41 @@ def phases(year=2016):
     return p
 
 
+def polarities(year=2016):
+    """First motions in the field, with the ray geometry each one needs.
+
+    One row per station reading: `azimuth` east of north and `takeoff_angle` from the DOWNWARD
+    vertical, both as the archive reports them, so a take-off angle above 90 degrees is an up-going
+    ray. `polarity` is the analyst's U or D, blank where they read none, and `remark` is i or e --
+    impulsive or emergent. Where the event has a catalogue first-motion mechanism, `strike`, `dip`,
+    `rake`, `misfit` and `nfm` repeat it on every row.
+
+    The sample is every fourth day of the year, plus 14 December 2016, which holds the largest
+    earthquake the field has had. Manual picks only, BG and NC stations inside 30 km.
+    """
+    return pd.read_csv(asset(f"geysers_polarities_{year}.csv.gz"))
+
+
+def mw5_waveforms():
+    """Broadband records of the 2016 Mw 5.0, ready to invert.
+
+    Ground displacement in centimetres at 4 samples per second, instrument response removed and the
+    horizontals rotated to transverse and radial. `waveform` is (station, component, sample) and
+    sample 0 sits `start_offset_s` seconds before the origin time.
+    """
+    return np.load(asset("geysers_mw5_waveforms.npz"), allow_pickle=False)
+
+
+def green_functions():
+    """Green's functions for the gil7 model, at each source depth and each station distance.
+
+    Ten arrays, one per fundamental Green's function, each (depth, distance, sample) in centimetres
+    for a 1e20 dyne-cm source, with sample 0 at the origin time. Computed offline with Saikia's
+    frequency-wavenumber program, because it is Fortran and the notebook is not.
+    """
+    return np.load(asset("geysers_green_gil7.npz"), allow_pickle=False)
+
+
 def station_polarity():
     """Per-station, per-epoch check of whether the archive's first motions follow the metadata.
 

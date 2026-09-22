@@ -418,19 +418,19 @@ where $A(X)$ is the displacement amplitude in microns (10$^{-6}$ m) and X is in 
 | Date | Seismology | Machine learning |
 | --- | --- | --- |
 | 09/01 | **Introduction** | *today* |
-| 09/08 | Magnitude calibration | Regression & uncertainty |
-| 09/15 | Where aftershocks occur | Bias–variance, boosting, CV |
-| 09/22 | Fault structure from seismicity | Clustering, mixture models, EM |
-| 09/29 | Earthquake / quarry-blast discrimination | NN: classification |
-| 10/06 | Phase picking | NN: segmentation |
-| 10/13 | Event detection on DAS | NN: object detection |
-| 10/20 | Denoising | NN: Denoising |
-| 10/27 | Ground-motion prediction | Transformers |
-| 11/03 | Template matching | Similarity & embeddings |
-| 11/10 | Waveform generation | VAE and Diffusion |
-| 11/17 | Focal mechanism & moment tensor | Inversion I — linear |
-| 11/24 | Location & relocation | Inversion II — non-linear |
-| 12/01 | Tomography | Inversion III — fields |
+| 09/08 | Geysers data | |
+| 09/15 | Magnitude & b-value | Regression & uncertainty |
+| 09/22 | Location & relocation | Seismic inversion |
+| 09/29 | Focal mechanism & moment tensor | Seismic inversion |
+| 10/06 | Fault structure & phase association | Clustering |
+| 10/13 | Tomography | Gradients & backpropagation |
+| 10/20 | Template matching | Similarity & embeddings |
+| 10/27 | Source discrimination | Classification |
+| 11/03 | Phase picking | Segmentation |
+| 11/10 | Denoising | Segmentation |
+| 11/17 | Nodal-array picking | Transfer & semi-supervised learning |
+| 11/24 | Ground-motion prediction | Transformers |
+| 12/01 | Earthquake forecasting | Diffusion & flow matching |
 
 ---
 

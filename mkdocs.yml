@@ -9,9 +9,10 @@ edit_uri: blob/main/docs/
 nav:
   - Overview: README.md
   - Introduction: lectures/00_introduction.html
-  - "Sep 8 · Regression & uncertainty": notebooks/01_regression_uncertainty.ipynb
-  - "Sep 15 · Classification & bias-variance": notebooks/03_bias_variance.ipynb
-  - Project dataset: notebooks/project_geysers_data.ipynb
+  - "Sep 8 · Geysers data": notebooks/project_geysers_data.ipynb
+  - "Sep 15 · Regression & uncertainty": notebooks/01_regression_uncertainty.ipynb
+  - "Sep 22 · Location: the method": notebooks/02a_location_method.ipynb
+  - "Sep 22 · Location: the Geysers picks": notebooks/02b_location_geysers.ipynb
 
 theme:
   name: "material"

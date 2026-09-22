@@ -14,20 +14,20 @@ tomography — together with the machine learning methods now used for each.
 | Date | Seismology | Machine learning |
 |---|---|---|
 | Sep 1 | [Introduction](https://ai4eps.github.io/EPS207_Observational_Seismology/lectures/00_introduction.html) | |
-| Sep 8 | [Magnitude as a regression, and the b-value of The Geysers](https://colab.research.google.com/github/AI4EPS/EPS207_Observational_Seismology/blob/main/docs/notebooks/01_regression_uncertainty.ipynb) | Regression & uncertainty |
-| Sep 15 | [Faulting style at The Geysers](https://colab.research.google.com/github/AI4EPS/EPS207_Observational_Seismology/blob/main/docs/notebooks/03_bias_variance.ipynb) | Classification & bias-variance |
-| Sep 22 | Fault structure from seismicity | Clustering |
-| Sep 29 | Focal mechanism & moment tensor | Inversion I — linear |
-| Oct 6 | Location & relocation | Inversion II — non-linear |
-| Oct 13 | Tomography | Inversion III — gradients & backpropagation |
-| Oct 20 | Source discrimination | Neural networks: training a classifier |
-| Oct 27 | Template matching | Similarity search & embeddings |
-| Nov 3 | Phase picking | Neural networks: segmentation & calibration |
-| Nov 10 | Denoising | Self-supervised learning: denoising |
-| Nov 17 | Picking on a dense nodal array | Transfer learning & domain shift |
-| Nov 24 | Ground-motion prediction | Transformers: attention over station sets |
-| Dec 1 | Source, path and site spectra | Generative models: VAE & flow matching |
-| Dec 8 | [Final project](https://colab.research.google.com/github/AI4EPS/EPS207_Observational_Seismology/blob/main/docs/notebooks/project_geysers_data.ipynb) | |
+| Sep 8 | [Geysers data](https://colab.research.google.com/github/AI4EPS/EPS207_Observational_Seismology/blob/main/docs/notebooks/project_geysers_data.ipynb) | |
+| Sep 15 | [Magnitude & b-value](https://colab.research.google.com/github/AI4EPS/EPS207_Observational_Seismology/blob/main/docs/notebooks/01_regression_uncertainty.ipynb) | Regression & uncertainty |
+| Sep 22 | Location & relocation: [the method](https://colab.research.google.com/github/AI4EPS/EPS207_Observational_Seismology/blob/main/docs/notebooks/02a_location_method.ipynb) · [the Geysers picks](https://colab.research.google.com/github/AI4EPS/EPS207_Observational_Seismology/blob/main/docs/notebooks/02b_location_geysers.ipynb) | Seismic inversion |
+| Sep 29 | Focal mechanism & moment tensor | Seismic inversion |
+| Oct 6 | Fault structure & phase association | Clustering |
+| Oct 13 | Tomography | Gradients & backpropagation |
+| Oct 20 | Template matching | Similarity & embeddings |
+| Oct 27 | Source discrimination | Classification |
+| Nov 3 | Phase picking | Segmentation |
+| Nov 10 | Denoising | Segmentation |
+| Nov 17 | Nodal-array picking | Transfer & semi-supervised learning |
+| Nov 24 | Ground-motion prediction | Transformers |
+| Dec 1 | Earthquake forecasting | Diffusion & flow matching |
+| Dec 8 | Final project presentations | |
 
 ## What this course is, and how it relates to EPS 130
 
