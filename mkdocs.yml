@@ -13,6 +13,8 @@ nav:
   - "Regression & uncertainty": notebooks/01_regression_uncertainty.ipynb
   - "Location: the method": notebooks/02a_location_method.ipynb
   - "Location: the Geysers picks": notebooks/02b_location_geysers.ipynb
+  - "Mechanisms: the methods": notebooks/03a_focal_method.ipynb
+  - "Mechanisms: the Mw 5.0": notebooks/03b_focal_mw5.ipynb
 
 theme:
   name: "material"

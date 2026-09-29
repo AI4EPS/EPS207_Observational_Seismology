@@ -364,6 +364,17 @@ def green_functions():
     return np.load(asset("geysers_green_gil7.npz"), allow_pickle=False)
 
 
+def true_earth_green():
+    """Green's functions of three test Earths, for the synthetic waveform tests of session 3.
+
+    Each is gil7 with every station's path slower in the top 5 km (by 0-15 %) and changed between
+    5 and 25 km (by up to 5 %), a path-by-path stand-in for 3-D structure. Same ten
+    arrays and units as `green_functions()`, each (earth, distance, sample), source at 7 km; the
+    perturbations are in `shallow_slowdown` and `mid_change`. Computed offline with FKRPROG.
+    """
+    return np.load(asset("synthetic_true_earth.npz"), allow_pickle=False)
+
+
 def station_polarity():
     """Per-station, per-epoch check of whether the archive's first motions follow the metadata.
 
