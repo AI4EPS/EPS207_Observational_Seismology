@@ -9,16 +9,18 @@ edit_uri: blob/main/docs/
 nav:
   - Overview: README.md
   - Introduction: lectures/00_introduction.html
-  - "Geysers data": notebooks/project_geysers_data.ipynb
-  - "Regression & uncertainty": notebooks/01_regression_uncertainty.ipynb
-  - "Location: the method": notebooks/02a_location_method.ipynb
-  - "Location: the Geysers picks": notebooks/02b_location_geysers.ipynb
-  - "Mechanisms: the methods": notebooks/03a_focal_method.ipynb
-  - "Mechanisms: the Mw 5.0": notebooks/03b_focal_mw5.ipynb
-  - "Clustering: the methods": notebooks/04a_clustering_methods.ipynb
-  - "Clustering: the methods · slides": slides/04a_clustering_methods.slides.html
-  - "Clustering: the Geysers catalogue": notebooks/04b_clustering_geysers.ipynb
-  - "Clustering: the Geysers catalogue · slides": slides/04b_clustering_geysers.slides.html
+  - Notebooks:
+    - "Geysers data": notebooks/project_geysers_data.ipynb
+    - "Regression & uncertainty": notebooks/01_regression_uncertainty.ipynb
+    - "Location: the method": notebooks/02a_location_method.ipynb
+    - "Location: the Geysers picks": notebooks/02b_location_geysers.ipynb
+    - "Mechanisms: the methods": notebooks/03a_focal_method.ipynb
+    - "Mechanisms: the Mw 5.0": notebooks/03b_focal_mw5.ipynb
+    - "Clustering: the methods": notebooks/04a_clustering_methods.ipynb
+    - "Clustering: the Geysers catalogue": notebooks/04b_clustering_geysers.ipynb
+  - Slides:
+    - "Clustering: the methods": slides/04a_clustering_methods.slides.html
+    - "Clustering: the Geysers catalogue": slides/04b_clustering_geysers.slides.html
 
 theme:
   name: "material"
