@@ -1,5 +1,7 @@
 .DS_Store
 *.html
+# slide decks are built locally from the notebooks (build repo tools/slides) and published as is
+!docs/slides/*.html
 *.zip
 *.xml
 *.mseed

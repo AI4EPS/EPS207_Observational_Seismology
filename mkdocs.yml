@@ -16,7 +16,9 @@ nav:
   - "Mechanisms: the methods": notebooks/03a_focal_method.ipynb
   - "Mechanisms: the Mw 5.0": notebooks/03b_focal_mw5.ipynb
   - "Clustering: the methods": notebooks/04a_clustering_methods.ipynb
+  - "Clustering: the methods · slides": slides/04a_clustering_methods.slides.html
   - "Clustering: the Geysers catalogue": notebooks/04b_clustering_geysers.ipynb
+  - "Clustering: the Geysers catalogue · slides": slides/04b_clustering_geysers.slides.html
 
 theme:
   name: "material"
