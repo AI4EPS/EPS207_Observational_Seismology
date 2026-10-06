@@ -18,7 +18,7 @@ tomography — together with the machine learning methods now used for each.
 | Sep 15 | [Magnitude & b-value](https://colab.research.google.com/github/AI4EPS/EPS207_Observational_Seismology/blob/main/docs/notebooks/01_regression_uncertainty.ipynb) | Regression & uncertainty |
 | Sep 22 | [Location & relocation](https://colab.research.google.com/github/AI4EPS/EPS207_Observational_Seismology/blob/main/docs/notebooks/02a_location_method.ipynb) | Seismic inversion |
 | Sep 29 | [Focal mechanism & moment tensor](https://colab.research.google.com/github/AI4EPS/EPS207_Observational_Seismology/blob/main/docs/notebooks/03a_focal_method.ipynb) | Seismic inversion |
-| Oct 6 | Fault structure & phase association | Clustering |
+| Oct 6 | [Earthquake clusters & families](https://colab.research.google.com/github/AI4EPS/EPS207_Observational_Seismology/blob/main/docs/notebooks/04a_clustering_methods.ipynb) | Clustering |
 | Oct 13 | Tomography | Gradients & backpropagation |
 | Oct 20 | Template matching | Similarity & embeddings |
 | Oct 27 | Source discrimination | Classification |
