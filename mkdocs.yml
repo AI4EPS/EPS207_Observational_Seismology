@@ -18,9 +18,11 @@ nav:
     - "Mechanisms: the Mw 5.0": notebooks/03b_focal_mw5.ipynb
     - "Clustering: the methods": notebooks/04a_clustering_methods.ipynb
     - "Clustering: the Geysers catalogue": notebooks/04b_clustering_geysers.ipynb
+    - "Deep learning: the methods": notebooks/05a_deep_learning.ipynb
   - Slides:
     - "Clustering: the methods": slides/04a_clustering_methods.slides.html
     - "Clustering: the Geysers catalogue": slides/04b_clustering_geysers.slides.html
+    - "Deep learning: the methods": slides/05a_deep_learning.slides.html
 
 theme:
   name: "material"
