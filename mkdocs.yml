@@ -24,6 +24,7 @@ nav:
     - "Clustering: the methods": slides/04a_clustering_methods.slides.html
     - "Clustering: the Geysers catalogue": slides/04b_clustering_geysers.slides.html
     - "Deep learning: the methods": slides/05a_deep_learning.slides.html
+    - "Picking: the Geysers data": slides/05b_picking_geysers.slides.html
 
 theme:
   name: "material"
