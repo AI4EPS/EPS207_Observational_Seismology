@@ -19,6 +19,7 @@ nav:
     - "Clustering: the methods": notebooks/04a_clustering_methods.ipynb
     - "Clustering: the Geysers catalogue": notebooks/04b_clustering_geysers.ipynb
     - "Deep learning: the methods": notebooks/05a_deep_learning.ipynb
+    - "Picking: the Geysers data": notebooks/05b_picking_geysers.ipynb
   - Slides:
     - "Clustering: the methods": slides/04a_clustering_methods.slides.html
     - "Clustering: the Geysers catalogue": slides/04b_clustering_geysers.slides.html
