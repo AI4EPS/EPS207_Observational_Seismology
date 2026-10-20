@@ -28,7 +28,7 @@ nav:
     - "Deep learning: the methods": slides/05a_deep_learning.slides.html
     - "Deep learning: the Geysers data": slides/05b_picking_geysers.slides.html
     - "Template matching: the methods": slides/06a_template_methods.slides.html
-    - "QuakeFlow: waveforms to a catalogue": slides/quakeflow.slides.html
+    - "QuakeFlow: waveforms to a catalogue": slides/quakeflow.pdf
 
 theme:
   name: "material"
