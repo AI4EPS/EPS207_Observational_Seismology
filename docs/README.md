@@ -20,7 +20,7 @@ tomography — together with the machine learning methods now used for each.
 | Sep 29 | [Focal mechanism & moment tensor](https://colab.research.google.com/github/AI4EPS/EPS207_Observational_Seismology/blob/main/docs/notebooks/03a_focal_method.ipynb) | Seismic inversion |
 | Oct 6 | [Earthquake clusters & families](https://colab.research.google.com/github/AI4EPS/EPS207_Observational_Seismology/blob/main/docs/notebooks/04a_clustering_methods.ipynb) | Clustering |
 | Oct 13 | [Phase picking](https://colab.research.google.com/github/AI4EPS/EPS207_Observational_Seismology/blob/main/docs/notebooks/05a_deep_learning.ipynb) | Deep learning |
-| Oct 20 | Template matching | Similarity & embeddings |
+| Oct 20 | [Template matching](https://colab.research.google.com/github/AI4EPS/EPS207_Observational_Seismology/blob/main/docs/notebooks/06a_template_methods.ipynb) | Similarity & embeddings |
 | Oct 27 | Source discrimination | Classification |
 | Nov 3 | Tomography | Gradients & the adjoint |
 | Nov 10 | Denoising | Segmentation |
