@@ -22,6 +22,7 @@ nav:
     - "Deep learning: the Geysers data": notebooks/05b_picking_geysers.ipynb
     - "Template matching: the methods": notebooks/06a_template_methods.ipynb
     - "QuakeFlow: waveforms to a catalogue": notebooks/quakeflow.ipynb
+    - "QuakeFlow: the Geysers M4.4 sequence": notebooks/quakeflow_geysers.ipynb
   - Slides:
     - "Clustering: the methods": slides/04a_clustering_methods.slides.html
     - "Clustering: the Geysers catalogue": slides/04b_clustering_geysers.slides.html
