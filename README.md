@@ -23,11 +23,11 @@ tomography — together with the machine learning methods now used for each.
 | Oct 20 | [Template matching](https://colab.research.google.com/github/AI4EPS/EPS207_Observational_Seismology/blob/main/docs/notebooks/06a_template_methods.ipynb) | Similarity & embeddings |
 | Oct 27 | [Earthquake catalog](https://colab.research.google.com/github/AI4EPS/EPS207_Observational_Seismology/blob/main/docs/notebooks/quakeflow_phasenet_plus.ipynb) | QuakeFlow |
 | Nov 3 | [Source characterization](https://colab.research.google.com/github/AI4EPS/EPS207_Observational_Seismology/blob/main/docs/notebooks/quakeflow_geysers.ipynb) | QuakeFlow |
-| Nov 10 | [Tomography](https://colab.research.google.com/github/AI4EPS/EPS207_Observational_Seismology/blob/main/docs/notebooks/08a_tomography_method.ipynb) | Gradients & the adjoint |
+| Nov 10 | [Tomography](https://colab.research.google.com/github/AI4EPS/EPS207_Observational_Seismology/blob/main/docs/notebooks/08a_tomography_method.ipynb) | Automatic Differentiation |
 | Nov 17 | Project work | |
 | Nov 24 | Project work | |
 | Dec 1 | Project work | |
-| Dec 8 | Final project presentations | |
+| Dec 8 | Final project reports | |
 
 ## What this course is, and how it relates to EPS 130
 
