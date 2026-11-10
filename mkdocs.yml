@@ -21,6 +21,8 @@ nav:
     - "Deep learning: the methods": notebooks/05a_deep_learning.ipynb
     - "Deep learning: the Geysers data": notebooks/05b_picking_geysers.ipynb
     - "Template matching: the methods": notebooks/06a_template_methods.ipynb
+    - "Tomography: the method": notebooks/08a_tomography_method.ipynb
+    - "Tomography: the Geysers picks": notebooks/08b_tomography_geysers.ipynb
     - "QuakeFlow: waveforms to a catalogue": notebooks/quakeflow.ipynb
     - "QuakeFlow: the Geysers M4.4 sequence": notebooks/quakeflow_geysers.ipynb
   - Slides:
