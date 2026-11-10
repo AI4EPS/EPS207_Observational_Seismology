@@ -31,6 +31,8 @@ nav:
     - "Deep learning: the methods": slides/05a_deep_learning.slides.html
     - "Deep learning: the Geysers data": slides/05b_picking_geysers.slides.html
     - "Template matching: the methods": slides/06a_template_methods.slides.html
+    - "Tomography: the method": slides/08a_tomography_method.slides.html
+    - "Tomography: the Geysers picks": slides/08b_tomography_geysers.slides.html
     - "QuakeFlow: waveforms to a catalogue": slides/quakeflow.pdf
 
 theme:
